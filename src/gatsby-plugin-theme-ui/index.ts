@@ -51,7 +51,7 @@ export const theme: Theme = {
   },
   buttons: {
     blackBorder: {
-
+      
     },
     contact: {
       width: "150px",
