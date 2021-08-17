@@ -13,19 +13,21 @@ export const theme: Theme = {
   colors: {
     initialColorModeName: "light",
     background: "white",
-    themePink: "",
+    themePink: "#FF8787",
     themeBlack: "#1C1C1C",
-    themeGreen: "",
+    themeGreen: "#66797B",
     themeCream: "#F5F2D7",
+    navLink: "#1C1C1C",
     modes: {
       dark: {
-        background: "#1C1C1C"
+        background: "#1C1C1C",
+        navLink: "white"
       }
     }
   },
   fonts: {
-    heading: "Petrona, Sans-Serif",
-    body: "Poppins, Sans-Serif"
+    heading: "Poppins, Sans-Serif",
+    body: "Petrona, Sans-Serif"
   },
   fontSizes: [
     "0.75rem", // 12px
@@ -39,6 +41,7 @@ export const theme: Theme = {
   fontWeights: {
     bold: 700,
     heading: 600,
+    medium: 500,
     body: 400,
     light: 300
   },
@@ -75,7 +78,29 @@ export const theme: Theme = {
     }
   },
   links: {
-
+    nav: {
+      position: "relative",
+      fontFamily: "heading",
+      fontSize: 2,
+      color: "navLink",
+      textDecoration: "none",
+      "::after": {
+        content: `""`,
+        position: "absolute",
+        display: "block",
+        width: "100%",
+        height: "6px",
+        bottom: "0",
+        left: "0",
+        bg: "themePink",
+        transformOrigin: "top left",
+        transform: "scaleX(0)",
+        transition: "transform 0.3s ease-out"
+      },
+      ":hover::after": {
+        transform: "scaleX(1)"
+      }
+    }
   },
   forms: {
 

@@ -10,9 +10,6 @@ const ToggleColorMode = () => {
       sx={{
         width: "80px",
         height: "40px",
-        position: "absolute",
-        top: "2%",
-        right: "2%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -24,10 +21,13 @@ const ToggleColorMode = () => {
     >
       <Text
         sx={{
+          fontFamily: "heading",
+          fontSize: 1,
+          fontWeight: "medium",
+          lineHeight: "default",
           color: colorMode === "light" ? "themeBlack" : "white"
         }}
         as="p"
-        variant="text.light"
       >
         {colorMode === "light" ? "Light" : "Dark"}
       </Text>
