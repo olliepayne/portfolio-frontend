@@ -26,7 +26,7 @@ const Header = () => {
       sx={{
         height: "120px",
         my: 0,
-        mx: 2,
+        mx: 3,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center"

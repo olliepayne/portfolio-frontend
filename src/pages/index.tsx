@@ -6,7 +6,11 @@ import Layout from "../components/Layout"
 const IndexPage = () => {
   return (
     <Layout>
-      <main>
+      <main
+        sx={{
+          flex: "1 auto"
+        }}
+      >
         
       </main>
     </Layout>

@@ -8,7 +8,8 @@ export const theme: Theme = {
   space: [
     "1.563em", // 25px
     "3.125em", // 50px
-    "7.5em" // 120px
+    "7.5em", // 120px
+    "15em" // 240px
   ],
   colors: {
     initialColorModeName: "light",
@@ -17,15 +18,19 @@ export const theme: Theme = {
     themeBlack: "#1C1C1C",
     themeGreen: "#66797B",
     themeCream: "#F5F2D7",
-    navLink: "#1C1C1C",
+    defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
     modes: {
       dark: {
         background: "#1C1C1C",
-        navLink: "white",
+        defaultText: "white",
         buttonBorder: "white"
       }
     }
+  },
+  zIndices: {
+    back: -1,
+    front: 1
   },
   fonts: {
     heading: "Poppins, Sans-Serif",
@@ -100,7 +105,7 @@ export const theme: Theme = {
       position: "relative",
       fontFamily: "heading",
       fontSize: 2,
-      color: "navLink",
+      color: "defaultText",
       textDecoration: "none",
       "::after": {
         content: `""`,
@@ -128,7 +133,8 @@ export const theme: Theme = {
       "body": {
         p: "0px",
         m: "0px",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        color: "defaultText"
       }
     },
     h1: {
