@@ -32,7 +32,17 @@ export const theme: Theme = {
     default: 1.75
   },
   text: {
+    heading: {
+      fontFamily: "heading",
+      fontWeight: "heading",
+      lineHeight: "default"
+    },
+    body: {
+      
+    },
+    light: {
 
+    }
   },
   buttons: {
 
@@ -52,19 +62,24 @@ export const theme: Theme = {
       }
     },
     h1: {
-
+      variant: "text.heading",
+      fontSize: [5, null, 6]
     },
     h2: {
-
+      variant: "text.heading",
+      fontSize: [4, null, 5]
     },
     h3: {
-
+      variant: "text.heading",
+      fontSize: [3, null, 4]
     },
     h4: {
-
+      variant: "text.heading",
+      fontSize: [2, null, 3]
     },
     h5: {
-
+      variant: "text.heading",
+      fontSize: [1, null, 2]
     },
   }
 }
