@@ -77,8 +77,6 @@ export const theme: Theme = {
   },
   buttons: {
     blackBorder: {
-      width: "150px",
-      height: "50px",
       background: "transparent",
       border: "4px solid",
       borderColor: "buttonBorder",
@@ -88,7 +86,9 @@ export const theme: Theme = {
     contact: {
       width: "150px",
       height: "40px",
+      border: "none",
       fontFamily: "heading",
+      fontSize: 2,
       fontWeight: "semiBold",
       bg: "#97A6DE",
       color: "white",

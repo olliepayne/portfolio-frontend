@@ -1,15 +1,17 @@
-import { Button } from "theme-ui"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { theme } from "../../gatsby-plugin-theme-ui/index"
 import * as React from "react"
 import { navigate } from "gatsby"
 
 const ContactButton = () => {
   return (
-    <Button
-      variant="contact"
+    <button
+      sx={theme.buttons.contact}
       onClick={() => navigate("/contact")}
     >
       Contact
-    </Button>
+    </button>
   )
 }
 
