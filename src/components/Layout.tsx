@@ -15,7 +15,7 @@ const Layout = ({
       sx={{
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <Header />

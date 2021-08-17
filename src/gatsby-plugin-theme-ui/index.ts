@@ -10,6 +10,19 @@ export const theme: Theme = {
     "3.125em", // 50px
     "7.5em" // 120px
   ],
+  colors: {
+    initialColorModeName: "light",
+    background: "white",
+    themePink: "",
+    themeBlack: "#1C1C1C",
+    themeGreen: "",
+    themeCream: "#F5F2D7",
+    modes: {
+      dark: {
+        background: "#1C1C1C"
+      }
+    }
+  },
   fonts: {
     heading: "Petrona, Sans-Serif",
     body: "Poppins, Sans-Serif"
@@ -51,7 +64,7 @@ export const theme: Theme = {
   },
   buttons: {
     blackBorder: {
-      
+
     },
     contact: {
       width: "150px",
@@ -97,3 +110,5 @@ export const theme: Theme = {
     },
   }
 }
+
+export default theme
