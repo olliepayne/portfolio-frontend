@@ -6,7 +6,7 @@ export const theme: Theme = {
     "60em"
   ],
   space: [
-    "",
+    "1.563em", // 25px
     "3.125em", // 50px
     "7.5em" // 120px
   ],
@@ -18,10 +18,12 @@ export const theme: Theme = {
     themeGreen: "#66797B",
     themeCream: "#F5F2D7",
     navLink: "#1C1C1C",
+    buttonBorder: "#1C1C1C",
     modes: {
       dark: {
         background: "#1C1C1C",
-        navLink: "white"
+        navLink: "white",
+        buttonBorder: "white"
       }
     }
   },
@@ -40,7 +42,7 @@ export const theme: Theme = {
   ],
   fontWeights: {
     bold: 700,
-    heading: 600,
+    semiBold: 600,
     medium: 500,
     body: 400,
     light: 300
@@ -51,7 +53,7 @@ export const theme: Theme = {
   text: {
     heading: {
       fontFamily: "heading",
-      fontWeight: "heading",
+      fontWeight: "semiBold",
       lineHeight: "default"
     },
     body: {
@@ -67,14 +69,30 @@ export const theme: Theme = {
   },
   buttons: {
     blackBorder: {
-
+      width: "150px",
+      height: "50px",
+      background: "transparent",
+      border: "4px solid",
+      borderColor: "buttonBorder",
+      borderRadius: "50px",
+      color: "themePink",
     },
     contact: {
       width: "150px",
       height: "40px",
+      fontFamily: "heading",
+      fontWeight: "semiBold",
       bg: "#97A6DE",
       color: "white",
-      borderRadius: "10px 0px"
+      borderRadius: "10px 0px",
+      cursor: "pointer",
+      transition: "all 0.3s ease-out",
+      ":hover": {
+        bg: "#C3CBE6",
+        color: "themeBlack",
+        boxShadow: "6px 8px 0px #97A6DE",
+        transition: "all 0.3s ease-out"
+      }
     }
   },
   links: {

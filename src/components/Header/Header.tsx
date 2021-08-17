@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Button } from "theme-ui"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
+import ContactButton from "./ContactButton"
 import ToggleColorMode from "./ToggleColorMode"
 
 const links = [
@@ -23,7 +24,8 @@ const Header = () => {
   return (
     <header
       sx={{
-        my: 1,
+        height: "120px",
+        my: 0,
         mx: 2,
         display: "flex",
         justifyContent: "space-between",
@@ -35,7 +37,10 @@ const Header = () => {
         sx={{
           p: "0px",
           display: "flex",
-          listStyle: "none"
+          listStyle: "none",
+          "li": {
+            mx: 1
+          }
         }}
       >
         {links.map(({
@@ -51,6 +56,9 @@ const Header = () => {
             />
           </li>
         ))}
+        {/* <li>
+          <ContactButton />
+        </li> */}
       </ul>
       <ToggleColorMode />
     </header>
