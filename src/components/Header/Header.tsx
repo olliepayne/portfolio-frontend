@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Button } from "theme-ui"
+import * as React from "react"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
 import ContactButton from "./ContactButton"
@@ -56,9 +57,9 @@ const Header = () => {
             />
           </li>
         ))}
-        {/* <li>
+        <li>
           <ContactButton />
-        </li> */}
+        </li>
       </ul>
       <ToggleColorMode />
     </header>

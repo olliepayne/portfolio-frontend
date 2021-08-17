@@ -1,16 +1,21 @@
 /** @jsx jsx */
 import { jsx, Heading } from "theme-ui"
+import * as React from "react"
+import { navigate } from "gatsby"
 
 const HeaderLogo = () => {
   return (
     <div
       sx={{
         position: "relative",
-        userSelect: "none"
+        userSelect: "none",
+        cursor: "pointer"
       }}
+      onClick={() => navigate("/")}
     >
       <Heading
         sx={{
+          p: "0px",
           color: "themePink"
         }}
         as="h2"
@@ -23,7 +28,7 @@ const HeaderLogo = () => {
           position: "absolute",
           zIndex: "back",
           inset: "0%",
-          bottom: "-41%",
+          bottom: "-40%",
           transform: "rotateZ(180deg)"
         }}
         as="h2"

@@ -32,6 +32,9 @@ export const theme: Theme = {
     back: -1,
     front: 1
   },
+  borders: {
+    nav: "6px solid #F0F0F0"
+  },
   fonts: {
     heading: "Poppins, Sans-Serif",
     body: "Petrona, Sans-Serif"
