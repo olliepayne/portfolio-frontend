@@ -26,7 +26,8 @@ export const theme: Theme = {
   fontWeights: {
     bold: 700,
     heading: 600,
-    body: 400
+    body: 400,
+    light: 300
   },
   lineHeights: {
     default: 1.75
@@ -38,14 +39,27 @@ export const theme: Theme = {
       lineHeight: "default"
     },
     body: {
-      
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "default"
     },
     light: {
-
+      fontFamily: "body",
+      fontWeight: "light",
+      lineHeight: "default"
     }
   },
   buttons: {
+    blackBorder: {
 
+    },
+    contact: {
+      width: "150px",
+      height: "40px",
+      bg: "#97A6DE",
+      color: "white",
+      borderRadius: "10px 0px"
+    }
   },
   links: {
 
