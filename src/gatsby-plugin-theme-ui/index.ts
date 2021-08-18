@@ -6,6 +6,9 @@ export const theme: Theme = {
     "60em"
   ],
   space: [
+    "0.25em", // 4px
+    "0.5em", // 8px
+    "1em", // 16px
     "1.563em", // 25px
     "3.125em", // 50px
     "7.5em", // 120px
