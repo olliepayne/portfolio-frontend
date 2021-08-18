@@ -26,8 +26,8 @@ const Header = () => {
     <header
       sx={{
         height: "120px",
-        my: 0,
-        mx: 3,
+        py: 4,
+        px: 5,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center"
@@ -40,7 +40,7 @@ const Header = () => {
           display: "flex",
           listStyle: "none",
           "li": {
-            mx: 1
+            mx: 3
           }
         }}
       >

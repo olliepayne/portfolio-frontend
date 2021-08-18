@@ -2,17 +2,18 @@ import { Theme } from "theme-ui"
 
 export const theme: Theme = {
   breakpoints: [
-    "40em",
-    "60em"
+    "48em",
+    "64em"
   ],
   space: [
+    "0em", // 0px
     "0.25em", // 4px
     "0.5em", // 8px
     "1em", // 16px
-    "1.563em", // 25px
-    "3.125em", // 50px
-    "7.5em", // 120px
-    "15em" // 240px
+    "2em", // 32px
+    "4em", // 64px
+    "8em", // 128px
+    "16em", // 256px
   ],
   colors: {
     initialColorModeName: "light",
@@ -113,8 +114,9 @@ export const theme: Theme = {
       fontSize: 2,
       color: "defaultText",
       textDecoration: "none",
-      "::after": {
+      "::before": {
         content: `""`,
+        mt: 4,
         position: "absolute",
         display: "block",
         width: "100%",
@@ -126,7 +128,7 @@ export const theme: Theme = {
         transform: "scaleX(0)",
         transition: "transform 0.3s ease-out"
       },
-      ":hover::after": {
+      ":hover::before": {
         transform: "scaleX(1)"
       }
     }
