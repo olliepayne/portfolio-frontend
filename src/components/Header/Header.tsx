@@ -42,10 +42,12 @@ const Header = () => {
         width: "100%",
         height: userHasScrolled ? "80px" : "60px",
         px: ["30px", null, "120px"],
-        position: "sticky",
+        position: "fixed",
+        zIndex: "front",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        bg: "white",
         boxShadow: userHasScrolled ? "0 0px 10px rgba(0, 0, 0, 0.3)" : "none",
         transition: "all 0.2s"
       }}

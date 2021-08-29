@@ -20,8 +20,9 @@ interface MarqueeProps {
     image: IGatsbyImageData
     slug: string
   }[]
+  speed: number
 }
-const Marquee = ({ slides }: MarqueeProps) => {
+const Marquee = ({ slides, speed }: MarqueeProps) => {
   return (
     <div
       sx={{
@@ -42,7 +43,7 @@ const Marquee = ({ slides }: MarqueeProps) => {
           display: "flex",
           alignItems: "center",
           listStyle: "none",
-          animation: `${move} 5s linear infinite`,
+          animation: `${move} ${speed}s linear infinite`,
           li: {
             mr: 6
           }

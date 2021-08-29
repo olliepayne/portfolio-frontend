@@ -12,6 +12,12 @@ const IndexPage = ({ data }) => {
       image: data.bodycam.childImageSharp,
       // color: "#122C4A",
       slug: "#"
+    },
+    {
+      text: "Motus Agency",
+      image: data.motus.childImageSharp,
+      // color: "#122C4A",
+      slug: "#"
     }
   ]
 
@@ -19,6 +25,8 @@ const IndexPage = ({ data }) => {
     <Layout>
       <main
         sx={{
+          height: "2000px",
+          mt: "80px",
           flex: "1 auto"
         }}
       >
@@ -32,7 +40,7 @@ const IndexPage = ({ data }) => {
           }}
         ></div> */}
         <Container>
-          <Marquee slides={marqueeSlides} />
+          <Marquee slides={marqueeSlides} speed={10} />
         </Container>
       </main>
     </Layout>
@@ -44,6 +52,11 @@ export default IndexPage
 export const query = graphql`
   {
     bodycam: file(relativePath: { eq: "companies/bodycam-logo.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 32, layout: FIXED)
+      }
+    }
+    motus: file(relativePath: { eq: "companies/motus-logo.png" }) {
       childImageSharp {
         gatsbyImageData(height: 32, layout: FIXED)
       }
