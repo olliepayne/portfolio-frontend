@@ -1,28 +1,20 @@
 /** @jsx jsx */
-import { jsx, Heading } from "theme-ui"
-import { theme } from "../../gatsby-plugin-theme-ui/index"
+import { jsx } from "theme-ui"
+import Copyright from "./Copyright"
 
 const Footer = () => {
   return (
     <footer
       sx={{
-        height: "90px",
-        position: "relative",
-        bg: "themeGreen"
+        height: "60px",
+        px: [2],
+        display: "flex",
+        alignItems: 'center',
+        justifyContent: "space-between",
+        bg: "themePink"
       }}
     >
-      <Heading
-        sx={{
-          position: "absolute",
-          top: "-30%",
-          left: 0,
-          color: theme.colors.modes
-        }}
-        as="h4"
-        variant="styles.h4"
-      >
-        Copyright {new Date().getFullYear()} Ollie Payne
-      </Heading>
+      <Copyright />
     </footer>
   )
 }

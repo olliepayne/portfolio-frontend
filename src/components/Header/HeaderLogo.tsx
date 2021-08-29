@@ -5,9 +5,12 @@ import { navigate } from "gatsby"
 
 const HeaderLogo = () => {
   return (
-    <div onClick={() => {
-      navigate("/")
-    }}>
+    <div
+      sx={{ cursor: "pointer" }}
+      onClick={() => {
+        navigate("/")
+      }}
+    >
       <Heading as="h5" variant="styles.h5">
         Ollie
       </Heading>

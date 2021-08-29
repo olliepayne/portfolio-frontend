@@ -8,8 +8,8 @@ const ToggleColorMode = () => {
   return (
     <div
       sx={{
-        width: "80px",
-        height: "40px",
+        py: 1,
+        px: 2,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -22,7 +22,7 @@ const ToggleColorMode = () => {
       <Text
         sx={{
           fontFamily: "heading",
-          fontSize: 1,
+          fontSize: 0,
           fontWeight: "medium",
           lineHeight: "default",
           color: colorMode === "light" ? "themeBlack" : "white"

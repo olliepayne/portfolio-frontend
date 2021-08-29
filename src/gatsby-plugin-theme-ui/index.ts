@@ -15,9 +15,9 @@ export const theme: Theme = {
   colors: {
     initialColorModeName: "light",
     background: "white",
-    themePink: "#FF8787",
+    themePink: "#FFDBDB",
     themeBlack: "#1C1C1C",
-    themeGreen: "#66797B",
+    themeGreen: "#8EA7AA",
     themeCream: "#F5F2D7",
     defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
@@ -62,13 +62,6 @@ export const theme: Theme = {
   layout: {
     container: {
       maxWidth: ["374px", "728px", "784px", "1200px"]
-    },
-    header: {
-      maxWidth: ["374px", "728px", "784px", "1200px"],
-      height: "60px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
     }
   },
   text: {
