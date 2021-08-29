@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
+import { jsx, Container, Heading } from "theme-ui"
 import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
       <main
         sx={{
           height: "2000px",
-          mt: "80px",
+          mt: "60px",
           flex: "1 auto"
         }}
       >
@@ -40,6 +40,9 @@ const IndexPage = ({ data }) => {
           }}
         ></div> */}
         <Container>
+          <Heading as="h3" variant="styles.h3">
+            Frontend Development for:
+          </Heading>
           <Marquee slides={marqueeSlides} speed={10} />
         </Container>
       </main>

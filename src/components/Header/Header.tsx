@@ -40,7 +40,7 @@ const Header = () => {
     <header
       sx={{
         width: "100%",
-        height: userHasScrolled ? "80px" : "60px",
+        height: userHasScrolled ? "65px" : "60px",
         px: ["30px", null, "120px"],
         position: "fixed",
         zIndex: "front",
