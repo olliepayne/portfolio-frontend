@@ -1,10 +1,7 @@
 import { Theme } from "theme-ui"
 
 export const theme: Theme = {
-  breakpoints: [
-    "48em",
-    "64em"
-  ],
+  breakpoints: ["48em", "64em", "90em"],
   space: [
     "0em", // 0px
     "0.25em", // 4px
@@ -13,7 +10,7 @@ export const theme: Theme = {
     "2em", // 32px
     "4em", // 64px
     "8em", // 128px
-    "16em", // 256px
+    "16em" // 256px
   ],
   colors: {
     initialColorModeName: "light",
@@ -62,6 +59,18 @@ export const theme: Theme = {
   lineHeights: {
     default: 1.75
   },
+  layout: {
+    container: {
+      maxWidth: ["374px", "728px", "784px", "1200px"]
+    },
+    header: {
+      maxWidth: ["374px", "728px", "784px", "1200px"],
+      height: "60px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  },
   text: {
     heading: {
       fontFamily: "heading",
@@ -85,7 +94,7 @@ export const theme: Theme = {
       border: "4px solid",
       borderColor: "buttonBorder",
       borderRadius: "50px",
-      color: "themePink",
+      color: "themePink"
     },
     contact: {
       width: "150px",
@@ -111,34 +120,32 @@ export const theme: Theme = {
     nav: {
       position: "relative",
       fontFamily: "heading",
-      fontSize: 2,
+      fontSize: 1,
       color: "defaultText",
-      textDecoration: "none",
-      "::before": {
-        content: `""`,
-        mt: 4,
-        position: "absolute",
-        display: "block",
-        width: "100%",
-        height: "6px",
-        bottom: "0",
-        left: "0",
-        bg: "themePink",
-        transformOrigin: "top left",
-        transform: "scaleX(0)",
-        transition: "transform 0.3s ease-out"
-      },
-      ":hover::before": {
-        transform: "scaleX(1)"
-      }
+      textDecoration: "none"
+      // "::before": {
+      //   content: `""`,
+      //   mt: 4,
+      //   position: "absolute",
+      //   display: "block",
+      //   width: "100%",
+      //   height: "6px",
+      //   bottom: "0",
+      //   left: "0",
+      //   bg: "themePink",
+      //   transformOrigin: "top left",
+      //   transform: "scaleX(0)",
+      //   transition: "transform 0.3s ease-out"
+      // },
+      // ":hover::before": {
+      //   transform: "scaleX(1)"
+      // }
     }
   },
-  forms: {
-
-  },
+  forms: {},
   styles: {
     root: {
-      "body": {
+      body: {
         p: "0px",
         m: "0px",
         boxSizing: "border-box",
@@ -164,7 +171,7 @@ export const theme: Theme = {
     h5: {
       variant: "text.heading",
       fontSize: [1, null, 2]
-    },
+    }
   }
 }
 
