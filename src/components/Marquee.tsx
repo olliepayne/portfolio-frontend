@@ -16,7 +16,7 @@ const move = keyframes`
 
 interface MarqueeProps {
   slides: {
-    text: string
+    company: string
     image: IGatsbyImageData
     slug: string
   }[]
@@ -49,11 +49,15 @@ const Marquee = ({ slides, speed }: MarqueeProps) => {
           }
         }}
       >
-        {slides.map(({ text, image, slug }, index) => (
-          <li sx={{ cursor: "pointer" }} key={`${text}:${index}`} onClick={() => navigate(slug)}>
+        {slides.map(({ company, image, slug }, index) => (
+          <li
+            sx={{ cursor: "pointer" }}
+            key={`${company}:${index}`}
+            onClick={() => navigate(slug)}
+          >
             <GatsbyImage
               image={getImage(image)}
-              alt={`${text} logo`}
+              alt={`${company} logo`}
               loading="eager"
             />
           </li>

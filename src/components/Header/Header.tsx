@@ -7,20 +7,12 @@ import ToggleColorMode from "./ToggleColorMode"
 
 const links = [
   {
-    to: "/about",
-    text: "About"
-  },
-  {
     to: "#",
-    text: "Portfolio"
+    text: "Resources"
   },
   {
     to: "#",
     text: "Blog"
-  },
-  {
-    to: "#",
-    text: "Contact"
   }
 ]
 
@@ -61,7 +53,7 @@ const Header = () => {
         <HeaderLogo />
         <nav
           sx={{
-            ml: 5
+            ml: 4
           }}
         >
           <ul
@@ -70,7 +62,7 @@ const Header = () => {
               display: "flex",
               listStyle: "none",
               li: {
-                mx: 3
+                mr: 3
               }
             }}
           >
@@ -82,7 +74,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <ToggleColorMode />
+      {/* <ToggleColorMode /> */}
     </header>
   )
 }

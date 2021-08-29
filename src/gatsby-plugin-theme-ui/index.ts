@@ -4,13 +4,12 @@ export const theme: Theme = {
   breakpoints: ["48em", "64em", "90em"],
   space: [
     "0em", // 0px
-    "0.25em", // 4px
-    "0.5em", // 8px
-    "1em", // 16px
-    "2em", // 32px
-    "4em", // 64px
-    "8em", // 128px
-    "16em" // 256px
+    "0.469em", // 7.5px
+    "0.938em", // 15px
+    "1.875em", // 30px
+    "3.75em", // 60px
+    "7.5em", // 120px
+    "15em" // 240px
   ],
   colors: {
     initialColorModeName: "light",
@@ -18,7 +17,7 @@ export const theme: Theme = {
     themePink: "#FFDBDB",
     themeBlack: "#1C1C1C",
     themeGreen: "#8EA7AA",
-    themeCream: "#F5F2D7",
+    themeCream: "#E2DFC4",
     defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
     modes: {
@@ -59,9 +58,15 @@ export const theme: Theme = {
   lineHeights: {
     default: 1.75
   },
+  shadows: {
+    roundedCard: "0 3px 5px rgba(0, 0, 0, 0.2)"
+  },
   layout: {
     container: {
       maxWidth: ["374px", "728px", "784px", "1200px"]
+    },
+    narrowContainer: {
+      maxWidth: ["314px", "668px", "544px", "960px"]
     }
   },
   text: {
@@ -116,30 +121,11 @@ export const theme: Theme = {
       fontSize: 1,
       color: "defaultText",
       textDecoration: "none"
-      // "::before": {
-      //   content: `""`,
-      //   mt: 4,
-      //   position: "absolute",
-      //   display: "block",
-      //   width: "100%",
-      //   height: "6px",
-      //   bottom: "0",
-      //   left: "0",
-      //   bg: "themePink",
-      //   transformOrigin: "top left",
-      //   transform: "scaleX(0)",
-      //   transition: "transform 0.3s ease-out"
-      // },
-      // ":hover::before": {
-      //   transform: "scaleX(1)"
-      // }
     }
   },
   forms: {},
   cards: {
-    primary: {
-      
-    }
+    primary: {}
   },
   styles: {
     root: {

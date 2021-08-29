@@ -7,11 +7,11 @@ const Footer = () => {
     <footer
       sx={{
         height: "60px",
-        px: [2],
+        px: 2,
         display: "flex",
-        alignItems: 'center',
+        alignItems: "center",
         justifyContent: "space-between",
-        bg: "themePink"
+        bg: "#fafafa"
       }}
     >
       <Copyright />
