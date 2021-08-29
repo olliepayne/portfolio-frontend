@@ -136,6 +136,11 @@ export const theme: Theme = {
     }
   },
   forms: {},
+  cards: {
+    primary: {
+      
+    }
+  },
   styles: {
     root: {
       body: {

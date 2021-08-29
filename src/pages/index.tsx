@@ -1,9 +1,11 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from "theme-ui"
+import { jsx, Container, Heading, Text } from "theme-ui"
 import * as React from "react"
 import { graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 import Marquee from "../components/Marquee"
+import { borderColor } from "styled-system"
 
 const IndexPage = ({ data }) => {
   const marqueeSlides = [
@@ -26,7 +28,7 @@ const IndexPage = ({ data }) => {
       <main
         sx={{
           height: "2000px",
-          mt: "60px",
+          pt: "60px",
           flex: "1 auto"
         }}
       >
@@ -40,7 +42,48 @@ const IndexPage = ({ data }) => {
           }}
         ></div> */}
         <Container>
-          <Heading as="h3" variant="styles.h3">
+          <div
+            sx={{
+              width: "960px",
+              height: "400px",
+              m: "0 auto",
+              p: 4,
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              bg: "themeGreen",
+              borderRadius: "4px",
+              color: "white"
+            }}
+          >
+            <StaticImage
+              sx={{
+                borderRadius: "50%",
+                border: "6px solid",
+                borderColor: "themePink"
+              }}
+              src="../images/ollie-payne-headshot.png"
+              alt="ollie payne headshot"
+              layout="fixed"
+              width={200}
+              height={200}
+            />
+            <div>
+              <Heading sx={{ textDecoration: "underline" }} as="h5" variant="styles.h5">
+                Connect with me
+              </Heading>
+              <Text as="p" variant="text.body">
+                I love to sport climb, and build things.
+              </Text>
+              <Text as="p" variant="text.body">
+                Ollie Payne
+              </Text>
+              <Text as="p" variant="text.body">
+                Prescott, AZ
+              </Text>
+            </div>
+          </div>
+          <Heading as="h4" variant="styles.h4">
             Frontend Development for:
           </Heading>
           <Marquee slides={marqueeSlides} speed={10} />
