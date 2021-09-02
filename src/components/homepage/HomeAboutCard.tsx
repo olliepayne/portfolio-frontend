@@ -3,7 +3,6 @@ import { jsx, Heading, Text } from "theme-ui"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import SocialMediaWrapper from "../SocialMediaWrapper"
-import FontAwesomeIcon from "../FontAwesomeIcon"
 
 const HomeAboutCard = () => {
   return (
@@ -51,9 +50,6 @@ const HomeAboutCard = () => {
         <Text as="p" variant="text.body">
           Prescott, AZ
         </Text>
-        <SocialMediaWrapper href="#">
-          <FontAwesomeIcon iconClassName="fab fa-github" width={20} height={20} color="white" />
-        </SocialMediaWrapper>
       </div>
     </div>
   )

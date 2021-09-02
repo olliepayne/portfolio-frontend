@@ -8,7 +8,7 @@ import ToggleColorMode from "./ToggleColorMode"
 const links = [
   {
     to: "#",
-    text: "Resources"
+    text: "Learn"
   },
   {
     to: "#",

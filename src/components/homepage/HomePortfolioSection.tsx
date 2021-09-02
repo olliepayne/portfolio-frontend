@@ -17,7 +17,6 @@ const HomePortfolioSection = ({ marqueeSlides }: HomePortfolioSectionProps) => {
         <Heading as="h4" variant="styles.h4">
           Frontend Development for:
         </Heading>
-        <Marquee slides={marqueeSlides} speed={15} />
       </Container>
     </section>
   )
