@@ -25,7 +25,7 @@ export const theme: Theme = {
     front: 1
   },
   borders: {
-    nav: "6px solid #F0F0F0"
+    nav: "6px solid #F0F0F0",
   },
   fonts: {
     heading: "Poppins, Sans-Serif",
@@ -117,7 +117,10 @@ export const theme: Theme = {
   },
   forms: {},
   cards: {
-    primary: {}
+    primary: {},
+    blog: {
+      borderRadius: ""
+    }
   },
   styles: {
     root: {

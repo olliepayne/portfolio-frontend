@@ -1,16 +1,9 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from "theme-ui"
 import { IGatsbyImageData } from "gatsby-plugin-image"
-import Marquee from "../Marquee"
+import PortfolioGrid from "./PortfolioGrid"
 
-interface HomePortfolioSectionProps {
-  marqueeSlides: {
-    company: string
-    image: IGatsbyImageData
-    slug: string
-  }[]
-}
-const HomePortfolioSection = ({ marqueeSlides }: HomePortfolioSectionProps) => {
+const HomePortfolioSection = () => {
   return (
     <section sx={{ py: 4 }}>
       <Container>

@@ -36,7 +36,6 @@ const Header = () => {
         position: "fixed",
         zIndex: "front",
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
         bg: "white",
         boxShadow: userHasScrolled ? "0 0px 10px rgba(0, 0, 0, 0.3)" : "none",
