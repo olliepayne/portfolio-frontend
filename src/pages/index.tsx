@@ -38,7 +38,7 @@ const IndexPage = ({ data }) => {
             borderRadius: "4px"
           }}
         ></div> */}
-        <HomePortfolioSection marqueeSlides={marqueeSlides} />
+        <HomePortfolioSection />
         <HomeAboutSection />
       </main>
     </Layout>
