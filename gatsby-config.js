@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "Ollie Portfolio",
+    title: "Ollie Payne",
   },
   plugins: [
     "gatsby-plugin-theme-ui",
@@ -35,6 +35,16 @@ module.exports = {
           ]
         }
       }
-    }
+    },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: "http://localhost:1337",
+        collectionTypes: [
+          "technology"
+        ],
+        queryLimit: 1000,
+      },
+    },
   ],
 };
