@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from "theme-ui"
+import { jsx, Container } from "theme-ui"
 import React, { useState } from "react"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
-import ToggleColorMode from "./ToggleColorMode"
 
 const links = [
   {
@@ -44,37 +43,29 @@ const Header = () => {
         transition: "all 0.2s"
       }}
     >
-      <div
+      <HeaderLogo />
+      <nav
         sx={{
-          display: "flex",
-          alignItems: "center"
+          ml: 4
         }}
       >
-        <HeaderLogo />
-        <nav
+        <ul
           sx={{
-            ml: 4
+            p: "0px",
+            display: "flex",
+            listStyle: "none",
+            li: {
+              mr: 3
+            }
           }}
         >
-          <ul
-            sx={{
-              p: "0px",
-              display: "flex",
-              listStyle: "none",
-              li: {
-                mr: 3
-              }
-            }}
-          >
-            {links.map(({ to, text }, index) => (
-              <li key={`${to}+${index}`}>
-                <NavLink to={to} text={text} />
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      {/* <ToggleColorMode /> */}
+          {links.map(({ to, text }, index) => (
+            <li key={`${to}+${index}`}>
+              <NavLink to={to} text={text} />
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   )
 }

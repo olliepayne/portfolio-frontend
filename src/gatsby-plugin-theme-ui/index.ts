@@ -12,21 +12,13 @@ export const theme: Theme = {
     "15em" // 240px
   ],
   colors: {
-    initialColorModeName: "light",
     background: "white",
     themePink: "#FFDBDB",
     themeBlack: "#1C1C1C",
     themeGreen: "#8EA7AA",
     themeCream: "#E2DFC4",
     defaultText: "#1C1C1C",
-    buttonBorder: "#1C1C1C",
-    modes: {
-      dark: {
-        background: "#1C1C1C",
-        defaultText: "white",
-        buttonBorder: "white"
-      }
-    }
+    buttonBorder: "#1C1C1C"
   },
   zIndices: {
     back: -1,
