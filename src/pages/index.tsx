@@ -3,7 +3,7 @@ import { jsx, Container, Heading, Text } from "theme-ui"
 import * as React from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import Layout from "../components/Layout"
+import Layout from "components/Layout"
 import HomeAboutSection from "../components/homepage/HomeAboutSection"
 import HomePortfolioSection from "../components/homepage/HomePortfolioSection"
 
