@@ -16,8 +16,13 @@ const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
         }}
       >
         <section>
-          <CodeSnippet text={`import * as React from "react"`} />
-          <TechnologyGrid technologies={technologies} />
+          <Flex sx={{
+            flexDirection: "column",
+            alignItems: "center"
+          }}>
+            <CodeSnippet text={`import * as React from "react"`} />
+            <TechnologyGrid technologies={technologies} />
+          </Flex>
         </section>
       </main>
     </Layout>

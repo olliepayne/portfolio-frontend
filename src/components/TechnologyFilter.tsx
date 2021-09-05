@@ -3,23 +3,25 @@ import { jsx, Input } from "theme-ui"
 import * as React from "react"
 import { graphql, StaticQuery } from "gatsby"
 
-interface ContentFilterProps {
+interface TechnologyFilterProps {
   names?: string[]
   categories?: string[]
   tags?: string[]
 }
-const ContentFilter = ({ names, categories, tags }: ContentFilterProps) => {
+const TechnologyFilter = ({
+  names,
+  categories,
+  tags
+}: TechnologyFilterProps) => {
   return (
     <div>
       {names && (
         <div>
-          <form>
-
-          </form>
+          <form></form>
         </div>
       )}
     </div>
   )
 }
 
-export default ContentFilter
+export default TechnologyFilter

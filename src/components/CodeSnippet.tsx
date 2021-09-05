@@ -12,7 +12,7 @@ const CodeSnippet = ({ text }: CodeSnippetProps) => {
   return (
     <Box
       sx={{
-        width: "80%",
+        width: "70%",
         py: 3,
         px: 4,
         position: "relative",
