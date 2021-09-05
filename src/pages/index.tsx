@@ -2,8 +2,6 @@
 import { jsx } from "theme-ui"
 import * as React from "react"
 import Layout from "components/Layout"
-import HomeAboutSection from "../components/homepage/HomeAboutSection"
-import HomePortfolioSection from "../components/homepage/HomePortfolioSection"
 
 const IndexPage = () => {
   return (

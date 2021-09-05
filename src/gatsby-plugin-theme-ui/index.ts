@@ -55,9 +55,7 @@ export const theme: Theme = {
     roundedCard: "0 3px 5px rgba(0, 0, 0, 0.2)"
   },
   layout: {
-    container: {
-      
-    }
+    container: {}
   },
   text: {
     heading: {
@@ -116,6 +114,23 @@ export const theme: Theme = {
   forms: {},
   cards: {
     primary: {},
+    technology: {
+      width: ["125px", null, "150px"],
+      height: ["125px", null, "150px"],
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      bg: "white",
+      borderRadius: "4px",
+      color: "black",
+      cursor: "pointer",
+      transition: "transform 0.1s ease-out",
+      ":hover": {
+        transition: "transform 0.1s ease-out",
+        transform: "scale(1.05, 1.05)"
+      }
+    },
     blog: {
       borderRadius: ""
     }
