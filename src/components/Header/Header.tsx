@@ -1,12 +1,13 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
-import React, { useState } from "react"
+import { jsx } from "theme-ui"
+import * as React from "react"
+import { useState } from "react"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
 
 const links = [
   {
-    to: "#",
+    to: "/learn",
     text: "Learn"
   },
   {
@@ -20,7 +21,6 @@ const Header = () => {
 
   const checkScrollPosition = () => {
     setUserHasScrolled(window.scrollY > 0 ? true : false)
-    console.log("test")
   }
 
   if (global.window) {
@@ -32,12 +32,11 @@ const Header = () => {
       sx={{
         width: "100%",
         height: userHasScrolled ? "65px" : "60px",
-        px: ["30px", null, "120px"],
         position: "fixed",
         zIndex: "front",
         display: "flex",
         alignItems: "center",
-        bg: "white",
+        bg: "themeBlack",
         boxShadow: userHasScrolled ? "0 0px 10px rgba(0, 0, 0, 0.3)" : "none",
         transition: "all 0.2s"
       }}
@@ -54,7 +53,7 @@ const Header = () => {
             display: "flex",
             listStyle: "none",
             li: {
-              mr: 3
+              mr: 4
             }
           }}
         >

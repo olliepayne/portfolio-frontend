@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, Text } from "theme-ui"
+import { jsx, Paragraph } from "theme-ui"
 
 const Copyright = () => {
   return (
-    <Text sx={{ color: "themeBlack" }} as="p" variant="body">
+    <Paragraph as="p" variant="body">
       &copy; {new Date().getFullYear()} Ollie Payne
-    </Text>
+    </Paragraph>
   )
 }
 

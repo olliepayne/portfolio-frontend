@@ -4,12 +4,12 @@ export const theme: Theme = {
   breakpoints: ["48em", "64em", "90em"],
   space: [
     "0em", // 0px
-    "0.469em", // 7.5px
-    "0.938em", // 15px
-    "1.875em", // 30px
-    "3.75em", // 60px
-    "7.5em", // 120px
-    "15em" // 240px
+    "0.25em", // 4px
+    "0.5em", // 8px
+    "1em", // 16px
+    "2em", // 32px
+    "4em", // 64px
+    "8em" // 128px
   ],
   colors: {
     background: "white",
@@ -17,15 +17,16 @@ export const theme: Theme = {
     themeBlack: "#1C1C1C",
     themeGreen: "#8EA7AA",
     themeCream: "#E2DFC4",
-    defaultText: "#1C1C1C",
-    buttonBorder: "#1C1C1C"
+    defaultText: "white",
+    buttonBorder: "#1C1C1C",
+    codeSnippet: "#1f2123"
   },
   zIndices: {
     back: -1,
     front: 1
   },
   borders: {
-    nav: "6px solid #F0F0F0",
+    nav: "6px solid #F0F0F0"
   },
   fonts: {
     heading: "Poppins, Sans-Serif",
@@ -55,10 +56,7 @@ export const theme: Theme = {
   },
   layout: {
     container: {
-      maxWidth: ["374px", "728px", "784px", "1200px"]
-    },
-    narrowContainer: {
-      maxWidth: ["314px", "668px", "544px", "960px"]
+      
     }
   },
   text: {
@@ -128,7 +126,8 @@ export const theme: Theme = {
         p: "0px",
         m: "0px",
         boxSizing: "border-box",
-        color: "defaultText"
+        color: "defaultText",
+        bg: "themeBlack"
       }
     },
     h1: {

@@ -6,12 +6,20 @@ import { navigate } from "gatsby"
 const HeaderLogo = () => {
   return (
     <div
-      sx={{ cursor: "pointer" }}
+      sx={{
+        cursor: "pointer"
+      }}
       onClick={() => {
         navigate("/")
       }}
     >
-      <Heading as="h5" variant="styles.h5">
+      <Heading
+        sx={{
+          color: "themePink"
+        }}
+        as="h5"
+        variant="styles.h5"
+      >
         Ollie
       </Heading>
     </div>

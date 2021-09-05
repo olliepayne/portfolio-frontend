@@ -13,9 +13,11 @@ const Layout = ({
   return (
     <div
       sx={{
+        width: ["90%", null, "964px"],
         minHeight: "100vh",
+        m: "0 auto",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column"
       }}
     >
       <Header />
