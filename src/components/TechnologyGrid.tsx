@@ -18,16 +18,11 @@ const TechnologyGrid = ({ technologies }: TechnologyGridProps) => {
         gap: 3
       }}
     >
-      {/* {technologies.map(({ name, logo, slug }, index) => (
+      {technologies.map(({ name, logo, slug }, index) => (
         <li key={`result:${index}`}>
           <TechnologyCard name={name} logo={logo.localFile.childImageSharp} slug={slug} />
         </li>
-      ))} */}
-      <TechnologyCard
-        name={technologies[0].name}
-        logo={technologies[0].logo.localFile.childImageSharp}
-        slug={technologies[0].slug}
-      />
+      ))}
     </ul>
   )
 }

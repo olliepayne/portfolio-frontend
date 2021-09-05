@@ -82,23 +82,20 @@ export const theme: Theme = {
       borderRadius: "50px",
       color: "themePink"
     },
-    contact: {
-      width: "150px",
-      height: "40px",
-      border: "none",
+    copyToClipboard: {
+      py: 1,
+      px: 2,
       fontFamily: "heading",
-      fontSize: 2,
-      fontWeight: "semiBold",
-      bg: "#97A6DE",
-      color: "white",
-      borderRadius: "10px 0px",
+      fontWeight: "medium",
+      color: "themeGreen",
       cursor: "pointer",
-      transition: "all 0.3s ease-out",
+      bg: "transparent",
+      borderRadius: "4px",
+      transition: "all 0.1s ease-out",
       ":hover": {
-        bg: "#C3CBE6",
         color: "themeBlack",
-        boxShadow: "6px 8px 0px #97A6DE",
-        transition: "all 0.3s ease-out"
+        bg: "themeGreen",
+        transition: "all 0.1s ease-out"
       }
     }
   },

@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, Container, Box } from "theme-ui"
+import { jsx, Container, Flex, Box } from "theme-ui"
 import { graphql } from "gatsby"
+
 import Layout from "components/Layout"
+import CodeSnippet from "components/CodeSnippet"
 import TechnologyGrid from "components/TechnologyGrid"
 
 const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
-  // console.log(technologies)
-
   return (
     <Layout>
       <main
@@ -16,23 +16,7 @@ const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
         }}
       >
         <section>
-          <Box
-            sx={{
-              width: "300px",
-              height: "70px",
-              py: 2,
-              px: 3,
-              bg: "codeSnippet"
-            }}
-          >
-            <code
-              sx={{
-                fontSize: 1
-              }}
-            >
-              import * as React from "react"
-            </code>
-          </Box>
+          <CodeSnippet text={`import * as React from "react"`} />
           <TechnologyGrid technologies={technologies} />
         </section>
       </main>
@@ -52,7 +36,7 @@ export const query = graphql`
         logo {
           localFile {
             childImageSharp {
-              gatsbyImageData(width: 100, layout: FIXED, height: 100)
+              gatsbyImageData(layout: CONSTRAINED)
             }
           }
         }
