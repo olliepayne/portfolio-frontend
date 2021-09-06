@@ -30,14 +30,15 @@ const Header = () => {
   return (
     <header
       sx={{
-        width: "100%",
+        width: ["90%", null, "964px"],
         height: userHasScrolled ? "65px" : "60px",
         position: "fixed",
         zIndex: "front",
         display: "flex",
         alignItems: "center",
         bg: "themeBlack",
-        boxShadow: userHasScrolled ? "0 0px 10px rgba(0, 0, 0, 0.3)" : "none",
+        borderBottom: userHasScrolled ? "2px solid" : "none",
+        borderBottomColor: "themePink",
         transition: "all 0.2s"
       }}
     >

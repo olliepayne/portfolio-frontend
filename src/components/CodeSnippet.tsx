@@ -32,6 +32,7 @@ const CodeSnippet = ({ text }: CodeSnippetProps) => {
       </Button>
       <code
         sx={{
+          fontFamily: "codeSnippet",
           fontSize: 1
         }}
       >

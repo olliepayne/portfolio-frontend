@@ -17,7 +17,9 @@ const TechnologyFilter = ({
     <div>
       {names && (
         <div>
-          <form></form>
+          <form>
+            <Input />
+          </form>
         </div>
       )}
     </div>

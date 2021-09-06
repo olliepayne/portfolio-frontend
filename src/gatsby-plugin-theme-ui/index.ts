@@ -30,7 +30,8 @@ export const theme: Theme = {
   },
   fonts: {
     heading: "Poppins, Sans-Serif",
-    body: "Petrona, Sans-Serif"
+    body: "Petrona, Sans-Serif",
+    codeSnippet: "Inconsolota"
   },
   fontSizes: [
     "0.75rem", // 12px
@@ -91,11 +92,11 @@ export const theme: Theme = {
       cursor: "pointer",
       bg: "transparent",
       borderRadius: "4px",
-      transition: "all 0.1s ease-out",
+      transition: "all 0.2s ease-out",
       ":hover": {
         color: "themeBlack",
         bg: "themeGreen",
-        transition: "all 0.1s ease-out"
+        transition: "all 0.2s ease-out"
       }
     }
   },

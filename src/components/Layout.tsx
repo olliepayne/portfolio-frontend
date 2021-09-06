@@ -17,7 +17,8 @@ const Layout = ({
         minHeight: "100vh",
         m: "0 auto",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        alignItems: "center"
       }}
     >
       <Header />

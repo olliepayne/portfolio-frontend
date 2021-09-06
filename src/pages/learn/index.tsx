@@ -3,6 +3,7 @@ import { jsx, Container, Flex, Box } from "theme-ui"
 import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
+import PageProgress from "components/PageProgress"
 import CodeSnippet from "components/CodeSnippet"
 import TechnologyGrid from "components/TechnologyGrid"
 
@@ -11,10 +12,12 @@ const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
     <Layout>
       <main
         sx={{
+          height: "1500px",
           pt: "60px",
           flex: "1 auto"
         }}
       >
+        <PageProgress />
         <section>
           <Flex sx={{
             flexDirection: "column",

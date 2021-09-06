@@ -32,7 +32,8 @@ module.exports = {
         google: {
           families: [
             "Poppins:400,500,600,700",
-            "Petrona:300,400"
+            "Petrona:300,400",
+            "Inconsolata:400"
           ]
         }
       }
