@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
 
@@ -23,9 +23,16 @@ const Header = () => {
     setUserHasScrolled(window.scrollY > 0 ? true : false)
   }
 
-  if (global.window) {
-    window.addEventListener("scroll", checkScrollPosition)
-  }
+  // TODO: add debouncing
+  useEffect(() => {   
+    if (global.window) {
+      window.addEventListener("scroll", checkScrollPosition)
+    }
+
+    return () => {
+      window.removeEventListener("scroll", checkScrollPosition)
+    }
+  }, [])
 
   return (
     <header

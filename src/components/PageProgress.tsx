@@ -1,28 +1,22 @@
 /** @jsx jsx */
 import { jsx, Progress } from "theme-ui"
 import * as React from "react"
-import { useState, useRef } from "react"
+import { useState } from "react"
 
-const PageProgress = () => {
-  const progressRef = useRef(null)
-  let progressStartPos: number = null
-
+interface ScrollProgressProps {
+  contentTop: number
+  contentBottom: number
+}
+const ScrollProgress = ({ contentTop, contentBottom }: ScrollProgressProps) => {
   const [scrollPos, setScrollPos] = useState(0)
   const updateProgress = () => {
-    if (progressRef.current) {
-      const rect = progressRef.current.getBoundingClientRect()
-      if (progressStartPos === null) progressStartPos = rect.top
-      console.log(progressStartPos)
-      // console.log(window.scrollY)
-    }
+    console.log(window.scrollY)
   }
   if (document) {
     document.addEventListener("scroll", updateProgress)
   }
 
-  return (
-    <Progress ref={progressRef} />
-  )
+  return <Progress />
 }
 
-export default PageProgress
+export default ScrollProgress

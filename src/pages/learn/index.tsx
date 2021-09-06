@@ -7,7 +7,11 @@ import PageProgress from "components/PageProgress"
 import CodeSnippet from "components/CodeSnippet"
 import TechnologyGrid from "components/TechnologyGrid"
 
-const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
+const LearnPage = ({
+  data: {
+    allStrapiTechnology: { technologies }
+  }
+}) => {
   return (
     <Layout>
       <main
@@ -17,12 +21,14 @@ const LearnPage = ({ data: { allStrapiTechnology: { technologies } } }) => {
           flex: "1 auto"
         }}
       >
-        <PageProgress />
+        <PageProgress contentTop={60} contentBottom={1} />
         <section>
-          <Flex sx={{
-            flexDirection: "column",
-            alignItems: "center"
-          }}>
+          <Flex
+            sx={{
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
             <CodeSnippet text={`import * as React from "react"`} />
             <TechnologyGrid technologies={technologies} />
           </Flex>
