@@ -8,6 +8,7 @@ interface ScrollProgressProps {
   contentBottom: number
 }
 const ScrollProgress = ({ contentTop, contentBottom }: ScrollProgressProps) => {
+  // TODO: add debouncing
   const [scrollPos, setScrollPos] = useState(0)
   const updateProgress = () => {
     console.log(window.scrollY)
