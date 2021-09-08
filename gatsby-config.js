@@ -43,7 +43,8 @@ module.exports = {
       options: {
         apiURL: "http://localhost:1337",
         collectionTypes: [
-          "technology"
+          "technology",
+          "article"
         ],
         queryLimit: 1000,
       },

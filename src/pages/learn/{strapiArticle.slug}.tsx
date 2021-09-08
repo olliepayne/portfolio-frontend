@@ -4,16 +4,19 @@ import * as React from "react"
 
 import Layout from "components/Layout"
 
-const LearnIdPage = () => {
+const LearnArticlePage = () => {
   return (
     <Layout>
       <main
         sx={{
-          flex: "1 auto"
+          flex: "1 auto",
+          color: "white"
         }}
-      ></main>
+      >
+        page
+      </main>
     </Layout>
   )
 }
 
-export default LearnIdPage
+export default LearnArticlePage
