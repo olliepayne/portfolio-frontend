@@ -10,6 +10,7 @@ const LearnArticlePage = ({ data: { strapiArticle } }) => {
     <Layout>
       <main
         sx={{
+          height: "1500px",
           pt: "60px",
           flex: "1 auto"
         }}

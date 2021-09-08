@@ -107,6 +107,14 @@ export const theme: Theme = {
       fontSize: 1,
       color: "defaultText",
       textDecoration: "none"
+    },
+    navActive: {
+      position: "relative",
+      fontFamily: "heading",
+      fontSize: 1,
+      color: "defaultText",
+      textDecoration: "none",
+      // bg: "#222325"
     }
   },
   forms: {},
