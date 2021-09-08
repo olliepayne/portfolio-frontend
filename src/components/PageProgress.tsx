@@ -8,16 +8,28 @@ interface ScrollProgressProps {
   contentBottom: number
 }
 const ScrollProgress = ({ contentTop, contentBottom }: ScrollProgressProps) => {
+  const maxScrollDistance = contentBottom - contentTop
+
   // TODO: add debouncing
   const [scrollPos, setScrollPos] = useState(0)
   const updateProgress = () => {
-    console.log(window.scrollY)
+    const currScrollY = window.scrollY
+    if (currScrollY > contentTop) setScrollPos(currScrollY)
   }
   if (document) {
     document.addEventListener("scroll", updateProgress)
   }
 
-  return <Progress />
+  return (
+    <Progress
+      sx={{
+        position: "fixed",
+        top: "100px"
+      }}
+      value={(60 - (contentBottom - scrollPos)) / maxScrollDistance}
+      max={contentBottom}
+    />
+  )
 }
 
 export default ScrollProgress
