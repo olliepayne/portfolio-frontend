@@ -1,22 +1,33 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Heading } from "theme-ui"
 import * as React from "react"
+import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 
-const LearnArticlePage = () => {
+const LearnArticlePage = ({ data: { strapiArticle } }) => {
   return (
     <Layout>
       <main
         sx={{
-          flex: "1 auto",
-          color: "white"
+          pt: "60px",
+          flex: "1 auto"
         }}
       >
-        page
+        <Heading as="h1" variant="styles.h1">
+          {strapiArticle.name}
+        </Heading>
       </main>
     </Layout>
   )
 }
 
 export default LearnArticlePage
+
+export const query = graphql`
+  query ($id: String) {
+    strapiArticle(id: { eq: $id }) {
+      name
+    }
+  }
+`
