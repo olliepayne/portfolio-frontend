@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Box, Button } from "theme-ui"
+import { theme } from "gatsby-plugin-theme-ui/index"
 
 interface CodeSnippetProps {
   text: string
@@ -32,10 +33,7 @@ const CodeSnippet = ({ text }: CodeSnippetProps) => {
         Copy
       </Button>
       <code
-        sx={{
-          fontFamily: "codeSnippet",
-          fontSize: 1
-        }}
+        sx={theme.text.code}
       >
         {text}
       </code>

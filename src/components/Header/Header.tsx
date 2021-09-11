@@ -45,7 +45,7 @@ const Header = () => {
         display: "flex",
         alignItems: "center",
         bg: "white",
-        borderBottom: userHasScrolled ? "2px solid" : "none",
+        borderBottom: userHasScrolled ? "4px solid" : "none",
         borderBottomColor: "themePink",
         transition: "all 0.2s"
       }}

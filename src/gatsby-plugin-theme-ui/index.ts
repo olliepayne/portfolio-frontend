@@ -1,7 +1,7 @@
 import { Theme } from "theme-ui"
 
 export const theme: Theme = {
-  breakpoints: ["48em", "64em", "90em"],
+  breakpoints: ["48em", "90em"],
   space: [
     "0em", // 0px
     "0.25em", // 4px
@@ -31,7 +31,7 @@ export const theme: Theme = {
   fonts: {
     heading: "Poppins, Sans-Serif",
     body: "Petrona, Sans-Serif",
-    codeSnippet: "Inconsolota"
+    code: "Inconsolata, monospace"
   },
   fontSizes: [
     "0.75rem", // 12px
@@ -53,7 +53,7 @@ export const theme: Theme = {
     default: 1.75
   },
   shadows: {
-    roundedCard: "0 3px 5px rgba(0, 0, 0, 0.2)"
+    roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)"
   },
   layout: {
     container: {}
@@ -73,6 +73,12 @@ export const theme: Theme = {
       fontFamily: "body",
       fontWeight: "light",
       lineHeight: "default"
+    },
+    code: {
+      fontFamily: "code",
+      fontWeight: "medium",
+      fontSize: [0, null, 1],
+      lineHeight: "1.25"
     }
   },
   buttons: {
@@ -127,10 +133,11 @@ export const theme: Theme = {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      bg: "white",
+      bg: "#F7F7F7",
       borderRadius: "4px",
       color: "black",
       cursor: "pointer",
+      boxShadow: "roundedCard",
       transition: "transform 0.1s ease-out",
       ":hover": {
         transition: "transform 0.1s ease-out",

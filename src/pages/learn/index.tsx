@@ -21,7 +21,7 @@ const LearnPage = ({
           flex: "1 auto"
         }}
       >
-        <PageProgress />
+        {/* <PageProgress /> */}
         <section>
           <Flex
             sx={{
