@@ -16,7 +16,8 @@ const CodeSnippet = ({ text }: CodeSnippetProps) => {
         py: 3,
         px: 4,
         position: "relative",
-        bg: "codeSnippet"
+        bg: "#f5f4eb",
+        borderRadius: "4px"
       }}
     >
       <Button

@@ -15,7 +15,7 @@ const HeaderLogo = () => {
     >
       <Heading
         sx={{
-          color: "themePink"
+          color: "black"
         }}
         as="h5"
         variant="styles.h5"

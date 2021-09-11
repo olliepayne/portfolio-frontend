@@ -37,13 +37,14 @@ const Header = () => {
   return (
     <header
       sx={{
-        width: ["90%", null, "964px"],
+        width: "100%",
         height: userHasScrolled ? "65px" : "60px",
+        px: 4,
         position: "fixed",
         zIndex: "front",
         display: "flex",
         alignItems: "center",
-        bg: "themeBlack",
+        bg: "white",
         borderBottom: userHasScrolled ? "2px solid" : "none",
         borderBottomColor: "themePink",
         transition: "all 0.2s"

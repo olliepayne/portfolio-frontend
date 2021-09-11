@@ -12,7 +12,7 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        bg: "themeBlack"
+        bg: "#F5F5F5"
       }}
     >
       <Copyright />

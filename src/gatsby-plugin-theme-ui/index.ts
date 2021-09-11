@@ -17,7 +17,7 @@ export const theme: Theme = {
     themeBlack: "#1C1C1C",
     themeGreen: "#8EA7AA",
     themeCream: "#E2DFC4",
-    defaultText: "white",
+    defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
     codeSnippet: "#1f2123"
   },
@@ -113,7 +113,7 @@ export const theme: Theme = {
       fontFamily: "heading",
       fontSize: 1,
       color: "defaultText",
-      textDecoration: "none",
+      textDecoration: "none"
       // bg: "#222325"
     }
   },
@@ -147,8 +147,7 @@ export const theme: Theme = {
         p: "0px",
         m: "0px",
         boxSizing: "border-box",
-        color: "defaultText",
-        bg: "themeBlack"
+        color: "defaultText"
       }
     },
     h1: {
