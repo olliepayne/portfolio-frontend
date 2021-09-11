@@ -21,7 +21,7 @@ const LearnPage = ({
           flex: "1 auto"
         }}
       >
-        <PageProgress contentTop={60} contentBottom={120} />
+        <PageProgress />
         <section>
           <Flex
             sx={{

@@ -170,6 +170,13 @@ export const theme: Theme = {
     h5: {
       variant: "text.heading",
       fontSize: [1, null, 2]
+    },
+    articleProgress: {
+      width: "4px",
+      height: "90%",
+      color: "white",
+      bg: "gray",
+      borderRadius: "0"
     }
   }
 }

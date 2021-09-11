@@ -1,33 +1,38 @@
 /** @jsx jsx */
 import { jsx, Progress } from "theme-ui"
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-interface ScrollProgressProps {
-  contentTop: number
-  contentBottom: number
-}
-const ScrollProgress = ({ contentTop, contentBottom }: ScrollProgressProps) => {
-  const maxScrollDistance = contentBottom - contentTop
-
-  // TODO: add debouncing
-  const [scrollPos, setScrollPos] = useState(0)
+const ScrollProgress = () => {
+  const [maxScroll, setMaxScroll] = useState(0)
+  const [scrollPercent, setScrollPercent] = useState(0)
   const updateProgress = () => {
-    const currScrollY = window.scrollY
-    if (currScrollY > contentTop) setScrollPos(currScrollY)
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+    const scrolled = (winScroll / height) * 100
+    setScrollPercent(scrolled)
   }
-  if (document) {
-    document.addEventListener("scroll", updateProgress)
-  }
+  useEffect(() => {
+    if (document) {
+      document.addEventListener("scroll", updateProgress)
+    }
+
+    return () => {
+      document.removeEventListener("scroll", updateProgress)
+    }
+  }, [])
 
   return (
     <Progress
       sx={{
         position: "fixed",
-        top: "100px"
+        top: "60px"
       }}
-      value={(60 - (contentBottom - scrollPos)) / maxScrollDistance}
-      max={contentBottom}
+      variant="styles.articleProgress"
+      value={scrollPercent}
     />
   )
 }
