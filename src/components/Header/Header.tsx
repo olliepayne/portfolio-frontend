@@ -46,7 +46,10 @@ const Header = () => {
         alignItems: "center",
         bg: "white",
         borderBottom: userHasScrolled ? "4px solid" : "none",
+        // borderBottom: "4px solid",
         borderBottomColor: "themePink",
+        // boxShadow: userHasScrolled ? "0 2px 10px rgba(0, 0, 0, 0.25)" : "none",
+        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
         transition: "all 0.2s"
       }}
     >

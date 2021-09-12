@@ -22,14 +22,17 @@ const LearnArticlePage = ({
     }
   }
 }) => {
-  const { month, day, year } = parseKebabDate(dateEdited === datePublished ? datePublished : dateEdited, "SHORT")
+  const { month, day, year } = parseKebabDate(
+    dateEdited === datePublished ? datePublished : dateEdited,
+    "SHORT"
+  )
 
   return (
     <Layout>
       <main
         sx={{
           height: "1500px",
-          pt: "60px",
+          pt: "124px",
           flex: "1 auto"
         }}
       >
@@ -56,7 +59,14 @@ const LearnArticlePage = ({
                 as="h5"
                 variant="styles.h5"
               >
-                {dateEdited !== datePublished && "edited "}{month} {day}, {year}
+                <span
+                  sx={{
+                    fontSize: 1
+                  }}
+                >
+                  {dateEdited !== datePublished && "(edited) "}
+                </span>
+                {month} {day}, {year}
               </Heading>
             </Flex>
           </Card>
@@ -89,7 +99,7 @@ export const query = graphql`
       thumbnail {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 800, height: 600, layout: FIXED)
+            gatsbyImageData(width: 800, height: 600, layout: FIXED, placeholder: BLURRED)
           }
         }
       }
