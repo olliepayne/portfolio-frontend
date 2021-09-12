@@ -50,7 +50,7 @@ export const theme: Theme = {
     light: 300
   },
   lineHeights: {
-    default: 1.75
+    default: 1.5
   },
   shadows: {
     roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)",

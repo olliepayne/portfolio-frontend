@@ -6,6 +6,8 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "components/Layout"
 
+import { parseKebabDate } from "helpers/parseDate"
+
 const LearnArticlePage = ({
   data: {
     strapiArticle: {
@@ -14,10 +16,13 @@ const LearnArticlePage = ({
       datePublished,
       thumbnail: {
         localFile: { childImageSharp }
-      }
+      },
+      content
     }
   }
 }) => {
+  const { month, day, year } = parseKebabDate(datePublished, "SHORT")
+
   return (
     <Layout>
       <main
@@ -44,12 +49,13 @@ const LearnArticlePage = ({
               </Heading>
               <Heading
                 sx={{
+                  px: 3,
                   color: "#999999"
                 }}
                 as="h5"
                 variant="styles.h5"
               >
-                {datePublished}
+                {month} {day}, {year}
               </Heading>
             </Flex>
           </Card>
@@ -62,6 +68,9 @@ const LearnArticlePage = ({
             alt={`${name} thumbnail`}
           />
         </Container>
+        {/* <Container as="section" dangerouslySetInnerHTML={{ __html: content }}>
+
+        </Container> */}
       </main>
     </Layout>
   )
@@ -82,6 +91,7 @@ export const query = graphql`
           }
         }
       }
+      content
     }
   }
 `
