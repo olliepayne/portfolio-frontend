@@ -115,7 +115,11 @@ export const theme: Theme = {
       fontFamily: "heading",
       fontSize: 1,
       color: "defaultText",
-      textDecoration: "none"
+      textDecoration: "none",
+      transition: "all 0.2s ease-out",
+      ":hover": {
+        transition: "all 0.2s ease-out"
+      }
     },
     navActive: {
       position: "relative",

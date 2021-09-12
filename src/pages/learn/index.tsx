@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Flex, Box } from "theme-ui"
+import { jsx, Container, Flex, Heading } from "theme-ui"
 import * as React from "react"
 import { useReducer } from "react"
 import { graphql } from "gatsby"
@@ -62,7 +62,6 @@ const LearnPage = ({
     filteredTopics: topics,
     appliedFilters: []
   })
-  console.log(filteredTopics)
 
   return (
     <LearnPageContext.Provider value={{ filteredTopics, dispatch }}>
@@ -70,7 +69,7 @@ const LearnPage = ({
         <main
           sx={{
             height: "1500px",
-            pt: "60px",
+            pt: "124px",
             flex: "1 auto"
           }}
         >
@@ -82,6 +81,7 @@ const LearnPage = ({
                 alignItems: "center"
               }}
             >
+              <Heading as="h2" variant="styles.h2">Filter by Topic</Heading>
               <TopicsFilter topics={filteredTopics} />
               <TopicsList topics={filteredTopics} />
             </Flex>
