@@ -4,22 +4,20 @@ import * as React from "react"
 import { navigate } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import { Technology } from "helpers/technologyType"
+import { Topic } from "helpers/topicType"
 
-const TechnologyCard = ({ name, logo, slug }: Technology) => {
+const TopicCard = ({ name, thumbnail, slug }: Topic) => {
   return (
     <Card variant="technology" onClick={() => navigate(slug)}>
-      {logo !== null && (
-        <div
+      {thumbnail !== null && (
+        <GatsbyImage
           sx={{
             width: "60px",
-            height: "60px",
-            display: "flex",
-            alignItems: "flex-end"
+            height: "60px"
           }}
-        >
-          <GatsbyImage image={getImage(logo)} alt={`${name} logo`} />
-        </div>
+          image={getImage(thumbnail)}
+          alt={`${name} thumbnail`}
+        />
       )}
       <Heading
         sx={{
@@ -34,4 +32,4 @@ const TechnologyCard = ({ name, logo, slug }: Technology) => {
   )
 }
 
-export default TechnologyCard
+export default TopicCard

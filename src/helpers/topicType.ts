@@ -1,5 +1,5 @@
 export interface Topic {
   name: string
-  logo: any
+  thumbnail: any
   slug: string
 }

@@ -7,30 +7,47 @@ import { graphql } from "gatsby"
 import Layout from "components/Layout"
 import PageProgress from "components/PageProgress"
 import CodeSnippet from "components/CodeSnippet"
-import TechnologyGrid from "components/TechnologyGrid"
+import TopicsList from "components/TopicsList"
 import TopicsFilter from "components/TopicsFilter"
 
 import { Topic } from "helpers/topicType"
 
 interface TopicsReducerState {
+  originalTopics: Topic[]
   filteredTopics: Topic[]
   appliedFilters: string[]
 }
 interface TopicsReducerAction {
-  type: string,
+  type: string
   payload: any
 }
-const topicsReducer = (state: TopicsReducerState, action: TopicsReducerAction) => {
-  switch (action.type) {
+const topicsReducer = (
+  state: TopicsReducerState,
+  { type, payload }: TopicsReducerAction
+) => {
+  switch (type) {
     case "ADD_FILTER":
-      const newState = Object.assign({}, state)
-      newState.appliedFilters.push(action.payload)
-      
-      state.filteredTopics.filter
-      break
+      if (payload !== "") {
+        const newState = Object.assign({}, state)
+        newState.appliedFilters.push(payload)
+
+        newState.filteredTopics = state.originalTopics.filter(
+          ({ name }) => name === payload
+        )
+
+        return newState
+      } else if (payload === "") {
+        const newState = Object.assign({}, state)
+        newState.filteredTopics = state.originalTopics
+
+        return newState
+      }
 
     case "REMOVE_FILTER":
       break
+
+    default:
+      return state
   }
 }
 export const LearnPageContext = React.createContext(null)
@@ -40,14 +57,15 @@ const LearnPage = ({
     allStrapiTopic: { topics }
   }
 }) => {
-  const [state, dispatch] = useReducer(topicsReducer, {
+  const [{ filteredTopics }, dispatch] = useReducer(topicsReducer, {
+    originalTopics: topics,
     filteredTopics: topics,
     appliedFilters: []
   })
-  const { filteredTopics } = state
+  console.log(filteredTopics)
 
   return (
-    <LearnPageContext.Provider value={{ state, dispatch }}>
+    <LearnPageContext.Provider value={{ filteredTopics, dispatch }}>
       <Layout>
         <main
           sx={{
@@ -65,7 +83,7 @@ const LearnPage = ({
               }}
             >
               <TopicsFilter topics={filteredTopics} />
-              {/* <TechnologyGrid technologies={filteredTechnologies} /> */}
+              <TopicsList topics={filteredTopics} />
             </Flex>
           </Container>
         </main>
@@ -83,6 +101,13 @@ export const query = graphql`
         id
         name
         slug
+        thumbnail {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
       }
     }
   }
