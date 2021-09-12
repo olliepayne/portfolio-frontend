@@ -10,12 +10,26 @@ import CodeSnippet from "components/CodeSnippet"
 import TechnologyGrid from "components/TechnologyGrid"
 import TopicsFilter from "components/TopicsFilter"
 
-const topicsReducer = (state, action) => {
+import { Topic } from "helpers/topicType"
+
+interface TopicsReducerState {
+  filteredTopics: Topic[]
+  appliedFilters: string[]
+}
+interface TopicsReducerAction {
+  type: string,
+  payload: any
+}
+const topicsReducer = (state: TopicsReducerState, action: TopicsReducerAction) => {
   switch (action.type) {
-    case "ADD_TECHNOLOGY":
+    case "ADD_FILTER":
+      const newState = Object.assign({}, state)
+      newState.appliedFilters.push(action.payload)
+      
+      state.filteredTopics.filter
       break
 
-    case "REMOVE_TECHNOLOGY":
+    case "REMOVE_FILTER":
       break
   }
 }
@@ -28,7 +42,7 @@ const LearnPage = ({
 }) => {
   const [state, dispatch] = useReducer(topicsReducer, {
     filteredTopics: topics,
-    filters: []
+    appliedFilters: []
   })
   const { filteredTopics } = state
 
@@ -69,13 +83,6 @@ export const query = graphql`
         id
         name
         slug
-        logo {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED)
-            }
-          }
-        }
       }
     }
   }

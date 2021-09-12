@@ -21,12 +21,19 @@ const TopicsFilter = ({ topics }: TopicsFilterProps) => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    dispatch({ type: "ADD_FILTER", payload: inputData })
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Input name="name" onChange={handleChange} />
+        <Input name="name" autoComplete="off" onChange={handleChange} />
+        <ul>
+          {topics.map(({ name }) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
       </form>
     </div>
   )
