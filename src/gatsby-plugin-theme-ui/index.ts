@@ -54,7 +54,7 @@ export const theme: Theme = {
   },
   shadows: {
     roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)",
-    articleHero: "0 2px 10px rgba(0, 0, 0, 0.3)"
+    articleHero: "0 0 10px rgba(0, 0, 0, 0.5)"
   },
   layout: {
     container: {

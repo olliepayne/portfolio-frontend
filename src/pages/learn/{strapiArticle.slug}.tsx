@@ -14,6 +14,7 @@ const LearnArticlePage = ({
       name,
       author,
       datePublished,
+      dateEdited,
       thumbnail: {
         localFile: { childImageSharp }
       },
@@ -21,7 +22,7 @@ const LearnArticlePage = ({
     }
   }
 }) => {
-  const { month, day, year } = parseKebabDate(datePublished, "SHORT")
+  const { month, day, year } = parseKebabDate(dateEdited === datePublished ? datePublished : dateEdited, "SHORT")
 
   return (
     <Layout>
@@ -55,7 +56,7 @@ const LearnArticlePage = ({
                 as="h5"
                 variant="styles.h5"
               >
-                {month} {day}, {year}
+                {dateEdited !== datePublished && "edited "}{month} {day}, {year}
               </Heading>
             </Flex>
           </Card>
@@ -84,6 +85,7 @@ export const query = graphql`
       name
       author
       datePublished
+      dateEdited
       thumbnail {
         localFile {
           childImageSharp {
