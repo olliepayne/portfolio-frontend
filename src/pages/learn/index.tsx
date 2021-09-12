@@ -22,7 +22,7 @@ const LearnPage = ({
         }}
       >
         {/* <PageProgress /> */}
-        <section>
+        <Container as="section">
           <Flex
             sx={{
               flexDirection: "column",
@@ -32,7 +32,7 @@ const LearnPage = ({
             <CodeSnippet text={`import * as React from "react"`} />
             <TechnologyGrid technologies={technologies} />
           </Flex>
-        </section>
+        </Container>
       </main>
     </Layout>
   )

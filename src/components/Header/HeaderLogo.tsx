@@ -15,6 +15,7 @@ const HeaderLogo = () => {
     >
       <Heading
         sx={{
+          fontSize: 2,
           color: "black"
         }}
         as="h5"

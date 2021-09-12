@@ -19,7 +19,7 @@ export const theme: Theme = {
     themeCream: "#E2DFC4",
     defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
-    codeSnippet: "#1f2123"
+    codeSnippet: "#fff6eb"
   },
   zIndices: {
     back: -1,
@@ -53,10 +53,13 @@ export const theme: Theme = {
     default: 1.75
   },
   shadows: {
-    roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)"
+    roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)",
+    articleHero: "0 2px 10px rgba(0, 0, 0, 0.3)"
   },
   layout: {
-    container: {}
+    container: {
+      maxWidth: ["728px", null, "1000px"]
+    }
   },
   text: {
     heading: {
@@ -143,6 +146,12 @@ export const theme: Theme = {
         transition: "transform 0.1s ease-out",
         transform: "scale(1.05, 1.05)"
       }
+    },
+    articleHero: {
+      p: 4,
+      display: "flex",
+      flexDirection: "column",
+      bg: "#F7F7F7"
     },
     blog: {
       borderRadius: ""
