@@ -107,6 +107,14 @@ export const theme: Theme = {
         bg: "themeGreen",
         transition: "all 0.2s ease-out"
       }
+    },
+    tag: {
+      py: 1,
+      px: 2,
+      borderRadius: "20px",
+      ":hover": {
+        
+      }
     }
   },
   links: {

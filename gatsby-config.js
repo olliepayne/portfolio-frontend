@@ -43,7 +43,8 @@ module.exports = {
       options: {
         apiURL: "http://localhost:1337",
         collectionTypes: [
-          "topic",
+          "category",
+          "tag",
           "article"
         ],
         queryLimit: 1000,

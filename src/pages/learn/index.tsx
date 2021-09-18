@@ -1,70 +1,63 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Heading } from "theme-ui"
 import * as React from "react"
-import { useReducer } from "react"
+import { useReducer, useEffect } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 import PageProgress from "components/PageProgress"
 import CodeSnippet from "components/CodeSnippet"
-import TopicsList from "components/TopicsList"
-import TopicsFilter from "components/TopicsFilter"
+import ArticlesFilter from "components/learn/ArticlesFilter"
 
-import { Topic } from "helpers/topicType"
-
-interface TopicsReducerState {
-  originalTopics: Topic[]
-  filteredTopics: Topic[]
-  appliedFilters: string[]
+interface FiltersReducerState {
+  category: string
+  tags: string[]
 }
-interface TopicsReducerAction {
+interface FiltersReducerAction {
   type: string
-  payload: any
+  payload: string
 }
-const topicsReducer = (
-  state: TopicsReducerState,
-  { type, payload }: TopicsReducerAction
+const filtersReducer = (
+  state: FiltersReducerState,
+  action: FiltersReducerAction
 ) => {
-  switch (type) {
-    case "ADD_FILTER":
-      if (payload !== "") {
-        const newState = Object.assign({}, state)
-        newState.appliedFilters.push(payload)
+  switch (action.type) {
+    case "CHANGE_CATEGORY":
+      break
 
-        newState.filteredTopics = state.originalTopics.filter(
-          ({ name }) => name === payload
-        )
+    case "ADD_TAG":
+      break
 
-        return newState
-      } else if (payload === "") {
-        const newState = Object.assign({}, state)
-        newState.filteredTopics = state.originalTopics
-
-        return newState
-      }
-
-    case "REMOVE_FILTER":
+    case "REMOVE_TAG":
       break
 
     default:
       return state
   }
 }
-export const LearnPageContext = React.createContext(null)
 
+const LearnPageContext = React.createContext(null)
 const LearnPage = ({
   data: {
-    allStrapiTopic: { topics }
+    allStrapiCategory: { categories },
+    allStrapiArticle: { articles }
   }
 }) => {
-  const [{ filteredTopics }, dispatch] = useReducer(topicsReducer, {
-    originalTopics: topics,
-    filteredTopics: topics,
-    appliedFilters: []
+  const [state, dispatch] = useReducer(filtersReducer, {
+    category: "",
+    tags: []
   })
 
+  const getArticles = async () => {
+    const res = await fetch(
+      `localhost:1337/articles?category=${state.category}`
+    )
+    const data = await res.json()
+    console.log(data)
+  }
+
   return (
-    <LearnPageContext.Provider value={{ filteredTopics, dispatch }}>
+    <LearnPageContext.Provider value={{ state, dispatch }}>
       <Layout>
         <main
           sx={{
@@ -81,9 +74,10 @@ const LearnPage = ({
                 alignItems: "center"
               }}
             >
-              <Heading as="h2" variant="styles.h2">Filter by Topic</Heading>
-              <TopicsFilter topics={filteredTopics} />
-              <TopicsList topics={filteredTopics} />
+              <Heading as="h3" variant="styles.h3">
+                Articles
+              </Heading>
+              <ArticlesFilter />
             </Flex>
           </Container>
         </main>
@@ -96,18 +90,12 @@ export default LearnPage
 
 export const query = graphql`
   {
-    allStrapiTopic {
-      topics: nodes {
+    allStrapiArticle(
+      limit: 1
+      filter: { category: { name: { eq: "Learn" } } }
+    ) {
+      articles: nodes {
         id
-        name
-        slug
-        thumbnail {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
       }
     }
   }
