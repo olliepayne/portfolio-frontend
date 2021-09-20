@@ -19,7 +19,8 @@ export const theme: Theme = {
     themeCream: "#E2DFC4",
     defaultText: "#1C1C1C",
     buttonBorder: "#1C1C1C",
-    codeSnippet: "#fff6eb"
+    codeSnippet: "#fff6eb",
+    themeLightGray: "#F7F7F7"
   },
   zIndices: {
     back: -1,
@@ -112,9 +113,7 @@ export const theme: Theme = {
       py: 1,
       px: 2,
       borderRadius: "20px",
-      ":hover": {
-        
-      }
+      ":hover": {}
     }
   },
   links: {
@@ -163,7 +162,16 @@ export const theme: Theme = {
       p: 4,
       display: "flex",
       flexDirection: "column",
-      bg: "#F7F7F7"
+      bg: "themeLightGray"
+    },
+    articlePreview: {
+      width: "320px",
+      height: "180px",
+      p: 3,
+      display: "flex",
+      flexDirection: "column",
+      bg: "themeLightGray",
+      cursor: "pointer"
     },
     blog: {
       borderRadius: ""

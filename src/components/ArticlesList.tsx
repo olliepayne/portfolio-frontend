@@ -11,18 +11,20 @@ interface ArticlesListProps {
 }
 const ArticlesList = ({ articles }: ArticlesListProps) => {
   return (
-    <ul
-      sx={{
-        padding: 0,
-        listStyle: "none"
-      }}
-    >
-      {articles.map((article: Article) => (
-        <li key={article.id}>
-          <ArticleCard article={article} />
-        </li>
-      ))}
-    </ul>
+    articles && (
+      <ul
+        sx={{
+          padding: 0,
+          listStyle: "none"
+        }}
+      >
+        {articles.map((article: Article) => (
+          <li key={article.id}>
+            <ArticleCard article={article} />
+          </li>
+        ))}
+      </ul>
+    )
   )
 }
 

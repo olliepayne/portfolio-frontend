@@ -20,17 +20,13 @@ const LearnPage = ({
 }) => {
   const [filteredArticles, setFilteredArticles] = useState(articles)
 
-  const handleSearchTags = async () => {
-    
-  }
+  const handleSearchTags = async () => {}
 
   const findArticles = async (appliedCategoryName: string) => {
     const query = `?category.name=${appliedCategoryName}`
-    const res = await fetch(
-      `http://localhost:1337/articles${query}`
-    )
+    const res = await fetch(`http://localhost:1337/articles${query}`)
     const data = await res.json()
-    
+
     setFilteredArticles(data)
   }
 
@@ -54,7 +50,10 @@ const LearnPage = ({
             <Heading as="h3" variant="styles.h3">
               Articles
             </Heading>
-            <ArticlesFilter categories={categories} findArticles={findArticles} />
+            <ArticlesFilter
+              categories={categories}
+              findArticles={findArticles}
+            />
             <ArticlesList articles={filteredArticles} />
           </Flex>
         </Container>
@@ -70,7 +69,15 @@ export const query = graphql`
     allStrapiArticle(limit: 1) {
       articles: nodes {
         id
+        slug
         name
+        thumbnail {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FIXED)
+            }
+          }
+        }
       }
     }
     allStrapiCategory {
