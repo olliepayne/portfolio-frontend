@@ -1,15 +1,15 @@
 import { Theme } from "theme-ui"
 
 export const theme: Theme = {
-  breakpoints: ["48em", "64em", "90em"],
+  breakpoints: ["48em", "90em"],
   space: [
     "0em", // 0px
-    "0.469em", // 7.5px
-    "0.938em", // 15px
-    "1.875em", // 30px
-    "3.75em", // 60px
-    "7.5em", // 120px
-    "15em" // 240px
+    "0.25em", // 4px
+    "0.5em", // 8px
+    "1em", // 16px
+    "2em", // 32px
+    "4em", // 64px
+    "8em" // 128px
   ],
   colors: {
     background: "white",
@@ -18,18 +18,21 @@ export const theme: Theme = {
     themeGreen: "#8EA7AA",
     themeCream: "#E2DFC4",
     defaultText: "#1C1C1C",
-    buttonBorder: "#1C1C1C"
+    buttonBorder: "#1C1C1C",
+    codeSnippet: "#fff6eb",
+    themeLightGray: "#F7F7F7"
   },
   zIndices: {
     back: -1,
     front: 1
   },
   borders: {
-    nav: "6px solid #F0F0F0",
+    nav: "6px solid #F0F0F0"
   },
   fonts: {
     heading: "Poppins, Sans-Serif",
-    body: "Petrona, Sans-Serif"
+    body: "Petrona, Sans-Serif",
+    code: "Inconsolata, monospace"
   },
   fontSizes: [
     "0.75rem", // 12px
@@ -48,17 +51,15 @@ export const theme: Theme = {
     light: 300
   },
   lineHeights: {
-    default: 1.75
+    default: 1.5
   },
   shadows: {
-    roundedCard: "0 3px 5px rgba(0, 0, 0, 0.2)"
+    roundedCard: "0 2px 10px rgba(0, 0, 0, 0.1)",
+    articleHero: "0 0 10px rgba(0, 0, 0, 0.5)"
   },
   layout: {
     container: {
-      maxWidth: ["374px", "728px", "784px", "1200px"]
-    },
-    narrowContainer: {
-      maxWidth: ["314px", "668px", "544px", "960px"]
+      maxWidth: ["728px", null, "1000px"]
     }
   },
   text: {
@@ -76,6 +77,12 @@ export const theme: Theme = {
       fontFamily: "body",
       fontWeight: "light",
       lineHeight: "default"
+    },
+    code: {
+      fontFamily: "code",
+      fontWeight: "medium",
+      fontSize: [0, null, 1],
+      lineHeight: "1.25"
     }
   },
   buttons: {
@@ -86,24 +93,27 @@ export const theme: Theme = {
       borderRadius: "50px",
       color: "themePink"
     },
-    contact: {
-      width: "150px",
-      height: "40px",
-      border: "none",
+    copyToClipboard: {
+      py: 1,
+      px: 2,
       fontFamily: "heading",
-      fontSize: 2,
-      fontWeight: "semiBold",
-      bg: "#97A6DE",
-      color: "white",
-      borderRadius: "10px 0px",
+      fontWeight: "medium",
+      color: "themeGreen",
       cursor: "pointer",
-      transition: "all 0.3s ease-out",
+      bg: "transparent",
+      borderRadius: "4px",
+      transition: "all 0.2s ease-out",
       ":hover": {
-        bg: "#C3CBE6",
         color: "themeBlack",
-        boxShadow: "6px 8px 0px #97A6DE",
-        transition: "all 0.3s ease-out"
+        bg: "themeGreen",
+        transition: "all 0.2s ease-out"
       }
+    },
+    tag: {
+      py: 1,
+      px: 2,
+      borderRadius: "20px",
+      ":hover": {}
     }
   },
   links: {
@@ -112,12 +122,57 @@ export const theme: Theme = {
       fontFamily: "heading",
       fontSize: 1,
       color: "defaultText",
+      textDecoration: "none",
+      transition: "all 0.2s ease-out",
+      ":hover": {
+        transition: "all 0.2s ease-out"
+      }
+    },
+    navActive: {
+      position: "relative",
+      fontFamily: "heading",
+      fontSize: 1,
+      color: "defaultText",
       textDecoration: "none"
+      // bg: "#222325"
     }
   },
   forms: {},
   cards: {
     primary: {},
+    technology: {
+      width: ["125px", null, "150px"],
+      height: ["125px", null, "150px"],
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      bg: "#F7F7F7",
+      borderRadius: "4px",
+      color: "black",
+      cursor: "pointer",
+      boxShadow: "roundedCard",
+      transition: "transform 0.1s ease-out",
+      ":hover": {
+        transition: "transform 0.1s ease-out",
+        transform: "scale(1.05, 1.05)"
+      }
+    },
+    articleHero: {
+      p: 4,
+      display: "flex",
+      flexDirection: "column",
+      bg: "themeLightGray"
+    },
+    articlePreview: {
+      width: "320px",
+      height: "180px",
+      p: 3,
+      display: "flex",
+      flexDirection: "column",
+      bg: "themeLightGray",
+      cursor: "pointer"
+    },
     blog: {
       borderRadius: ""
     }
@@ -150,6 +205,13 @@ export const theme: Theme = {
     h5: {
       variant: "text.heading",
       fontSize: [1, null, 2]
+    },
+    articleProgress: {
+      width: "4px",
+      height: "90%",
+      color: "white",
+      bg: "gray",
+      borderRadius: "0"
     }
   }
 }

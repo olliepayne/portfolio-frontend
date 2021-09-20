@@ -9,6 +9,7 @@ module.exports = {
     "gatsby-transformer-remark",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -31,7 +32,8 @@ module.exports = {
         google: {
           families: [
             "Poppins:400,500,600,700",
-            "Petrona:300,400"
+            "Petrona:300,400",
+            "Inconsolata:400,500"
           ]
         }
       }
@@ -41,7 +43,9 @@ module.exports = {
       options: {
         apiURL: "http://localhost:1337",
         collectionTypes: [
-          "technology"
+          "category",
+          "tag",
+          "article"
         ],
         queryLimit: 1000,
       },

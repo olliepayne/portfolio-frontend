@@ -1,12 +1,13 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
-import React, { useState } from "react"
+import { jsx } from "theme-ui"
+import * as React from "react"
+import { useState, useEffect } from "react"
 import HeaderLogo from "./HeaderLogo"
 import NavLink from "./NavLink"
 
 const links = [
   {
-    to: "#",
+    to: "/learn",
     text: "Learn"
   },
   {
@@ -20,25 +21,35 @@ const Header = () => {
 
   const checkScrollPosition = () => {
     setUserHasScrolled(window.scrollY > 0 ? true : false)
-    console.log("test")
   }
 
-  if (global.window) {
-    window.addEventListener("scroll", checkScrollPosition)
-  }
+  // TODO: add debouncing
+  useEffect(() => {   
+    if (global.window) {
+      window.addEventListener("scroll", checkScrollPosition)
+    }
+
+    return () => {
+      window.removeEventListener("scroll", checkScrollPosition)
+    }
+  }, [])
 
   return (
     <header
       sx={{
         width: "100%",
         height: userHasScrolled ? "65px" : "60px",
-        px: ["30px", null, "120px"],
+        px: 4,
         position: "fixed",
         zIndex: "front",
         display: "flex",
         alignItems: "center",
         bg: "white",
-        boxShadow: userHasScrolled ? "0 0px 10px rgba(0, 0, 0, 0.3)" : "none",
+        borderBottom: userHasScrolled ? "4px solid" : "none",
+        // borderBottom: "4px solid",
+        borderBottomColor: "themePink",
+        // boxShadow: userHasScrolled ? "0 2px 10px rgba(0, 0, 0, 0.25)" : "none",
+        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
         transition: "all 0.2s"
       }}
     >
@@ -54,7 +65,7 @@ const Header = () => {
             display: "flex",
             listStyle: "none",
             li: {
-              mr: 3
+              mr: 4
             }
           }}
         >
