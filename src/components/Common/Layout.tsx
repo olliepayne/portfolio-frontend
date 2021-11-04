@@ -9,9 +9,7 @@ import Footer from "components/Footer/Footer"
 interface LayoutProps {
   children?: React.ReactNode | React.ReactNode[]
 }
-const Layout = ({
-  children
-}: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <div
       sx={{
@@ -23,7 +21,13 @@ const Layout = ({
       }}
     >
       <Header />
-      {children}
+      <div
+        sx={{
+          mt: "124px"
+        }}
+      >
+        {children}
+      </div>
       <Footer />
     </div>
   )

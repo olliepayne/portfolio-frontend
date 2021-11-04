@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Container, Card, Heading, Flex, Text } from "theme-ui"
+import { jsx, Container, Box, Card, Heading, Flex, Text } from "theme-ui"
 import * as React from "react"
 import { graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
@@ -33,8 +33,7 @@ const LearnArticlePage = ({
       <main
         sx={{
           height: "1500px",
-          pt: "124px",
-          flex: "1 auto"
+          // flex: "1 1"
         }}
       >
         <section>
