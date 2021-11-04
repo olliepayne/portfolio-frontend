@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx, Container, Card, Heading, Flex } from "theme-ui"
+
+import { jsx, Container, Card, Heading, Flex, Text } from "theme-ui"
 import * as React from "react"
 import { graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-import Layout from "components/Layout"
+import Layout from "components/Common/Layout"
 
 import { parseKebabDate } from "helpers/parseDate"
 
@@ -36,52 +37,51 @@ const LearnArticlePage = ({
           flex: "1 auto"
         }}
       >
-        <Container as="section">
-          <Card variant="articleHero">
-            <Heading as="h1" variant="styles.h1">
-              {name}
-            </Heading>
-            <Flex sx={{ alignItems: "center" }}>
-              <Heading
-                sx={{
-                  color: "#525252"
-                }}
-                as="h4"
-                variant="styles.h4"
-              >
-                by {author}
+        <section>
+          <Container variant="container1000">
+            <Card variant="articleHero">
+              <Heading as="h1" variant="styles.h1">
+                {name}
               </Heading>
-              <Heading
-                sx={{
-                  px: 3,
-                  color: "#999999"
-                }}
-                as="h5"
-                variant="styles.h5"
-              >
-                <span
+              <Flex sx={{ alignItems: "center" }}>
+                <Heading
                   sx={{
-                    fontSize: 1
+                    color: "#525252"
                   }}
+                  as="h4"
+                  variant="styles.h4"
                 >
-                  {dateEdited !== datePublished && "(edited) "}
-                </span>
-                {month} {day}, {year}
-              </Heading>
-            </Flex>
-          </Card>
-          <GatsbyImage
-            sx={{
-              mt: 3,
-              boxShadow: "articleHero"
-            }}
-            image={getImage(childImageSharp)}
-            alt={`${name} thumbnail`}
-          />
-        </Container>
-        {/* <Container as="section" dangerouslySetInnerHTML={{ __html: content }}>
-
-        </Container> */}
+                  by {author}
+                </Heading>
+                <Heading
+                  sx={{
+                    px: 3,
+                    color: "#999999"
+                  }}
+                  as="h5"
+                  variant="styles.h5"
+                >
+                  <Text
+                    sx={{
+                      fontSize: 1
+                    }}
+                  >
+                    {dateEdited !== datePublished && "(edited) "}
+                  </Text>
+                  {month} {day}, {year}
+                </Heading>
+              </Flex>
+            </Card>
+            <GatsbyImage
+              sx={{
+                mt: 3,
+                boxShadow: "articleHero"
+              }}
+              image={getImage(childImageSharp)}
+              alt={`${name} thumbnail`}
+            />
+          </Container>
+        </section>
       </main>
     </Layout>
   )
@@ -99,7 +99,12 @@ export const query = graphql`
       thumbnail {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 800, height: 600, layout: FIXED, placeholder: BLURRED)
+            gatsbyImageData(
+              width: 800
+              height: 600
+              layout: FIXED
+              placeholder: BLURRED
+            )
           }
         }
       }

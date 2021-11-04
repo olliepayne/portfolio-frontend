@@ -44,11 +44,7 @@ export const theme: Theme = {
     "5.653rem" // 90.44px
   ],
   fontWeights: {
-    bold: 700,
-    semiBold: 600,
-    medium: 500,
-    body: 400,
-    light: 300
+    
   },
   lineHeights: {
     default: 1.5
@@ -58,8 +54,13 @@ export const theme: Theme = {
     articleHero: "0 0 10px rgba(0, 0, 0, 0.5)"
   },
   layout: {
-    container: {
-      maxWidth: ["728px", null, "1000px"]
+    container1200: {
+      maxWidth: ["100%", null, "1232px"],
+      px: 3
+    },
+    container1000: {
+      maxWidth: ["100%", null, "1032px"],
+      px: 3
     }
   },
   text: {

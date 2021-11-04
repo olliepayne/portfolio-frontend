@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+
 import * as React from "react"
-import Header from "./Header/Header"
-import Footer from "./Footer/Footer"
+
+import Header from "components/Header/Header"
+import Footer from "components/Footer/Footer"
 
 interface LayoutProps {
   children?: React.ReactNode | React.ReactNode[]
@@ -16,7 +18,8 @@ const Layout = ({
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between"
       }}
     >
       <Header />

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import * as React from "react"
-import Layout from "components/Layout"
+
+import Layout from "components/Common/Layout"
 
 const IndexPage = () => {
   return (

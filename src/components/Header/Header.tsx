@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Container, Box } from "theme-ui"
 import * as React from "react"
 import { useState, useEffect } from "react"
 import HeaderLogo from "./HeaderLogo"
@@ -42,40 +42,46 @@ const Header = () => {
         px: 4,
         position: "fixed",
         zIndex: "front",
-        display: "flex",
-        alignItems: "center",
-        bg: "white",
         borderBottom: userHasScrolled ? "4px solid" : "none",
         // borderBottom: "4px solid",
         borderBottomColor: "themePink",
-        // boxShadow: userHasScrolled ? "0 2px 10px rgba(0, 0, 0, 0.25)" : "none",
         boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-        transition: "all 0.2s"
+        transition: "all 0.2s",
+        backdropFilter: "blur(32px)"
       }}
     >
-      <HeaderLogo />
-      <nav
-        sx={{
-          ml: 4
-        }}
-      >
-        <ul
+      <Container variant="container1200">
+        <Box
           sx={{
-            p: "0px",
             display: "flex",
-            listStyle: "none",
-            li: {
-              mr: 4
-            }
+            alignItems: "center"
           }}
         >
-          {links.map(({ to, text }, index) => (
-            <li key={`${to}+${index}`}>
-              <NavLink to={to} text={text} />
-            </li>
-          ))}
-        </ul>
-      </nav>
+          <HeaderLogo />
+          <nav
+            sx={{
+              ml: 4
+            }}
+          >
+            <ul
+              sx={{
+                p: 0,
+                display: "flex",
+                listStyle: "none",
+                li: {
+                  mr: 4
+                }
+              }}
+            >
+              {links.map(({ to, text }, index) => (
+                <li key={`${to}+${index}`}>
+                  <NavLink to={to} text={text} />
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Box>
+      </Container>
     </header>
   )
 }

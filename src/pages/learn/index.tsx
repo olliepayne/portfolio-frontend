@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Heading } from "theme-ui"
-import * as React from "react"
 import { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 
-import Layout from "components/Layout"
+import Layout from "components/Common/Layout"
 import PageProgress from "components/PageProgress"
 import CodeSnippet from "components/CodeSnippet"
 import ArticlesFilter from "components/ArticlesFilter"
@@ -74,7 +73,7 @@ export const query = graphql`
         thumbnail {
           localFile {
             childImageSharp {
-              gatsbyImageData(layout: FIXED)
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
