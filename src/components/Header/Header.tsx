@@ -39,7 +39,6 @@ const Header = () => {
       sx={{
         width: "100%",
         height: userHasScrolled ? "65px" : "60px",
-        px: 4,
         position: "fixed",
         zIndex: "front",
         borderBottom: userHasScrolled ? "4px solid" : "none",
@@ -47,7 +46,8 @@ const Header = () => {
         borderBottomColor: "themePink",
         boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
         transition: "all 0.2s",
-        backdropFilter: "blur(32px)"
+        backdropFilter: "blur(16px)",
+        bg: "rgb(255 255 255 / 0.75)"
       }}
     >
       <Container variant="container1200">

@@ -16,9 +16,7 @@ const LearnArticlePage = ({
       author,
       datePublished,
       dateEdited,
-      thumbnail: {
-        localFile: { childImageSharp }
-      },
+      thumbnail,
       content
     }
   }
@@ -33,52 +31,60 @@ const LearnArticlePage = ({
       <main
         sx={{
           height: "1500px",
-          // flex: "1 1"
+          flex: "1 auto"
         }}
       >
         <section>
           <Container variant="container1000">
-            <Card variant="articleHero">
-              <Heading as="h1" variant="styles.h1">
-                {name}
-              </Heading>
-              <Flex sx={{ alignItems: "center" }}>
-                <Heading
-                  sx={{
-                    color: "#525252"
-                  }}
-                  as="h4"
-                  variant="styles.h4"
-                >
-                  by {author}
-                </Heading>
-                <Heading
-                  sx={{
-                    px: 3,
-                    color: "#999999"
-                  }}
-                  as="h5"
-                  variant="styles.h5"
-                >
-                  <Text
-                    sx={{
-                      fontSize: 1
-                    }}
-                  >
-                    {dateEdited !== datePublished && "(edited) "}
-                  </Text>
-                  {month} {day}, {year}
-                </Heading>
-              </Flex>
-            </Card>
-            <GatsbyImage
+            <Box
               sx={{
-                mt: 3,
-                boxShadow: "articleHero"
+                width: "100%"
               }}
-              image={getImage(childImageSharp)}
-              alt={`${name} thumbnail`}
-            />
+            >
+              <Card variant="articleHero">
+                <Heading as="h1" variant="styles.h1">
+                  {name}
+                </Heading>
+                <Flex sx={{ alignItems: "center" }}>
+                  <Heading
+                    sx={{
+                      color: "#525252"
+                    }}
+                    as="h4"
+                    variant="styles.h4"
+                  >
+                    by {author}
+                  </Heading>
+                  <Heading
+                    sx={{
+                      px: 3,
+                      color: "#999999"
+                    }}
+                    as="h5"
+                    variant="styles.h5"
+                  >
+                    <Text
+                      sx={{
+                        fontSize: 1
+                      }}
+                    >
+                      {dateEdited !== datePublished && "(edited) "}
+                    </Text>
+                    {month} {day}, {year}
+                  </Heading>
+                </Flex>
+              </Card>
+              <GatsbyImage
+                sx={{
+                  mt: 3,
+                  boxShadow: "articleHero"
+                }}
+                image={getImage(
+                  thumbnail.localFile.childImageSharp.gatsbyImageData
+                )}
+                alt={`${name} thumbnail`}
+              />
+            </Box>
           </Container>
         </section>
       </main>
@@ -101,7 +107,6 @@ export const query = graphql`
             gatsbyImageData(
               width: 800
               height: 600
-              layout: FIXED
               placeholder: BLURRED
             )
           }
