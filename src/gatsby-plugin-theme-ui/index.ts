@@ -148,8 +148,8 @@ export const theme: Theme = {
       bg: "themeLightGray"
     },
     articlePreview: {
-      width: "320px",
-      height: "180px",
+      width: "300px",
+      height: "300px",
       p: 3,
       display: "flex",
       flexDirection: "column",
