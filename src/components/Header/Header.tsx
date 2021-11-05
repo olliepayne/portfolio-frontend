@@ -2,16 +2,19 @@
 import { jsx, Container, Box } from "theme-ui"
 import * as React from "react"
 import { useState, useEffect } from "react"
-import HeaderLogo from "./HeaderLogo"
-import NavLink from "./NavLink"
 
-const links = [
+import HeaderLogo from "components/Header/HeaderLogo"
+import DesktopNav from "components/Header/DesktopNav"
+
+import { ILink } from "helpers/myTypes"
+
+const links: ILink[] = [
   {
-    to: "/learn",
+    url: "/learn",
     text: "Learn"
   },
   {
-    to: "#",
+    url: "#",
     text: "Blog"
   }
 ]
@@ -58,28 +61,7 @@ const Header = () => {
           }}
         >
           <HeaderLogo />
-          <nav
-            sx={{
-              ml: 4
-            }}
-          >
-            <ul
-              sx={{
-                p: 0,
-                display: "flex",
-                listStyle: "none",
-                li: {
-                  mr: 4
-                }
-              }}
-            >
-              {links.map(({ to, text }, index) => (
-                <li key={`${to}+${index}`}>
-                  <NavLink to={to} text={text} />
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <DesktopNav links={links} />
         </Box>
       </Container>
     </header>

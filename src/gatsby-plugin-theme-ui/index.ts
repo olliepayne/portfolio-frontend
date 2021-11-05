@@ -1,7 +1,7 @@
 import { Theme } from "theme-ui"
 
 export const theme: Theme = {
-  breakpoints: ["48em", "90em"],
+  breakpoints: ["48em"],
   space: [
     "0em", // 0px
     "0.25em", // 4px
@@ -55,28 +55,28 @@ export const theme: Theme = {
   },
   layout: {
     container1200: {
-      maxWidth: ["100%", null, "1232px"],
+      maxWidth: ["100%", "1232px"],
       px: 3
     },
     container1000: {
-      maxWidth: ["100%", null, "1032px"],
+      maxWidth: ["100%", "1032px"],
       px: 3
     }
   },
   text: {
     heading: {
       fontFamily: "heading",
-      fontWeight: "semiBold",
+      fontWeight: 600,
       lineHeight: "default"
     },
     body: {
       fontFamily: "body",
-      fontWeight: "body",
+      fontWeight: 400,
       lineHeight: "default"
     },
     light: {
       fontFamily: "body",
-      fontWeight: "light",
+      fontWeight: 300,
       lineHeight: "default"
     },
     code: {
@@ -141,24 +141,6 @@ export const theme: Theme = {
   forms: {},
   cards: {
     primary: {},
-    technology: {
-      width: ["125px", null, "150px"],
-      height: ["125px", null, "150px"],
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      bg: "#F7F7F7",
-      borderRadius: "4px",
-      color: "black",
-      cursor: "pointer",
-      boxShadow: "roundedCard",
-      transition: "transform 0.1s ease-out",
-      ":hover": {
-        transition: "transform 0.1s ease-out",
-        transform: "scale(1.05, 1.05)"
-      }
-    },
     articleHero: {
       p: 4,
       display: "flex",
@@ -189,23 +171,23 @@ export const theme: Theme = {
     },
     h1: {
       variant: "text.heading",
-      fontSize: [5, null, 6]
+      fontSize: [5, 6]
     },
     h2: {
       variant: "text.heading",
-      fontSize: [4, null, 5]
+      fontSize: [4, 5]
     },
     h3: {
       variant: "text.heading",
-      fontSize: [3, null, 4]
+      fontSize: [3, 4]
     },
     h4: {
       variant: "text.heading",
-      fontSize: [2, null, 3]
+      fontSize: [2, 3]
     },
     h5: {
       variant: "text.heading",
-      fontSize: [1, null, 2]
+      fontSize: [1, 2]
     },
     articleProgress: {
       width: "4px",
