@@ -7,11 +7,6 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    screens: {
-      mobile: "425px",
-      tablet: "728px",
-      desktop: "1440px"
-    },
     fontFamily: {
       sans: ['"Open Sans", system-ui']
     },
