@@ -1,5 +1,6 @@
 import Link from "next/link"
 import PrimaryLink from "./PrimaryLink"
+import LinkButton from "./LinkButton"
 
 const links = [
   {
@@ -20,26 +21,25 @@ export default function Navbar() {
   return (
     <header className="bg-charcoal px-3 py-4 text-white relative">
       <div className="container mx-auto">
-        <div className="flex flex-row justify-between items-center">
+        <nav className="flex flex-row justify-between items-center">
           <Link href="/" className="text-heading5Desktop font-bold">
             Oliver Payne
           </Link>
-          <nav className="">
-            <ul className="flex flex-row">
-              {links.map(({ href, text }, index) =>
-                index < links.length - 1 ? (
-                  <li className="mr-6">
-                    <PrimaryLink href={href} text={text} />
-                  </li>
-                ) : (
-                  <li>
-                    <PrimaryLink href={href} text={text} />
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
-        </div>
+          <ul className="flex flex-row">
+            {links.map(({ href, text }, index) =>
+              index < links.length - 1 ? (
+                <li className="mr-6">
+                  <PrimaryLink href={href} text={text} />
+                </li>
+              ) : (
+                <li>
+                  <PrimaryLink href={href} text={text} />
+                </li>
+              )
+            )}
+          </ul>
+          <LinkButton href="#" text="Contact" />
+        </nav>
       </div>
     </header>
   )
