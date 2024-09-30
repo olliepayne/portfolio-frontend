@@ -1,1 +1,3 @@
 # Portfolio
+
+Package manager: npm
