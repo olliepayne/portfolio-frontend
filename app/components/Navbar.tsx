@@ -38,7 +38,7 @@ export default function Navbar() {
               )
             )}
           </ul>
-          <LinkButton href="#" text="Contact" />
+          <LinkButton href="#" text="Contact Me" />
         </nav>
       </div>
     </header>
