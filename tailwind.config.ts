@@ -22,7 +22,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#FFD1D2",
-        bone: "#F3F1D9",
+        bone: "#FFF9EF",
         charcoal: "#272727"
       }
     }
