@@ -10,20 +10,20 @@ const config: Config = {
     fontFamily: {
       sans: ['"Open Sans", system-ui']
     },
-    fontSize: {
-      heading1Desktop: "3.05rem",
-      heading2Desktop: "2.44rem",
-      heading3Desktop: "1.95rem",
-      heading4Desktop: "1.56rem",
-      heading5Desktop: "1.25rem",
-      body: "1rem"
-    },
     extend: {
       colors: {
         primary: "#FFD1D2",
         bone: "#FFF9EF",
         charcoal: "#272727",
         themeGray: "#F9F9F9"
+      },
+      fontSize: {
+        heading1Desktop: "3.05rem",
+        heading2Desktop: "2.44rem",
+        heading3Desktop: "1.95rem",
+        heading4Desktop: "1.56rem",
+        heading5Desktop: "1.25rem",
+        body: "1rem"
       }
     }
   },
