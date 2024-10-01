@@ -18,6 +18,11 @@ const config: Config = {
         themeGray: "#F9F9F9"
       },
       fontSize: {
+        heading1Mobile: "2.67rem",
+        heading2Mobile: "2.14rem",
+        heading3Mobile: "1.71rem",
+        heading4Mobile: "1.37rem",
+        heading5Mobile: "1.09rem",
         heading1Desktop: "3.05rem",
         heading2Desktop: "2.44rem",
         heading3Desktop: "1.95rem",
