@@ -29,7 +29,7 @@ export default function Home() {
               <div className="my-16">
                 <ul className="flex flex-row flex-wrap gap-8">
                   {stats.map(({ metricText, value }, index) => (
-                    <li>
+                    <li key={`intro-stat-${index}`}>
                       <div>
                         <span className="text-xl font-bold">{value}</span>
                         <p>{metricText}</p>

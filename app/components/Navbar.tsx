@@ -31,8 +31,8 @@ export default function Navbar() {
           </Link>
           <div className="bg-charcoal absolute left-0 top-0 max-h-screen flex justify-between pl-2 pt-16 pb-8 w-full md:h-fit md:p-0 md:static md:flex-row md:bg-transparent md:w-fit">
             <ul className="flex flex-col md:flex-row">
-              {links.map(({ href, text }) => (
-                <li className="mb-4 md:mb-0 md:mr-6">
+              {links.map(({ href, text }, index) => (
+                <li key={`nav-link-${index}`} className="mb-4 md:mb-0 md:mr-6">
                   <PrimaryLink href={href} text={text} />
                 </li>
               ))}
