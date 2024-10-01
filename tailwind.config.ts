@@ -15,7 +15,8 @@ const config: Config = {
         primary: "#FFD1D2",
         bone: "#FFF9EF",
         charcoal: "#272727",
-        themeGray: "#F9F9F9"
+        themeLightGray: "#F9F9F9",
+        themeGray: "#5C5C5C"
       },
       fontSize: {
         heading1Mobile: "2.67rem",
