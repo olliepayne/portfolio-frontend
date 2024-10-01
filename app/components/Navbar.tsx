@@ -5,16 +5,16 @@ import Container from "./Container"
 
 const links = [
   {
+    href: "#about",
+    text: "About"
+  },
+  {
     href: "#experience",
     text: "Experience"
   },
   {
     href: "#",
     text: "Projects"
-  },
-  {
-    href: "#",
-    text: "About"
   }
 ]
 
