@@ -20,26 +20,27 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header className="bg-charcoal py-4 text-white relative">
-      <Container>
-        <nav className="flex flex-row justify-between items-center">
-          <Link href="/" className="text-heading5Desktop font-bold">
+    <header className="bg-charcoal text-white relative h-16 md:py-4 md:h-fit">
+      <Container className="h-full">
+        <nav className="flex flex-row justify-between items-center h-full">
+          <Link
+            href="/"
+            className="text-heading5Desktop font-bold relative z-10 md:z-0 md:static"
+          >
             Oliver Payne
           </Link>
-          <ul className="flex flex-row">
-            {links.map(({ href, text }, index) =>
-              index < links.length - 1 ? (
-                <li className="mr-6">
+          <div className="bg-charcoal absolute left-0 top-0 max-h-screen flex justify-between pl-2 pt-16 pb-8 w-full md:h-fit md:p-0 md:static md:flex-row md:bg-transparent md:w-fit">
+            <ul className="flex flex-col md:flex-row">
+              {links.map(({ href, text }) => (
+                <li className="mb-4 md:mb-0 md:mr-6">
                   <PrimaryLink href={href} text={text} />
                 </li>
-              ) : (
-                <li>
-                  <PrimaryLink href={href} text={text} />
-                </li>
-              )
-            )}
-          </ul>
-          <LinkButton href="#" text="Contact Me" />
+              ))}
+              <li className="ml-2 md:m-0">
+                <LinkButton href="#" text="Contact Me" />
+              </li>
+            </ul>
+          </div>
         </nav>
       </Container>
     </header>
