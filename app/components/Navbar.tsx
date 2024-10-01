@@ -5,7 +5,7 @@ import Container from "./Container"
 
 const links = [
   {
-    href: "/experience",
+    href: "#experience",
     text: "Experience"
   },
   {
