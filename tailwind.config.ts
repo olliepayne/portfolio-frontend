@@ -11,8 +11,12 @@ const config: Config = {
       sans: ['"Open Sans", system-ui']
     },
     fontSize: {
-      body: "1rem",
-      heading5Desktop: "1.25rem"
+      heading1Desktop: "3.05rem",
+      heading2Desktop: "2.44rem",
+      heading3Desktop: "1.95rem",
+      heading4Desktop: "1.56rem",
+      heading5Desktop: "1.25rem",
+      body: "1rem"
     },
     extend: {
       colors: {
