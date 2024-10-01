@@ -21,13 +21,13 @@ const links = [
 export default function Navbar() {
   return (
     <header className="bg-charcoal text-white relative h-16 md:py-4 md:h-fit">
-      <Container className="h-full">
+      <Container>
         <nav className="flex flex-row justify-between items-center h-full">
           <Link
             href="/"
             className="text-heading5Desktop font-bold relative z-10 md:z-0 md:static"
           >
-            Oliver Payne
+            Ollie Payne
           </Link>
           <div className="bg-charcoal absolute left-0 top-0 max-h-screen flex justify-between pl-2 pt-16 pb-8 w-full md:h-fit md:p-0 md:static md:flex-row md:bg-transparent md:w-fit">
             <ul className="flex flex-col md:flex-row">
