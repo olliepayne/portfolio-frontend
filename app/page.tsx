@@ -2,6 +2,7 @@ import Container from "./components/Container"
 import Image from "next/image"
 import LinkButton from "./components/LinkButton"
 import Divider from "./components/Divider"
+import Heading from "./components/Heading"
 
 const stats = [
   {
@@ -20,7 +21,7 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <div className="flex flex-col justify-between items-center md:flex-row">
-            <div className="mr-8 basis-1/2">
+            <div className="basis-1/2 mr-0 md:mr-4">
               <h1 className="text-heading1Desktop font-bold">👋 I'm Ollie</h1>
               <p className="mt-4">
                 I am a Frontend developer, SEO Analyst, and avid sport climber
@@ -43,9 +44,9 @@ export default function Home() {
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:ml-8 ">
+            <div className="relative mt-16 basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:ml-4 ">
               <Image
-                src="/headshot.jpeg"
+                src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
@@ -55,9 +56,39 @@ export default function Home() {
         </Container>
       </section>
       <Divider />
+      <section className="py-16">
+        <Container>
+          <div className="flex flex-col justify-between items-center md:flex-row">
+            <div className="relative basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:mr-4 ">
+              <Image
+                src="/images/climbing-green.jpg"
+                alt="Picture of Ollie Payne"
+                fill
+                objectFit="cover"
+                objectPosition="0 0"
+              />
+            </div>
+            <div className="mt-16 basis-1/2 md:ml-4 md:mt-0">
+              <Heading level="h2">About Me</Heading>
+              <p className="mt-4">
+                I began coding as a teen by working on 2D indie games. Once It
+                was time to commit to a first step towards a career, it was a no
+                brainer for me to pursue programming. I got my first position as
+                a Frontend development intern, and have been working in the
+                agency world ever since.
+              </p>
+              <p className="mt-4">
+                Besides my work, I am also an avid sport climber and love to
+                compete and push myself to the highest level.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+      <Divider />
       {/* <section className="py-16">
         <Container>
-          <h2 className="text-heading2Desktop font-bold">About Me</h2>
+          <Heading level="h2">Experience</Heading>
         </Container>
       </section> */}
     </main>
