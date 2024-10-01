@@ -1,6 +1,7 @@
 import Link from "next/link"
 import PrimaryLink from "./PrimaryLink"
 import LinkButton from "./LinkButton"
+import Container from "./Container"
 
 const links = [
   {
@@ -19,8 +20,8 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header className="bg-charcoal px-3 py-4 text-white relative">
-      <div className="container mx-auto">
+    <header className="bg-charcoal py-4 text-white relative">
+      <Container>
         <nav className="flex flex-row justify-between items-center">
           <Link href="/" className="text-heading5Desktop font-bold">
             Oliver Payne
@@ -40,7 +41,7 @@ export default function Navbar() {
           </ul>
           <LinkButton href="#" text="Contact Me" />
         </nav>
-      </div>
+      </Container>
     </header>
   )
 }
