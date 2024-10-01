@@ -22,7 +22,8 @@ const config: Config = {
       colors: {
         primary: "#FFD1D2",
         bone: "#FFF9EF",
-        charcoal: "#272727"
+        charcoal: "#272727",
+        themeGray: "#F9F9F9"
       }
     }
   },
