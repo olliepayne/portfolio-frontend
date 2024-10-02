@@ -3,6 +3,7 @@ import Image from "next/image"
 import LinkButton from "./components/LinkButton"
 import Divider from "./components/Divider"
 import Heading from "./components/Heading"
+import ExperienceTimeline from "./components/ExperienceTimeline"
 
 const stats = [
   {
@@ -22,7 +23,7 @@ export default function Home() {
         <Container>
           <div className="flex flex-col justify-between items-center md:flex-row">
             <div className="basis-1/2 mr-0 md:mr-4">
-              <h1 className="text-heading1Desktop font-bold">👋 I'm Ollie</h1>
+              <Heading level="h1">👋 I'm Ollie</Heading>
               <p className="mt-4">
                 I am a Frontend developer, SEO Analyst, and avid sport climber
                 living in Phoenix, AZ.
@@ -56,7 +57,7 @@ export default function Home() {
         </Container>
       </section>
       <Divider />
-      <section className="py-16">
+      <section id="about" className="py-16">
         <Container>
           <div className="flex flex-col justify-between items-center md:flex-row">
             <div className="relative basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:mr-4 ">
@@ -86,11 +87,14 @@ export default function Home() {
         </Container>
       </section>
       <Divider />
-      {/* <section className="py-16">
-        <Container>
-          <Heading level="h2">Experience</Heading>
+      <section id="experience" className="py-16">
+        <Container variant="narrow">
+          <div className="text-center mb-8">
+            <Heading level="h2">Experience</Heading>
+          </div>
+          <ExperienceTimeline />
         </Container>
-      </section> */}
+      </section>
     </main>
   )
 }
