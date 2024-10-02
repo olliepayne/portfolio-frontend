@@ -1,3 +1,3 @@
 export default function Divider() {
-  return <hr className="text-themeLightGray w-full h-1" />
+  return <hr className="border-t-4 border-solid border-themeLightGray" />
 }
