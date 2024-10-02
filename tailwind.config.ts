@@ -15,7 +15,7 @@ const config: Config = {
         primary: "#FFD1D2",
         bone: "#FFF9EF",
         charcoal: "#272727",
-        themeLightGray: "#F9F9F9",
+        themeLightGray: "#DFDFDF",
         themeGray: "#5C5C5C"
       },
       fontSize: {
