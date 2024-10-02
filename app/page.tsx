@@ -77,8 +77,8 @@ export default async function Home() {
       <Divider />
       <section id="about" className="py-16">
         <Container>
-          <div className="flex flex-col justify-between items-center md:flex-row">
-            <div className="relative basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:mr-4 ">
+          <div className="flex flex-col-reverse justify-between items-center md:flex-row">
+            <div className="relative basis-1/2 aspect-square w-full mt-16 md:w-auto md:mt-0 md:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
@@ -87,7 +87,7 @@ export default async function Home() {
                 objectPosition="0 0"
               />
             </div>
-            <div className="mt-16 basis-1/2 md:ml-4 md:mt-0">
+            <div className="basis-1/2 md:ml-4">
               <Heading level="h2">About Me</Heading>
               <p className="mt-4">
                 I began coding as a teen by working on 2D indie games. Once It
