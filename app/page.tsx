@@ -16,7 +16,25 @@ const stats = [
   }
 ]
 
-export default function Home() {
+async function getStrapiData(url: string) {
+  const baseUrl = "http://localhost:1337"
+  try {
+    const response = await fetch(baseUrl + url, {
+      cache: "no-cache"
+    })
+    const { data } = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export default async function Home() {
+  const companies = await getStrapiData(
+    "/api/companies?populate[jobs][populate][0]=skills&sort=jobs.startDate:desc"
+  )
+  console.log(companies)
+
   return (
     <main>
       <section className="py-16">
@@ -92,7 +110,7 @@ export default function Home() {
           <div className="text-center mb-8">
             <Heading level="h2">Experience</Heading>
           </div>
-          <ExperienceTimeline />
+          <ExperienceTimeline companies={companies} />
         </Container>
       </section>
     </main>
