@@ -1,91 +1,34 @@
 import Image from "next/image"
 import SkillTag from "./SkillTag"
 
-interface Props {
-  events: [
-    {
-      company: string
-      startDate: string
-      stillHere: boolean
-      roles: [
-        {
-          title: string
-          startDate: string
-          stillHere: boolean
-          workingLocation: string
-          remote?: boolean
-          employmentTime: "Full-Time"
-          summary: string
-        }
-      ]
-    }
-  ]
+interface StrapiSkill {
+  name: string
 }
 
-// Test data
-const entries = [
-  {
-    company: "Eightfold",
-    // startDate: string
-    // stillHere: boolean
-    roles: [
-      {
-        title: "SEO Analyst",
-        // startDate: string
-        // stillHere: boolean
-        // workingLocation: string
-        // remote?: boolean
-        employmentType: "Full-Time",
-        summary: "",
-        skills: [
-          {
-            name: "Next.js"
-          }
-        ]
-      },
-      {
-        title: "SEO Analyst",
-        // startDate: string
-        // stillHere: boolean
-        // workingLocation: string
-        // remote?: boolean
-        employmentType: "Full-Time",
-        summary: "",
-        skills: [
-          {
-            name: "Next.js"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    company: "Eightfold",
-    // startDate: string
-    // stillHere: boolean
-    roles: [
-      {
-        title: "SEO Analyst",
-        // startDate: string
-        // stillHere: boolean
-        // workingLocation: string
-        // remote?: boolean
-        employmentType: "Full-Time",
-        summary: "",
-        skills: [
-          {
-            name: "Next.js"
-          }
-        ]
-      }
-    ]
-  }
-]
+interface StrapiJob {
+  title: string
+  startDate: string
+  endDate?: string
+  location: string
+  remote?: boolean
+  summary: string
+  skills: StrapiSkill[]
+}
 
-export default function ExperienceTimeline() {
+interface StrapiCompany {
+  name: string
+  logo: string
+  jobs: StrapiJob[]
+}
+
+interface Props {
+  companies: StrapiCompany[]
+}
+
+export default function ExperienceTimeline({ companies }: Props) {
   return (
     <div>
-      {entries.map(({ company, roles }, index) => (
+      {companies.map(({ name, jobs }, index) => (
         <div
           key={`company-${index}`}
           className={
@@ -104,64 +47,64 @@ export default function ExperienceTimeline() {
               />
             </div>
             <div className="ml-4">
-              <p className="font-bold">Company</p>
-              <p className="text-themeGray">Start date - End date</p>
+              <p className="font-bold">{name}</p>
+              <p className="text-themeGray">Duration</p>
             </div>
           </div>
-          {roles.map(({ title, summary, skills }, index) => (
-            <div
-              key={`role-${index}`}
-              className={`flex flex-row ${index === 0 ? "mt-4" : undefined}`}
-            >
-              <div className="flex flex-col items-center basis-14 shrink-0">
-                <span className="h-7 flex-shrink-0">
-                  <span
-                    className={`align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray ${
-                      roles.length > 1 ? "bg-themeLightGray" : "bg-transparent"
-                    }`}
-                  />
-                </span>
-                <span
-                  className={`w-0.5 h-full ${
-                    roles.length > 1 ? "bg-themeLightGray" : "bg-transparent"
-                  }`}
-                />
-              </div>
+          {jobs.map(
+            (
+              { title, startDate, endDate, location, remote, summary, skills },
+              index
+            ) => (
               <div
-                className={`pl-4 ${
-                  index < roles.length - 1 ? "pb-8" : undefined
-                }`}
+                key={`role-${index}`}
+                className={`flex flex-row ${index === 0 ? "mt-4" : undefined}`}
               >
-                <p className="font-bold">Role</p>
-                <p>Employment type</p>
-                <p className="mt-2 text-themeGray">Start date - End date</p>
-                <p className="text-themeGray">Location</p>
-                <p className="mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-                <div className="mt-4">
-                  <span className="mr-2">Skills:</span>
-                  <ul className="inline-block">
-                    {skills.map(({ name }) => (
-                      <li
-                        key={`role-${index}-${name}`}
-                        className="inline-block"
-                      >
-                        <SkillTag name={name} />
-                      </li>
-                    ))}
-                  </ul>
+                <div className="flex flex-col items-center basis-14 shrink-0">
+                  <span className="h-7 flex-shrink-0">
+                    <span className="align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray" />
+                  </span>
+                  <span className="w-0.5 h-full bg-themeLightGray" />
+                </div>
+                <div
+                  className={`pl-4 ${
+                    index < jobs.length - 1 ? "pb-8" : undefined
+                  }`}
+                >
+                  <p className="font-bold">{title}</p>
+                  <p>Employment type</p>
+                  <p className="mt-2 text-themeGray">
+                    {startDate} - {endDate ? endDate : "Present"}
+                  </p>
+                  <p className="text-themeGray">
+                    {remote ? "Remote" : location}
+                  </p>
+                  <p className="mt-4">{summary}</p>
+                  <div className="mt-4">
+                    {skills?.length > 0 ? (
+                      <>
+                        <span className="mr-2">Skills:</span>
+                        <ul className="inline-block">
+                          {skills.map(({ name }, index) => (
+                            <li
+                              key={`role-${index}-${name}`}
+                              className={`inline-block ${
+                                index < skills.length - 1 ? "mr-2" : undefined
+                              }`}
+                            >
+                              <SkillTag name={name} />
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       ))}
     </div>
