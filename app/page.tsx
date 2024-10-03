@@ -31,7 +31,7 @@ async function getStrapiData(url: string) {
 
 export default async function Home() {
   const companies = await getStrapiData(
-    "/api/companies?populate[jobs][populate]=skills&sort[0]=jobs.startDate:desc&sort[1]=jobs.stillHere:desc"
+    "/api/companies?populate[logo]=true&populate[jobs][populate]=skills&sort[0]=jobs.startDate:desc&sort[1]=jobs.stillHere:desc"
   )
 
   return (
