@@ -4,6 +4,7 @@ import LinkButton from "./components/LinkButton"
 import Divider from "./components/Divider"
 import Heading from "./components/Heading"
 import ExperienceTimeline from "./components/ExperienceTimeline"
+import { Metadata } from "next"
 
 const stats = [
   {
@@ -16,11 +17,11 @@ const stats = [
   }
 ]
 
-async function getStrapiData(url: string) {
+async function getStrapiData(url: string, cache?: RequestCache) {
   const baseUrl = "http://localhost:1337"
   try {
     const response = await fetch(baseUrl + url, {
-      cache: "no-cache"
+      cache
     })
     const { data } = await response.json()
     return data
@@ -29,9 +30,21 @@ async function getStrapiData(url: string) {
   }
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const {
+    seo: { titleTag, metaDescription }
+  } = await getStrapiData("/api/homepage?populate=seo")
+
+  return {
+    title: titleTag,
+    description: metaDescription
+  }
+}
+
 export default async function Home() {
   const companies = await getStrapiData(
-    "/api/companies?populate[logo]=true&populate[jobs][populate]=skills&sort[0]=jobs.startDate:desc&sort[1]=jobs.stillHere:desc"
+    "/api/companies?populate[logo]=true&populate[jobs][populate]=skills&sort[0]=jobs.startDate:desc&sort[1]=jobs.stillHere:desc",
+    "no-cache"
   )
 
   return (
@@ -107,9 +120,22 @@ export default async function Home() {
       <section id="experience" className="py-16">
         <Container variant="narrow">
           <div className="text-center mb-8">
-            <Heading level="h2">Experience</Heading>
+            <Heading level="h2">Ability</Heading>
           </div>
+          <Heading level="h3" className="mb-4">
+            Experience
+          </Heading>
           <ExperienceTimeline companies={companies} />
+          <Heading level="h3" className="mt-16">
+            Top Skills
+          </Heading>
+        </Container>
+      </section>
+      <Divider />
+      <section className="py-16">
+        <Container>
+          <Heading level="h2">Featured Projects</Heading>
+          <ul></ul>
         </Container>
       </section>
     </main>
