@@ -1,5 +1,6 @@
 import Image from "next/image"
 import SkillTag from "./SkillTag"
+import { getStrapiMedia } from "../utils/getStrapiMedia"
 
 interface StrapiSkill {
   name: string
@@ -19,7 +20,10 @@ interface StrapiJob {
 
 interface StrapiCompany {
   name: string
-  logo: string
+  logo: {
+    url: string
+    alternativeText: string
+  }
   jobs: StrapiJob[]
 }
 
@@ -36,7 +40,7 @@ export default function ExperienceTimeline({ companies }: Props) {
 
   return (
     <div>
-      {companies.map(({ name, jobs }, index) => (
+      {companies.map(({ name, logo, jobs }, index) => (
         <div
           key={`company-${index}`}
           className={
@@ -46,9 +50,9 @@ export default function ExperienceTimeline({ companies }: Props) {
           }
         >
           <div className="flex flex-row">
-            <div className="relative basis-14 aspect-square">
+            <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
               <Image
-                src="/images/headshot.jpeg"
+                src={logo ? getStrapiMedia(logo.url) as string : ""}
                 alt=""
                 fill
                 objectFit="cover"
