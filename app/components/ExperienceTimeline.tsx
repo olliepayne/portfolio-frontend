@@ -2,7 +2,7 @@ import Image from "next/image"
 import SkillTag from "./SkillTag"
 import { getStrapiMedia } from "../utils/getStrapiMedia"
 
-interface StrapiSkill {
+export interface StrapiSkill {
   name: string
 }
 
