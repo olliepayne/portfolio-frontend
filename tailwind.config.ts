@@ -13,7 +13,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#FFD1D2",
-        bone: "#FFF9EF",
+        bone: "#EBE6DE",
         charcoal: "#272727",
         themeLightGray: "#DFDFDF",
         themeGray: "#5C5C5C"
