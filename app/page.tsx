@@ -5,6 +5,7 @@ import Divider from "./components/Divider"
 import Heading from "./components/Heading"
 import ExperienceTimeline from "./components/ExperienceTimeline"
 import { Metadata } from "next"
+import ProjectCard from "./components/ProjectCard"
 
 const stats = [
   {
@@ -47,6 +48,8 @@ export default async function Home() {
     "no-cache"
   )
 
+  const projects = await getStrapiData("/api/projects?populate=*", "no-cache")
+
   return (
     <main>
       <section className="py-16">
@@ -75,7 +78,7 @@ export default async function Home() {
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/2 aspect-square w-full md:w-auto md:mt-0 md:ml-4 ">
+            <div className="relative mt-16 basis-1/2 aspect-square w-full border-solid border-2 border-primary drop-shadow-md md:w-auto md:mt-0 md:ml-4">
               <Image
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
@@ -120,10 +123,10 @@ export default async function Home() {
       <section id="experience" className="py-16">
         <Container variant="narrow">
           <div className="text-center mb-8">
-            <Heading level="h2">Ability</Heading>
+            <Heading level="h2">Experience</Heading>
           </div>
           <Heading level="h3" className="mb-4">
-            Experience
+            Timeline
           </Heading>
           <ExperienceTimeline companies={companies} />
           <Heading level="h3" className="mt-16">
@@ -135,7 +138,19 @@ export default async function Home() {
       <section className="py-16">
         <Container>
           <Heading level="h2">Featured Projects</Heading>
-          <ul></ul>
+          <ul className="flex mt-4 gap-4">
+            {projects &&
+              projects.map(({ mainImage, name, summary, skills }) => (
+                <li className="basis-1/3 shrink-0">
+                  <ProjectCard
+                    name={name}
+                    summary={summary}
+                    mainImage={mainImage.url}
+                    skills={skills}
+                  />
+                </li>
+              ))}
+          </ul>
         </Container>
       </section>
     </main>
