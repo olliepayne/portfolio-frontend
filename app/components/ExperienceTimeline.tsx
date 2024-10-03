@@ -7,10 +7,12 @@ interface StrapiSkill {
 
 interface StrapiJob {
   title: string
+  employmentType: string
   startDate: string
   endDate?: string
+  stillHere: boolean
   location: string
-  remote?: boolean
+  remote: boolean
   summary: string
   skills: StrapiSkill[]
 }
@@ -26,6 +28,12 @@ interface Props {
 }
 
 export default function ExperienceTimeline({ companies }: Props) {
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr)
+    const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "medium" })
+    return formatter.format(date)
+  }
+
   return (
     <div>
       {companies.map(({ name, jobs }, index) => (
@@ -53,7 +61,16 @@ export default function ExperienceTimeline({ companies }: Props) {
           </div>
           {jobs.map(
             (
-              { title, startDate, endDate, location, remote, summary, skills },
+              {
+                title,
+                employmentType,
+                startDate,
+                endDate,
+                location,
+                remote,
+                summary,
+                skills
+              },
               index
             ) => (
               <div
@@ -72,9 +89,10 @@ export default function ExperienceTimeline({ companies }: Props) {
                   }`}
                 >
                   <p className="font-bold">{title}</p>
-                  <p>Employment type</p>
+                  <p>{employmentType}</p>
                   <p className="mt-2 text-themeGray">
-                    {startDate} - {endDate ? endDate : "Present"}
+                    {formatDate(startDate)} -{" "}
+                    {endDate ? formatDate(endDate) : "Present"}
                   </p>
                   <p className="text-themeGray">
                     {remote ? "Remote" : location}
