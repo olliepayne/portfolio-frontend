@@ -32,13 +32,18 @@ async function getStrapiData(url: string, cache?: RequestCache) {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const {
-    seo: { titleTag, metaDescription }
-  } = await getStrapiData("/api/homepage?populate=seo")
+  const data = await getStrapiData("/api/homepage?populate=seo")
 
-  return {
-    title: titleTag,
-    description: metaDescription
+  if (data) {
+    return {
+      title: data.seo.titleTag,
+      description: data.seo.metaDescription
+    }
+  } else {
+    return {
+      title: "Title tag",
+      description: "Meta description"
+    }
   }
 }
 
@@ -128,7 +133,7 @@ export default async function Home() {
           <Heading level="h3" className="mb-4">
             Timeline
           </Heading>
-          <ExperienceTimeline companies={companies} />
+          {companies && <ExperienceTimeline companies={companies} />}
           <Heading level="h3" className="mt-16">
             Top Skills
           </Heading>
