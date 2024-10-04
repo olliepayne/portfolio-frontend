@@ -35,9 +35,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/homepage?populate=seo")
 
   if (data) {
+    const {
+      seo: { titleTag, metaDescription }
+    } = data
+
     return {
-      title: data.seo.titleTag,
-      description: data.seo.metaDescription
+      title: titleTag,
+      description: metaDescription
     }
   } else {
     return {
@@ -143,9 +147,9 @@ export default async function Home() {
       <section className="py-16">
         <Container>
           <Heading level="h2">Featured Projects</Heading>
-          <ul className="flex mt-4 gap-4">
-            {projects &&
-              projects.map(({ mainImage, name, summary, skills }) => (
+          {projects && (
+            <ul className="flex mt-4 gap-4">
+              {projects.map(({ mainImage, name, summary, skills }) => (
                 <li className="basis-1/3 shrink-0">
                   <ProjectCard
                     name={name}
@@ -155,7 +159,8 @@ export default async function Home() {
                   />
                 </li>
               ))}
-          </ul>
+            </ul>
+          )}
         </Container>
       </section>
     </main>
