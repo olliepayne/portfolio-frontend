@@ -1,3 +1,8 @@
+export interface StrapiImage {
+  url: string
+  alternativeText: string
+}
+
 export interface Skill {
   name: string
 }
@@ -19,4 +24,12 @@ export interface Company {
   name: string
   logo: StrapiImage
   jobs: Job[]
+}
+
+export interface Project {
+  name: string
+  slug: string
+  mainImage: StrapiImage
+  summary: string
+  skills: Skill[]
 }
