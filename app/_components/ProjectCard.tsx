@@ -1,36 +1,28 @@
 import Image from "next/image"
 import { getStrapiMedia } from "../utils/getStrapiMedia"
 import LinkButton from "./LinkButton"
-import { StrapiSkill } from "./ExperienceTimeline"
-import SkillTag from "./SkillTag"
-
-interface Props {
-  mainImage: string
-  name: string
-  summary: string
-  skills: StrapiSkill[]
-  className?: string
-}
+import SkillTag from "@/app/_components/SkillTag"
+import { Project } from "@/app/types"
 
 export default function ProjectCard({
-  mainImage,
   name,
+  slug,
+  mainImage,
   summary,
   skills,
-  className
-}: Props) {
+}: Project) {
   return (
-    <div className="relative">
-      <div className="relative w-full h-48">
+    <div className="relative shadow-lg rounded-lg">
+      <div className="relative w-full h-48 shadow-lg">
         <Image
-          src={getStrapiMedia(mainImage) as string}
-          alt=""
+          src={getStrapiMedia(mainImage.url) as string}
+          alt={mainImage.alternativeText}
           fill
-          className="top-0 left-0 w-full h-full"
+          className="top-0 left-0 w-full h-full rounded-lg"
           objectFit="cover"
         />
       </div>
-      <div className="py-2">
+      <div className="py-4 px-4">
         <p className="text-heading4Desktop font-bold">{name}</p>
         <p>{summary}</p>
         <div className="mt-4">
@@ -43,7 +35,7 @@ export default function ProjectCard({
             ))}
           </ul>
         </div>
-        <LinkButton href="#" text="View project" className="mt-4" />
+        <LinkButton href={`/projects/${slug}`} text="View project" className="mt-4" />
       </div>
     </div>
   )
