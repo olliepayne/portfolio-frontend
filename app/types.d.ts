@@ -16,9 +16,11 @@ export interface Job {
 
 export interface Company {
   name: string
-  logo: {
-    url: string
-    alternativeText: string
-  }
+  logo: StrapiImage
   jobs: Job[]
+}
+
+export interface StrapiImage {
+  url: string
+  alternativeText: string
 }
