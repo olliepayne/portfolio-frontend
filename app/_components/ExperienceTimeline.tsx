@@ -1,108 +1,150 @@
 import Image from "next/image"
 import SkillTag from "@/app/_components/SkillTag"
 import { getStrapiMedia } from "@/app/utils/getStrapiMedia"
-import { Company } from "@/app/types"
+import { Job } from "@/app/types"
 
 interface Props {
-  companies: Company[]
+  jobs: Job[]
 }
 
-export default function ExperienceTimeline({ companies }: Props) {
+export default function ExperienceTimeline({ jobs }: Props) {
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
     const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "medium" })
     return formatter.format(date)
   }
 
+  function getDuration(index: any) {
+    let endDate = jobs[index].stillHere
+      ? new Date()
+      : new Date(jobs[index].endDate)
+    let startDate = new Date(jobs[index].startDate)
+    if (index < jobs.length - 1) {
+      for (let i = index; i < jobs.length; i++) {
+        if (jobs[i].company.name !== jobs[index].company.name) {
+          startDate = new Date(jobs[i - 1].startDate)
+          break
+        }
+      }
+    }
+
+    const millisecondsDiff = endDate.getTime() - startDate.getTime()
+    const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
+    const years = Math.round(daysDiff / 365)
+    const months = Math.round((daysDiff % 365) / 30)
+    const formattedDuration = `${years > 0 ? `${years} yrs` : ""} ${months} mos`
+    return formattedDuration
+  }
+
+  function isNewCompanySection(index: number) {
+    if (
+      index === 0 ||
+      (index > 0 && jobs[index].company.name !== jobs[index - 1].company.name)
+    )
+      return true
+  }
+
+  function isLastJobInSection(index: number) {
+    if (
+      index < jobs.length - 1 &&
+      jobs[index].company.name === jobs[index + 1].company.name
+    )
+      return true
+  }
+
   return (
     <div>
-      {companies.map(({ name, logo, jobs }, index) => (
-        <div
-          key={`company-${index}`}
-          className={
-            index === 0
-              ? undefined
-              : "mt-8 pt-8 border-t-2 border-solid border-themeLightGray"
-          }
-        >
-          <div className="flex flex-row">
-            <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
-              {logo && (
-                <Image
-                  src={getStrapiMedia(logo.url) as string}
-                  alt={logo.alternativeText}
-                  fill
-                  objectFit="cover"
-                />
-              )}
-            </div>
-            <div className="ml-4">
-              <p className="font-bold">{name}</p>
-              <p className="text-themeGray">Duration</p>
-            </div>
-          </div>
-          {jobs.map(
-            (
-              {
-                title,
-                employmentType,
-                startDate,
-                endDate,
-                location,
-                remote,
-                summary,
-                skills
-              },
-              index
-            ) => (
+      {jobs.map(
+        (
+          {
+            title,
+            employmentType,
+            startDate,
+            endDate,
+            location,
+            remote,
+            summary,
+            skills,
+            company
+          },
+          index
+        ) => (
+          <div key={`timeline-entry-${index}`}>
+            {(index > 0 && company.name !== jobs[index - 1].company.name) ||
+            index === 0 ? (
               <div
-                key={`role-${index}`}
-                className={`flex flex-row ${index === 0 ? "mt-4" : undefined}`}
+                className={
+                  index === 0
+                    ? undefined
+                    : "mt-8 pt-8 border-t-2 border-solid border-themeLightGray"
+                }
               >
-                <div className="flex flex-col items-center basis-14 shrink-0">
-                  <span className="h-7 flex-shrink-0">
-                    <span className="align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray" />
-                  </span>
-                  <span className="w-0.5 h-full bg-themeLightGray" />
-                </div>
-                <div
-                  className={`pl-4 ${
-                    index < jobs.length - 1 ? "pb-8" : undefined
-                  }`}
-                >
-                  <p className="font-bold">{title}</p>
-                  <p>{employmentType}</p>
-                  <p className="mt-2 text-themeGray">
-                    {formatDate(startDate)} -{" "}
-                    {endDate ? formatDate(endDate) : "Present"}
-                  </p>
-                  <p className="text-themeGray">
-                    {remote ? "Remote" : location}
-                  </p>
-                  <p className="mt-4">{summary}</p>
-                  {skills && (
-                    <div className="mt-4">
-                      <span className="mr-2">Skills:</span>
-                      <ul className="inline-block">
-                        {skills.map(({ name }, index) => (
-                          <li
-                            key={`role-${index}-${name}`}
-                            className={`inline-block ${
-                              index < skills.length - 1 ? "mr-2" : undefined
-                            }`}
-                          >
-                            <SkillTag name={name} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                <div className="flex flex-row">
+                  <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
+                    {company.logo && (
+                      <Image
+                        src={getStrapiMedia(company.logo.url) as string}
+                        alt={company.logo.alternativeText}
+                        fill
+                        objectFit="cover"
+                      />
+                    )}
+                  </div>
+                  <div className="ml-4">
+                    <p className="font-bold">{company.name}</p>
+                    <p className="text-themeGray">{getDuration(index)}</p>
+                  </div>
                 </div>
               </div>
-            )
-          )}
-        </div>
-      ))}
+            ) : (
+              <></>
+            )}
+            <div
+              className={`flex flex-row ${
+                isNewCompanySection(index) ? "mt-4" : undefined
+              }`}
+            >
+              <div className="flex flex-col items-center basis-14 shrink-0">
+                <span className="h-7 flex-shrink-0">
+                  <span className="align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray" />
+                </span>
+                <span className="w-0.5 h-full bg-themeLightGray" />
+              </div>
+              <div
+                className={`pl-4 ${
+                  isLastJobInSection(index) ? "pb-8" : undefined
+                }`}
+              >
+                <p className="font-bold">{title}</p>
+                <p>{employmentType}</p>
+                <p className="mt-2 text-themeGray">
+                  {formatDate(startDate)} -{" "}
+                  {endDate ? formatDate(endDate) : "Present"}
+                </p>
+                <p className="text-themeGray">{remote ? "Remote" : location}</p>
+                <p className="mt-4">{summary}</p>
+                {skills && (
+                  <div className="mt-4">
+                    <span className="mr-2">Skills:</span>
+                    {/* <ul className="inline-block">
+                      {skills.map(({ name }, index) => (
+                        <li
+                          key={`role-${index}-${name}`}
+                          className={`inline-block ${
+                            index < skills.length - 1 ? "mr-2" : undefined
+                          }`}
+                        >
+                          <SkillTag name={name} />
+                        </li>
+                      ))}
+                    </ul> */}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )
+      )}
     </div>
   )
 }
