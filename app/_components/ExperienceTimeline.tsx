@@ -1,34 +1,10 @@
 import Image from "next/image"
-import SkillTag from "./SkillTag"
-import { getStrapiMedia } from "../utils/getStrapiMedia"
-
-export interface StrapiSkill {
-  name: string
-}
-
-interface StrapiJob {
-  title: string
-  employmentType: string
-  startDate: string
-  endDate?: string
-  stillHere: boolean
-  location: string
-  remote: boolean
-  summary: string
-  skills: StrapiSkill[]
-}
-
-interface StrapiCompany {
-  name: string
-  logo: {
-    url: string
-    alternativeText: string
-  }
-  jobs: StrapiJob[]
-}
+import SkillTag from "@/app/_components/SkillTag"
+import { getStrapiMedia } from "@/app/utils/getStrapiMedia"
+import { Company } from "@/app/types"
 
 interface Props {
-  companies: StrapiCompany[]
+  companies: Company[]
 }
 
 export default function ExperienceTimeline({ companies }: Props) {
@@ -51,12 +27,14 @@ export default function ExperienceTimeline({ companies }: Props) {
         >
           <div className="flex flex-row">
             <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
-              <Image
-                src={logo ? getStrapiMedia(logo.url) as string : ""}
-                alt=""
-                fill
-                objectFit="cover"
-              />
+              {logo && (
+                <Image
+                  src={logo ? (getStrapiMedia(logo.url) as string) : ""}
+                  alt={logo.alternativeText}
+                  fill
+                  objectFit="cover"
+                />
+              )}
             </div>
             <div className="ml-4">
               <p className="font-bold">{name}</p>
