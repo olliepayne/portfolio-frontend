@@ -20,23 +20,23 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header className="bg-charcoal text-white relative h-16 md:py-4 md:h-fit">
+    <header className="bg-charcoal text-white relative h-16 lg:py-4 lg:h-fit">
       <Container>
         <nav className="flex flex-row justify-between items-center h-full">
           <Link
             href="/"
-            className="text-heading5Desktop font-bold relative z-10 md:z-0 md:static"
+            className="text-heading5Desktop font-bold relative z-10 lg:z-0 lg:static"
           >
             Ollie Payne
           </Link>
-          <div className="bg-charcoal absolute left-0 top-0 max-h-screen flex justify-between pl-2 pt-16 pb-8 w-full md:h-fit md:p-0 md:static md:flex-row md:bg-transparent md:w-fit">
-            <ul className="flex flex-col md:flex-row">
+          <div className="bg-charcoal absolute left-0 top-0 max-h-screen flex justify-between pl-2 pt-16 pb-8 w-full lg:h-fit lg:p-0 lg:static lg:flex-row lg:bg-transparent lg:w-fit">
+            <ul className="flex flex-col lg:flex-row">
               {links.map(({ href, text }, index) => (
-                <li key={`nav-link-${index}`} className="mb-4 md:mb-0 md:mr-6">
+                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
                   <PrimaryLink href={href} text={text} />
                 </li>
               ))}
-              <li className="ml-2 md:m-0">
+              <li className="ml-2 lg:m-0">
                 <LinkButton href="#" text="Contact Me" />
               </li>
             </ul>
