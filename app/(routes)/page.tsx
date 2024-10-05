@@ -89,13 +89,13 @@ export default async function Home() {
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-full md:w-auto md:mt-0 md:ml-4">
-              <Blob className="absolute animate-blob fill-primary overflow-visible" />
+              <Blob className="absolute -right-6 -bottom-6 animate-blob fill-primary overflow-visible" />
               <Image
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
-                className="rounded-md [mask-image:url(/blob.svg)]"
+                className="rounded-md [mask-image:url(/blob.svg)] [mask-repeat:no-repeat] [mask-position:center]"
               />
             </div>
           </div>
