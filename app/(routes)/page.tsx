@@ -1,11 +1,11 @@
-import Container from "../_components/Container"
+import Container from "@/app/_components/Container"
 import Image from "next/image"
-import LinkButton from "../_components/LinkButton"
-import Divider from "../_components/Divider"
-import Heading from "../_components/Heading"
-import ExperienceTimeline from "../_components/ExperienceTimeline"
+import LinkButton from "@/app/_components/LinkButton"
+import Divider from "@/app/_components/Divider"
+import Heading from "@/app/_components/Heading"
+import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
-import ProjectCard from "../_components/ProjectCard"
+import ProjectCard from "@/app/_components/ProjectCard"
 
 const stats = [
   {
@@ -52,8 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const companies = await getStrapiData(
-    "/api/companies?populate[logo]=true&populate[jobs][populate]=skills&sort[0]=jobs.startDate:desc&sort[1]=jobs.stillHere:desc",
+  const jobs = await getStrapiData(
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
     "no-cache"
   )
 
@@ -137,7 +137,7 @@ export default async function Home() {
           <Heading level="h3" className="mb-4">
             Timeline
           </Heading>
-          {companies && <ExperienceTimeline companies={companies} />}
+          {jobs && <ExperienceTimeline jobs={jobs} />}
           <Heading level="h3" className="mt-16">
             Top Skills
           </Heading>
