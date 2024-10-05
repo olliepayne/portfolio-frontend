@@ -89,7 +89,7 @@ export default async function Home() {
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-full md:w-auto md:mt-0 md:ml-4">
-              <Blob className="absolute -right-6 -bottom-6 animate-blob fill-primary overflow-visible" />
+              <Blob variant={1} className="absolute -right-8 animate-blob fill-primary overflow-visible" />
               <Image
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
