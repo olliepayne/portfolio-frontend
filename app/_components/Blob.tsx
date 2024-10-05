@@ -1,11 +1,11 @@
 interface Props {
-  variant: 1 | 2
+  variant: "primary" | "secondary"
   className?: string
 }
 
 export default function Blob({ variant, className }: Props) {
   switch (variant) {
-    case 1:
+    case "primary":
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ export default function Blob({ variant, className }: Props) {
           />
         </svg>
       )
-    case 2:
+    case "secondary":
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
