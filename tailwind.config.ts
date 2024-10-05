@@ -37,18 +37,15 @@ const config: Config = {
             transform: "scale(1, 1)"
           },
           "25%": {
-            transform: "scaleX(1.075)"
+            transform: "scaleX(1.1)"
           },
           "50%": {
-            transform: "scaleY(1.1)"
-          },
-          "75%": {
-            transform: "scaleX(1.05)"
+            transform: "scaleY(1.2)"
           }
         }
       },
       animation: {
-        blob: "blob 10s ease-in-out infinite"
+        blob: "blob 15s ease-in-out infinite"
       }
     }
   },
