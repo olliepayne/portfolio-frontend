@@ -30,6 +30,25 @@ const config: Config = {
         heading4Desktop: "1.56rem",
         heading5Desktop: "1.25rem",
         body: "1rem"
+      },
+      keyframes: {
+        blob: {
+          "0%, 100%": {
+            transform: "scale(1, 1)"
+          },
+          "25%": {
+            transform: "scaleX(1.075)"
+          },
+          "50%": {
+            transform: "scaleY(1.1)"
+          },
+          "75%": {
+            transform: "scaleX(1.05)"
+          }
+        }
+      },
+      animation: {
+        blob: "blob 10s ease-in-out infinite"
       }
     }
   },
