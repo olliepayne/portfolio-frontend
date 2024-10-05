@@ -29,7 +29,7 @@ export default function ExperienceTimeline({ companies }: Props) {
             <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
               {logo && (
                 <Image
-                  src={logo ? (getStrapiMedia(logo.url) as string) : ""}
+                  src={getStrapiMedia(logo.url) as string}
                   alt={logo.alternativeText}
                   fill
                   objectFit="cover"
@@ -80,27 +80,23 @@ export default function ExperienceTimeline({ companies }: Props) {
                     {remote ? "Remote" : location}
                   </p>
                   <p className="mt-4">{summary}</p>
-                  <div className="mt-4">
-                    {skills?.length > 0 ? (
-                      <>
-                        <span className="mr-2">Skills:</span>
-                        <ul className="inline-block">
-                          {skills.map(({ name }, index) => (
-                            <li
-                              key={`role-${index}-${name}`}
-                              className={`inline-block ${
-                                index < skills.length - 1 ? "mr-2" : undefined
-                              }`}
-                            >
-                              <SkillTag name={name} />
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
+                  {skills && (
+                    <div className="mt-4">
+                      <span className="mr-2">Skills:</span>
+                      <ul className="inline-block">
+                        {skills.map(({ name }, index) => (
+                          <li
+                            key={`role-${index}-${name}`}
+                            className={`inline-block ${
+                              index < skills.length - 1 ? "mr-2" : undefined
+                            }`}
+                          >
+                            <SkillTag name={name} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             )
