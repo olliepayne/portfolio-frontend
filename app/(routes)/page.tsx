@@ -6,6 +6,7 @@ import Heading from "@/app/_components/Heading"
 import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
 import ProjectCard from "@/app/_components/ProjectCard"
+import Blob from "@/app/_components/Blob"
 
 const stats = [
   {
@@ -64,7 +65,7 @@ export default async function Home() {
       <section className="py-16">
         <Container>
           <div className="flex flex-col justify-between items-center md:flex-row">
-            <div className="basis-1/2 mr-0 md:mr-4">
+            <div className="basis-1/2 grow-0 mr-0 md:mr-4">
               <Heading level="h1">👋 I'm Ollie</Heading>
               <p className="mt-4">
                 I am a Frontend developer, SEO Analyst, and avid sport climber
@@ -87,12 +88,14 @@ export default async function Home() {
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/2 aspect-square w-full border-solid border-2 border-primary drop-shadow-md md:w-auto md:mt-0 md:ml-4">
+            <div className="relative mt-16 basis-1/3 aspect-square w-full md:w-auto md:mt-0 md:ml-4">
+              <Blob className="absolute animate-blob fill-primary overflow-visible" />
               <Image
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
+                className="rounded-md [mask-image:url(/blob.svg)]"
               />
             </div>
           </div>
