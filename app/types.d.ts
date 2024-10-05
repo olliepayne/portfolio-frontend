@@ -7,7 +7,6 @@ export interface Job {
   employmentType: string
   startDate: string
   endDate?: string
-  stillHere: boolean
   location: string
   remote: boolean
   summary: string
