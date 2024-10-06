@@ -31,8 +31,14 @@ const config: Config = {
         heading5Desktop: "1.25rem",
         body: "1rem"
       },
+      dropShadow: {
+        "xl-darker": [
+          "0 20px 13px rgb(0 0 0 / 0.1)",
+          " 0 8px 5px rgb(0 0 0 / 0.25)"
+        ]
+      },
       keyframes: {
-        blob: {
+        blobXToY: {
           "0%, 100%": {
             transform: "scale(1, 1)"
           },
@@ -42,10 +48,22 @@ const config: Config = {
           "50%": {
             transform: "scaleY(1.2)"
           }
+        },
+        blobYToX: {
+          "0%, 100%": {
+            transform: "scale(1, 1)"
+          },
+          "25%": {
+            transform: "scaleY(1.1)"
+          },
+          "50%": {
+            transform: "scaleX(1.2)"
+          }
         }
       },
       animation: {
-        blob: "blob 15s ease-in-out infinite"
+        blobXToY: "blobXToY 15s ease-in-out infinite",
+        blobYToX: "blobYToX 15s ease-in-out infinite"
       }
     }
   },
