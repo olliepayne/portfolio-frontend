@@ -37,16 +37,19 @@ const config: Config = {
           " 0 8px 5px rgb(0 0 0 / 0.25)"
         ]
       },
+      gridTemplateColumns: {
+        "3-auto": "repeat(auto-fill, minmax(300px, 33%))"
+      },
       keyframes: {
         blobXToY: {
           "0%, 100%": {
             transform: "scale(1, 1)"
           },
           "25%": {
-            transform: "scaleX(1.1)"
+            transform: "scaleX(1.1) rotateZ(10deg)"
           },
-          "50%": {
-            transform: "scaleY(1.2)"
+          "75%": {
+            transform: "scaleY(1.2) rotateZ(-10deg)"
           }
         },
         blobYToX: {
