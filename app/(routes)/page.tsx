@@ -8,6 +8,7 @@ import { Metadata } from "next"
 import ProjectCard from "@/app/_components/ProjectCard"
 import Blob from "@/app/_components/Blob"
 import { Project } from "@/app/types"
+import getStrapiData from "@/app/helpers/getStrapiData"
 
 const stats = [
   {
@@ -19,19 +20,6 @@ const stats = [
     value: "25+"
   }
 ]
-
-async function getStrapiData(url: string, cache?: RequestCache) {
-  const baseUrl = "http://localhost:1337"
-  try {
-    const response = await fetch(baseUrl + url, {
-      cache
-    })
-    const { data } = await response.json()
-    return data
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/homepage?populate=seo")
@@ -63,7 +51,7 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="py-16">
+      <section className="py-16 overflow-hidden">
         <Container>
           <div className="flex flex-col justify-between items-center lg:flex-row">
             <div className="basis-1/2 grow-0 mr-0 lg:mr-4">
@@ -89,7 +77,7 @@ export default async function Home() {
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/3 aspect-square w-full lg:w-auto lg:mt-0 lg:ml-4">
+            <div className="relative mt-16 basis-1/3 aspect-square w-1/2 lg:w-auto lg:mt-0 lg:ml-4">
               <Blob
                 variant="primary"
                 className="absolute -right-8 animate-blobXToY fill-primary overflow-visible"
@@ -117,7 +105,7 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative basis-1/3 w-full aspect-square mt-16 lg:w-auto lg:mt-0 lg:mr-4">
+            <div className="relative basis-1/3 w-1/2 aspect-square mt-16 lg:w-auto lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
@@ -145,7 +133,11 @@ export default async function Home() {
         </Container>
       </section>
       <Divider />
-      <section id="experience" className="py-16 relative">
+      <section className="py-16 relative">
+        <a
+          id="experience"
+          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+        />
         <Container variant="narrow">
           <div className="text-center mb-8">
             <Heading level="h2">Experience</Heading>
@@ -160,7 +152,11 @@ export default async function Home() {
         </Container>
       </section>
       <Divider />
-      <section className="py-16">
+      <section className="py-16 relative">
+        <a
+          id="projects"
+          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+        />
         <Container>
           <Heading level="h2">Featured Projects</Heading>
           <p>
@@ -168,7 +164,8 @@ export default async function Home() {
             professional.
           </p>
           {projects && (
-            <ul className="flex mt-8 gap-4">
+            // <ul className="flex mt-8 gap-4">
+            <ul className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3-auto">
               {projects.map((project: Project, index: number) => (
                 <li key={`project-${index}`} className="basis-1/3 shrink-0">
                   <ProjectCard {...project} />
