@@ -62,8 +62,8 @@ const config: Config = {
         }
       },
       animation: {
-        blobXToY: "blobXToY 15s ease-in-out infinite",
-        blobYToX: "blobYToX 15s ease-in-out infinite"
+        blobXToY: "blobXToY 10s ease-in-out infinite",
+        blobYToX: "blobYToX 10s ease-in-out infinite"
       }
     }
   },

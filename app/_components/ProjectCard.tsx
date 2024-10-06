@@ -1,6 +1,6 @@
 import Image from "next/image"
-import { getStrapiMedia } from "../utils/getStrapiMedia"
-import LinkButton from "./LinkButton"
+import { getStrapiMedia } from "@/app/utils/getStrapiMedia"
+import LinkButton from "@/app/_components/LinkButton"
 import SkillTag from "@/app/_components/SkillTag"
 import { Project } from "@/app/types"
 
@@ -9,7 +9,7 @@ export default function ProjectCard({
   slug,
   mainImage,
   summary,
-  skills,
+  skills
 }: Project) {
   return (
     <div className="relative shadow-lg rounded-lg">
@@ -26,16 +26,21 @@ export default function ProjectCard({
         <p className="text-heading4Desktop font-bold">{name}</p>
         <p>{summary}</p>
         <div className="mt-4">
-          <span className="mr-2">Skills:</span>
-          <ul className="inline-flex flex-wrap">
-            {skills.map((skill) => (
-              <li key={`project-${name}-${skill.name}`} className="mr-2">
-                <SkillTag href={"#"} name={skill.name} />
-              </li>
-            ))}
-          </ul>
+          {skills && (
+            <ul className="inline-flex flex-wrap">
+              {skills.map((skill) => (
+                <li key={`project-${name}-${skill.name}`} className="mr-2">
+                  <SkillTag href={"#"} name={skill.name} />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-        <LinkButton href={`/projects/${slug}`} text="View project" className="mt-4" />
+        <LinkButton
+          href={`/projects/${slug}`}
+          text="View project"
+          className="mt-4"
+        />
       </div>
     </div>
   )
