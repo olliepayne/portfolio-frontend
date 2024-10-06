@@ -36,7 +36,7 @@ export default function Navbar() {
           >
             Ollie Payne
           </Link>
-          <div className={`bg-charcoal border-solid border-t-2 border-primary absolute transition-all left-0 top-16 overflow-hidden ${navIsOpen ? "max-h-screen" : "max-h-0"} flex justify-between pl-4 pt-16 pb-8 w-full lg:overflow-auto lg:border-none lg:h-fit lg:p-0 lg:static lg:flex-row lg:bg-transparent lg:w-fit`}>
+          <div className={`bg-charcoal border-solid border-t-2 border-primary absolute transition-all left-0 top-16 overflow-hidden ${navIsOpen ? "flex" : "none"} h-screen justify-between pl-4 pt-4 pb-8 w-full lg:flex lg:overflow-auto lg:border-none lg:h-fit lg:p-0 lg:static lg:flex-row lg:bg-transparent lg:w-fit`}>
             <ul className="flex flex-col lg:items-center lg:flex-row">
               {links.map(({ href, text }, index) => (
                 <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
