@@ -7,12 +7,15 @@ interface Props extends Skill {
 }
 
 export default function SkillTag({ href, name }: Props) {
+  const regex = /[?.#()-]/g
+  const formattedName = `#${name.toLowerCase().replace(regex, "")}`
+
   return (
     <Link
       href={href}
-      className="text-sm inline-block px-1 py-0.5 border-2 border-black transition-all  hover:text-white hover:bg-black"
+      className="inline-block bg-black text-white text-xs py-0.5 px-1"
     >
-      {name}
+      {formattedName}
     </Link>
   )
 }
