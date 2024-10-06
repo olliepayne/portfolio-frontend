@@ -126,18 +126,18 @@ export default function ExperienceTimeline({ jobs }: Props) {
                 {skills && (
                   <div className="mt-4">
                     <span className="mr-2">Skills:</span>
-                    {/* <ul className="inline-block">
-                      {skills.map(({ name }, index) => (
+                    <ul className="inline-block">
+                      {skills.map((skill, index) => (
                         <li
-                          key={`role-${index}-${name}`}
+                          key={`title-${title}-${skill.name}`}
                           className={`inline-block ${
                             index < skills.length - 1 ? "mr-2" : undefined
                           }`}
                         >
-                          <SkillTag name={name} />
+                          <SkillTag href={"#"} name={skill.name} />
                         </li>
                       ))}
-                    </ul> */}
+                    </ul>
                   </div>
                 )}
               </div>
