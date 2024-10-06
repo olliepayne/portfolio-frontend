@@ -28,9 +28,9 @@ export default function ProjectCard({
         <div className="mt-4">
           <span className="mr-2">Skills:</span>
           <ul className="inline-flex flex-wrap">
-            {skills.map(({ name }) => (
-              <li className="mr-2">
-                <SkillTag name={name} />
+            {skills.map((skill) => (
+              <li key={`project-${name}-${skill.name}`} className="mr-2">
+                <SkillTag href={"#"} name={skill.name} />
               </li>
             ))}
           </ul>
