@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { getStrapiMedia } from "@/app/utils/getStrapiMedia"
+import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 import LinkButton from "@/app/_components/LinkButton"
 import SkillTag from "@/app/_components/SkillTag"
 import { Project } from "@/app/types"
