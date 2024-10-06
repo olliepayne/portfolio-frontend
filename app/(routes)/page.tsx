@@ -7,6 +7,7 @@ import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
 import ProjectCard from "@/app/_components/ProjectCard"
 import Blob from "@/app/_components/Blob"
+import { Project } from "@/app/types"
 
 const stats = [
   {
@@ -54,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const jobs = await getStrapiData(
-    "/api/jobs?populate[0]=company&populate[1]=company.logo&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
     "no-cache"
   )
 
@@ -89,13 +90,20 @@ export default async function Home() {
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-full md:w-auto md:mt-0 md:ml-4">
-              <Blob variant={1} className="absolute -right-8 animate-blob fill-primary overflow-visible" />
+              <Blob
+                variant="primary"
+                className="absolute -right-8 animate-blobXToY fill-primary overflow-visible"
+              />
+              <Blob
+                variant="image"
+                className="drop-shadow-xl-darker absolute h-full w-full"
+              />
               <Image
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
-                className="rounded-md [mask-image:url(/blob.svg)] [mask-repeat:no-repeat] [mask-position:center]"
+                className="rounded-md z-10 [mask-image:url('/svgs/blob.svg')] [mask-repeat:no-repeat] [mask-position:center]"
               />
             </div>
           </div>
@@ -105,13 +113,14 @@ export default async function Home() {
       <section id="about" className="py-16">
         <Container>
           <div className="flex flex-col-reverse justify-between items-center md:flex-row">
-            <div className="relative basis-1/2 aspect-square w-full mt-16 md:w-auto md:mt-0 md:mr-4">
+            <div className="relative basis-1/3 w-full aspect-square mt-16 md:w-auto md:mt-0 md:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
                 objectPosition="0 0"
+                className="rounded-lg drop-shadow-xl-darker"
               />
             </div>
             <div className="basis-1/2 md:ml-4">
@@ -132,7 +141,7 @@ export default async function Home() {
         </Container>
       </section>
       <Divider />
-      <section id="experience" className="py-16">
+      <section id="experience" className="py-16 relative">
         <Container variant="narrow">
           <div className="text-center mb-8">
             <Heading level="h2">Experience</Heading>
@@ -147,25 +156,24 @@ export default async function Home() {
         </Container>
       </section>
       <Divider />
-      {/* <section className="py-16">
+      <section className="py-16">
         <Container>
           <Heading level="h2">Featured Projects</Heading>
+          <p>
+            Some of my favorite projects I've worked on, both personal and
+            professional.
+          </p>
           {projects && (
-            <ul className="flex mt-4 gap-4">
-              {projects.map(({ mainImage, name, summary, skills }) => (
-                <li className="basis-1/3 shrink-0">
-                  <ProjectCard
-                    name={name}
-                    summary={summary}
-                    mainImage={mainImage.url}
-                    skills={skills}
-                  />
+            <ul className="flex mt-8 gap-4">
+              {projects.map((project: Project, index: number) => (
+                <li key={`project-${index}`} className="basis-1/3 shrink-0">
+                  <ProjectCard {...project} />
                 </li>
               ))}
             </ul>
           )}
         </Container>
-      </section> */}
+      </section>
     </main>
   )
 }
