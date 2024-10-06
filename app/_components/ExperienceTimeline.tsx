@@ -1,6 +1,6 @@
 import Image from "next/image"
 import SkillTag from "@/app/_components/SkillTag"
-import { getStrapiMedia } from "@/app/utils/getStrapiMedia"
+import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 import { Job } from "@/app/types"
 
 interface Props {
@@ -123,7 +123,7 @@ export default function ExperienceTimeline({ jobs }: Props) {
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
                 <p className="mt-4">{summary}</p>
-                {skills && (
+                {skills.length > 0 && (
                   <ul className="inline-block mt-4">
                     {skills.map((skill, index) => (
                       <li
