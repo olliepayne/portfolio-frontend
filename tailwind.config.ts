@@ -40,6 +40,9 @@ const config: Config = {
       gridTemplateColumns: {
         "3-auto": "repeat(auto-fill, minmax(300px, 33%))"
       },
+      transitionTimingFunction: {
+        bounce: "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+      },
       keyframes: {
         blobXToY: {
           "0%, 100%": {
