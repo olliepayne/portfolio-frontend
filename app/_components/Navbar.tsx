@@ -23,9 +23,9 @@ const links = [
 export default function Navbar() {
   const [navIsOpen, setNavIsOpen] = useState(false)
   function toggleNav() {
-    const newState = !navIsOpen
-    if (newState) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = "auto"
+    // const newState = !navIsOpen
+    // if (newState) document.body.style.overflow = "hidden"
+    // else document.body.style.overflow = "auto"
 
     setNavIsOpen(!navIsOpen)
   }
@@ -68,12 +68,24 @@ export default function Navbar() {
             </ul>
           </div>
           <button
-            className="w-8 h-5 flex flex-col justify-between lg:hidden"
+            className="w-8 h-6 relative group lg:hidden"
             onClick={toggleNav}
           >
-            <span className="rounded-full inline-block h-0.5 w-full bg-white" />
-            <span className="rounded-full inline-block h-0.5 w-full bg-white" />
-            <span className="rounded-full inline-block h-0.5 w-full bg-white" />
+            <span
+              className={`rounded-full inline-block absolute top-0 left-0 h-0.5 w-full transition-all bg-white origin-center ${
+                navIsOpen ? "translate-y-3 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`rounded-full inline-block absolute top-1/2 left-0 h-0.5 w-full transition-all bg-white origin-center ${
+                navIsOpen ? "scale-x-0" : "scale-x-100"
+              }`}
+            />
+            <span
+              className={`rounded-full inline-block absolute top-full left-0 h-0.5 w-full transition-all bg-white origin-center ${
+                navIsOpen ? "-translate-y-3 -rotate-45" : ""
+              }`}
+            />
           </button>
         </nav>
       </Container>
