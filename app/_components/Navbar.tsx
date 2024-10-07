@@ -67,23 +67,20 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <button
-            className="w-8 h-6 relative group lg:hidden"
-            onClick={toggleNav}
-          >
+          <button className="w-8 h-6 relative lg:hidden" onClick={toggleNav}>
             <span
               className={`rounded-full inline-block absolute top-0 left-0 h-0.5 w-full transition-all bg-white origin-center ${
-                navIsOpen ? "translate-y-3 rotate-45" : ""
+                navIsOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""
               }`}
             />
             <span
-              className={`rounded-full inline-block absolute top-1/2 left-0 h-0.5 w-full transition-all bg-white origin-center ${
+              className={`rounded-full inline-block absolute top-1/2 -translate-y-1/2 left-0 h-0.5 w-full transition-all bg-white origin-center ${
                 navIsOpen ? "scale-x-0" : "scale-x-100"
               }`}
             />
             <span
-              className={`rounded-full inline-block absolute top-full left-0 h-0.5 w-full transition-all bg-white origin-center ${
-                navIsOpen ? "-translate-y-3 -rotate-45" : ""
+              className={`rounded-full inline-block absolute bottom-0 left-0 h-0.5 w-full transition-all bg-white origin-center ${
+                navIsOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""
               }`}
             />
           </button>
