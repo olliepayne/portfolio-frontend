@@ -160,7 +160,7 @@ export default async function Home() {
         <Container>
           <Heading level="h2">Featured Projects</Heading>
           <p>
-            Some of my favorite projects I've worked on, both personal and
+            What I've been working on, both personal and
             professional.
           </p>
           {projects && (
