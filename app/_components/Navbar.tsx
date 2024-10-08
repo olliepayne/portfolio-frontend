@@ -34,6 +34,9 @@ export default function Navbar() {
     const newState = !navIsOpen
     setNavIsOpen(newState)
   }
+  function closeNav() {
+    if (isMobile) setNavIsOpen(false)
+  }
 
   function checkWindowSize() {
     if (window.innerWidth >= 1024) {
@@ -44,6 +47,8 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    checkWindowSize()
+
     window.addEventListener("resize", checkWindowSize)
 
     return () => {
@@ -60,6 +65,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="text-heading5Desktop font-bold relative z-10 lg:z-0 lg:static"
+            onClick={closeNav}
           >
             Ollie Payne
           </Link>
@@ -76,6 +82,7 @@ export default function Navbar() {
                   <Link
                     href={href}
                     className="inline-block hover:text-gray-300 transition-all"
+                    onClick={closeNav}
                   >
                     {text}
                   </Link>
@@ -86,6 +93,7 @@ export default function Navbar() {
                   href="#"
                   text="Contact Me"
                   className="hover:text-black"
+                  onClick={closeNav}
                 />
               </li>
             </ul>
