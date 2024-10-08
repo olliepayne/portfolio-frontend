@@ -3,7 +3,7 @@
 import Link from "next/link"
 import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const links = [
   {
@@ -21,14 +21,37 @@ const links = [
 ]
 
 export default function Navbar() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  function handleBodyScroll() {
+    if (!navIsOpen) document.body.style.overflow = "auto"
+    else if (isMobile && navIsOpen) document.body.style.overflow = "hidden"
+    else if (!isMobile) document.body.style.overflow = "auto"
+  }
+
   const [navIsOpen, setNavIsOpen] = useState(false)
   function toggleNav() {
-    // const newState = !navIsOpen
-    // if (newState) document.body.style.overflow = "hidden"
-    // else document.body.style.overflow = "auto"
-
-    setNavIsOpen(!navIsOpen)
+    const newState = !navIsOpen
+    setNavIsOpen(newState)
   }
+
+  function checkWindowSize() {
+    if (window.innerWidth >= 1024) {
+      setIsMobile(false)
+    } else if (window.innerWidth < 1024) {
+      setIsMobile(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", checkWindowSize)
+
+    return () => {
+      window.removeEventListener("resize", checkWindowSize)
+    }
+  }, [])
+
+  useEffect(handleBodyScroll, [isMobile, navIsOpen])
 
   return (
     <header className="bg-charcoal text-white sticky top-0 z-50 h-16">
