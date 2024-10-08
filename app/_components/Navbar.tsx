@@ -31,7 +31,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="bg-charcoal text-white sticky top-0 z-50 h-16 lg:py-4 lg:h-fit">
+    <header className="bg-charcoal text-white sticky top-0 z-50 h-16">
       <Container>
         <nav className="flex flex-row justify-between items-center h-full">
           <Link
@@ -52,7 +52,7 @@ export default function Navbar() {
                 <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
                   <Link
                     href={href}
-                    className="inline-block hover:opacity-75 transition-opacity"
+                    className="inline-block hover:text-gray-300 transition-all"
                   >
                     {text}
                   </Link>
