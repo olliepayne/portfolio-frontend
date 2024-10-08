@@ -65,7 +65,9 @@ export default async function Home() {
                   {stats.map(({ metricText, value }, index) => (
                     <li key={`intro-stat-${index}`}>
                       <div>
-                        <span className="text-xl font-bold">{value}</span>
+                        <span className="text-heading3Mobile font-bold lg:text-heading3Desktop">
+                          {value}
+                        </span>
                         <p>{metricText}</p>
                       </div>
                     </li>
@@ -77,7 +79,7 @@ export default async function Home() {
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/3 aspect-square w-1/2 lg:w-auto lg:mt-0 lg:ml-4">
+            <div className="relative mt-16 basis-1/3 aspect-square w-3/4 lg:w-auto lg:mt-0 lg:ml-4">
               <Blob
                 variant="primary"
                 className="absolute -right-8 animate-blobXToY fill-primary overflow-visible"
@@ -105,7 +107,7 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative basis-1/3 w-1/2 aspect-square mt-16 lg:w-auto lg:mt-0 lg:mr-4">
+            <div className="relative basis-1/3 w-3/4 aspect-square mt-16 lg:w-auto lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
@@ -159,10 +161,7 @@ export default async function Home() {
         />
         <Container>
           <Heading level="h2">Featured Projects</Heading>
-          <p>
-            What I've been working on, both personal and
-            professional.
-          </p>
+          <p>What I've been working on, both personal and professional.</p>
           {projects && (
             // <ul className="flex mt-8 gap-4">
             <ul className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3-auto">
