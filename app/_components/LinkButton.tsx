@@ -3,15 +3,19 @@ import Link from "next/link"
 interface Props {
   href: string
   text: string
+  variant?: "primary" | "secondary"
   className?: string
 }
 
-export default function LinkButton({ href, text, className }: Props) {
+export default function LinkButton({ href, text, variant, className }: Props) {
   return (
     <Link
       href={href}
-      className={`inline-block relative px-2 py-1 z-20 border-primary border-solid border-2 transition-all
-        hover:bg-primary ${className}`}
+      className={`inline-block relative z-20 ${
+        variant === "primary" || variant === undefined
+          ? "px-2 py-1 border-primary hover:bg-primary"
+          : "px-1 py-0.5 border-charcoal hover:bg-charcoal hover:text-white"
+      } border-solid border-2 transition-all ${className}`}
     >
       {text}
     </Link>
