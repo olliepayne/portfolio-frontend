@@ -13,7 +13,7 @@ export default function ProjectCard({
 }: Project) {
   return (
     <div className="relative shadow-lg rounded-lg">
-      <div className="relative w-full h-48 shadow-lg">
+      <div className="relative w-full h-48 shadow-lg rounded-lg">
         <Image
           src={getStrapiMedia(mainImage.url) as string}
           alt={mainImage.alternativeText}
