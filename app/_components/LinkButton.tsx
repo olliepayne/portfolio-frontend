@@ -1,15 +1,16 @@
-import Link from "next/link"
+import Link, { LinkProps } from "next/link"
 
-interface Props {
+interface Props extends LinkProps {
   href: string
   text: string
   variant?: "primary" | "secondary"
   className?: string
 }
 
-export default function LinkButton({ href, text, variant, className }: Props) {
+export default function LinkButton({ href, text, variant, className, ...props }: Props) {
   return (
     <Link
+      {...props}
       href={href}
       className={`inline-block relative z-20 ${
         variant === "primary" || variant === undefined
