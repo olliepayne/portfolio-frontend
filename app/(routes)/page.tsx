@@ -142,7 +142,7 @@ export default async function Home() {
         />
         <Container>
           <Heading level="h2">Featured Projects</Heading>
-          <p>What I've been working on, both personal and professional.</p>
+          <p>What I've worked on, both personal and professional.</p>
           {projects && (
             <ul className="grid mt-8 gap-4 auto-rows-[250px] lg:grid-cols-2">
               {projects.map((project: Project, index: number) => (
