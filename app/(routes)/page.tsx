@@ -109,7 +109,7 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative basis-[400px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:w-auto lg:h-[400px] lg:mt-0 lg:mr-4">
+            <div className="relative basis-[500px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:w-auto lg:h-[500px] lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
@@ -144,9 +144,14 @@ export default async function Home() {
           <Heading level="h2">Featured Projects</Heading>
           <p>What I've been working on, both personal and professional.</p>
           {projects && (
-            <ul className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3-auto">
+            <ul className="grid mt-8 gap-4 auto-rows-[250px] lg:grid-cols-2">
               {projects.map((project: Project, index: number) => (
-                <li key={`project-${index}`} className="basis-1/3 shrink-0">
+                <li
+                  key={`project-${index}`}
+                  className={`${
+                    index === 0 ? "row-[span_2_/_auto]" : undefined
+                  }`}
+                >
                   <ProjectCard {...project} />
                 </li>
               ))}
