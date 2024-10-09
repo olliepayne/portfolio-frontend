@@ -4,6 +4,8 @@ import getStrapiData from "@/app/helpers/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import SectionNav from "@/app/_components/SectionNav"
+import Image from "next/image"
+import SkillTagsList from "@/app/_components/SkillTagsList"
 
 export async function generateStaticParams() {
   const projects: Project[] = await getStrapiData("/api/projects", "no-cache")
@@ -18,24 +20,61 @@ interface Props {
 }
 
 export default async function ProjectSlugPage({ params }: Props) {
-  const [{ name }]: Project[] = await getStrapiData(
-    `/api/projects?filters[slug][$eq]=${params.slug}`
+  const [{ name, mainImage, summary, skills }]: Project[] = await getStrapiData(
+    `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
   )
 
   return (
     <main className="">
-      <Container variant="narrow">
-        <Heading level="h1">{name}</Heading>
-        <SectionNav />
-        <Heading level="h2">Goals</Heading>
-        <div className="[min-height:500px]" />
-        <Heading level="h2">Strategy</Heading>
-        <div className="[min-height:500px]" />
-        <Heading level="h2">Results</Heading>
-        <div className="[min-height:500px]" />
-        <Heading level="h2">Lessons</Heading>
-        <div className="[min-height:500px]" />
-      </Container>
+      <section className="relative z-30 py-32 text-white">
+        <Container>
+          <Image
+            src={getStrapiMedia(mainImage.url) as string}
+            alt={mainImage.alternativeText}
+            fill
+            objectFit="cover"
+            className="-z-20"
+          />
+          <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
+          <div className="flex flex-col justify-center">
+            <Heading level="h1">{name}</Heading>
+            <p>{summary}</p>
+            <SkillTagsList skills={skills} className="mt-4" />
+          </div>
+        </Container>
+      </section>
+      <section className="text-white bg-charcoal pt-16 pb-64">
+        <Container>
+          <Heading level="h2">Request</Heading>
+          <div className="border-l-4 border-themeLightGray border-solid pl-2">
+            <p>Text</p>
+          </div>
+        </Container>
+      </section>
+      <section className="pb-16 pt-64 relative">
+        <Container variant="narrow">
+          <div className="absolute mx-4 w-full max-w-[768px] h-[384px] -top-48 left-1/2 -translate-x-1/2">
+            <Image
+              src={getStrapiMedia(mainImage.url) as string}
+              alt={mainImage.alternativeText}
+              fill
+              objectFit="cover"
+            />
+          </div>
+          <Heading level="h2">Strategy</Heading>
+          <div className="border-l-4 border-themeLightGray border-solid pl-2">
+            <p>Summary</p>
+          </div>
+        </Container>
+      </section>
+      <section className="py-16 bg-charcoal text-white">
+        <Container>
+          <Heading level="h2">Results</Heading>
+          <div className="border-l-4 border-primary border-solid pl-2">
+            <p>Results</p>
+          </div>
+        </Container>
+      </section>
     </main>
   )
 }
