@@ -1,7 +1,6 @@
 import Container from "@/app/_components/Container"
 import Image from "next/image"
 import LinkButton from "@/app/_components/LinkButton"
-import Divider from "@/app/_components/Divider"
 import Heading from "@/app/_components/Heading"
 import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
@@ -51,7 +50,7 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="py-16 overflow-hidden">
+      <section className="py-16 overflow-hidden bg-charcoal text-white">
         <Container>
           <div className="flex flex-col justify-between items-center lg:flex-row">
             <div className="basis-1/2 grow-0 mr-0 lg:mr-4">
@@ -75,11 +74,15 @@ export default async function Home() {
                 </ul>
               </div>
               <div>
-                <LinkButton href="#" text="Contact Me" className="mr-4" />
+                <LinkButton
+                  href="#"
+                  text="Contact Me"
+                  className="mr-4 hover:text-black"
+                />
                 <p className="inline-block">My projects</p>
               </div>
             </div>
-            <div className="relative mt-16 basis-1/3 aspect-square w-3/4 lg:w-auto lg:mt-0 lg:ml-4">
+            <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
               <Blob
                 variant="primary"
                 className="absolute -right-8 animate-blobXToY fill-primary overflow-visible"
@@ -99,22 +102,20 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <Divider />
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <a
           id="about"
           className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative basis-1/3 w-3/4 aspect-square mt-16 lg:w-auto lg:mt-0 lg:mr-4">
+            <div className="relative basis-[400px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:w-auto lg:h-[400px] lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
                 fill
                 objectFit="cover"
-                objectPosition="0 0"
-                className="rounded-lg drop-shadow-xl-darker"
+                objectPosition="center 10%"
               />
             </div>
             <div className="basis-1/2 lg:ml-4">
@@ -134,7 +135,25 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <Divider />
+      <section className="py-16 relative bg-charcoal text-white">
+        <a
+          id="projects"
+          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+        />
+        <Container>
+          <Heading level="h2">Featured Projects</Heading>
+          <p>What I've been working on, both personal and professional.</p>
+          {projects && (
+            <ul className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3-auto">
+              {projects.map((project: Project, index: number) => (
+                <li key={`project-${index}`} className="basis-1/3 shrink-0">
+                  <ProjectCard {...project} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </Container>
+      </section>
       <section className="py-16 relative">
         <a
           id="experience"
@@ -151,27 +170,6 @@ export default async function Home() {
           <Heading level="h3" className="mt-16">
             Top Skills
           </Heading>
-        </Container>
-      </section>
-      <Divider />
-      <section className="py-16 relative">
-        <a
-          id="projects"
-          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
-        />
-        <Container>
-          <Heading level="h2">Featured Projects</Heading>
-          <p>What I've been working on, both personal and professional.</p>
-          {projects && (
-            // <ul className="flex mt-8 gap-4">
-            <ul className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3-auto">
-              {projects.map((project: Project, index: number) => (
-                <li key={`project-${index}`} className="basis-1/3 shrink-0">
-                  <ProjectCard {...project} />
-                </li>
-              ))}
-            </ul>
-          )}
         </Container>
       </section>
     </main>
