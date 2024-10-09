@@ -1,9 +1,8 @@
 import Image from "next/image"
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
-import LinkButton from "@/app/_components/LinkButton"
-import SkillTag from "@/app/_components/SkillTag"
 import { Project } from "@/app/types"
 import Link from "next/link"
+import SkillTagsList from "@/app/_components/SkillTagsList"
 
 export default function ProjectCard({
   name,
@@ -21,16 +20,10 @@ export default function ProjectCard({
         objectFit="cover"
         className="-z-20"
       />
-      <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
+      <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
       <p className="text-heading3Mobile font-bold">{name}</p>
       <p className="mt-4">{summary}</p>
-      <ul className="mt-4">
-        {skills.map((skill) => (
-          <li>
-            <SkillTag href="" name={skill.name} />
-          </li>
-        ))}
-      </ul>
+      <SkillTagsList skills={skills} className="mt-4" />
       <Link
         href={`/projects/${slug}`}
         className="mt-4 text-primary block opacity-0 transition-opacity before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0 group-hover:opacity-100"
