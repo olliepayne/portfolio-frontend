@@ -4,6 +4,7 @@ import Link from "next/link"
 import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
+import NavLink from "@/app/_components/NavLink"
 
 const links = [
   {
@@ -11,12 +12,12 @@ const links = [
     text: "About"
   },
   {
-    href: "/#experience",
-    text: "Experience"
-  },
-  {
     href: "/#projects",
     text: "Projects"
+  },
+  {
+    href: "/#experience",
+    text: "Experience"
   }
 ]
 
@@ -77,15 +78,9 @@ export default function Navbar() {
             } h-screen justify-between pl-4 w-full lg:max-h-fit lg:flex lg:overflow-auto lg:border-none lg:h-fit lg:p-0 lg:static lg:flex-row lg:bg-transparent lg:w-fit`}
           >
             <ul className="flex flex-col lg:items-center lg:flex-row">
-              {links.map(({ href, text }, index) => (
+              {links.map((link, index) => (
                 <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
-                  <Link
-                    href={href}
-                    className="inline-block hover:text-gray-300 transition-all"
-                    onClick={closeNav}
-                  >
-                    {text}
-                  </Link>
+                  <NavLink {...link} onClick={closeNav} />
                 </li>
               ))}
               <li>
