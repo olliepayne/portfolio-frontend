@@ -3,7 +3,6 @@ import { Project } from "@/app/types"
 import getStrapiData from "@/app/helpers/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
-import SectionNav from "@/app/_components/SectionNav"
 import Image from "next/image"
 import SkillTagsList from "@/app/_components/SkillTagsList"
 
@@ -46,7 +45,7 @@ export default async function ProjectSlugPage({ params }: Props) {
       <section className="text-white bg-charcoal pt-16 pb-64">
         <Container>
           <Heading level="h2">Request</Heading>
-          <div className="border-l-4 border-themeLightGray border-solid pl-2">
+          <div className="border-l-4 border-themeLightGray border-solid pl-2 mt-4">
             <p>Text</p>
           </div>
         </Container>
@@ -62,7 +61,7 @@ export default async function ProjectSlugPage({ params }: Props) {
             />
           </div>
           <Heading level="h2">Strategy</Heading>
-          <div className="border-l-4 border-themeLightGray border-solid pl-2">
+          <div className="border-l-4 border-themeLightGray border-solid pl-2 mt-4">
             <p>Summary</p>
           </div>
         </Container>
@@ -70,8 +69,10 @@ export default async function ProjectSlugPage({ params }: Props) {
       <section className="py-16 bg-charcoal text-white">
         <Container>
           <Heading level="h2">Results</Heading>
-          <div className="border-l-4 border-primary border-solid pl-2">
-            <p>Results</p>
+          <div className="border-l-4 border-primary border-solid pl-2 mt-4">
+            <p>markdown</p>
+            <p className="font-bold text-heading5Desktop mt-8">Lessons</p>
+            <p>Lessons go here</p>
           </div>
         </Container>
       </section>
