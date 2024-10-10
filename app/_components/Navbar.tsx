@@ -60,9 +60,9 @@ export default function Navbar() {
   useEffect(handleBodyScroll, [isMobile, navIsOpen])
 
   return (
-    <header className="bg-charcoal text-white sticky top-0 z-50 h-16">
+    <header className="bg-charcoal text-white sticky top-0 z-50">
       <Container>
-        <nav className="flex flex-row justify-between items-center h-full">
+        <nav className="flex flex-row justify-between items-center h-16">
           <Link
             href="/"
             className="text-heading5Desktop font-bold relative z-10 lg:z-0 lg:static"
