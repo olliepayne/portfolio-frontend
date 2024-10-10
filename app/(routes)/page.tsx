@@ -74,7 +74,7 @@ export default async function Home() {
               </div>
               <div>
                 <LinkButton
-                  href="#"
+                  href="/contact"
                   text="Contact Me"
                   className="mr-4 hover:text-black"
                 />
