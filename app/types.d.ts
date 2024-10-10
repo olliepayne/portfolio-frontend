@@ -32,4 +32,7 @@ export interface Project {
   mainImage: StrapiImage
   summary: string
   skills: Skill[]
+  requestContent: string
+  strategyContent: string
+  resultsContent: string
 }
