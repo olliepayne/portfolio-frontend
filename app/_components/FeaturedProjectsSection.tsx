@@ -26,7 +26,7 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     >
       <a
         id="projects"
-        className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+        className="inline-block w-full h-16 absolute top-16 left-0 pointer-events-none"
       />
       <Container>
         <Heading level="h2">Featured Projects</Heading>
