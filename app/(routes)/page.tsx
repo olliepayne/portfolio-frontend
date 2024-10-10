@@ -4,10 +4,9 @@ import LinkButton from "@/app/_components/LinkButton"
 import Heading from "@/app/_components/Heading"
 import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
-import ProjectCard from "@/app/_components/ProjectCard"
 import Blob from "@/app/_components/Blob"
-import { Project } from "@/app/types"
 import getStrapiData from "@/app/helpers/getStrapiData"
+import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
 
 const stats = [
   {
@@ -102,7 +101,7 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <section className="relative py-16">
+      <section className="relative py-32">
         <a
           id="about"
           className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
@@ -135,34 +134,11 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <section className="py-16 relative bg-charcoal text-white">
-        <a
-          id="projects"
-          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
-        />
-        <Container>
-          <Heading level="h2">Featured Projects</Heading>
-          <p>What I've worked on, both personal and professional.</p>
-          {projects && (
-            <ul className="grid mt-8 gap-4 auto-rows-[250px] lg:grid-cols-2">
-              {projects.map((project: Project, index: number) => (
-                <li
-                  key={`project-${index}`}
-                  className={`${
-                    index === 0 ? "row-[span_2_/_auto]" : undefined
-                  }`}
-                >
-                  <ProjectCard {...project} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </Container>
-      </section>
-      <section className="py-16 relative">
+      <FeaturedProjectsSection projects={projects} variant="dark" />
+      <section className="py-32 relative">
         <a
           id="experience"
-          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+          className="inline-block w-full h-1 absolute -top-16 left-0 pointer-events-none"
         />
         <Container variant="narrow">
           <div className="text-center mb-8">
