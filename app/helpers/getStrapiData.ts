@@ -1,5 +1,13 @@
 export default async function getStrapiData(url: string, cache?: RequestCache) {
-  const baseUrl = "http://localhost:1337"
+  function getBaseUrl() {
+    if (process.env.NODE_ENV === "development") {
+      return "http://localhost:1337"
+    } else if (process.env.NODE_ENV === "production") {
+      return process.env.STRAPI_URL
+    }
+  }
+  const baseUrl = getBaseUrl()
+
   try {
     const response = await fetch(baseUrl + url, {
       cache
