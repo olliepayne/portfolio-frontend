@@ -1,7 +1,6 @@
 "use client"
 
-import LinkButton from "@/app/_components/LinkButton"
-import TextLink from "@/app/_components/TextLink"
+import InternalLink from "@/app/_components/InternalLink"
 import { useEffect, useState } from "react"
 
 interface NavLink {
@@ -46,7 +45,7 @@ export default function SectionNav() {
               key={`section-nav=${index}`}
               className={`${index < navLinks.length - 1 ? "mr-4" : ""}`}
             >
-              <TextLink href={`#${sectionId}`}>{text}</TextLink>
+              <InternalLink href={`#${sectionId}`}>{text}</InternalLink>
             </li>
           ))}
         </ul>
