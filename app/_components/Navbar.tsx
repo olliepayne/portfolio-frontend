@@ -80,7 +80,7 @@ export default function Navbar() {
             <ul className="flex flex-col lg:items-center lg:flex-row">
               {links.map((link, index) => (
                 <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
-                  <NavLink {...link} onClick={closeNav} />
+                  <NavLink {...link} variant="top" onClick={closeNav} />
                 </li>
               ))}
               <li>
