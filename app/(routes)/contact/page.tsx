@@ -17,21 +17,23 @@ export default function ContactPage() {
                 </Outlink>
               </li>
               <li className="mt-2">
-                <Outlink href="#">Download Resume</Outlink>
+                <Outlink href="#" download>
+                  Download Resume
+                </Outlink>
               </li>
             </ul>
             <ul className="mt-4">
               <li className="inline-block mr-4 align-middle">
-                <a href="https://github.com/olliepayne" target="_blank">
-                  <SocialIcon platform="GitHub" className="fill-charcoal" />
-                </a>
-              </li>
-              <li className="inline-block align-middle">
                 <a
                   href="https://www.linkedin.com/in/oliverpayne01/"
                   target="_blank"
                 >
                   <SocialIcon platform="LinkedIn" className="fill-charcoal" />
+                </a>
+              </li>
+              <li className="inline-block align-middle">
+                <a href="https://github.com/olliepayne" target="_blank">
+                  <SocialIcon platform="GitHub" className="fill-charcoal" />
                 </a>
               </li>
             </ul>
