@@ -85,7 +85,7 @@ export default function Navbar() {
               ))}
               <li>
                 <LinkButton
-                  href="#"
+                  href="/contact"
                   text="Contact Me"
                   className="hover:text-black"
                   onClick={closeNav}
