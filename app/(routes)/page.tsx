@@ -104,7 +104,7 @@ export default async function Home() {
       <section className="relative py-32">
         <a
           id="about"
-          className="inline-block w-full h-16 absolute -top-16 left-0 pointer-events-none"
+          className="inline-block w-full h-16 absolute top-16 left-0 pointer-events-none"
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
@@ -138,7 +138,7 @@ export default async function Home() {
       <section className="py-32 relative">
         <a
           id="experience"
-          className="inline-block w-full h-1 absolute -top-16 left-0 pointer-events-none"
+          className="inline-block w-full h-1 absolute top-16 left-0 pointer-events-none"
         />
         <Container variant="narrow">
           <div className="text-center mb-8">
