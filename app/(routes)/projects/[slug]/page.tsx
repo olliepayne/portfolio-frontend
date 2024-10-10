@@ -38,7 +38,7 @@ export default async function ProjectSlugPage({ params }: Props) {
   )
 
   return (
-    <main className="">
+    <main>
       <section className="relative z-30 py-32 text-white">
         <Container>
           <Image
@@ -50,7 +50,7 @@ export default async function ProjectSlugPage({ params }: Props) {
             className="-z-20"
           />
           <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <Heading level="h1">{name}</Heading>
             <p>{summary}</p>
             <SkillTagsList skills={skills} className="mt-4" />
@@ -90,7 +90,7 @@ export default async function ProjectSlugPage({ params }: Props) {
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
             <div className="basis-1/2 mr-0 lg:mr-4">
               <Heading level="h2">Results</Heading>
-              <div className="border-l-4 border-primary border-solid pl-8 mt-4">
+              <div className="border-l-4 border-primaryIntense border-solid pl-8 mt-4">
                 <Markdown components={markdownComponents}>
                   {resultsContent}
                 </Markdown>
