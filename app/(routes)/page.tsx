@@ -63,7 +63,7 @@ export default async function Home() {
                   {stats.map(({ metricText, value }, index) => (
                     <li key={`intro-stat-${index}`}>
                       <div>
-                        <span className="text-heading3Mobile font-bold lg:text-heading3Desktop">
+                        <span className="text-heading3Mobile font-bold text-primaryIntense lg:text-heading3Desktop">
                           {value}
                         </span>
                         <p>{metricText}</p>
@@ -134,7 +134,7 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <FeaturedProjectsSection projects={projects} variant="dark" />
+      <FeaturedProjectsSection variant="dark" />
       <section className="py-32 relative">
         <a
           id="experience"
@@ -148,9 +148,6 @@ export default async function Home() {
             Timeline
           </Heading>
           {jobs && <ExperienceTimeline jobs={jobs} />}
-          <Heading level="h3" className="mt-16">
-            Top Skills
-          </Heading>
         </Container>
       </section>
     </main>
