@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-8 border-themeLightGray border-solid border-t-2 pt-8">
+        <div className="mt-8 border-themeLightGray border-solid border-t-[1px] pt-8">
           <ul className="w-fit mx-auto">
             <li className="inline-block align-middle mr-4">
               <a
