@@ -3,13 +3,14 @@ import { ReactNode } from "react"
 interface Props {
   href: string
   children?: ReactNode | ReactNode[]
+  download?: boolean
 }
 
-export default function Outlink({ href, children }: Props) {
+export default function Outlink({ children, ...props }: Props) {
   return (
     <a
-      href={href}
-      className="relative hover:text-primary transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-1 after:bg-primary after:-z-10"
+      {...props}
+      className="inline-block relative z-20 hover:text-primary transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-1 after:bg-primary after:-z-10"
     >
       {children}
     </a>
