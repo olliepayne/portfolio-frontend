@@ -46,7 +46,7 @@ export default function SectionNav() {
               key={`section-nav=${index}`}
               className={`${index < navLinks.length - 1 ? "mr-4" : ""}`}
             >
-              <TextLink href={`#${sectionId}`} text={text} />
+              <TextLink href={`#${sectionId}`}>{text}</TextLink>
             </li>
           ))}
         </ul>
