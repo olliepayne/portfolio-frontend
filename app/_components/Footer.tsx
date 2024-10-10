@@ -2,6 +2,7 @@ import Container from "@/app/_components/Container"
 import NavLink from "@/app/_components/NavLink"
 import Link from "next/link"
 import SocialIcon from "@/app/_components/SocialIcon"
+import LinkButton from "@/app/_components/LinkButton"
 
 const linkMenus = [
   {
@@ -44,7 +45,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-8 border-themeLightGray border-solid border-t-[1px] pt-8">
+        <div className="flex flex-col items-center mt-8 border-themeLightGray border-solid border-t-[1px] pt-8">
           <ul className="w-fit mx-auto">
             <li className="inline-block align-middle mr-4">
               <a
@@ -65,6 +66,12 @@ export default function Footer() {
               </a>
             </li>
           </ul>
+          <LinkButton
+            href="/contact"
+            text="Contact Me"
+            variant="primary"
+            className="hover:text-black mt-4"
+          />
         </div>
       </Container>
     </footer>
