@@ -43,11 +43,7 @@ export default function Footer() {
                   //   index < linkMenus.length - 1 ? "mr-4" : undefined
                   // }`}
                 >
-                  <NavLink
-                    href={linkMenu.primaryLink.href}
-                    text={linkMenu.primaryLink.text}
-                    className="pb-1 relative after:absolute after:w-full after:h-0.5 after:bg-primary after:bottom-0 after:left-0"
-                  />
+                  <NavLink {...linkMenu.primaryLink} variant="footer menu" />
                 </div>
               ))}
             </div>
