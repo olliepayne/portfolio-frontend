@@ -23,7 +23,7 @@ export default function ProjectCard({
       <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
       <p className="text-heading3Mobile font-bold">{name}</p>
       <p className="mt-4">{summary}</p>
-      <SkillTagsList skills={skills} className="mt-4" />
+      <SkillTagsList skills={skills} className="mt-4 relative z-30" />
       <Link
         href={`/projects/${slug}`}
         className="mt-4 text-primary block opacity-0 transition-opacity before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0 group-hover:opacity-100"
