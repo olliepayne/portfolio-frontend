@@ -51,7 +51,7 @@ export default async function Home() {
         <Container>
           <div className="flex flex-col justify-between items-center lg:flex-row">
             <div className="basis-1/2 grow-0 mr-0 lg:mr-4">
-              <Heading level="h1">👋 I'm Ollie</Heading>
+              <Heading level="h1">👋 I&apos;m Ollie</Heading>
               <p className="mt-4">
                 I am a Frontend developer, SEO Analyst, and avid sport climber
                 living in Phoenix, AZ.

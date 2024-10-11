@@ -14,8 +14,8 @@ export default function ExperienceTimeline({ jobs }: Props) {
     return formatter.format(date)
   }
 
-  function getDuration(index: any) {
-    let endDate = jobs[index].stillHere
+  function getDuration(index: number) {
+    const endDate = jobs[index].stillHere
       ? new Date()
       : new Date(jobs[index].endDate)
     let startDate = new Date(jobs[index].startDate)
