@@ -1,13 +1,15 @@
 import Image from "next/image"
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
-import { Job } from "@/app/types"
 import SkillTagsList from "@/app/_components/SkillTagsList"
+import getStrapiData from "@/app/helpers/getStrapiData"
+import { Job } from "@/app/types"
 
-interface Props {
-  jobs: Job[]
-}
+export default async function ExperienceTimeline() {
+  const jobs: Job[] = await getStrapiData(
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
+    "no-cache"
+  )
 
-export default function ExperienceTimeline({ jobs }: Props) {
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
     const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "medium" })
