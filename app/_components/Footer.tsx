@@ -4,6 +4,7 @@ import Link from "next/link"
 import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
+import getStrapiUrl from "@/app/helpers/getStrapiUrl"
 
 const linkMenus = [
   {
@@ -51,8 +52,11 @@ export default function Footer() {
               </Outlink>
             </li>
             <li className="mt-2">
-              <Outlink href="" download>
-                Download Resume
+              <Outlink
+                href={getStrapiUrl() + "/uploads/resume_9_23_24_d40af25398.pdf"}
+                target="_blank"
+              >
+                Resume
               </Outlink>
             </li>
           </ul>
