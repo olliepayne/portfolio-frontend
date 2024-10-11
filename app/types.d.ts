@@ -3,6 +3,14 @@ export interface StrapiImage {
   alternativeText: string
 }
 
+export interface StrapiFile {
+  url: string
+}
+
+export interface Resume {
+  file: StrapiFile
+}
+
 export interface Skill {
   name: string
 }

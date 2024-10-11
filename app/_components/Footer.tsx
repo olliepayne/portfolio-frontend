@@ -4,7 +4,9 @@ import Link from "next/link"
 import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
-import getStrapiUrl from "@/app/helpers/getStrapiUrl"
+import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import getStrapiData from "@/app/helpers/getStrapiData"
+import { Resume } from "@/app/types"
 
 const linkMenus = [
   {
@@ -30,7 +32,9 @@ const linkMenus = [
   }
 ]
 
-export default function Footer() {
+export default async function Footer() {
+  const resume: Resume = await getStrapiData("/api/resume?populate=*")
+
   return (
     <footer className="bg-charcoal py-16 text-white">
       <Container variant="narrow">
@@ -53,8 +57,11 @@ export default function Footer() {
             </li>
             <li className="mt-2">
               <Outlink
-                href={getStrapiUrl() + "/uploads/resume_9_23_24_d40af25398.pdf"}
-                target="_blank"
+                href={
+                  resume?.file?.url
+                    ? (getStrapiMedia(resume.file.url) as string)
+                    : "#"
+                }
               >
                 Resume
               </Outlink>

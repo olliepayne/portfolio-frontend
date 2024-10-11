@@ -1,11 +1,14 @@
 import { Components } from "react-markdown"
 import Heading from "@/app/_components/Heading"
+import Image from "next/image"
+import Outlink from "@/app/_components/Outlink"
+import InternalLink from "@/app/_components/InternalLink"
 
 const markdownComponents: Partial<Components> = {
   h2(props) {
     const { children } = props
     return (
-      <Heading level="h2" className="mt-8">
+      <Heading level="h2" className="mt-6">
         {children}
       </Heading>
     )
@@ -13,7 +16,7 @@ const markdownComponents: Partial<Components> = {
   h3(props) {
     const { children } = props
     return (
-      <Heading level="h3" className="mt-4">
+      <Heading level="h3" className="mt-6">
         {children}
       </Heading>
     )
@@ -21,7 +24,7 @@ const markdownComponents: Partial<Components> = {
   h4(props) {
     const { children } = props
     return (
-      <Heading level="h4" className="mt-4">
+      <Heading level="h4" className="mt-6">
         {children}
       </Heading>
     )
@@ -29,22 +32,41 @@ const markdownComponents: Partial<Components> = {
   h5(props) {
     const { children } = props
     return (
-      <Heading level="h5" className="mt-4">
+      <Heading level="h5" className="mt-6">
         {children}
       </Heading>
     )
   },
   p(props) {
     const { children } = props
-    return <p className="mt-4">{children}</p>
+    return <p className="mt-6">{children}</p>
   },
   ul(props) {
     const { children } = props
-    return <ul className="list-disc pl-8 mt-4">{children}</ul>
+    return <ul className="list-disc pl-8 mt-6">{children}</ul>
   },
   ol(props) {
     const { children } = props
-    return <ol className="list-decimal pl-8 mt-4">{children}</ol>
+    return <ol className="list-decimal pl-8 mt-6">{children}</ol>
+  },
+  img(props) {
+    return (
+      <span className="inline-block mt-6 relative w-full h-[350px]">
+        <Image
+          src={props.src as string}
+          alt={props.alt as string}
+          fill
+          className="object-cover"
+        />
+      </span>
+    )
+  },
+  a(props) {
+    if (props.href?.split(".")[0] !== "https://olliepayne") {
+      return <Outlink href={props.href as string}>{props.children}</Outlink>
+    } else {
+      return <InternalLink href={props.href}>{props.children}</InternalLink>
+    }
   }
 }
 export default markdownComponents
