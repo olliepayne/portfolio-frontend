@@ -5,7 +5,7 @@ import getStrapiData from "@/app/helpers/getStrapiData"
 import { Job } from "@/app/types"
 
 export default async function ExperienceTimeline() {
-  const jobs: Job[] = await getStrapiData(
+  const data: Job[] = await getStrapiData(
     "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
     "no-cache"
   )
@@ -17,14 +17,14 @@ export default async function ExperienceTimeline() {
   }
 
   function getDuration(index: number) {
-    const endDate = jobs[index].stillHere
+    const endDate = data[index].stillHere
       ? new Date()
-      : new Date(jobs[index].endDate)
-    let startDate = new Date(jobs[index].startDate)
-    if (index < jobs.length - 1) {
-      for (let i = index; i < jobs.length; i++) {
-        if (jobs[i].company.name !== jobs[index].company.name) {
-          startDate = new Date(jobs[i - 1].startDate)
+      : new Date(data[index].endDate)
+    let startDate = new Date(data[index].startDate)
+    if (index < data.length - 1) {
+      for (let i = index; i < data.length; i++) {
+        if (data[i].company.name !== data[index].company.name) {
+          startDate = new Date(data[i - 1].startDate)
           break
         }
       }
@@ -41,22 +41,22 @@ export default async function ExperienceTimeline() {
   function isNewCompanySection(index: number) {
     if (
       index === 0 ||
-      (index > 0 && jobs[index].company.name !== jobs[index - 1].company.name)
+      (index > 0 && data[index].company.name !== data[index - 1].company.name)
     )
       return true
   }
 
   function isLastJobInSection(index: number) {
     if (
-      index < jobs.length - 1 &&
-      jobs[index].company.name === jobs[index + 1].company.name
+      index < data.length - 1 &&
+      data[index].company.name === data[index + 1].company.name
     )
       return true
   }
 
-  return (
+  return data ? (
     <div>
-      {jobs.map(
+      {data.map(
         (
           {
             title,
@@ -72,7 +72,7 @@ export default async function ExperienceTimeline() {
           index
         ) => (
           <div key={`timeline-entry-${index}`}>
-            {(index > 0 && company.name !== jobs[index - 1].company.name) ||
+            {(index > 0 && company.name !== data[index - 1].company.name) ||
             index === 0 ? (
               <div
                 className={
@@ -134,5 +134,7 @@ export default async function ExperienceTimeline() {
         )
       )}
     </div>
+  ) : (
+    <></>
   )
 }

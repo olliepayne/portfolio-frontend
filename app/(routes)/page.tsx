@@ -3,9 +3,9 @@ import Image from "next/image"
 import LinkButton from "@/app/_components/LinkButton"
 import Heading from "@/app/_components/Heading"
 import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
-import { Metadata } from "next"
+// import { Metadata } from "next"
 import Blob from "@/app/_components/Blob"
-import getStrapiData from "@/app/helpers/getStrapiData"
+// import getStrapiData from "@/app/helpers/getStrapiData"
 import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
 
 const stats = [
@@ -19,32 +19,16 @@ const stats = [
   }
 ]
 
-export async function generateMetadata(): Promise<Metadata> {
-  const data = await getStrapiData("/api/homepage?populate=seo")
+// export async function generateMetadata(): Promise<Metadata> {
+//   const data = await getStrapiData("/api/homepage?populate=seo")
 
-  if (data) {
-    const {
-      seo: { titleTag, metaDescription }
-    } = data
-
-    return {
-      title: titleTag,
-      description: metaDescription
-    }
-  } else {
-    return {
-      title: "Title tag",
-      description: "Meta description"
-    }
-  }
-}
+//   return {
+//     title: data.seo.titleTag,
+//     description: data.seo.metaDescription
+//   }
+// }
 
 export default async function Home() {
-  const jobs = await getStrapiData(
-    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
-    "no-cache"
-  )
-
   return (
     <main>
       <section className="py-16 overflow-hidden bg-charcoal text-white">
@@ -145,7 +129,7 @@ export default async function Home() {
           <Heading level="h3" className="mb-4">
             Timeline
           </Heading>
-          {jobs && <ExperienceTimeline jobs={jobs} />}
+          <ExperienceTimeline />
         </Container>
       </section>
     </main>

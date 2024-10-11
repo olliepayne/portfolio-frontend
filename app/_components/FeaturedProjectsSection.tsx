@@ -2,6 +2,7 @@ import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import ProjectCard from "@/app/_components/ProjectCard"
 import getStrapiData from "@/app/helpers/getStrapiData"
+import { FeaturedProjectsSection as IFeaturedProjectsSection } from "@/app//types"
 
 interface Props {
   variant: "dark" | "light"
@@ -14,7 +15,7 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     "populate[3]=second&populate[4]=second.mainImage&populate[5]=second.skills"
   const populateThird =
     "populate[6]=third&populate[7]=third.mainImage&populate[8]=third.skills"
-  const { main, second, third } = await getStrapiData(
+  const data: IFeaturedProjectsSection = await getStrapiData(
     `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
   )
 
@@ -33,13 +34,13 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
         <p>What I&apos;ve worked on, both personal and professional.</p>
         <ul className="grid mt-8 gap-8 auto-rows-[250px] lg:grid-cols-2">
           <li className="lg:row-[span_2_/_auto]">
-            <ProjectCard {...main} />
+            <ProjectCard {...data.main} />
           </li>
           <li>
-            <ProjectCard {...second} />
+            <ProjectCard {...data.second} />
           </li>
           <li>
-            <ProjectCard {...third} />
+            <ProjectCard {...data.third} />
           </li>
         </ul>
       </Container>
