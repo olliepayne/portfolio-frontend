@@ -11,6 +11,7 @@ export default function SkillTagsList({ skills, className }: Props) {
     <ul className={className}>
       {skills.map(({ name }, index) => (
         <li
+          key={`skill-tag-${name}`}
           className={`inline-block ${
             index < skills.length - 1 ? "mr-2" : undefined
           }`}
