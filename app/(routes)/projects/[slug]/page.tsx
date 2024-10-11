@@ -7,6 +7,7 @@ import Image from "next/image"
 import SkillTagsList from "@/app/_components/SkillTagsList"
 import Markdown from "react-markdown"
 import markdownComponents from "@/app/helpers/markdownComponents"
+import { Metadata } from "next"
 
 export async function generateStaticParams() {
   const projects: Project[] = await getStrapiData("/api/projects", "no-cache")
@@ -17,6 +18,28 @@ export async function generateStaticParams() {
 interface Props {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const data = await getStrapiData(
+    `/api/projects?filters[slug]$eq]=${params.slug}&populate=seo`
+  )
+
+  if (data) {
+    const {
+      seo: { titleTag, metaDescription }
+    } = data[0]
+
+    return {
+      title: titleTag,
+      description: metaDescription
+    }
+  } else {
+    return {
+      title: "Title Tag",
+      description: "Meta description"
+    }
   }
 }
 
