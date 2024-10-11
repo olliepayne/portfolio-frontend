@@ -108,7 +108,7 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative basis-[500px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:w-auto lg:h-[500px] lg:mt-0 lg:mr-4">
+            <div className="relative h-[350px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:h-[500px] lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
