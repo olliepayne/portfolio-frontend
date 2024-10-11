@@ -4,6 +4,7 @@ interface Props {
   href: string
   children?: ReactNode | ReactNode[]
   download?: boolean
+  target?: string
 }
 
 export default function Outlink({ children, ...props }: Props) {
