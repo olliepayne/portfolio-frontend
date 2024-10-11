@@ -26,7 +26,7 @@ export default function ProjectCard({
       <SkillTagsList skills={skills} className="mt-4 relative z-30" />
       <Link
         href={`/projects/${slug}`}
-        className="mt-4 text-primary block opacity-0 transition-opacity before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0 group-hover:opacity-100"
+        className="mt-4 text-primary inline-block before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0"
       >
         View project
       </Link>
