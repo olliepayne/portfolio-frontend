@@ -27,8 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   )
 
   return {
-    title: data ? data[0].seo.titleTag : "Title Tag",
-    description: data ? data[0].seo.metaDescription : "Meta description"
+    title: data[0].seo > 0 ? data[0].seo.titleTag : "Title Tag",
+    description:
+      data[0].seo > 0 ? data[0].seo.metaDescription : "Meta description"
   }
 }
 
