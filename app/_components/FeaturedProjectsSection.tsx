@@ -19,7 +19,7 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
   )
 
-  return (
+  return data ? (
     <section
       className={`py-32 relative ${
         variant === "dark" ? "bg-charcoal text-white" : "transparent"
@@ -45,5 +45,7 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
         </ul>
       </Container>
     </section>
+  ) : (
+    <></>
   )
 }
