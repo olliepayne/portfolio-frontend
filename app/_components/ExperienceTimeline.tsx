@@ -3,6 +3,8 @@ import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 import SkillTagsList from "@/app/_components/SkillTagsList"
 import getStrapiData from "@/app/helpers/getStrapiData"
 import { Job } from "@/app/types"
+import Markdown from "react-markdown"
+import markdownComponents from "../helpers/markdownComponents"
 
 export default async function ExperienceTimeline() {
   const data: Job[] = await getStrapiData(
@@ -124,7 +126,9 @@ export default async function ExperienceTimeline() {
                   {endDate ? formatDate(endDate) : "Present"}
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
-                <p className="mt-4">{summary}</p>
+                <Markdown components={markdownComponents}>
+                  {summary}
+                </Markdown>
                 {skills.length > 0 && (
                   <SkillTagsList skills={skills} className="mt-4" />
                 )}
