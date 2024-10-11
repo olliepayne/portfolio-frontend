@@ -7,6 +7,7 @@ import { Metadata } from "next"
 import Blob from "@/app/_components/Blob"
 import getStrapiData from "@/app/helpers/getStrapiData"
 import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
+import InternalLink from "@/app/_components/InternalLink"
 
 const stats = [
   {
@@ -60,7 +61,7 @@ export default async function Home() {
                   text="Contact Me"
                   className="mr-4 hover:text-black"
                 />
-                <p className="inline-block">My projects</p>
+                <InternalLink href="#projects">My Projects</InternalLink>
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
