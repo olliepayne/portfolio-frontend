@@ -38,3 +38,9 @@ export interface Project {
   resultsContent: string
   resultsImage: StrapiImage
 }
+
+export interface FeaturedProjectsSection {
+  main: Project
+  second: Project
+  third: Project
+}
