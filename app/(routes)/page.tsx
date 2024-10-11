@@ -46,7 +46,7 @@ export default async function Home() {
                   {stats.map(({ metricText, value }, index) => (
                     <li key={`intro-stat-${index}`}>
                       <div>
-                        <span className="text-heading3Mobile font-bold text-primaryIntense lg:text-heading3Desktop">
+                        <span className="text-heading3Mobile font-bold text-primary lg:text-heading3Desktop">
                           {value}
                         </span>
                         <p>{metricText}</p>

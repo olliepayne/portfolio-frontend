@@ -90,7 +90,7 @@ export default async function ProjectSlugPage({ params }: Props) {
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
             <div className="basis-1/2 mr-0 lg:mr-4">
               <Heading level="h2">Results</Heading>
-              <div className="border-l-4 border-primaryIntense border-solid pl-8 mt-4">
+              <div className="border-l-4 border-primary border-solid pl-8 mt-4">
                 <Markdown components={markdownComponents}>
                   {data[0].resultsContent}
                 </Markdown>
