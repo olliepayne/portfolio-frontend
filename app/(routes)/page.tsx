@@ -45,8 +45,6 @@ export default async function Home() {
     "no-cache"
   )
 
-  const projects = await getStrapiData("/api/projects?populate=*", "no-cache")
-
   return (
     <main>
       <section className="py-16 overflow-hidden bg-charcoal text-white">
