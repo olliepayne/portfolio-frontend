@@ -1,5 +1,4 @@
 import Image from "next/image"
-import SkillTag from "@/app/_components/SkillTag"
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 import { Job } from "@/app/types"
 import SkillTagsList from "@/app/_components/SkillTagsList"
