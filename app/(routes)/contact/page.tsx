@@ -2,6 +2,17 @@ import Heading from "@/app/_components/Heading"
 import Container from "@/app/_components/Container"
 import Outlink from "@/app/_components/Outlink"
 import SocialIcon from "@/app/_components/SocialIcon"
+import { Metadata } from "next"
+import getStrapiData from "@/app/helpers/getStrapiData"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getStrapiData("/api/contact-page?populate=seo")
+
+  return {
+    title: data ? data.seo.titleTag : "Title tag",
+    description: data ? data.seo.metaDescription : ""
+  }
+}
 
 export default function ContactPage() {
   return (
