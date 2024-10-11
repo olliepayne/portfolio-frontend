@@ -37,23 +37,27 @@ export default async function ProjectSlugPage({ params }: Props) {
     `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
   )
 
-  return data ? (
+  return (
     <main>
       <section className="relative z-30 py-32 text-white">
         <Container>
-          <Image
-            src={getStrapiMedia(data[0].mainImage.url) as string}
-            alt={data[0].mainImage.alternativeText}
-            fill
-            objectFit="cover"
-            loading="eager"
-            className="-z-20"
-          />
+          {data[0].mainImage && (
+            <Image
+              src={getStrapiMedia(data[0].mainImage.url) as string}
+              alt={data[0].mainImage.alternativeText}
+              fill
+              objectFit="cover"
+              loading="eager"
+              className="-z-20"
+            />
+          )}
           <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
           <div className="lg:w-1/2">
-            <Heading level="h1">{data[0].name}</Heading>
-            <p>{data[0].summary}</p>
-            <SkillTagsList skills={data[0].skills} className="mt-4" />
+            {data[0].name && <Heading level="h1">{data[0].name}</Heading>}
+            {data[0].summary && <p>{data[0].summary}</p>}
+            {data[0].skills && (
+              <SkillTagsList skills={data[0].skills} className="mt-4" />
+            )}
           </div>
         </Container>
       </section>
@@ -61,27 +65,32 @@ export default async function ProjectSlugPage({ params }: Props) {
         <Container>
           <Heading level="h2">Request</Heading>
           <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
-            <Markdown components={markdownComponents}>
-              {data[0].requestContent}
-            </Markdown>
+            {data[0].requestContent && (
+              <Markdown components={markdownComponents}>
+                {data[0].requestContent}
+              </Markdown>
+            )}
           </div>
         </Container>
       </section>
-      <section className="pb-32 pt-[20.5rem] relative">
+      {/* <section className="pb-32 pt-[20.5rem] relative"> */}
+      <section className="py-32 relative">
         <Container variant="narrow">
-          <div className="absolute w-[calc(100%-32px)] max-w-[768px] h-[400px] -top-48 left-1/2 -translate-x-1/2">
+          {/* <div className="absolute w-[calc(100%-32px)] max-w-[768px] h-[400px] -top-48 left-1/2 -translate-x-1/2">
             <Image
               src={getStrapiMedia(data[0].secondaryImage.url) as string}
               alt={data[0].secondaryImage.alternativeText}
               fill
               objectFit="cover"
             />
-          </div>
+          </div> */}
           <Heading level="h2">Strategy</Heading>
           <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
-            <Markdown components={markdownComponents}>
-              {data[0].strategyContent}
-            </Markdown>
+            {data[0].strategyContent && (
+              <Markdown components={markdownComponents}>
+                {data[0].strategyContent}
+              </Markdown>
+            )}
           </div>
         </Container>
       </section>
@@ -91,24 +100,26 @@ export default async function ProjectSlugPage({ params }: Props) {
             <div className="basis-1/2 mr-0 lg:mr-4">
               <Heading level="h2">Results</Heading>
               <div className="border-l-4 border-primary border-solid pl-8 mt-4">
-                <Markdown components={markdownComponents}>
-                  {data[0].resultsContent}
-                </Markdown>
+                {data[0].resultsContent && (
+                  <Markdown components={markdownComponents}>
+                    {data[0].resultsContent}
+                  </Markdown>
+                )}
               </div>
             </div>
-            <div className="relative basis-[400px] w-full mt-16 lg:mt-0 lg:basis-1/2 lg:h-[500px]">
-              <Image
-                src={getStrapiMedia(data[0].resultsImage.url) as string}
-                alt={data[0].resultsImage.alternativeText}
-                fill
-                objectFit="cover"
-              />
-            </div>
+            {data[0].resultsImage && (
+              <div className="relative basis-[400px] w-full mt-16 lg:mt-0 lg:basis-1/2 lg:h-[500px]">
+                <Image
+                  src={getStrapiMedia(data[0].resultsImage.url) as string}
+                  alt={data[0].resultsImage.alternativeText}
+                  fill
+                  objectFit="cover"
+                />
+              </div>
+            )}
           </div>
         </Container>
       </section>
     </main>
-  ) : (
-    <></>
   )
 }

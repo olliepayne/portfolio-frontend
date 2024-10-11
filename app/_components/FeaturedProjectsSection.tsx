@@ -19,7 +19,15 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
   )
 
-  return data ? (
+  function hasData(property: "main" | "second" | "third") {
+    if (data) {
+      if (data[property]) return true
+    } else {
+      return false
+    }
+  }
+
+  return (
     <section
       className={`py-32 relative ${
         variant === "dark" ? "bg-charcoal text-white" : "transparent"
@@ -33,17 +41,17 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
         <Heading level="h2">Featured Projects</Heading>
         <p>What I&apos;ve worked on, both personal and professional.</p>
         <ul className="grid mt-8 gap-8 auto-rows-[250px] lg:grid-cols-2">
-          {data.main && (
+          {hasData("main") && (
             <li className="lg:row-[span_2_/_auto]">
               <ProjectCard {...data.main} />
             </li>
           )}
-          {data.second && (
+          {hasData("second") && (
             <li>
               <ProjectCard {...data.second} />
             </li>
           )}
-          {data.third && (
+          {hasData("third") && (
             <li>
               <ProjectCard {...data.third} />
             </li>
@@ -51,7 +59,5 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
         </ul>
       </Container>
     </section>
-  ) : (
-    <></>
   )
 }
