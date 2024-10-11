@@ -63,7 +63,7 @@ export default function Footer() {
                 target="_blank"
                 className="inline-block"
               >
-                <SocialIcon platform="LinkedIn" />
+                <SocialIcon platform="LinkedIn" className="fill-white" />
               </a>
             </li>
             <li>
@@ -72,7 +72,7 @@ export default function Footer() {
                 target="_blank"
                 className="inline-block"
               >
-                <SocialIcon platform="GitHub" />
+                <SocialIcon platform="GitHub" className="fill-white" />
               </a>
             </li>
           </ul>
