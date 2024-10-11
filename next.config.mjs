@@ -10,9 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "funny-oasis-8038f3a347.media.strapiapp.com",
-        port: "",
-        pathname: "/**/*"
+        hostname: "funny-oasis-8038f3a347.media.strapiapp.com"
       }
     ]
   }
