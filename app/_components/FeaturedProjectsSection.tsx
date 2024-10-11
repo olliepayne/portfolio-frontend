@@ -33,15 +33,21 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
         <Heading level="h2">Featured Projects</Heading>
         <p>What I&apos;ve worked on, both personal and professional.</p>
         <ul className="grid mt-8 gap-8 auto-rows-[250px] lg:grid-cols-2">
-          <li className="lg:row-[span_2_/_auto]">
-            <ProjectCard {...data.main} />
-          </li>
-          <li>
-            <ProjectCard {...data.second} />
-          </li>
-          <li>
-            <ProjectCard {...data.third} />
-          </li>
+          {data.main && (
+            <li className="lg:row-[span_2_/_auto]">
+              <ProjectCard {...data.main} />
+            </li>
+          )}
+          {data.second && (
+            <li>
+              <ProjectCard {...data.second} />
+            </li>
+          )}
+          {data.third && (
+            <li>
+              <ProjectCard {...data.third} />
+            </li>
+          )}
         </ul>
       </Container>
     </section>
