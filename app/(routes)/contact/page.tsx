@@ -4,6 +4,7 @@ import Outlink from "@/app/_components/Outlink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import { Metadata } from "next"
 import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiUrl from "@/app/helpers/getStrapiUrl"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/contact-page?populate=seo")
@@ -28,8 +29,12 @@ export default function ContactPage() {
                 </Outlink>
               </li>
               <li className="mt-2">
-                <Outlink href="#" download>
-                  Download Resume
+                <Outlink
+                  href={
+                    getStrapiUrl() + "/uploads/resume_9_23_24_d40af25398.pdf"
+                  }
+                >
+                  Resume
                 </Outlink>
               </li>
             </ul>
