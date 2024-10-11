@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getStrapiData(
     `/api/projects?filters[slug]$eq]=${params.slug}&populate=seo`
   )
-  console.log(data)
 
   return {
     title: data[0].seo ? data[0].seo.titleTag : "Title Tag",
