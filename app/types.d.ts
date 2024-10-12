@@ -23,7 +23,7 @@ export interface Job {
   stillHere: boolean
   location: string
   remote: boolean
-  summary: string
+  summary?: string
   skills: Skill[]
   company: Company
 }

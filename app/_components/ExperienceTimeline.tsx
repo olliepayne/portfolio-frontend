@@ -125,7 +125,9 @@ export default async function ExperienceTimeline() {
                   {endDate ? formatDate(endDate) : "Present"}
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
-                <Markdown components={markdownComponents}>{summary}</Markdown>
+                {summary && (
+                  <Markdown components={markdownComponents}>{summary}</Markdown>
+                )}
                 {skills.length > 0 && (
                   <SkillTagsList skills={skills} className="mt-4" />
                 )}
