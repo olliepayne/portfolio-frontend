@@ -5,6 +5,7 @@ import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 import NavLink from "@/app/_components/NavLink"
+import useThrottle from "@/app/useThrottle"
 
 const links = [
   {
@@ -23,6 +24,7 @@ const links = [
 
 export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false)
+  const throttledCheckWindowSize = useThrottle(checkWindowSize, 200)
 
   function handleBodyScroll() {
     if (!navIsOpen) document.body.style.overflow = "auto"
@@ -48,12 +50,10 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    checkWindowSize()
-
-    window.addEventListener("resize", checkWindowSize)
+    window.addEventListener("resize", throttledCheckWindowSize)
 
     return () => {
-      window.removeEventListener("resize", checkWindowSize)
+      window.removeEventListener("resize", throttledCheckWindowSize)
     }
   }, [])
 
