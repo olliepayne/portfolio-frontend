@@ -1,6 +1,6 @@
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 import { Project } from "@/app/types"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"

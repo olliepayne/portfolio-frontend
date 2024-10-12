@@ -5,7 +5,7 @@ import Heading from "@/app/_components/Heading"
 import ExperienceTimeline from "@/app/_components/ExperienceTimeline"
 import { Metadata } from "next"
 import Blob from "@/app/_components/Blob"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
 import InternalLink from "@/app/_components/InternalLink"
 

@@ -5,7 +5,7 @@ import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Resume } from "@/app/types"
 
 const linkMenus = [

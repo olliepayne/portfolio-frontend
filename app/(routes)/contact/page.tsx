@@ -3,7 +3,7 @@ import Container from "@/app/_components/Container"
 import Outlink from "@/app/_components/Outlink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import { Metadata } from "next"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Resume } from "@/app/types"
 import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
 

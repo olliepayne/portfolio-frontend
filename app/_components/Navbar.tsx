@@ -5,7 +5,7 @@ import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 import NavLink from "@/app/_components/NavLink"
-import useThrottle from "@/app/useThrottle"
+import useThrottle from "@/app/_hooks/useThrottle"
 
 const links = [
   {
