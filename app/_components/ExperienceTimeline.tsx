@@ -8,8 +8,7 @@ import markdownComponents from "@/app/_helpers/markdownComponents"
 
 export default async function ExperienceTimeline() {
   const data: Job[] = await getStrapiData(
-    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
-    "no-cache"
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc"
   )
 
   const formatDate = (dateStr: string) => {
@@ -126,9 +125,7 @@ export default async function ExperienceTimeline() {
                   {endDate ? formatDate(endDate) : "Present"}
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
-                <Markdown components={markdownComponents}>
-                  {summary}
-                </Markdown>
+                <Markdown components={markdownComponents}>{summary}</Markdown>
                 {skills.length > 0 && (
                   <SkillTagsList skills={skills} className="mt-4" />
                 )}

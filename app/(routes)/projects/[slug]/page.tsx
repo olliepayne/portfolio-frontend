@@ -10,7 +10,7 @@ import markdownComponents from "@/app/_helpers/markdownComponents"
 import { Metadata } from "next"
 
 export async function generateStaticParams() {
-  const projects: Project[] = await getStrapiData("/api/projects", "no-cache")
+  const projects: Project[] = await getStrapiData("/api/projects")
 
   return projects.map((project) => ({ slug: project.slug }))
 }
