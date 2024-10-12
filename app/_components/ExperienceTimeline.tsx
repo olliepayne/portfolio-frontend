@@ -90,7 +90,7 @@ export default async function ExperienceTimeline() {
                         src={getStrapiMedia(company.logo.url) as string}
                         alt={company.logo.alternativeText}
                         fill
-                        objectFit="cover"
+                        className="object-cover"
                       />
                     )}
                   </div>

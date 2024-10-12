@@ -77,8 +77,7 @@ export default async function Home() {
                 src="/images/headshot.jpeg"
                 alt="Picture of Ollie Payne"
                 fill
-                objectFit="cover"
-                className="rounded-md z-10 [mask-image:url('/svgs/blob.svg')] [mask-repeat:no-repeat] [mask-position:center]"
+                className="object-cover z-10 [mask-image:url('/svgs/blob.svg')] [mask-repeat:no-repeat] [mask-position:center]"
               />
             </div>
           </div>
@@ -96,8 +95,7 @@ export default async function Home() {
                 src="/images/climbing-green.jpg"
                 alt="Picture of Ollie Payne"
                 fill
-                objectFit="cover"
-                objectPosition="center 10%"
+                className="object-cover object-[center_10%]"
               />
             </div>
             <div className="basis-1/2 lg:ml-4">

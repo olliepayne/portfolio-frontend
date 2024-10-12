@@ -113,7 +113,7 @@ export default async function ProjectSlugPage({ params }: Props) {
                   src={getStrapiMedia(data[0].resultsImage.url) as string}
                   alt={data[0].resultsImage.alternativeText}
                   fill
-                  objectFit="cover"
+                  className="object-cover"
                 />
               </div>
             )}
