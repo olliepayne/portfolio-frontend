@@ -1,5 +1,5 @@
 import { Skill } from "@/app/types"
-import SkillTag from "@/app/_components/SkillTag"
+// import SkillTag from "@/app/_components/SkillTag"
 
 interface Props {
   skills: Skill[]
@@ -7,16 +7,19 @@ interface Props {
 }
 
 export default function SkillTagsList({ skills, className }: Props) {
+  const regex = /[?.#()]/g
+  function formatName(name: string) {
+    return `#${name.toLowerCase().replace(regex, "").split(" ").join("-")}`
+  }
+
   return (
-    <ul className={className}>
-      {skills.map(({ name }, index) => (
-        <li
-          key={`skill-tag-${name}`}
-          className={`inline-block ${
-            index < skills.length - 1 ? "mr-2" : undefined
-          }`}
-        >
-          <SkillTag href="#" name={name} />
+    <ul className={`flex flex-wrap gap-2 ${className}`}>
+      {skills.map(({ name }) => (
+        <li key={`skill-tag-${name}`}>
+          {/* <SkillTag href="#" name={name} /> */}
+          <span className="inline-block bg-black text-white text-xs py-0.5 px-1 border-primary border-[1px]">
+            {formatName(name)}
+          </span>
         </li>
       ))}
     </ul>

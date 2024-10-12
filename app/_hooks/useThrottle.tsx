@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-export default function useThrottle(callback: Function, limit = 200) {
+export default function useThrottle(callback: () => void, limit = 200) {
   const lastRun = useRef(Date.now())
 
   return () => {

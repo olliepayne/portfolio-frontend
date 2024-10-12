@@ -1,4 +1,4 @@
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import { Project } from "@/app/types"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import Container from "@/app/_components/Container"
@@ -6,7 +6,7 @@ import Heading from "@/app/_components/Heading"
 import Image from "next/image"
 import SkillTagsList from "@/app/_components/SkillTagsList"
 import Markdown from "react-markdown"
-import markdownComponents from "@/app/helpers/markdownComponents"
+import markdownComponents from "@/app/_helpers/markdownComponents"
 import { Metadata } from "next"
 
 export async function generateStaticParams() {

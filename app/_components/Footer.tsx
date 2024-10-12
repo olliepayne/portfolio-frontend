@@ -4,7 +4,7 @@ import Link from "next/link"
 import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Resume } from "@/app/types"
 

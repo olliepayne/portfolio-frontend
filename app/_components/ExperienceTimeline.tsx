@@ -1,10 +1,10 @@
 import Image from "next/image"
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import SkillTagsList from "@/app/_components/SkillTagsList"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Job } from "@/app/types"
 import Markdown from "react-markdown"
-import markdownComponents from "../helpers/markdownComponents"
+import markdownComponents from "@/app/_helpers/markdownComponents"
 
 export default async function ExperienceTimeline() {
   const data: Job[] = await getStrapiData(

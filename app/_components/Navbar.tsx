@@ -55,7 +55,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("resize", throttledCheckWindowSize)
     }
-  }, [])
+  })
 
   useEffect(handleBodyScroll, [isMobile, navIsOpen])
 

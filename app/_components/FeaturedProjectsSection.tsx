@@ -1,8 +1,8 @@
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import ProjectCard from "@/app/_components/ProjectCard"
-import getStrapiData from "@/app/helpers/getStrapiData"
-import { FeaturedProjectsSection as IFeaturedProjectsSection } from "@/app//types"
+import getStrapiData from "@/app/_helpers/getStrapiData"
+import { FeaturedProjectsSection as IFeaturedProjectsSection } from "@/app/types"
 
 interface Props {
   variant: "dark" | "light"
