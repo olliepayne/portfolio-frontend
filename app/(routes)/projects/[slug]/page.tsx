@@ -63,8 +63,8 @@ export default async function ProjectSlugPage({ params }: Props) {
       </section>
       <section className="text-white bg-charcoal py-32">
         <Container>
-          <Heading level="h2">Request</Heading>
-          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
+          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4 lg:max-w-[640px]">
+            <Heading level="h2">Request</Heading>
             {data[0].requestContent && (
               <Markdown components={markdownComponents}>
                 {data[0].requestContent}
@@ -75,8 +75,8 @@ export default async function ProjectSlugPage({ params }: Props) {
       </section>
       <section className="py-32 relative">
         <Container variant="narrow">
-          <Heading level="h2">Strategy</Heading>
           <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
+            <Heading level="h2">Strategy</Heading>
             {data[0].strategyContent && (
               <Markdown components={markdownComponents}>
                 {data[0].strategyContent}
@@ -87,15 +87,13 @@ export default async function ProjectSlugPage({ params }: Props) {
       </section>
       <section className="py-32 bg-charcoal text-white">
         <Container>
-          <div className="mr-0 lg:max-w-[640px] lg:mr-4">
+          <div className="border-l-4 border-primary border-solid pl-8 mt-4 lg:max-w-[640px]">
             <Heading level="h2">Results</Heading>
-            <div className="border-l-4 border-primary border-solid pl-8 mt-4">
-              {data[0].resultsContent && (
-                <Markdown components={markdownComponents}>
-                  {data[0].resultsContent}
-                </Markdown>
-              )}
-            </div>
+            {data[0].resultsContent && (
+              <Markdown components={markdownComponents}>
+                {data[0].resultsContent}
+              </Markdown>
+            )}
           </div>
         </Container>
       </section>
