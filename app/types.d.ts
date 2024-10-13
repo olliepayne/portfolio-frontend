@@ -3,6 +3,14 @@ export interface StrapiImage {
   alternativeText: string
 }
 
+export interface StrapiFile {
+  url: string
+}
+
+export interface Resume {
+  file: StrapiFile
+}
+
 export interface Skill {
   name: string
 }
@@ -15,7 +23,7 @@ export interface Job {
   stillHere: boolean
   location: string
   remote: boolean
-  summary: string
+  summary?: string
   skills: Skill[]
   company: Company
 }

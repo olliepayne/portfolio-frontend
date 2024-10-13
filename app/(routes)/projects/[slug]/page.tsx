@@ -1,16 +1,16 @@
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import { Project } from "@/app/types"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"
 import SkillTagsList from "@/app/_components/SkillTagsList"
 import Markdown from "react-markdown"
-import markdownComponents from "@/app/helpers/markdownComponents"
+import markdownComponents from "@/app/_helpers/markdownComponents"
 import { Metadata } from "next"
 
 export async function generateStaticParams() {
-  const projects: Project[] = await getStrapiData("/api/projects", "no-cache")
+  const projects: Project[] = await getStrapiData("/api/projects")
 
   return projects.map((project) => ({ slug: project.slug }))
 }
@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getStrapiData(
     `/api/projects?filters[slug]$eq]=${params.slug}&populate=seo`
   )
-  console.log(data)
 
   return {
     title: data[0].seo ? data[0].seo.titleTag : "Title Tag",

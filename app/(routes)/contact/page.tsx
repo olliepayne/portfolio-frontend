@@ -3,19 +3,22 @@ import Container from "@/app/_components/Container"
 import Outlink from "@/app/_components/Outlink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import { Metadata } from "next"
-import getStrapiData from "@/app/helpers/getStrapiData"
-import getStrapiUrl from "@/app/helpers/getStrapiUrl"
+import getStrapiData from "@/app/_helpers/getStrapiData"
+import { Resume } from "@/app/types"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/contact-page?populate=seo")
 
   return {
-    title: data ? data.seo.titleTag : "Title tag",
-    description: data ? data.seo.metaDescription : ""
+    title: data?.seo?.titleTag ? data.seo.titleTag : "Title tag",
+    description: data?.seo?.metaDescription ? data.seo.metaDescription : ""
   }
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const resume: Resume = await getStrapiData("/api/resume?populate=*")
+
   return (
     <main className="min-h-screen py-16">
       <Container variant="narrow">
@@ -31,7 +34,9 @@ export default function ContactPage() {
               <li className="mt-2">
                 <Outlink
                   href={
-                    getStrapiUrl() + "/uploads/resume_9_23_24_d40af25398.pdf"
+                    resume?.file?.url
+                      ? (getStrapiMedia(resume.file.url) as string)
+                      : "#"
                   }
                 >
                   Resume
