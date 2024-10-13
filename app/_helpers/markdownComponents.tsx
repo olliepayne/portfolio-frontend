@@ -43,11 +43,11 @@ const markdownComponents: Partial<Components> = {
   },
   ul(props) {
     const { children } = props
-    return <ul className="list-disc pl-8 mt-6">{children}</ul>
+    return <ul className="list-disc pl-10 mt-6">{children}</ul>
   },
   ol(props) {
     const { children } = props
-    return <ol className="list-decimal pl-8 mt-6">{children}</ol>
+    return <ol className="list-decimal pl-10 mt-6">{children}</ol>
   },
   img(props) {
     return (
