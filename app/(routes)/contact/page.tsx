@@ -49,11 +49,13 @@ export default async function ContactPage() {
                   href="https://www.linkedin.com/in/oliverpayne01/"
                   target="_blank"
                 >
+                  <span className="hidden">LinkedIn</span>
                   <SocialIcon platform="LinkedIn" className="fill-charcoal" />
                 </a>
               </li>
               <li className="inline-block align-middle">
                 <a href="https://github.com/olliepayne" target="_blank">
+                  <span className="hidden">GitHub</span>
                   <SocialIcon platform="GitHub" className="fill-charcoal" />
                 </a>
               </li>

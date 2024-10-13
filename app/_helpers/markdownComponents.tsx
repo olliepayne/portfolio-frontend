@@ -51,7 +51,7 @@ const markdownComponents: Partial<Components> = {
   },
   img(props) {
     return (
-      <span className="inline-block mt-6 relative w-full h-[350px]">
+      <span className="inline-block mt-6 relative w-full h-[400px]">
         <Image
           src={props.src as string}
           alt={props.alt as string}
