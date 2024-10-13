@@ -12,12 +12,17 @@ export async function generateMetadata(): Promise<Metadata> {
     "/api/contact-page?populate=seo"
   )
 
-  return {
-    title: data.seo.titleTag ? data.seo.titleTag : "Title tag",
-    description: data.seo.metaDescription
-      ? data.seo.metaDescription
-      : "Meta description"
-  }
+  return data
+    ? {
+        title: data.seo.titleTag ? data.seo.titleTag : "Title tag",
+        description: data.seo.metaDescription
+          ? data.seo.metaDescription
+          : "Meta description"
+      }
+    : {
+        title: "Title tag",
+        description: "Meta description"
+      }
 }
 
 export default async function ContactPage() {
