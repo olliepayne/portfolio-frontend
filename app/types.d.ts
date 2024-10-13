@@ -11,6 +11,11 @@ export interface Resume {
   file: StrapiFile
 }
 
+export interface SEO {
+  titleTag: string
+  metaDescription: string
+}
+
 export interface Skill {
   name: string
 }
