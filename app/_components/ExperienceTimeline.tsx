@@ -13,8 +13,11 @@ export default async function ExperienceTimeline() {
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
-    const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "medium" })
-    return formatter.format(date)
+    // const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "short" })
+    return new Intl.DateTimeFormat("en-us", {
+      year: "numeric",
+      month: "long"
+    }).format(date)
   }
 
   function getDuration(index: number) {

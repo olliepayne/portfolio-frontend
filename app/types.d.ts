@@ -41,10 +41,8 @@ export interface Project {
   summary: string
   skills: Skill[]
   requestContent: string
-  secondaryImage: StrapiImage
   strategyContent: string
   resultsContent: string
-  resultsImage: StrapiImage
 }
 
 export interface FeaturedProjectsSection {

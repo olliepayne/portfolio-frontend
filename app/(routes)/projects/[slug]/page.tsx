@@ -52,7 +52,7 @@ export default async function ProjectSlugPage({ params }: Props) {
             />
           )}
           <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
-          <div className="lg:w-1/2">
+          <div className="lg:max-w-[640px]">
             {data[0].name && <Heading level="h1">{data[0].name}</Heading>}
             {data[0].summary && <p>{data[0].summary}</p>}
             {data[0].skills && (
@@ -61,10 +61,10 @@ export default async function ProjectSlugPage({ params }: Props) {
           </div>
         </Container>
       </section>
-      <section className="text-white bg-charcoal pt-32 pb-[20.5rem]">
+      <section className="text-white bg-charcoal py-32">
         <Container>
-          <Heading level="h2">Request</Heading>
-          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
+          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4 lg:max-w-[640px]">
+            <Heading level="h2">Request</Heading>
             {data[0].requestContent && (
               <Markdown components={markdownComponents}>
                 {data[0].requestContent}
@@ -73,19 +73,10 @@ export default async function ProjectSlugPage({ params }: Props) {
           </div>
         </Container>
       </section>
-      {/* <section className="pb-32 pt-[20.5rem] relative"> */}
       <section className="py-32 relative">
         <Container variant="narrow">
-          {/* <div className="absolute w-[calc(100%-32px)] max-w-[768px] h-[400px] -top-48 left-1/2 -translate-x-1/2">
-            <Image
-              src={getStrapiMedia(data[0].secondaryImage.url) as string}
-              alt={data[0].secondaryImage.alternativeText}
-              fill
-              objectFit="cover"
-            />
-          </div> */}
-          <Heading level="h2">Strategy</Heading>
           <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
+            <Heading level="h2">Strategy</Heading>
             {data[0].strategyContent && (
               <Markdown components={markdownComponents}>
                 {data[0].strategyContent}
@@ -96,26 +87,12 @@ export default async function ProjectSlugPage({ params }: Props) {
       </section>
       <section className="py-32 bg-charcoal text-white">
         <Container>
-          <div className="flex flex-col justify-between lg:items-center lg:flex-row">
-            <div className="basis-1/2 mr-0 lg:mr-4">
-              <Heading level="h2">Results</Heading>
-              <div className="border-l-4 border-primary border-solid pl-8 mt-4">
-                {data[0].resultsContent && (
-                  <Markdown components={markdownComponents}>
-                    {data[0].resultsContent}
-                  </Markdown>
-                )}
-              </div>
-            </div>
-            {data[0].resultsImage && (
-              <div className="relative basis-[400px] w-full mt-16 lg:mt-0 lg:basis-1/2 lg:h-[500px]">
-                <Image
-                  src={getStrapiMedia(data[0].resultsImage.url) as string}
-                  alt={data[0].resultsImage.alternativeText}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+          <div className="border-l-4 border-primary border-solid pl-8 mt-4 lg:max-w-[640px]">
+            <Heading level="h2">Results</Heading>
+            {data[0].resultsContent && (
+              <Markdown components={markdownComponents}>
+                {data[0].resultsContent}
+              </Markdown>
             )}
           </div>
         </Container>

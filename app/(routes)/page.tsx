@@ -102,7 +102,7 @@ export default async function Home() {
               <Heading level="h2">About Me</Heading>
               <p className="mt-4">
                 I began coding as a teen by working on 2D indie games. Once It
-                was time to commit to a first step towards a career, it was a no
+                was time to take a first step towards a career, it was a no
                 brainer for me to pursue programming. I got my first position as
                 a Frontend development intern, and have been working in the
                 agency world ever since.
