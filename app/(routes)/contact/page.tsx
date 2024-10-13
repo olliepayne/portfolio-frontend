@@ -11,8 +11,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/contact-page?populate=seo")
 
   return {
-    title: data?.seo?.titleTag ? data.seo.titleTag : "Title tag",
-    description: data?.seo?.metaDescription ? data.seo.metaDescription : ""
+    title: data.seo.titleTag ? data.seo.titleTag : "Title tag",
+    description: data.seo.metaDescription
+      ? data.seo.metaDescription
+      : "Meta description"
   }
 }
 
