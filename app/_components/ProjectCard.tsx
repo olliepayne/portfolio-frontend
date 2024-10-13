@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import { Project } from "@/app/types"
 import Link from "next/link"
 import SkillTagsList from "@/app/_components/SkillTagsList"
@@ -17,8 +17,7 @@ export default function ProjectCard({
         src={getStrapiMedia(mainImage.url) as string}
         alt={mainImage.alternativeText}
         fill
-        objectFit="cover"
-        className="-z-20"
+        className="-z-20 object-cover"
       />
       <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
       <p className="text-heading3Mobile font-bold">{name}</p>

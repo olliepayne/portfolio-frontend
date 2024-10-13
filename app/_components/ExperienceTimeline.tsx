@@ -1,15 +1,14 @@
 import Image from "next/image"
-import { getStrapiMedia } from "@/app/helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import SkillTagsList from "@/app/_components/SkillTagsList"
-import getStrapiData from "@/app/helpers/getStrapiData"
+import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Job } from "@/app/types"
 import Markdown from "react-markdown"
-import markdownComponents from "../helpers/markdownComponents"
+import markdownComponents from "@/app/_helpers/markdownComponents"
 
 export default async function ExperienceTimeline() {
   const data: Job[] = await getStrapiData(
-    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
-    "no-cache"
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc"
   )
 
   const formatDate = (dateStr: string) => {
@@ -90,7 +89,7 @@ export default async function ExperienceTimeline() {
                         src={getStrapiMedia(company.logo.url) as string}
                         alt={company.logo.alternativeText}
                         fill
-                        objectFit="cover"
+                        className="object-cover"
                       />
                     )}
                   </div>
@@ -126,9 +125,9 @@ export default async function ExperienceTimeline() {
                   {endDate ? formatDate(endDate) : "Present"}
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
-                <Markdown components={markdownComponents}>
-                  {summary}
-                </Markdown>
+                {summary && (
+                  <Markdown components={markdownComponents}>{summary}</Markdown>
+                )}
                 {skills.length > 0 && (
                   <SkillTagsList skills={skills} className="mt-4" />
                 )}
