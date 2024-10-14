@@ -74,7 +74,9 @@ export default async function Footer() {
                 target="_blank"
                 className="inline-block"
               >
-                <span className="hidden">LinkedIn</span>
+                <span rel="noreferrer noopener nofollow" className="hidden">
+                  LinkedIn
+                </span>
                 <SocialIcon platform="LinkedIn" className="fill-white" />
               </a>
             </li>
@@ -84,7 +86,9 @@ export default async function Footer() {
                 target="_blank"
                 className="inline-block"
               >
-                <span className="hidden">GitHub</span>
+                <span rel="noreferrer noopener nofollow" className="hidden">
+                  GitHub
+                </span>
                 <SocialIcon platform="GitHub" className="fill-white" />
               </a>
             </li>
