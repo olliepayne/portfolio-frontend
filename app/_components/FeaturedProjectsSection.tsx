@@ -19,13 +19,13 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
   )
 
-  function hasData(property: "main" | "second" | "third") {
-    if (data) {
-      if (data[property]) return true
-    } else {
-      return false
-    }
-  }
+  // function hasData(property: "main" | "second" | "third") {
+  //   if (data) {
+  //     if (data[property]) return true
+  //   } else {
+  //     return false
+  //   }
+  // }
 
   return (
     <section
@@ -40,23 +40,25 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
       <Container>
         <Heading level="h2">Featured Projects</Heading>
         <p>What I&apos;ve worked on, both personal and professional.</p>
-        <ul className="grid mt-8 gap-8 auto-rows-[minmax(200px,auto)] lg:grid-cols-2">
-          {hasData("main") && (
-            <li className="lg:row-[span_2_/_auto]">
-              <ProjectCard {...data.main} />
-            </li>
-          )}
-          {hasData("second") && (
-            <li>
-              <ProjectCard {...data.second} />
-            </li>
-          )}
-          {hasData("third") && (
-            <li>
-              <ProjectCard {...data.third} />
-            </li>
-          )}
-        </ul>
+        {data && (
+          <ul className="grid mt-8 gap-8 auto-rows-[minmax(200px,auto)] lg:grid-cols-2">
+            {data.main && (
+              <li className="lg:row-[span_2_/_auto]">
+                <ProjectCard {...data.main} />
+              </li>
+            )}
+            {data.second && (
+              <li>
+                <ProjectCard {...data.second} />
+              </li>
+            )}
+            {data.third && (
+              <li>
+                <ProjectCard {...data.third} />
+              </li>
+            )}
+          </ul>
+        )}
       </Container>
     </section>
   )
