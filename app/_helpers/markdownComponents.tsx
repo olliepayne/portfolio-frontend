@@ -1,6 +1,5 @@
 import { Components } from "react-markdown"
 import Heading from "@/app/_components/Heading"
-import Image from "next/image"
 import Outlink from "@/app/_components/Outlink"
 import InternalLink from "@/app/_components/InternalLink"
 
@@ -51,12 +50,11 @@ const markdownComponents: Partial<Components> = {
   },
   img(props) {
     return (
-      <span className="inline-block mt-6 relative w-full h-[400px]">
-        <Image
-          src={props.src as string}
-          alt={props.alt as string}
-          fill
-          className="object-cover"
+      <span className="block mx-auto w-fit mt-6">
+        <img
+          src={props.src}
+          alt={props.alt}
+          className="object-cover drop-shadow-xl-darker"
         />
       </span>
     )

@@ -46,30 +46,15 @@ const config: Config = {
       keyframes: {
         blobXToY: {
           "0%, 100%": {
-            transform: "scale(1, 1)"
-          },
-          "25%": {
-            transform: "scaleX(1.1) rotateZ(10deg)"
-          },
-          "75%": {
-            transform: "scaleY(1.2) rotateZ(-10deg)"
-          }
-        },
-        blobYToX: {
-          "0%, 100%": {
-            transform: "scale(1, 1)"
-          },
-          "25%": {
-            transform: "scaleY(1.1)"
+            transform: "scale(1, 1) rotateZ(0deg)"
           },
           "50%": {
-            transform: "scaleX(1.2)"
+            transform: "scale(1.3, 0.7) rotateZ(10deg)"
           }
         }
       },
       animation: {
-        blobXToY: "blobXToY 10s ease-in-out infinite",
-        blobYToX: "blobYToX 10s ease-in-out infinite"
+        blob: "blobXToY 20s ease-in-out infinite"
       }
     }
   },

@@ -6,6 +6,7 @@ import { Metadata } from "next"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Resume, SEO } from "@/app/types"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
+import Image from "next/image"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data: { seo: SEO } = await getStrapiData(
@@ -76,7 +77,7 @@ export default async function ContactPage() {
             </ul>
           </div>
           <div>
-            <img src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif" />
+            <Image src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif" alt="Happy cat gif." width={340} height={340} />
           </div>
         </div>
       </Container>
