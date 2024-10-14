@@ -50,7 +50,7 @@ const markdownComponents: Partial<Components> = {
   },
   img(props) {
     return (
-      <span className="block mx-auto w-fit mt-6">
+      <span className="block mx-auto w-fit my-8">
         <img
           src={props.src}
           alt={props.alt}
