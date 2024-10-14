@@ -14,7 +14,6 @@ export default async function ExperienceTimeline() {
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
-    console.log(date)
     return new Intl.DateTimeFormat("en-us", {
       year: "numeric",
       month: "long"
