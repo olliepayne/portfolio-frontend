@@ -19,14 +19,6 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
     `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
   )
 
-  // function hasData(property: "main" | "second" | "third") {
-  //   if (data) {
-  //     if (data[property]) return true
-  //   } else {
-  //     return false
-  //   }
-  // }
-
   return (
     <section
       className={`py-32 relative ${
