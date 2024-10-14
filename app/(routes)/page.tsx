@@ -90,7 +90,7 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative w-full max-w-[608px] aspect-square mt-16 lg:basis-1/2 lg:mt-0 lg:mr-4">
+            <div className="relative w-full max-w-[426px] aspect-square mt-16 lg:basis-1/3 lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
                 alt="Ollie Payne competing in a climbing competition."
@@ -98,7 +98,7 @@ export default async function Home() {
                 className="object-cover object-[center_10%]"
               />
             </div>
-            <div className="basis-1/2 lg:ml-4">
+            <div className="basis-2/3 lg:ml-4">
               <Heading level="h2">About Me</Heading>
               <p className="mt-4">
                 I began coding as a teen by working on 2D indie games. Once it
