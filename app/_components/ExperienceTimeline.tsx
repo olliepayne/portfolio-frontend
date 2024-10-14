@@ -24,12 +24,18 @@ export default async function ExperienceTimeline() {
     const endDate = data[index].stillHere
       ? new Date()
       : new Date(data[index].endDate)
-    const startDate = new Date(data[data.length - 1].startDate)
+    let startDate = new Date(data[data.length - 1].startDate)
+    for (let i = index + 1; i < data.length; i++) {
+      if (data[i].company.name !== data[index].company.name) {
+        startDate = new Date(data[i - 1].startDate)
+        break
+      }
+    }
 
     const millisecondsDiff = endDate.getTime() - startDate.getTime()
     const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
     const years = Math.round(daysDiff / 365)
-    const months = Math.round((365 - (daysDiff % 365)) / 30)
+    const months = Math.round((daysDiff % 365) / 30)
     return `${years > 0 ? `${years} yrs` : ""} ${months} mos`
   }
 
