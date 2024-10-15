@@ -9,15 +9,8 @@ interface Props {
 }
 
 export default async function FeaturedProjectsSection({ variant }: Props) {
-  const populateMain =
-    "populate[0]=main&populate[1]=main.mainImage&populate[2]=main.skills"
-  const populateSecond =
-    "populate[3]=second&populate[4]=second.mainImage&populate[5]=second.skills"
-  const populateThird =
-    "populate[6]=third&populate[7]=third.mainImage&populate[8]=third.skills"
-  const data: IFeaturedProjectsSection = await getStrapiData(
-    `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
-  )
+  const url = `/api/featured-projects-section?populate[main][populate]=*&populate[second][populate]=*&populate[third][populate]=*`
+  const data: IFeaturedProjectsSection = await getStrapiData(url)
 
   return (
     <section
