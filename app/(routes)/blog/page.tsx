@@ -5,9 +5,20 @@ import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
 // import SkillTagsList from "@/app/_components/SkillTagsList"
 
-export default async function BlogIndexPage() {
-  const blogPostsUrl = "/api/blog-posts?populate=*"
+interface Props {
+  searchParams: any
+}
+
+export default async function BlogIndexPage({ searchParams }: Props) {
+  console.log(searchParams)
+
+  // const blogPostsUrl = "/api/blog-posts?populate=*"
+  let blogPostsUrl = "/api/blog-posts?populate=*"
+  if (searchParams["[skills][name][$eq]"]) {
+    blogPostsUrl += `&filters[skills][name][$eq]=${searchParams["[skills][name][$eq]"]}`
+  }
   const blogPosts: BlogPost[] = await getStrapiData(blogPostsUrl)
+  console.log(blogPostsUrl)
 
   return (
     <main className="min-h-screen">
@@ -22,7 +33,7 @@ export default async function BlogIndexPage() {
           <Heading level="h2">All Posts</Heading>
           <p>All blog posts matching the current filters.</p>
           {blogPosts && (
-            <ul className="grid my-8 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid my-8 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((blogPost, index) => (
                 <li key={`blog-post-${index}`} className="">
                   <BlogPostCard {...blogPost} />
