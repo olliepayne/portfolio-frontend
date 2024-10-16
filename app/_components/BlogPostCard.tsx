@@ -23,7 +23,7 @@ export default function BlogPostCard({
       <div className="px-4 py-6">
         <p className="font-bold text-heading4Desktop">{title}</p>
         <p className="my-4">{summary}</p>
-        <span className="relative inline-block group-hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">
+        <span className="relative pb-0.5 inline-block group-hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">
           Read Post
         </span>
       </div>
