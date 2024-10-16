@@ -55,3 +55,15 @@ export interface FeaturedProjectsSection {
   second: Project
   third: Project
 }
+
+export interface BlogPost {
+  slug: string
+  title: string
+  content: string
+  publishedOn: string
+  updatedOn?: string
+  mainImage: StrapiImage
+  summary: string
+  seo: SEO
+  skills: Skill[]
+}
