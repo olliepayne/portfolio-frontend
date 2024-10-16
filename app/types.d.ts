@@ -60,8 +60,8 @@ export interface BlogPost {
   slug: string
   title: string
   content: string
-  publishedOn: string
-  updatedOn?: string
+  publishedAt: string
+  updatedAt: string
   mainImage: StrapiImage
   summary: string
   seo: SEO
