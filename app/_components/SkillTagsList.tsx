@@ -17,7 +17,10 @@ export default function SkillTagsList({ skills, scope, className }: Props) {
     <ul className={`flex flex-wrap gap-2 ${className ? className : null}`}>
       {skills.map(({ name }) => (
         <li key={`skill-tag-${name}`}>
-          <SkillTag href={`/${scope}`} name={name} />
+          <SkillTag
+            href={`/${scope}?[skills][name][$eq]=${name}`}
+            name={name}
+          />
         </li>
       ))}
     </ul>
