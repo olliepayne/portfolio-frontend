@@ -10,7 +10,7 @@ export default function BlogPostCard({
   summary
 }: BlogPost) {
   return (
-    <div className="group cursor-pointer relative bg-gray-50 shadow-md">
+    <div className="group cursor-pointer relative bg-gray-50 shadow-xl">
       <Link href={`/blog/${slug}`} className="absolute w-full h-full z-10" />
       <div className="relative w-full h-[200px]">
         <Image
@@ -23,7 +23,7 @@ export default function BlogPostCard({
       <div className="px-4 py-6">
         <p className="font-bold text-heading4Desktop">{title}</p>
         <p className="my-4">{summary}</p>
-        <span className="z-20 relative inline-block group-hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:-z-10">
+        <span className="relative inline-block group-hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">
           Read Post
         </span>
       </div>
