@@ -82,6 +82,8 @@ export default async function ContactPage() {
               alt="Happy cat gif."
               width={340}
               height={340}
+              unoptimized
+              loading="eager"
             />
           </div>
         </div>
