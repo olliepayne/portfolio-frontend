@@ -67,7 +67,7 @@ export default async function Home() {
             <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
               <Blob
                 variant="secondary"
-                className="absolute animate-blob fill-primary overflow-visible"
+                className="absolute animate-blob fill-primary"
               />
               <Blob
                 variant="image"
