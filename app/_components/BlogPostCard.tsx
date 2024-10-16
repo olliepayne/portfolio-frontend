@@ -10,7 +10,7 @@ export default function BlogPostCard({
   summary
 }: BlogPost) {
   return (
-    <div className="group cursor-pointer relative bg-gray-50 shadow-xl">
+    <div className="group cursor-pointer relative bg-gray-50 shadow-md">
       <Link href={`/blog/${slug}`} className="absolute w-full h-full z-10" />
       <div className="relative w-full h-[200px]">
         <Image
