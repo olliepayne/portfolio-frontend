@@ -27,7 +27,7 @@ export default function ProjectCard({
         href={`/projects/${slug}`}
         className="mt-4 text-primary inline-block before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0"
       >
-        View project
+        View Project
       </Link>
     </div>
   )
