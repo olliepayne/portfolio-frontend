@@ -3,6 +3,7 @@ import BlogPostCard from "@/app/_components/BlogPostCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
+// import SkillTagsList from "@/app/_components/SkillTagsList"
 
 export default async function BlogIndexPage() {
   const blogPostsUrl = "/api/blog-posts?populate=*"
