@@ -56,7 +56,7 @@ export default async function ProjectSlugPage({ params }: Props) {
             {data[0].name && <Heading level="h1">{data[0].name}</Heading>}
             {data[0].summary && <p>{data[0].summary}</p>}
             {data[0].skills && (
-              <SkillTagsList skills={data[0].skills} className="mt-4" />
+              <SkillTagsList scope="projects" skills={data[0].skills} className="mt-4" />
             )}
           </div>
         </Container>

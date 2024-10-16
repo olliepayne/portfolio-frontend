@@ -50,7 +50,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 <span>Updated on {formatDate(updatedAt)} | </span>
                 <span>Published on {formatDate(publishedAt)}</span>
               </p>
-              <SkillTagsList urlPath="/blog#" skills={[{ name: "Frontend" }]} />
+              <SkillTagsList scope="blog" skills={[{ name: "Frontend" }]} />
             </div>
             <div className="relative basis-[380px] w-full lg:basis-1/2 lg:h-[380px]">
               <Blob

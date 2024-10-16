@@ -129,7 +129,7 @@ export default async function ExperienceTimeline() {
                   <Markdown components={markdownComponents}>{summary}</Markdown>
                 )}
                 {skills.length > 0 && (
-                  <SkillTagsList skills={skills} className="mt-4" />
+                  <SkillTagsList scope="projects" skills={skills} className="mt-4" />
                 )}
               </div>
             </div>
