@@ -26,8 +26,9 @@ interface Props {
 
 export default async function BlogSlugPage({ params: { slug } }: Props) {
   const blogPostUrl = `/api/blog-posts?filters[slug][$eq]=${slug}&populate=*`
-  const [{ title, mainImage, content, publishedAt, updatedAt }]: BlogPost[] =
-    await getStrapiData(blogPostUrl)
+  const [
+    { title, mainImage, content, skills, publishedAt, updatedAt }
+  ]: BlogPost[] = await getStrapiData(blogPostUrl)
   console.log(content)
 
   const formatDate = (dateStr: string) => {
@@ -50,7 +51,9 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 <span>Updated on {formatDate(updatedAt)} | </span>
                 <span>Published on {formatDate(publishedAt)}</span>
               </p>
-              <SkillTagsList scope="blog" skills={[{ name: "Frontend" }]} />
+              {skills.length > 0 && (
+                <SkillTagsList scope="blog" skills={skills} />
+              )}
             </div>
             <div className="relative basis-[380px] w-full lg:basis-1/2 lg:h-[380px]">
               <Blob
