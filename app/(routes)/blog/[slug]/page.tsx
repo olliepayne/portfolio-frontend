@@ -52,7 +52,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 <span>Published on {formatDate(publishedAt)}</span>
               </p>
               {skills.length > 0 && (
-                <SkillTagsList scope="blog" skills={skills} />
+                <SkillTagsList scope="blog" skills={skills} className="relative z-10" />
               )}
             </div>
             <div className="relative basis-[380px] w-full lg:basis-1/2 lg:h-[380px]">
