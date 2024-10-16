@@ -13,7 +13,7 @@ export default function SkillTag({ href, name }: Props) {
   return (
     <Link
       href={href}
-      className="inline-block bg-black text-white text-xs py-0.5 px-1 border-primary border-[1px]"
+      className="inline-block bg-black text-white text-sm py-0.5 px-1 border-primary border-[1px] transition-colors hover:bg-primary hover:text-black"
     >
       {formattedName}
     </Link>
