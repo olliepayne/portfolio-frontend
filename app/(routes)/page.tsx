@@ -61,7 +61,7 @@ export default async function Home() {
                   text="Contact Me"
                   className="mr-4 hover:text-black"
                 />
-                <InternalLink href="#projects">My Projects</InternalLink>
+                <InternalLink href="#projects" text="My Projects" />
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
@@ -95,7 +95,7 @@ export default async function Home() {
                 src="/images/climbing-green.jpg"
                 alt="Ollie Payne competing in a climbing competition."
                 fill
-                className="object-cover object-[center_10%]"
+                className="object-cover object-[center_10%] drop-shadow-xl-darker"
               />
             </div>
             <div className="basis-2/3 lg:ml-4">
