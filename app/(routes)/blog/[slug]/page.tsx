@@ -7,6 +7,7 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
+import SkillTagsList from "@/app/_components/SkillTagsList"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -45,10 +46,11 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
           <div className="flex justify-between lg:items-center gap-8 lg:gap-4 flex-col lg:flex-row">
             <div className="">
               <Heading level="h1">{title}</Heading>
-              <p>
+              <p className="my-4">
                 <span>Updated on {formatDate(updatedAt)} | </span>
                 <span>Published on {formatDate(publishedAt)}</span>
               </p>
+              <SkillTagsList urlPath="/blog#" skills={[{ name: "Frontend" }]} />
             </div>
             <div className="relative basis-[380px] w-full lg:basis-1/2 lg:h-[380px]">
               <Blob
@@ -69,9 +71,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
         <Container variant="narrow">
           <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>
-        <code>
-          Here is some code
-        </code>
+        <code>Here is some code</code>
       </section>
     </article>
   )
