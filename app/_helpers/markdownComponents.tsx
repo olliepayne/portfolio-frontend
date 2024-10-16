@@ -64,9 +64,11 @@ const markdownComponents: Partial<Components> = {
       (process.env.NODE_ENV === "production" && "https://olliepayne") ||
       (process.env.NODE_ENV === "development" && "http://localhost:3000")
     if (props.href?.split(".")[0] !== domainName) {
-      return <Outlink href={props.href as string}>{props.children}</Outlink>
+      return (
+        <Outlink href={props.href as string} text={props.children as string} />
+      )
     } else {
-      return <InternalLink href={props.href}>{props.children}</InternalLink>
+      return <InternalLink href={props.href} text={props.children as string} />
     }
   }
 }
