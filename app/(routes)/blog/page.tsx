@@ -3,22 +3,34 @@ import BlogPostCard from "@/app/_components/BlogPostCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
-import SkillTagsList from "@/app/_components/SkillTagLinksList"
+import SkillTagFilters from "@/app/_components/SkillTagFilters"
 import { Skill } from "@/app/types"
 
 interface Props {
-  searchParams: any
+  searchParams: {
+    skill?: string | string[]
+  }
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
   const skills: Skill[] = await getStrapiData("/api/skills")
 
-  let blogPostsUrl = "/api/blog-posts?populate=*"
-  if (searchParams["skills"]) {
-    // const blogPostsUrlFilters = searchParams.
-    blogPostsUrl += `&filters[skills][name][$eq]=${searchParams["[skills]"]}`
+  let blogPostsUrlFilters = ""
+  function setBlogPostsUrlFilters() {
+    if (searchParams.skill) {
+      if (typeof searchParams.skill === "string") {
+        blogPostsUrlFilters = `&filters[skills][name][$eq]=${searchParams.skill}`
+      } else {
+        blogPostsUrlFilters = searchParams.skill
+          .map((item) => `&filters[skills][name][$eq]=${item}`)
+          .join()
+          .replace(/[,]/g, "")
+      }
+    }
   }
-  const blogPosts: BlogPost[] = await getStrapiData(blogPostsUrl)
+  setBlogPostsUrlFilters()
+  const blogPostsUrl = `/api/blog-posts?populate=*${blogPostsUrlFilters}`
+  const blogPosts: BlogPost[] = await getStrapiData(blogPostsUrl, "no-cache")
 
   return (
     <main className="min-h-screen">
@@ -31,8 +43,8 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           <div>
-            <p className="font-bold text-heading5Desktop">Filter by skill</p>
-            <SkillTagsList scope="blog" skills={skills} className="mt-4" />
+            <p className="font-bold text-heading5Desktop">Filter by Skills</p>
+            {skills && <SkillTagFilters skills={skills} />}
           </div>
           <Heading level="h2" className="mt-8">
             All Posts
