@@ -53,15 +53,19 @@ export default function SkillTagFilters({ skills, className }: Props) {
     }
     updateFilters()
 
+    let newLocation = ""
     if (newSkillNames.length > 0) {
       const skillNamesStr: string = newSkillNames
         .map((item, index) => `${index > 0 ? "&" : ""}skill=${item}`)
         .join()
         .replace(/[,]/g, "")
-      router.push(`?${skillNamesStr}`)
+      newLocation = `?${skillNamesStr}`
     } else {
-      router.push(pathname)
+      newLocation = pathname
     }
+    router.push(newLocation, {
+      scroll: false
+    })
 
     setFilters({
       skillNames: newSkillNames
@@ -74,7 +78,7 @@ export default function SkillTagFilters({ skills, className }: Props) {
   }
 
   return (
-    <form className={className || ""}>
+    <form className={`flex gap-2 flex-wrap ${className || ""}`}>
       {skills &&
         skills.map((skill, index) => (
           <label
@@ -87,12 +91,12 @@ export default function SkillTagFilters({ skills, className }: Props) {
           >
             <input
               type="checkbox"
-              name={formatSkillName(skill.name)}
+              name={skill.name}
               value={skill.name}
               className="absolute top-0 left-0 w-0 h-0 opacity-0"
               onChange={handleChange}
             />
-            <span>{skill.name}</span>
+            <span>{formatSkillName(skill.name)}</span>
           </label>
         ))}
     </form>
