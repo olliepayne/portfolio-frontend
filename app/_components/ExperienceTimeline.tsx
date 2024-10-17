@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
-import SkillTagsList from "@/app/_components/SkillTagsList"
+import SkillTagLinksList from "@/app/_components/SkillTagLinksList"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Job } from "@/app/types"
 import Markdown from "react-markdown"
@@ -129,7 +129,11 @@ export default async function ExperienceTimeline() {
                   <Markdown components={markdownComponents}>{summary}</Markdown>
                 )}
                 {skills.length > 0 && (
-                  <SkillTagsList scope="projects" skills={skills} className="mt-4" />
+                  <SkillTagLinksList
+                    scope="projects"
+                    skills={skills}
+                    className="mt-4"
+                  />
                 )}
               </div>
             </div>

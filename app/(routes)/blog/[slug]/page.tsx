@@ -7,7 +7,7 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
-import SkillTagsList from "@/app/_components/SkillTagsList"
+import SkillTagLinksList from "@/app/_components/SkillTagLinksList"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -29,7 +29,6 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
   const [
     { title, mainImage, content, skills, publishedAt, updatedAt }
   ]: BlogPost[] = await getStrapiData(blogPostUrl)
-  console.log(content)
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
@@ -52,7 +51,11 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 <span>Published on {formatDate(publishedAt)}</span>
               </p>
               {skills.length > 0 && (
-                <SkillTagsList scope="blog" skills={skills} className="relative z-10" />
+                <SkillTagLinksList
+                  scope="blog"
+                  skills={skills}
+                  className="relative z-10"
+                />
               )}
             </div>
             <div className="relative basis-[380px] w-full lg:basis-1/2 lg:h-[380px]">

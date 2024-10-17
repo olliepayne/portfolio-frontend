@@ -2,20 +2,19 @@
 
 import Link from "next/link"
 import { Skill } from "@/app/types"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 
 interface Props extends Skill {
-  scope: "projects" | "blog"
+  href: string
 }
 
-export default function SkillTag({ name, scope }: Props) {
+export default function SkillTagLink({ name, href }: Props) {
   const searchParams = useSearchParams()
 
   function getIsActiveInitialState() {
-    if (searchParams.get("[skills][name][$eq]"))
-      if (searchParams.get("[skills][name][$eq]") === name) return true
-      else return false
+    if (searchParams.getAll("skill")?.includes(name)) return true
+    else return false
   }
   const [isActive, setIsActive] = useState(getIsActiveInitialState)
 
@@ -25,22 +24,11 @@ export default function SkillTag({ name, scope }: Props) {
     .replace(regex, "")
     .split(" ")
     .join("-")}`
-  
-  function handleIsActive() {
-    const newState = !isActive
-    setIsActive(newState)
-  }
-  
-  function getHref() {
-    if (isActive) return `/${scope}`
-    else return `/${scope}?[skills][name][$eq]=${name}`
-  }
-  let href = getHref()
 
   return (
     <Link
       href={href}
-      onClick={handleIsActive}
+      onClick={() => setIsActive(!isActive)}
       className={`inline-block  ${
         isActive
           ? "bg-primary text-black text-sm py-0.5 px-1 border-primary border-[1px] transition-colors"

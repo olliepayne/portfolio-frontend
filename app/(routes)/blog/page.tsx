@@ -3,22 +3,22 @@ import BlogPostCard from "@/app/_components/BlogPostCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
-// import SkillTagsList from "@/app/_components/SkillTagsList"
+import SkillTagsList from "@/app/_components/SkillTagLinksList"
+import { Skill } from "@/app/types"
 
 interface Props {
   searchParams: any
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
-  console.log(searchParams)
+  const skills: Skill[] = await getStrapiData("/api/skills")
 
-  // const blogPostsUrl = "/api/blog-posts?populate=*"
   let blogPostsUrl = "/api/blog-posts?populate=*"
-  if (searchParams["[skills][name][$eq]"]) {
-    blogPostsUrl += `&filters[skills][name][$eq]=${searchParams["[skills][name][$eq]"]}`
+  if (searchParams["skills"]) {
+    // const blogPostsUrlFilters = searchParams.
+    blogPostsUrl += `&filters[skills][name][$eq]=${searchParams["[skills]"]}`
   }
   const blogPosts: BlogPost[] = await getStrapiData(blogPostsUrl)
-  console.log(blogPostsUrl)
 
   return (
     <main className="min-h-screen">
@@ -30,7 +30,13 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       </section>
       <section className="py-16">
         <Container>
-          <Heading level="h2">All Posts</Heading>
+          <div>
+            <p className="font-bold text-heading5Desktop">Filter by skill</p>
+            <SkillTagsList scope="blog" skills={skills} className="mt-4" />
+          </div>
+          <Heading level="h2" className="mt-8">
+            All Posts
+          </Heading>
           <p>All blog posts matching the current filters.</p>
           {blogPosts && (
             <ul className="grid my-8 gap-8 sm:grid-cols-2 lg:grid-cols-3">

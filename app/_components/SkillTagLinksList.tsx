@@ -1,5 +1,5 @@
 import { Skill } from "@/app/types"
-import SkillTag from "@/app/_components/SkillTag"
+import SkillTagLink from "@/app/_components/SkillTagLink"
 
 interface Props {
   skills: Skill[]
@@ -7,15 +7,12 @@ interface Props {
   className?: string
 }
 
-export default function SkillTagsList({ skills, scope, className }: Props) {
+export default function SkillTagLinksList({ skills, scope, className }: Props) {
   return (
     <ul className={`flex flex-wrap gap-2 ${className ? className : null}`}>
       {skills.map(({ name }) => (
         <li key={`skill-tag-${name}`}>
-          <SkillTag
-            href={`/${scope}?[skills][name][$eq]=${name}`}
-            name={name}
-          />
+          <SkillTagLink name={name} href={`/${scope}?skill=${name}`} />
         </li>
       ))}
     </ul>
