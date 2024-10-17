@@ -8,11 +8,6 @@ interface Props {
 }
 
 export default function SkillTagsList({ skills, scope, className }: Props) {
-  const regex = /[?.#()]/g
-  function formatName(name: string) {
-    return `#${name.toLowerCase().replace(regex, "").split(" ").join("-")}`
-  }
-
   return (
     <ul className={`flex flex-wrap gap-2 ${className ? className : null}`}>
       {skills.map(({ name }) => (
