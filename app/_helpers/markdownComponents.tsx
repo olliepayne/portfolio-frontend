@@ -2,6 +2,8 @@ import { Components } from "react-markdown"
 import Heading from "@/app/_components/Heading"
 import Outlink from "@/app/_components/Outlink"
 import InternalLink from "@/app/_components/InternalLink"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 const markdownComponents: Partial<Components> = {
   h2(props) {
@@ -70,6 +72,30 @@ const markdownComponents: Partial<Components> = {
     } else {
       return <InternalLink href={props.href} text={props.children as string} />
     }
+  },
+  code(props) {
+    return (
+      <code className="py-1 px-1.5 text-white bg-charcoal text-sm rounded-sm">
+        {props.children}
+      </code>
+    )
+  },
+  pre({ children }: any) {
+    const language = children.props.className.split("-")[1]
+
+    return (
+      <SyntaxHighlighter
+        style={atomDark}
+        PreTag="div"
+        language={language}
+        customStyle={{
+          fontSize: "0.875rem",
+          marginTop: "1.5rem"
+        }}
+      >
+        {String(children.props.children)}
+      </SyntaxHighlighter>
+    )
   }
 }
 export default markdownComponents
