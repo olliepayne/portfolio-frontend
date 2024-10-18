@@ -86,15 +86,21 @@ export default function SkillTagFilters({ skills, className }: Props) {
 
   return (
     <div className={`${className || ""}`}>
-      <Link href={pathname} onClick={resetFilters} className="text-heading5Desktop font-bold text-themeGray transition-colors hover:text-primary">
+      <p className="font-bold text-heading4Desktop">Filter by Skills</p>
+      <Link
+        href={pathname}
+        onClick={resetFilters}
+        className="text-heading5Desktop font-bold my-4 inline-block text-themeGray transition-colors hover:text-primary"
+      >
         Reset
       </Link>
-      <form className="flex gap-2 flex-wrap mt-4">
+      <form className="flex gap-2 flex-wrap">
         {skills &&
           skills.map((skill, index) => (
             <label
               key={`skill-filter-${index}`}
-              className={`relative border-primary border-[1px] py-0.5 px-1 text-sm cursor-pointer transition-colors hover:bg-primary hover:text-black ${
+              htmlFor={skill.name}
+              className={`relative border-primary inline-block border-[1px] py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
                 getFilterIsActive(skill.name)
                   ? "bg-primary text-black"
                   : "bg-black text-white"
@@ -102,12 +108,13 @@ export default function SkillTagFilters({ skills, className }: Props) {
             >
               <input
                 type="checkbox"
+                id={skill.name}
                 name={skill.name}
                 value={skill.name}
                 className="absolute top-0 left-0 w-0 h-0 opacity-0"
                 onChange={handleChange}
               />
-              <span>{formatSkillName(skill.name)}</span>
+              {skill.name}
             </label>
           ))}
       </form>

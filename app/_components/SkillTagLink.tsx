@@ -29,13 +29,13 @@ export default function SkillTagLink({ name, href }: Props) {
     <Link
       href={href}
       onClick={() => setIsActive(!isActive)}
-      className={`inline-block  ${
+      className={`inline-block text-xs py-0.5 px-2.5 rounded-full uppercase font-bold border-primary border-[1px] transition-colors ${
         isActive
-          ? "bg-primary text-black text-sm py-0.5 px-1 border-primary border-[1px] transition-colors"
-          : "bg-black text-white text-sm py-0.5 px-1 border-primary border-[1px] transition-colors hover:bg-primary hover:text-black"
+          ? "bg-primary text-black"
+          : "bg-black text-white hover:bg-primary hover:text-black"
       }`}
     >
-      {formattedName}
+      {name}
     </Link>
   )
 }
