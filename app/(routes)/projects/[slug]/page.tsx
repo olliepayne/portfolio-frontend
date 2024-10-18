@@ -59,6 +59,7 @@ export default async function ProjectSlugPage({ params }: Props) {
               <SkillTagLinksList
                 scope="projects"
                 skills={data[0].skills}
+                textVariant="white"
                 className="mt-4"
               />
             )}

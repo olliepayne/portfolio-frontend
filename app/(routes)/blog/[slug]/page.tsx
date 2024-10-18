@@ -47,13 +47,14 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
             <div className="">
               <Heading level="h1">{title}</Heading>
               <p className="my-4">
-                <span>Updated on {formatDate(updatedAt)} | </span>
-                <span>Published on {formatDate(publishedAt)}</span>
+                <span>Published: {formatDate(publishedAt)} | </span>
+                <span>Last Updated: {formatDate(updatedAt)}</span>
               </p>
               {skills.length > 0 && (
                 <SkillTagLinksList
                   scope="blog"
                   skills={skills}
+                  textVariant="white"
                   className="relative z-10"
                 />
               )}

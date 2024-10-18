@@ -132,6 +132,7 @@ export default async function ExperienceTimeline() {
                   <SkillTagLinksList
                     scope="projects"
                     skills={skills}
+                    textVariant="black"
                     className="mt-4"
                   />
                 )}

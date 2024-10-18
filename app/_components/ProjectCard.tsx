@@ -12,7 +12,7 @@ export default function ProjectCard({
   skills
 }: Project) {
   return (
-    <div className="relative z-30 p-4 h-full group cursor-pointer bg-themeGray">
+    <div className="relative z-30 p-4 h-full group cursor-pointer bg-themeGray text-white">
       <Image
         src={getStrapiMedia(mainImage.url) as string}
         alt={mainImage.alternativeText}
@@ -22,7 +22,7 @@ export default function ProjectCard({
       <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
       <p className="text-heading3Mobile font-bold">{name}</p>
       <p className="mt-4">{summary}</p>
-      <SkillTagLinksList scope="projects" skills={skills} className="mt-4 relative z-30" />
+      <SkillTagLinksList scope="projects" skills={skills} textVariant="white" className="mt-4 relative z-30" />
       <Link
         href={`/projects/${slug}`}
         className="mt-4 text-primary inline-block before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0"
