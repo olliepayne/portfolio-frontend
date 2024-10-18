@@ -14,9 +14,7 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
 
   return (
     <section
-      className={`py-32 relative ${
-        variant === "dark" ? "bg-charcoal text-white" : "transparent"
-      }`}
+      className="py-32 relative bg-charcoal text-white"
     >
       <a
         id="projects"
