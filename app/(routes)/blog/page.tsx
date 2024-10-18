@@ -37,16 +37,16 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <section className="py-16 bg-charcoal text-white">
         <Container>
           <Heading level="h1">Blog</Heading>
-          <p className="">Resources on frontend development and SEO.</p>
+          <p className="mt-4">Resources on frontend development and SEO.</p>
         </Container>
       </section>
       <section className="py-16">
         <Container>
           {skills && <SkillTagFilters skills={skills} className="mt-4" />}
-          <Heading level="h2" className="mt-8">
-            All Posts
+          <Heading level="h2" className="mt-16">
+            All
           </Heading>
-          <p>All blog posts matching the current filters.</p>
+          <p className="mt-4">Articles matching the current filters.</p>
           {blogPosts && (
             <ul className="grid my-8 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((blogPost, index) => (
