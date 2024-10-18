@@ -67,6 +67,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 src={getStrapiMedia(mainImage.url) as string}
                 alt={mainImage.alternativeText}
                 fill
+                loading="eager"
                 className="object-cover drop-shadow-xl-darker"
               />
             </div>
@@ -77,7 +78,6 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
         <Container variant="narrow">
           <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>
-        <code>Here is some code</code>
       </section>
     </article>
   )
