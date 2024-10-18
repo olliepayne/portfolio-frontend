@@ -3,6 +3,7 @@
 import { Skill } from "@/app/types"
 import { useState } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
+import Link from "next/link"
 
 interface Props {
   skills: Skill[]
@@ -13,17 +14,6 @@ export default function SkillTagFilters({ skills, className }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
-  const regex = /[?.#()]/g
-  function formatSkillName(skillName: string) {
-    const formattedSkillName = `#${skillName
-      .toLowerCase()
-      .replace(regex, "")
-      .split(" ")
-      .join("-")}`
-
-    return formattedSkillName
-  }
 
   interface Filters {
     skillNames: string[]
@@ -72,33 +62,55 @@ export default function SkillTagFilters({ skills, className }: Props) {
     })
   }
 
+  function resetFilters() {
+    setFilters({
+      skillNames: []
+    })
+  }
+
+  const regex = /[?.#()]/g
+  function formatSkillName(skillName: string) {
+    const formattedSkillName = `#${skillName
+      .toLowerCase()
+      .replace(regex, "")
+      .split(" ")
+      .join("-")}`
+
+    return formattedSkillName
+  }
+
   function getFilterIsActive(skillName: string) {
     if (searchParams.getAll("skill")?.includes(skillName)) return true
     else return false
   }
 
   return (
-    <form className={`flex gap-2 flex-wrap ${className || ""}`}>
-      {skills &&
-        skills.map((skill, index) => (
-          <label
-            key={`skill-filter-${index}`}
-            className={`relative border-primary border-[1px] py-0.5 px-1 text-sm cursor-pointer transition-colors hover:bg-primary hover:text-black ${
-              getFilterIsActive(skill.name)
-                ? "bg-primary text-black"
-                : "bg-black text-white"
-            }`}
-          >
-            <input
-              type="checkbox"
-              name={skill.name}
-              value={skill.name}
-              className="absolute top-0 left-0 w-0 h-0 opacity-0"
-              onChange={handleChange}
-            />
-            <span>{formatSkillName(skill.name)}</span>
-          </label>
-        ))}
-    </form>
+    <div className={`${className || ""}`}>
+      <Link href={pathname} onClick={resetFilters} className="text-heading5Desktop font-bold text-themeGray transition-colors hover:text-primary">
+        Reset
+      </Link>
+      <form className="flex gap-2 flex-wrap mt-4">
+        {skills &&
+          skills.map((skill, index) => (
+            <label
+              key={`skill-filter-${index}`}
+              className={`relative border-primary border-[1px] py-0.5 px-1 text-sm cursor-pointer transition-colors hover:bg-primary hover:text-black ${
+                getFilterIsActive(skill.name)
+                  ? "bg-primary text-black"
+                  : "bg-black text-white"
+              }`}
+            >
+              <input
+                type="checkbox"
+                name={skill.name}
+                value={skill.name}
+                className="absolute top-0 left-0 w-0 h-0 opacity-0"
+                onChange={handleChange}
+              />
+              <span>{formatSkillName(skill.name)}</span>
+            </label>
+          ))}
+      </form>
+    </div>
   )
 }

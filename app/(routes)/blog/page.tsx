@@ -43,8 +43,8 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           <div>
-            <p className="font-bold text-heading5Desktop">Filter by Skills</p>
-            {skills && <SkillTagFilters skills={skills} />}
+            <p className="font-bold text-heading4Desktop">Filter by Skills</p>
+            {skills && <SkillTagFilters skills={skills} className="mt-4" />}
           </div>
           <Heading level="h2" className="mt-8">
             All Posts
