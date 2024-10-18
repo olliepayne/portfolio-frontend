@@ -9,23 +9,8 @@ interface Props {
 }
 
 export default async function FeaturedProjectsSection({ variant }: Props) {
-  const populateMain =
-    "populate[0]=main&populate[1]=main.mainImage&populate[2]=main.skills"
-  const populateSecond =
-    "populate[3]=second&populate[4]=second.mainImage&populate[5]=second.skills"
-  const populateThird =
-    "populate[6]=third&populate[7]=third.mainImage&populate[8]=third.skills"
-  const data: IFeaturedProjectsSection = await getStrapiData(
-    `/api/featured-projects-section?${populateMain}&${populateSecond}&${populateThird}`
-  )
-
-  function hasData(property: "main" | "second" | "third") {
-    if (data) {
-      if (data[property]) return true
-    } else {
-      return false
-    }
-  }
+  const url = `/api/featured-projects-section?populate[main][populate]=*&populate[second][populate]=*&populate[third][populate]=*`
+  const data: IFeaturedProjectsSection = await getStrapiData(url)
 
   return (
     <section
@@ -40,23 +25,25 @@ export default async function FeaturedProjectsSection({ variant }: Props) {
       <Container>
         <Heading level="h2">Featured Projects</Heading>
         <p>What I&apos;ve worked on, both personal and professional.</p>
-        <ul className="grid mt-8 gap-8 auto-rows-[minmax(200px,auto)] lg:grid-cols-2">
-          {hasData("main") && (
-            <li className="lg:row-[span_2_/_auto]">
-              <ProjectCard {...data.main} />
-            </li>
-          )}
-          {hasData("second") && (
-            <li>
-              <ProjectCard {...data.second} />
-            </li>
-          )}
-          {hasData("third") && (
-            <li>
-              <ProjectCard {...data.third} />
-            </li>
-          )}
-        </ul>
+        {data && (
+          <ul className="grid mt-8 gap-8 auto-rows-[minmax(200px,auto)] lg:grid-cols-2">
+            {data.main && (
+              <li className="lg:row-[span_2_/_auto]">
+                <ProjectCard {...data.main} />
+              </li>
+            )}
+            {data.second && (
+              <li>
+                <ProjectCard {...data.second} />
+              </li>
+            )}
+            {data.third && (
+              <li>
+                <ProjectCard {...data.third} />
+              </li>
+            )}
+          </ul>
+        )}
       </Container>
     </section>
   )

@@ -19,7 +19,11 @@ const links = [
   {
     href: "/#experience",
     text: "Experience"
-  }
+  },
+  {
+    href: "/blog",
+    text: "Blog"
+  },
 ]
 
 export default function Navbar() {
@@ -79,7 +83,7 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:items-center lg:flex-row">
               {links.map((link, index) => (
-                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
+                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-8">
                   <NavLink {...link} variant="top" onClick={closeNav} />
                 </li>
               ))}

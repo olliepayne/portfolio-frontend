@@ -38,7 +38,7 @@ export default async function Home() {
             <div className="basis-1/2 grow-0 mr-0 lg:mr-4">
               <Heading level="h1">👋 I&apos;m Ollie</Heading>
               <p className="mt-4">
-                I am a Frontend developer, SEO Analyst, and avid sport climber
+                I am a frontend developer, SEO analyst, and avid sport climber
                 living in Phoenix, AZ.
               </p>
               <div className="my-16">
@@ -61,13 +61,13 @@ export default async function Home() {
                   text="Contact Me"
                   className="mr-4 hover:text-black"
                 />
-                <InternalLink href="#projects">My Projects</InternalLink>
+                <InternalLink href="#projects" text="My Projects" />
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
               <Blob
-                variant="primary"
-                className="absolute -right-8 animate-blobXToY fill-primary overflow-visible"
+                variant="secondary"
+                className="absolute animate-blob fill-primary"
               />
               <Blob
                 variant="image"
@@ -75,7 +75,7 @@ export default async function Home() {
               />
               <Image
                 src="/images/headshot.jpeg"
-                alt="Picture of Ollie Payne"
+                alt="Headshot of Ollie Payne."
                 fill
                 className="object-cover z-10 [mask-image:url('/svgs/blob.svg')] [mask-repeat:no-repeat] [mask-position:center]"
               />
@@ -90,18 +90,18 @@ export default async function Home() {
         />
         <Container>
           <div className="flex flex-col-reverse justify-between items-center lg:flex-row">
-            <div className="relative h-[350px] w-full max-w-[608px] mt-16 lg:basis-1/2 lg:h-[500px] lg:mt-0 lg:mr-4">
+            <div className="relative w-full max-w-[426px] aspect-square mt-16 lg:basis-1/3 lg:mt-0 lg:mr-4">
               <Image
                 src="/images/climbing-green.jpg"
-                alt="Picture of Ollie Payne"
+                alt="Ollie Payne competing in a climbing competition."
                 fill
-                className="object-cover object-[center_10%]"
+                className="object-cover object-[center_10%] drop-shadow-xl-darker"
               />
             </div>
-            <div className="basis-1/2 lg:ml-4">
+            <div className="basis-2/3 lg:ml-4">
               <Heading level="h2">About Me</Heading>
               <p className="mt-4">
-                I began coding as a teen by working on 2D indie games. Once It
+                I began coding as a teen by working on 2D indie games. Once it
                 was time to take a first step towards a career, it was a no
                 brainer for me to pursue programming. I got my first position as
                 a Frontend development intern, and have been working in the
@@ -116,7 +116,7 @@ export default async function Home() {
         </Container>
       </section>
       <FeaturedProjectsSection variant="dark" />
-      <section className="py-32 relative">
+      <section className="py-32 relative overflow-clip">
         <a
           id="experience"
           className="inline-block w-full h-1 absolute top-16 left-0 pointer-events-none"

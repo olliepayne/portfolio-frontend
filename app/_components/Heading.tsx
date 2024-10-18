@@ -11,7 +11,9 @@ export default function Heading({ level, children, className }: Props) {
     case "h1":
       return (
         <h1
-          className={`font-bold text-heading1Mobile md:text-heading1Desktop ${className}`}
+          className={`font-bold text-heading1Mobile md:text-heading1Desktop ${
+            className || ""
+          }`}
         >
           {children}
         </h1>
@@ -19,7 +21,9 @@ export default function Heading({ level, children, className }: Props) {
     case "h2":
       return (
         <h2
-          className={`font-bold text-heading2Mobile md:text-heading2Desktop ${className}`}
+          className={`font-bold text-heading2Mobile md:text-heading2Desktop ${
+            className || ""
+          }`}
         >
           {children}
         </h2>
@@ -27,7 +31,9 @@ export default function Heading({ level, children, className }: Props) {
     case "h3":
       return (
         <h3
-          className={`font-bold text-heading3Mobile md:text-heading3Desktop ${className}`}
+          className={`font-bold text-heading3Mobile md:text-heading3Desktop ${
+            className || ""
+          }`}
         >
           {children}
         </h3>
@@ -35,7 +41,9 @@ export default function Heading({ level, children, className }: Props) {
     case "h4":
       return (
         <h4
-          className={`font-bold text-heading4Mobile md:text-heading4Desktop ${className}`}
+          className={`font-bold text-heading4Mobile md:text-heading4Desktop ${
+            className || ""
+          }`}
         >
           {children}
         </h4>
@@ -43,7 +51,9 @@ export default function Heading({ level, children, className }: Props) {
     case "h5":
       return (
         <h5
-          className={`font-bold text-heading5Mobile md:text-heading5Desktop ${className}`}
+          className={`font-bold text-heading5Mobile md:text-heading5Desktop ${
+            className || ""
+          }`}
         >
           {children}
         </h5>

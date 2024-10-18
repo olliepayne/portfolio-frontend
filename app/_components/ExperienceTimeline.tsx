@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
-import SkillTagsList from "@/app/_components/SkillTagsList"
+import SkillTagLinksList from "@/app/_components/SkillTagLinksList"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Job } from "@/app/types"
 import Markdown from "react-markdown"
@@ -8,12 +8,12 @@ import markdownComponents from "@/app/_helpers/markdownComponents"
 
 export default async function ExperienceTimeline() {
   const data: Job[] = await getStrapiData(
-    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc"
+    "/api/jobs?populate[0]=company&populate[1]=company.logo&populate[2]=skills&sort[0]=stillHere:desc&sort[1]=endDate:desc&sort[2]=startDate:desc",
+    "no-cache"
   )
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
-    // const formatter = new Intl.DateTimeFormat("en-us", { dateStyle: "short" })
     return new Intl.DateTimeFormat("en-us", {
       year: "numeric",
       month: "long"
@@ -24,22 +24,19 @@ export default async function ExperienceTimeline() {
     const endDate = data[index].stillHere
       ? new Date()
       : new Date(data[index].endDate)
-    let startDate = new Date(data[index].startDate)
-    if (index < data.length - 1) {
-      for (let i = index; i < data.length; i++) {
-        if (data[i].company.name !== data[index].company.name) {
-          startDate = new Date(data[i - 1].startDate)
-          break
-        }
+    let startDate = new Date(data[data.length - 1].startDate)
+    for (let i = index + 1; i < data.length; i++) {
+      if (data[i].company.name !== data[index].company.name) {
+        startDate = new Date(data[i - 1].startDate)
+        break
       }
     }
 
     const millisecondsDiff = endDate.getTime() - startDate.getTime()
     const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
     const years = Math.round(daysDiff / 365)
-    const months = Math.round((daysDiff % 365) / 30)
-    const formattedDuration = `${years > 0 ? `${years} yrs` : ""} ${months} mos`
-    return formattedDuration
+    const months = Math.floor((daysDiff % 365) / 30)
+    return `${years > 0 ? `${years} yrs` : ""} ${months} mos`
   }
 
   function isNewCompanySection(index: number) {
@@ -132,7 +129,11 @@ export default async function ExperienceTimeline() {
                   <Markdown components={markdownComponents}>{summary}</Markdown>
                 )}
                 {skills.length > 0 && (
-                  <SkillTagsList skills={skills} className="mt-4" />
+                  <SkillTagLinksList
+                    scope="projects"
+                    skills={skills}
+                    className="mt-4"
+                  />
                 )}
               </div>
             </div>

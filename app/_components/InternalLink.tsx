@@ -1,17 +1,16 @@
-import { ReactNode } from "react"
 import Link, { LinkProps } from "next/link"
 
 interface Props extends LinkProps {
-  children?: ReactNode | ReactNode[]
+  text: string
 }
 
-export default function InternalLink({ children, ...props }: Props) {
+export default function InternalLink({ text, ...props }: Props) {
   return (
     <Link
       {...props}
-      className="z-20 relative inline-block hover:text-primary transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-0.5 after:bg-primary after:-z-10"
+      className="relative inline-block pb-0.5 hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
     >
-      {children}
+      {text}
     </Link>
   )
 }

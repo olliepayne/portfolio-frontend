@@ -4,16 +4,26 @@ import Outlink from "@/app/_components/Outlink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import { Metadata } from "next"
 import getStrapiData from "@/app/_helpers/getStrapiData"
-import { Resume } from "@/app/types"
+import { Resume, SEO } from "@/app/types"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
+import Image from "next/image"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getStrapiData("/api/contact-page?populate=seo")
+  const data: { seo: SEO } = await getStrapiData(
+    "/api/contact-page?populate=seo"
+  )
 
-  return {
-    title: data?.seo?.titleTag ? data.seo.titleTag : "Title tag",
-    description: data?.seo?.metaDescription ? data.seo.metaDescription : ""
-  }
+  return data
+    ? {
+        title: data.seo.titleTag ? data.seo.titleTag : "Title tag",
+        description: data.seo.metaDescription
+          ? data.seo.metaDescription
+          : "Meta description"
+      }
+    : {
+        title: "Title tag",
+        description: "Meta description"
+      }
 }
 
 export default async function ContactPage() {
@@ -27,9 +37,10 @@ export default async function ContactPage() {
             <Heading level="h1">Contact Me</Heading>
             <ul className="mt-4">
               <li>
-                <Outlink href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry">
-                  olliepayne@me.com
-                </Outlink>
+                <Outlink
+                  href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry"
+                  text="olliepayne@me.com"
+                />
               </li>
               <li className="mt-2">
                 <Outlink
@@ -38,9 +49,8 @@ export default async function ContactPage() {
                       ? (getStrapiMedia(resume.file.url) as string)
                       : "#"
                   }
-                >
-                  Resume
-                </Outlink>
+                  text="Resume"
+                />
               </li>
             </ul>
             <ul className="mt-4">
@@ -48,13 +58,18 @@ export default async function ContactPage() {
                 <a
                   href="https://www.linkedin.com/in/oliverpayne01/"
                   target="_blank"
+                  rel="noreferrer noopener nofollow"
                 >
                   <span className="hidden">LinkedIn</span>
                   <SocialIcon platform="LinkedIn" className="fill-charcoal" />
                 </a>
               </li>
               <li className="inline-block align-middle">
-                <a href="https://github.com/olliepayne" target="_blank">
+                <a
+                  href="https://github.com/olliepayne"
+                  target="_blank"
+                  rel="noreferrer noopener nofollow"
+                >
                   <span className="hidden">GitHub</span>
                   <SocialIcon platform="GitHub" className="fill-charcoal" />
                 </a>
@@ -62,7 +77,14 @@ export default async function ContactPage() {
             </ul>
           </div>
           <div>
-            <img src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif" />
+            <Image
+              src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
+              alt="Happy cat gif."
+              width={340}
+              height={340}
+              unoptimized
+              loading="eager"
+            />
           </div>
         </div>
       </Container>

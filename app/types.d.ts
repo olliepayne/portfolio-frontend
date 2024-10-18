@@ -11,6 +11,11 @@ export interface Resume {
   file: StrapiFile
 }
 
+export interface SEO {
+  titleTag: string
+  metaDescription: string
+}
+
 export interface Skill {
   name: string
 }
@@ -49,4 +54,16 @@ export interface FeaturedProjectsSection {
   main: Project
   second: Project
   third: Project
+}
+
+export interface BlogPost {
+  slug: string
+  title: string
+  content: string
+  publishedAt: string
+  updatedAt: string
+  mainImage: StrapiImage
+  summary: string
+  seo: SEO
+  skills: Skill[]
 }
