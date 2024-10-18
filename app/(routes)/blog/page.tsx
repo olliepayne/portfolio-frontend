@@ -29,7 +29,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
     }
   }
   setBlogPostsUrlFilters()
-  const blogPostsUrl = `/api/blog-posts?populate=*${blogPostsUrlFilters}`
+  const blogPostsUrl = `/api/blog-posts?populate=*${blogPostsUrlFilters}&sort[0]=updatedAt:desc`
   const blogPosts: BlogPost[] = await getStrapiData(blogPostsUrl, "no-cache")
 
   return (
@@ -42,10 +42,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       </section>
       <section className="py-16">
         <Container>
-          <div>
-            <p className="font-bold text-heading4Desktop">Filter by Skills</p>
-            {skills && <SkillTagFilters skills={skills} className="mt-4" />}
-          </div>
+          {skills && <SkillTagFilters skills={skills} className="mt-4" />}
           <Heading level="h2" className="mt-8">
             All Posts
           </Heading>
