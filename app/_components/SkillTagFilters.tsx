@@ -1,7 +1,7 @@
 "use client"
 
 import { Skill } from "@/app/types"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 
 interface Props {
