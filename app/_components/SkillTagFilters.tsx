@@ -100,10 +100,10 @@ export default function SkillTagFilters({ skills, className }: Props) {
             <label
               key={`skill-filter-${index}`}
               htmlFor={skill.name}
-              className={`relative border-primary inline-block border-[1px] py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
+              className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
                 getFilterIsActive(skill.name)
                   ? "bg-primary text-black"
-                  : "bg-black text-white"
+                  : "bg-transparent text-black"
               }`}
             >
               <input
