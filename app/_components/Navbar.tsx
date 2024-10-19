@@ -13,7 +13,7 @@ const links = [
     text: "About"
   },
   {
-    href: "/#projects",
+    href: "/projects",
     text: "Projects"
   },
   {

@@ -3,7 +3,7 @@ import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Project, Skill } from "@/app/types"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
-import SkillTagFilters from "@/app/_components/SkillTagFilters"
+import SkillFilters from "@/app/_components/SkillFilters"
 
 interface Props {
   searchParams: {
@@ -37,13 +37,17 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
       <section className="py-16 bg-charcoal text-white">
         <Container>
           <Heading level="h1">Projects</Heading>
-          <p className="mt-4">What I've been up to, professional and personal.</p>
+          <p className="mt-4">
+            What I've been up to, professional and personal.
+          </p>
         </Container>
       </section>
       <section className="py-16">
         <Container>
-          {skills && <SkillTagFilters skills={skills} />}
-          <Heading level="h2" className="mt-16">All</Heading>
+          {skills && <SkillFilters skills={skills} />}
+          <Heading level="h2" className="mt-16">
+            All
+          </Heading>
           <p className="mt-4">Projects matching the current filters.</p>
           <ul className="grid gap-8 auto-rows-[500px] mt-8 md:grid-cols-2">
             {projects &&

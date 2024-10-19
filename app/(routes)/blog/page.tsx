@@ -3,7 +3,7 @@ import BlogPostCard from "@/app/_components/BlogPostCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
-import SkillTagFilters from "@/app/_components/SkillTagFilters"
+import SkillFilters from "@/app/_components/SkillFilters"
 import { Skill } from "@/app/types"
 
 interface Props {
@@ -42,7 +42,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       </section>
       <section className="py-16">
         <Container>
-          {skills && <SkillTagFilters skills={skills} className="mt-4" />}
+          {skills && <SkillFilters skills={skills} className="mt-4" />}
           <Heading level="h2" className="mt-16">
             All
           </Heading>

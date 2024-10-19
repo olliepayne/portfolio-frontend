@@ -4,16 +4,23 @@ import { Skill } from "@/app/types"
 import { useState } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
+import useThrottle from "@/app/_hooks/useThrottle"
 
 interface Props {
   skills: Skill[]
   className?: string
 }
 
-export default function SkillTagFilters({ skills, className }: Props) {
+export default function SkillFilters({ skills, className }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  // let canChange = true
+  // function handleCanChange() {
+  //   const newState = !canChange
+  //   canChange = true
+  // }
 
   interface Filters {
     skillNames: string[]
@@ -68,17 +75,6 @@ export default function SkillTagFilters({ skills, className }: Props) {
     })
   }
 
-  const regex = /[?.#()]/g
-  function formatSkillName(skillName: string) {
-    const formattedSkillName = `#${skillName
-      .toLowerCase()
-      .replace(regex, "")
-      .split(" ")
-      .join("-")}`
-
-    return formattedSkillName
-  }
-
   function getFilterIsActive(skillName: string) {
     if (searchParams.getAll("skill")?.includes(skillName)) return true
     else return false
@@ -91,6 +87,7 @@ export default function SkillTagFilters({ skills, className }: Props) {
         href={pathname}
         onClick={resetFilters}
         className="text-heading5Desktop font-bold my-4 inline-block text-themeGray transition-colors hover:text-primary"
+        scroll={false}
       >
         Reset
       </Link>

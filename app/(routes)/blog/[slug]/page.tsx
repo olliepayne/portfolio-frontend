@@ -7,7 +7,7 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
-import SkillTagLinksList from "@/app/_components/SkillTagLinksList"
+import SkillLinkList from "@/app/_components/SkillLinkList"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -51,7 +51,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 <span>Last Updated: {formatDate(updatedAt)}</span>
               </p>
               {skills.length > 0 && (
-                <SkillTagLinksList
+                <SkillLinkList
                   scope="blog"
                   skills={skills}
                   textVariant="white"
