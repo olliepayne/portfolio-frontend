@@ -20,12 +20,9 @@ export default function ProjectCard({
         className="-z-20 object-cover"
       />
       <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
-      <p className="text-heading3Mobile font-bold">{name}</p>
+      <SkillTagList skills={skills} className="relative z-30" />
+      <p className="text-heading3Mobile font-bold mt-4">{name}</p>
       <p className="mt-4">{summary}</p>
-      <SkillTagList
-        skills={skills}
-        className="mt-4 relative z-30"
-      />
       <Link
         href={`/projects/${slug}`}
         className="mt-4 text-primary inline-block before:z-20 before:absolute before:w-full before:h-full before:top-0 before:left-0"
