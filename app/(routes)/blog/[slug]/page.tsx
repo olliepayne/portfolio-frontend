@@ -43,7 +43,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
     <article className="overflow-hidden">
       <section className="bg-charcoal py-16 text-white overflow-x-clip">
         <Container>
-          <div className="flex justify-between lg:items-center gap-8 lg:gap-4 flex-col lg:flex-row">
+          <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
               <Heading level="h1">{title}</Heading>
               <p className="my-4">
