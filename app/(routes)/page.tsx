@@ -115,7 +115,7 @@ export default async function Home() {
           </div>
         </Container>
       </section>
-      <FeaturedProjectsSection variant="dark" />
+      <FeaturedProjectsSection />
       <section className="py-32 relative overflow-clip">
         <a
           id="experience"

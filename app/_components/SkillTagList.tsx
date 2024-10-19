@@ -36,21 +36,11 @@ function SkillTag({ name }: SkillTagProps) {
     setIsSelected(newState)
   }
 
-  const [filtersAreActive, setFiltersAreActive] = useState<boolean>()
-  function handleFiltersAreActive() {
-    let newState = false
-    if (searchParams.get("skill") !== null) {
-      newState = true
-    }
-
-    setFiltersAreActive(newState)
-  }
-
-  useEffect(handleFiltersAreActive)
-  useEffect(handleIsSelected, [filtersAreActive])
+  useEffect(handleIsSelected)
 
   function handleDisplayProperty() {
-    if ((filtersAreActive && isSelected) || !filtersAreActive) {
+    const skillQuery = searchParams.get("skill")
+    if ((skillQuery && isSelected) || !skillQuery) {
       return "inline-block"
     } else {
       return "hidden"

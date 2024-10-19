@@ -38,7 +38,7 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
         <Container>
           <Heading level="h1">Projects</Heading>
           <p className="mt-4">
-            What I've been up to, professional and personal.
+            What I&apos;ve been up to, professional and personal.
           </p>
         </Container>
       </section>

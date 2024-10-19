@@ -32,7 +32,7 @@ export default function SkillFilters({ skills, className }: Props) {
   const [filters, setFilters] = useState<Filters>(getFiltersInitialState)
 
   const [canHandleChange, setCanHandleChange] = useState(true)
-  function handleChange(event: any) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     let newSkillNames = filters.skillNames
 
     function updateFilters() {

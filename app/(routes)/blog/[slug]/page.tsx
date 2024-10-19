@@ -26,9 +26,7 @@ interface Props {
 
 export default async function BlogSlugPage({ params: { slug } }: Props) {
   const blogPostUrl = `/api/blog-posts?filters[slug][$eq]=${slug}&populate=*`
-  const [
-    { title, mainImage, content, skills, publishedAt, updatedAt }
-  ]: BlogPost[] = await getStrapiData(blogPostUrl)
+  const [blogPost]: BlogPost[] = await getStrapiData(blogPostUrl)
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
@@ -39,21 +37,28 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
     }).format(date)
   }
 
-  return (
+  return blogPost ? (
     <article className="overflow-hidden">
       <section className="bg-charcoal py-16 text-white overflow-x-clip">
         <Container>
           <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
-              <Heading level="h1">{title}</Heading>
-              <p className="my-4">
-                <span>Published: {formatDate(publishedAt)} | </span>
-                <span>Last Updated: {formatDate(updatedAt)}</span>
-              </p>
-              {skills.length > 0 && (
+              {blogPost.title && <Heading level="h1">{blogPost.title}</Heading>}
+              {blogPost && (
+                <p className="my-4">
+                  <span>Published: {formatDate(blogPost.publishedAt)}</span>
+                  {blogPost.updatedAt && (
+                    <span>
+                      {" "}
+                      | Last Updated: {formatDate(blogPost.updatedAt)}
+                    </span>
+                  )}
+                </p>
+              )}
+              {blogPost.skills.length > 0 && (
                 <SkillLinkList
                   scope="blog"
-                  skills={skills}
+                  skills={blogPost.skills}
                   textVariant="white"
                   className="relative z-10"
                 />
@@ -65,8 +70,8 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 className="absolute h-[600px] -top-16 -right-16 fill-primary animate-blob"
               />
               <Image
-                src={getStrapiMedia(mainImage.url) as string}
-                alt={mainImage.alternativeText}
+                src={getStrapiMedia(blogPost.mainImage.url) as string}
+                alt={blogPost.mainImage.alternativeText}
                 fill
                 loading="eager"
                 className="object-cover drop-shadow-xl-darker"
@@ -77,9 +82,15 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
       </section>
       <section className="py-32">
         <Container variant="narrow">
-          <Markdown components={markdownComponents}>{content}</Markdown>
+          {blogPost.content && (
+            <Markdown components={markdownComponents}>
+              {blogPost.content}
+            </Markdown>
+          )}
         </Container>
       </section>
     </article>
+  ) : (
+    <></>
   )
 }

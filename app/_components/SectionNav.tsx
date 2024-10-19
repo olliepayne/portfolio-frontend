@@ -45,7 +45,7 @@ export default function SectionNav() {
               key={`section-nav=${index}`}
               className={`${index < navLinks.length - 1 ? "mr-4" : ""}`}
             >
-              <InternalLink href={`#${sectionId}`}>{text}</InternalLink>
+              <InternalLink href={`#${sectionId}`} text={text} />
             </li>
           ))}
         </ul>

@@ -1,11 +1,11 @@
-import { Components } from "react-markdown"
 import Heading from "@/app/_components/Heading"
 import Outlink from "@/app/_components/Outlink"
 import InternalLink from "@/app/_components/InternalLink"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import Image from "next/image"
 
-const markdownComponents: Partial<Components> = {
+const markdownComponents = {
   h2(props) {
     const { children } = props
     return (
@@ -52,11 +52,12 @@ const markdownComponents: Partial<Components> = {
   },
   img(props) {
     return (
-      <span className="block mx-auto w-fit my-8">
-        <img
+      <span className="relative block mx-auto w-fit my-8">
+        <Image
           src={props.src}
           alt={props.alt}
           className="object-cover drop-shadow-xl-darker"
+          fill
         />
       </span>
     )
@@ -67,10 +68,10 @@ const markdownComponents: Partial<Components> = {
       (process.env.NODE_ENV === "development" && "http://localhost:3000")
     if (props.href?.split(".")[0] !== domainName) {
       return (
-        <Outlink href={props.href as string} text={props.children as string} />
+        <Outlink href={props.href} text={props.children} />
       )
     } else {
-      return <InternalLink href={props.href} text={props.children as string} />
+      return <InternalLink href={props.href} text={props.children} />
     }
   },
   code(props) {
@@ -80,8 +81,8 @@ const markdownComponents: Partial<Components> = {
       </code>
     )
   },
-  pre({ children }: any) {
-    const language = children.props.className.split("-")[1]
+  pre(props) {
+    const language = props.children.props.className.split("-")[1]
 
     return (
       <SyntaxHighlighter
@@ -93,7 +94,7 @@ const markdownComponents: Partial<Components> = {
           marginTop: "1.5rem"
         }}
       >
-        {String(children.props.children)}
+        {String(props.children.props.children)}
       </SyntaxHighlighter>
     )
   }

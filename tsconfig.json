@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types.d.ts"
-, "app/_helpers/throttle.js"  ],
+, "app/_helpers/throttle.js", "app/_helpers/markdownComponents.jsx"  ],
   "exclude": ["node_modules"]
 }
