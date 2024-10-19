@@ -4,7 +4,6 @@ import { Skill } from "@/app/types"
 import { useState } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
-import useThrottle from "@/app/_hooks/useThrottle"
 
 interface Props {
   skills: Skill[]
@@ -15,12 +14,6 @@ export default function SkillFilters({ skills, className }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
-  // let canChange = true
-  // function handleCanChange() {
-  //   const newState = !canChange
-  //   canChange = true
-  // }
 
   interface Filters {
     skillNames: string[]
@@ -38,6 +31,7 @@ export default function SkillFilters({ skills, className }: Props) {
   }
   const [filters, setFilters] = useState<Filters>(getFiltersInitialState)
 
+  const [canHandleChange, setCanHandleChange] = useState(true)
   function handleChange(event: any) {
     let newSkillNames = filters.skillNames
 
@@ -48,25 +42,33 @@ export default function SkillFilters({ skills, className }: Props) {
         newSkillNames = [...newSkillNames, event.target.value]
       }
     }
-    updateFilters()
 
-    let newLocation = ""
-    if (newSkillNames.length > 0) {
-      const skillNamesStr: string = newSkillNames
-        .map((item, index) => `${index > 0 ? "&" : ""}skill=${item}`)
-        .join()
-        .replace(/[,]/g, "")
-      newLocation = `?${skillNamesStr}`
-    } else {
-      newLocation = pathname
+    if (canHandleChange) {
+      updateFilters()
+
+      let newLocation = ""
+      if (newSkillNames.length > 0) {
+        const skillNamesStr: string = newSkillNames
+          .map((item, index) => `${index > 0 ? "&" : ""}skill=${item}`)
+          .join()
+          .replace(/[,]/g, "")
+        newLocation = `?${skillNamesStr}`
+      } else {
+        newLocation = pathname
+      }
+      router.push(newLocation, {
+        scroll: false
+      })
+
+      setFilters({
+        skillNames: newSkillNames
+      })
+
+      setCanHandleChange(false)
+      setTimeout(() => {
+        setCanHandleChange(true)
+      }, 200)
     }
-    router.push(newLocation, {
-      scroll: false
-    })
-
-    setFilters({
-      skillNames: newSkillNames
-    })
   }
 
   function resetFilters() {
@@ -75,7 +77,7 @@ export default function SkillFilters({ skills, className }: Props) {
     })
   }
 
-  function getFilterIsActive(skillName: string) {
+  function filterIsActive(skillName: string) {
     if (searchParams.getAll("skill")?.includes(skillName)) return true
     else return false
   }
@@ -98,7 +100,7 @@ export default function SkillFilters({ skills, className }: Props) {
               key={`skill-filter-${index}`}
               htmlFor={skill.name}
               className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
-                getFilterIsActive(skill.name)
+                filterIsActive(skill.name)
                   ? "bg-primary text-black"
                   : "bg-transparent text-black"
               }`}
