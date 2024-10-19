@@ -45,11 +45,7 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           {skills && <SkillFilters skills={skills} />}
-          <Heading level="h2" className="mt-16">
-            All
-          </Heading>
-          <p className="mt-4">Projects matching the current filters.</p>
-          <ul className="grid gap-8 auto-rows-[500px] mt-8 md:grid-cols-2">
+          <ul className="grid gap-8 auto-rows-[500px] mt-16 md:grid-cols-2">
             {projects &&
               projects.map((item, index) => (
                 <li key={`project-card-${index}`}>

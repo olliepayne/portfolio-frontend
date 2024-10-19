@@ -43,12 +43,8 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           {skills && <SkillFilters skills={skills} className="mt-4" />}
-          <Heading level="h2" className="mt-16">
-            All
-          </Heading>
-          <p className="mt-4">Articles matching the current filters.</p>
           {blogPosts && (
-            <ul className="grid my-8 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((blogPost, index) => (
                 <li key={`blog-post-${index}`} className="">
                   <BlogPostCard {...blogPost} />
