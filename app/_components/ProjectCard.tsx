@@ -3,6 +3,7 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import { Project } from "@/app/types"
 import Link from "next/link"
 import SkillTagList from "@/app/_components/SkillTagList"
+import { Suspense } from "react"
 
 export default function ProjectCard({
   name,
@@ -20,7 +21,9 @@ export default function ProjectCard({
         className="-z-20 object-cover"
       />
       <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-90" />
-      <SkillTagList skills={skills} className="relative z-30" />
+      <Suspense>
+        <SkillTagList skills={skills} className="relative z-30" />
+      </Suspense>
       <p className="text-heading3Mobile font-bold mt-4">{name}</p>
       <p className="mt-4">{summary}</p>
       <Link

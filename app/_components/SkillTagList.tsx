@@ -40,7 +40,10 @@ function SkillTag({ name }: SkillTagProps) {
 
   function handleDisplayProperty() {
     const skillQueries = searchParams.getAll("skill")
-    if ((skillQueries.includes(name) && isSelected) || skillQueries.length === 0) {
+    if (
+      (skillQueries.includes(name) && isSelected) ||
+      skillQueries.length === 0
+    ) {
       return "inline-block"
     } else {
       return "hidden"

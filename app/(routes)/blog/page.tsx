@@ -6,6 +6,7 @@ import Heading from "@/app/_components/Heading"
 import SkillFilters from "@/app/_components/SkillFilters"
 import { Skill } from "@/app/types"
 import { Metadata } from "next"
+import { Suspense } from "react"
 
 interface Props {
   searchParams: {
@@ -15,7 +16,8 @@ interface Props {
 
 export const metadata: Metadata = {
   title: "Blog - Frontend & SEO Resources",
-  description: "Browse educational resources covering frontend, development, and SEO topics."
+  description:
+    "Browse educational resources covering frontend, development, and SEO topics."
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
@@ -48,7 +50,11 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       </section>
       <section className="py-16">
         <Container>
-          {skills && <SkillFilters skills={skills} className="mt-4" />}
+          {skills && (
+            <Suspense>
+              <SkillFilters skills={skills} className="mt-4" />
+            </Suspense>
+          )}
           {blogPosts && (
             <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((blogPost, index) => (

@@ -5,6 +5,7 @@ import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import SkillFilters from "@/app/_components/SkillFilters"
 import { Metadata } from "next"
+import { Suspense } from "react"
 
 interface Props {
   searchParams: {
@@ -51,7 +52,11 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
       </section>
       <section className="py-16">
         <Container>
-          {skills && <SkillFilters skills={skills} />}
+          {skills && (
+            <Suspense>
+              <SkillFilters skills={skills} />
+            </Suspense>
+          )}
           <ul className="grid gap-8 auto-rows-[500px] mt-16 md:grid-cols-2">
             {projects &&
               projects.map((item, index) => (
