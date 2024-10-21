@@ -9,7 +9,13 @@ interface Props {
 export default function Container({ children, variant, className }: Props) {
   switch (variant) {
     case "narrow":
-      return <Normal />
+      return (
+        <div
+          className={`max-w-screen-md px-4 mx-auto h-full ${className || ""}`}
+        >
+          {children}
+        </div>
+      )
     case "normal":
       return (
         <div
@@ -19,14 +25,12 @@ export default function Container({ children, variant, className }: Props) {
         </div>
       )
     default:
-      return <Normal />
+      return (
+        <div
+          className={`max-w-screen-xl px-4 mx-auto h-full ${className || ""}`}
+        >
+          {children}
+        </div>
+      )
   }
-}
-
-function Normal({ children, className }: Props) {
-  return (
-    <div className={`max-w-screen-md px-4 mx-auto h-full ${className || ""}`}>
-      {children}
-    </div>
-  )
 }
