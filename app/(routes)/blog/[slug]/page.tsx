@@ -8,6 +8,7 @@ import markdownComponents from "@/app/_helpers/markdownComponents"
 import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
 import SkillLinkList from "@/app/_components/SkillLinkList"
+import { Metadata } from "next"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -21,6 +22,17 @@ export async function generateStaticParams() {
 interface Props {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const data = await getStrapiData(
+    `/api/blog-posts?filters[slug]$eq]=${params.slug}&populate=seo`
+  )
+
+  return {
+    title: data[0].seo ? data[0].seo.titleTag : "Title Tag",
+    description: data[0].seo ? data[0].seo.metaDescription : "Meta description"
   }
 }
 

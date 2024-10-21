@@ -5,11 +5,17 @@ import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
 import SkillFilters from "@/app/_components/SkillFilters"
 import { Skill } from "@/app/types"
+import { Metadata } from "next"
 
 interface Props {
   searchParams: {
     skill?: string | string[]
   }
+}
+
+export const metadata: Metadata = {
+  title: "Blog - Frontend & SEO Resources",
+  description: "Browse educational resources covering frontend, development, and SEO topics."
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {

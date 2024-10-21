@@ -4,11 +4,18 @@ import { Project, Skill } from "@/app/types"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import SkillFilters from "@/app/_components/SkillFilters"
+import { Metadata } from "next"
 
 interface Props {
   searchParams: {
     skill?: string | string[]
   }
+}
+
+export const metadata: Metadata = {
+  title: "My Professional & Personal Projects for Frontend & SEO",
+  description:
+    "View the collection of some of my professional and personal projects which utilize and demonstrate my frontend & SEO skills."
 }
 
 export default async function ProjectsIndexPage({ searchParams }: Props) {
