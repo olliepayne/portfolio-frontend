@@ -39,8 +39,8 @@ function SkillTag({ name }: SkillTagProps) {
   useEffect(handleIsSelected)
 
   function handleDisplayProperty() {
-    const skillQuery = searchParams.get("skill")
-    if ((skillQuery && isSelected) || !skillQuery) {
+    const skillQueries = searchParams.getAll("skill")
+    if ((skillQueries.includes(name) && isSelected) || skillQueries.length === 0) {
       return "inline-block"
     } else {
       return "hidden"
