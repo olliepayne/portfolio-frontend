@@ -39,7 +39,7 @@ export default function TableOfContents({ className }: Props) {
   }, [])
 
   return (
-    <nav className={`py-1 px-2 ${className || ""}`}>
+    <nav className={`px-2 ${className || ""}`}>
       <span className="mr-4 font-bold text-heading5Desktop">Table of Contents</span>
       <ul className="border-t-2 border-solid border-themeLightGray pt-2 mt-2">
         {headingProperties.length > 0 &&
