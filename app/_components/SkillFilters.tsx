@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-export default function SkillTagFilters({ skills, className }: Props) {
+export default function SkillFilters({ skills, className }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -31,7 +31,8 @@ export default function SkillTagFilters({ skills, className }: Props) {
   }
   const [filters, setFilters] = useState<Filters>(getFiltersInitialState)
 
-  function handleChange(event: any) {
+  const [canHandleChange, setCanHandleChange] = useState(true)
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     let newSkillNames = filters.skillNames
 
     function updateFilters() {
@@ -41,25 +42,33 @@ export default function SkillTagFilters({ skills, className }: Props) {
         newSkillNames = [...newSkillNames, event.target.value]
       }
     }
-    updateFilters()
 
-    let newLocation = ""
-    if (newSkillNames.length > 0) {
-      const skillNamesStr: string = newSkillNames
-        .map((item, index) => `${index > 0 ? "&" : ""}skill=${item}`)
-        .join()
-        .replace(/[,]/g, "")
-      newLocation = `?${skillNamesStr}`
-    } else {
-      newLocation = pathname
+    if (canHandleChange) {
+      updateFilters()
+
+      let newLocation = ""
+      if (newSkillNames.length > 0) {
+        const skillNamesStr: string = newSkillNames
+          .map((item, index) => `${index > 0 ? "&" : ""}skill=${item}`)
+          .join()
+          .replace(/[,]/g, "")
+        newLocation = `?${skillNamesStr}`
+      } else {
+        newLocation = pathname
+      }
+      router.push(newLocation, {
+        scroll: false
+      })
+
+      setFilters({
+        skillNames: newSkillNames
+      })
+
+      setCanHandleChange(false)
+      setTimeout(() => {
+        setCanHandleChange(true)
+      }, 200)
     }
-    router.push(newLocation, {
-      scroll: false
-    })
-
-    setFilters({
-      skillNames: newSkillNames
-    })
   }
 
   function resetFilters() {
@@ -68,18 +77,7 @@ export default function SkillTagFilters({ skills, className }: Props) {
     })
   }
 
-  const regex = /[?.#()]/g
-  function formatSkillName(skillName: string) {
-    const formattedSkillName = `#${skillName
-      .toLowerCase()
-      .replace(regex, "")
-      .split(" ")
-      .join("-")}`
-
-    return formattedSkillName
-  }
-
-  function getFilterIsActive(skillName: string) {
+  function filterIsActive(skillName: string) {
     if (searchParams.getAll("skill")?.includes(skillName)) return true
     else return false
   }
@@ -91,6 +89,7 @@ export default function SkillTagFilters({ skills, className }: Props) {
         href={pathname}
         onClick={resetFilters}
         className="text-heading5Desktop font-bold my-4 inline-block text-themeGray transition-colors hover:text-primary"
+        scroll={false}
       >
         Reset
       </Link>
@@ -100,10 +99,10 @@ export default function SkillTagFilters({ skills, className }: Props) {
             <label
               key={`skill-filter-${index}`}
               htmlFor={skill.name}
-              className={`relative border-primary inline-block border-[1px] py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
-                getFilterIsActive(skill.name)
+              className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
+                filterIsActive(skill.name)
                   ? "bg-primary text-black"
-                  : "bg-black text-white"
+                  : "bg-transparent text-black"
               }`}
             >
               <input

@@ -7,7 +7,9 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
-import SkillTagLinksList from "@/app/_components/SkillTagLinksList"
+import SkillLinkList from "@/app/_components/SkillLinkList"
+import { Metadata } from "next"
+import TableOfContents from "@/app/_components/TableOfContents"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -24,11 +26,20 @@ interface Props {
   }
 }
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const data = await getStrapiData(
+    `/api/blog-posts?filters[slug]$eq]=${params.slug}&populate=seo`
+  )
+
+  return {
+    title: data[0].seo ? data[0].seo.titleTag : "Title Tag",
+    description: data[0].seo ? data[0].seo.metaDescription : "Meta description"
+  }
+}
+
 export default async function BlogSlugPage({ params: { slug } }: Props) {
   const blogPostUrl = `/api/blog-posts?filters[slug][$eq]=${slug}&populate=*`
-  const [
-    { title, mainImage, content, skills, publishedAt, updatedAt }
-  ]: BlogPost[] = await getStrapiData(blogPostUrl)
+  const [blogPost]: BlogPost[] = await getStrapiData(blogPostUrl)
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
@@ -40,20 +51,30 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
   }
 
   return (
-    <article className="overflow-hidden">
+    <article>
       <section className="bg-charcoal py-16 text-white overflow-x-clip">
         <Container>
-          <div className="flex justify-between lg:items-center gap-8 lg:gap-4 flex-col lg:flex-row">
+          <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
-              <Heading level="h1">{title}</Heading>
-              <p className="my-4">
-                <span>Updated on {formatDate(updatedAt)} | </span>
-                <span>Published on {formatDate(publishedAt)}</span>
-              </p>
-              {skills.length > 0 && (
-                <SkillTagLinksList
+              {blogPost?.title && (
+                <Heading level="h1">{blogPost.title}</Heading>
+              )}
+              {blogPost && (
+                <p className="my-4">
+                  <span>Published: {formatDate(blogPost.publishedAt)}</span>
+                  {blogPost.updatedAt && (
+                    <span>
+                      {" "}
+                      | Last Updated: {formatDate(blogPost.updatedAt)}
+                    </span>
+                  )}
+                </p>
+              )}
+              {blogPost?.skills.length > 0 && (
+                <SkillLinkList
                   scope="blog"
-                  skills={skills}
+                  skills={blogPost.skills}
+                  textVariant="white"
                   className="relative z-10"
                 />
               )}
@@ -64,8 +85,8 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                 className="absolute h-[600px] -top-16 -right-16 fill-primary animate-blob"
               />
               <Image
-                src={getStrapiMedia(mainImage.url) as string}
-                alt={mainImage.alternativeText}
+                src={getStrapiMedia(blogPost.mainImage.url) as string}
+                alt={blogPost.mainImage.alternativeText}
                 fill
                 loading="eager"
                 className="object-cover drop-shadow-xl-darker"
@@ -74,11 +95,22 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
           </div>
         </Container>
       </section>
-      <section className="py-32">
-        <Container variant="narrow">
-          <Markdown components={markdownComponents}>{content}</Markdown>
+      <main className="py-32">
+        <Container>
+          <div className="flex">
+            <aside className="flex-shrink-0 hidden lg:block">
+              <TableOfContents className="sticky top-20" />
+            </aside>
+            <div className="ml-0 md:ml-8">
+              {blogPost?.content && (
+                <Markdown components={markdownComponents}>
+                  {blogPost.content}
+                </Markdown>
+              )}
+            </div>
+          </div>
         </Container>
-      </section>
+      </main>
     </article>
   )
 }
