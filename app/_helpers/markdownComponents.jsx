@@ -9,7 +9,7 @@ const markdownComponents = {
   h2(props) {
     const { children } = props
     return (
-      <Heading level="h2" className="mt-6">
+      <Heading level="h2" className="mt-6 first:mt-0">
         {children}
       </Heading>
     )
@@ -17,7 +17,7 @@ const markdownComponents = {
   h3(props) {
     const { children } = props
     return (
-      <Heading level="h3" className="mt-6">
+      <Heading level="h3" className="mt-6 first:mt-0">
         {children}
       </Heading>
     )
@@ -25,7 +25,7 @@ const markdownComponents = {
   h4(props) {
     const { children } = props
     return (
-      <Heading level="h4" className="mt-6">
+      <Heading level="h4" className="mt-6 first:mt-0">
         {children}
       </Heading>
     )
@@ -33,26 +33,26 @@ const markdownComponents = {
   h5(props) {
     const { children } = props
     return (
-      <Heading level="h5" className="mt-6">
+      <Heading level="h5" className="mt-6 first:mt-0">
         {children}
       </Heading>
     )
   },
   p(props) {
     const { children } = props
-    return <p className="mt-6">{children}</p>
+    return <p className="mt-6 first:mt-0">{children}</p>
   },
   ul(props) {
     const { children } = props
-    return <ul className="list-disc pl-10 mt-6">{children}</ul>
+    return <ul className="list-disc pl-10 mt-6 first:mt-0">{children}</ul>
   },
   ol(props) {
     const { children } = props
-    return <ol className="list-decimal pl-10 mt-6">{children}</ol>
+    return <ol className="list-decimal pl-10 mt-6 first:mt-0">{children}</ol>
   },
   img(props) {
     return (
-      <span className="relative block mx-auto w-fit my-8">
+      <span className="relative block mx-auto w-fit mt-8 mb-8 first:mt-0">
         <Image
           src={props.src}
           alt={props.alt}
@@ -67,9 +67,7 @@ const markdownComponents = {
       (process.env.NODE_ENV === "production" && "https://olliepayne") ||
       (process.env.NODE_ENV === "development" && "http://localhost:3000")
     if (props.href?.split(".")[0] !== domainName) {
-      return (
-        <Outlink href={props.href} text={props.children} />
-      )
+      return <Outlink href={props.href} text={props.children} />
     } else {
       return <InternalLink href={props.href} text={props.children} />
     }
@@ -93,7 +91,10 @@ const markdownComponents = {
           fontSize: "0.875rem",
           marginTop: "1.5rem",
           boxShadow:
-            "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+            "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+          ":firstChild": {
+            marginTop: "0"
+          }
         }}
       >
         {String(props.children.props.children)}
