@@ -46,7 +46,6 @@ export default function Navbar() {
   const [canCheckWindowSize, setCanCheckWindowSize] = useState(true)
   function checkWindowSize() {
     if (canCheckWindowSize) {
-      console.log("called")
       if (window.innerWidth >= 1024) {
         setIsMobile(false)
       } else if (window.innerWidth < 1024) {
