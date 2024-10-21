@@ -9,6 +9,7 @@ import Markdown from "react-markdown"
 import Blob from "@/app/_components/Blob"
 import SkillLinkList from "@/app/_components/SkillLinkList"
 import { Metadata } from "next"
+import TableOfContents from "@/app/_components/TableOfContents"
 
 export async function generateStaticParams() {
   const blogPostsUrl = "/api/blog-posts"
@@ -49,13 +50,15 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
     }).format(date)
   }
 
-  return blogPost ? (
-    <article className="overflow-hidden">
+  return (
+    <article>
       <section className="bg-charcoal py-16 text-white overflow-x-clip">
         <Container>
           <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
-              {blogPost.title && <Heading level="h1">{blogPost.title}</Heading>}
+              {blogPost?.title && (
+                <Heading level="h1">{blogPost.title}</Heading>
+              )}
               {blogPost && (
                 <p className="my-4">
                   <span>Published: {formatDate(blogPost.publishedAt)}</span>
@@ -67,7 +70,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                   )}
                 </p>
               )}
-              {blogPost.skills.length > 0 && (
+              {blogPost?.skills.length > 0 && (
                 <SkillLinkList
                   scope="blog"
                   skills={blogPost.skills}
@@ -92,17 +95,22 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
           </div>
         </Container>
       </section>
-      <section className="py-32">
-        <Container variant="narrow">
-          {blogPost.content && (
-            <Markdown components={markdownComponents}>
-              {blogPost.content}
-            </Markdown>
-          )}
+      <main className="py-32">
+        <Container>
+          <div className="flex">
+            <aside className="flex-shrink-0 hidden lg:block">
+              <TableOfContents className="sticky top-20" />
+            </aside>
+            <div className="ml-0 md:ml-8">
+              {blogPost?.content && (
+                <Markdown components={markdownComponents}>
+                  {blogPost.content}
+                </Markdown>
+              )}
+            </div>
+          </div>
         </Container>
-      </section>
+      </main>
     </article>
-  ) : (
-    <></>
   )
 }
