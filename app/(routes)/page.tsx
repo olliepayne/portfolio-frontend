@@ -61,7 +61,7 @@ export default async function Home() {
                   text="Contact Me"
                   className="mr-4 hover:text-black"
                 />
-                <InternalLink href="#projects" text="My Projects" />
+                <InternalLink href="/projects" text="My Projects" />
               </div>
             </div>
             <div className="relative mt-16 basis-1/3 aspect-square w-3/4 max-w-[416px] lg:w-auto lg:mt-0 lg:ml-4">
