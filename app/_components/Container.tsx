@@ -12,7 +12,11 @@ export default function Container({ children, variant, className }: Props) {
       return <Normal />
     case "normal":
       return (
-        <div className="max-w-screen-xl px-4 mx-auto h-full">{children}</div>
+        <div
+          className={`max-w-screen-xl px-4 mx-auto h-full ${className || ""}`}
+        >
+          {children}
+        </div>
       )
     default:
       return <Normal />
