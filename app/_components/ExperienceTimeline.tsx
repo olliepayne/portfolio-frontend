@@ -2,7 +2,7 @@ import Image from "next/image"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import SkillLinkList from "@/app/_components/SkillLinkList"
 import getStrapiData from "@/app/_helpers/getStrapiData"
-import { Job } from "@/app/types"
+import { Job, StrapiImage } from "@/app/types"
 import Markdown from "react-markdown"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 
@@ -20,22 +20,35 @@ export default async function ExperienceTimeline() {
     }).format(date)
   }
 
-  function getDuration(index: number) {
+  function shouldCreateCompanyInfo(index: number, companyName: string) {
+    if (
+      (index > 0 && companyName !== data[index - 1].company.name) ||
+      index === 0
+    )
+      return true
+    return false
+  }
+
+  function getCompanyDuration(index: number) {
     const endDate = data[index].stillHere
       ? new Date()
       : new Date(data[index].endDate)
     let startDate = new Date(data[data.length - 1].startDate)
-    for (let i = index + 1; i < data.length; i++) {
-      if (data[i].company.name !== data[index].company.name) {
-        startDate = new Date(data[i - 1].startDate)
-        break
+    function checkEarlierStartDate() {
+      for (let i = index + 1; i < data.length; i++) {
+        if (data[i].company.name !== data[index].company.name) {
+          startDate = new Date(data[i - 1].startDate)
+          break
+        }
       }
     }
+    checkEarlierStartDate()
 
     const millisecondsDiff = endDate.getTime() - startDate.getTime()
     const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
     const years = Math.round(daysDiff / 365)
     const months = Math.floor((daysDiff % 365) / 30)
+
     return `${years > 0 ? `${years} yrs` : ""} ${months} mos`
   }
 
@@ -47,7 +60,7 @@ export default async function ExperienceTimeline() {
       return true
   }
 
-  function isLastJobInSection(index: number) {
+  function isLastJobInCompanySection(index: number) {
     if (
       index < data.length - 1 &&
       data[index].company.name === data[index + 1].company.name
@@ -55,9 +68,9 @@ export default async function ExperienceTimeline() {
       return true
   }
 
-  return data ? (
+  return (
     <div>
-      {data.map(
+      {data?.map(
         (
           {
             title,
@@ -73,49 +86,23 @@ export default async function ExperienceTimeline() {
           index
         ) => (
           <div key={`timeline-entry-${index}`}>
-            {(index > 0 && company.name !== data[index - 1].company.name) ||
-            index === 0 ? (
-              <div
-                className={
-                  index === 0
-                    ? undefined
-                    : "mt-8 pt-8 border-t-2 border-solid border-themeLightGray"
-                }
-              >
-                <div className="flex flex-row">
-                  <div className="relative basis-14 aspect-square border-solid border-2 border-themeLightGray">
-                    {company.logo && (
-                      <Image
-                        src={getStrapiMedia(company.logo.url) as string}
-                        alt={company.logo.alternativeText}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-bold">{company.name}</p>
-                    <p className="text-themeGray">{getDuration(index)}</p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <></>
+            {shouldCreateCompanyInfo(index, company.name) && (
+              <CompanyInfo
+                name={company.name}
+                logo={company.logo}
+                duration={getCompanyDuration(index)}
+                index={index}
+              />
             )}
             <div
               className={`flex flex-row ${
                 isNewCompanySection(index) ? "mt-4" : undefined
               }`}
             >
-              <div className="flex flex-col items-center basis-14 shrink-0">
-                <span className="h-7 flex-shrink-0">
-                  <span className="align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray" />
-                </span>
-                <span className="w-0.5 h-full bg-themeLightGray" />
-              </div>
+              <TimelineNode />
               <div
                 className={`pl-4 ${
-                  isLastJobInSection(index) ? "pb-8" : undefined
+                  isLastJobInCompanySection(index) ? "pb-8" : undefined
                 }`}
               >
                 <p className="font-bold">{title}</p>
@@ -128,7 +115,7 @@ export default async function ExperienceTimeline() {
                 {summary && (
                   <Markdown components={markdownComponents}>{summary}</Markdown>
                 )}
-                {skills.length > 0 && (
+                {skills?.length > 0 && (
                   <SkillLinkList
                     scope="projects"
                     skills={skills}
@@ -142,7 +129,49 @@ export default async function ExperienceTimeline() {
         )
       )}
     </div>
-  ) : (
-    <></>
+  )
+}
+
+interface CompanyInfoProps {
+  name: string
+  logo: StrapiImage
+  index: number
+  duration: string
+}
+function CompanyInfo({ name, logo, duration, index }: CompanyInfoProps) {
+  return (
+    <div
+      className={
+        index > 0
+          ? "mt-8 pt-8 border-t-2 border-solid border-themeLightGray"
+          : ""
+      }
+    >
+      <div className="flex flex-row">
+        <div className="basis-14 h-14 flex-shrink-0 relative border-solid border-2 border-themeLightGray">
+          <Image
+            src={getStrapiMedia(logo.url) as string}
+            alt={logo.alternativeText}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="ml-4">
+          <p className="font-bold">{name}</p>
+          <p className="text-themeGray">{duration}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TimelineNode() {
+  return (
+    <div className="flex flex-col items-center basis-14 shrink-0">
+      <span className="h-7 flex-shrink-0">
+        <span className="align-middle inline-block w-2 h-2 rounded-full bg-themeLightGray" />
+      </span>
+      <span className="w-0.5 h-full bg-themeLightGray" />
+    </div>
   )
 }
