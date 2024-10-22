@@ -5,7 +5,6 @@ import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 import NavLink from "@/app/_components/NavLink"
-import useThrottle from "@/app/_hooks/useThrottle"
 
 const links = [
   {
@@ -13,18 +12,21 @@ const links = [
     text: "About"
   },
   {
-    href: "/#projects",
+    href: "/projects",
     text: "Projects"
   },
   {
     href: "/#experience",
     text: "Experience"
+  },
+  {
+    href: "/blog",
+    text: "Blog"
   }
 ]
 
 export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false)
-  const throttledCheckWindowSize = useThrottle(checkWindowSize, 200)
 
   function handleBodyScroll() {
     if (!navIsOpen) document.body.style.overflow = "auto"
@@ -41,19 +43,27 @@ export default function Navbar() {
     if (isMobile) setNavIsOpen(false)
   }
 
+  const [canCheckWindowSize, setCanCheckWindowSize] = useState(true)
   function checkWindowSize() {
-    if (window.innerWidth >= 1024) {
-      setIsMobile(false)
-    } else if (window.innerWidth < 1024) {
-      setIsMobile(true)
+    if (canCheckWindowSize) {
+      if (window.innerWidth >= 1024) {
+        setIsMobile(false)
+      } else if (window.innerWidth < 1024) {
+        setIsMobile(true)
+      }
+
+      setCanCheckWindowSize(false)
+      setTimeout(() => {
+        setCanCheckWindowSize(true)
+      }, 300)
     }
   }
 
   useEffect(() => {
-    window.addEventListener("resize", throttledCheckWindowSize)
+    window.addEventListener("resize", checkWindowSize)
 
     return () => {
-      window.removeEventListener("resize", throttledCheckWindowSize)
+      window.removeEventListener("resize", checkWindowSize)
     }
   })
 
@@ -79,7 +89,7 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:items-center lg:flex-row">
               {links.map((link, index) => (
-                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-6">
+                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-8">
                   <NavLink {...link} variant="top" onClick={closeNav} />
                 </li>
               ))}

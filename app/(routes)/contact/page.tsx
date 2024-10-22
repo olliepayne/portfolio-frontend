@@ -37,9 +37,10 @@ export default async function ContactPage() {
             <Heading level="h1">Contact Me</Heading>
             <ul className="mt-4">
               <li>
-                <Outlink href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry">
-                  olliepayne@me.com
-                </Outlink>
+                <Outlink
+                  href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry"
+                  text="olliepayne@me.com"
+                />
               </li>
               <li className="mt-2">
                 <Outlink
@@ -48,9 +49,8 @@ export default async function ContactPage() {
                       ? (getStrapiMedia(resume.file.url) as string)
                       : "#"
                   }
-                >
-                  Resume
-                </Outlink>
+                  text="Resume"
+                />
               </li>
             </ul>
             <ul className="mt-4">
@@ -77,7 +77,14 @@ export default async function ContactPage() {
             </ul>
           </div>
           <div>
-            <Image src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif" alt="Happy cat gif." width={340} height={340} />
+            <Image
+              src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
+              alt="Happy cat gif."
+              width={340}
+              height={340}
+              unoptimized
+              loading="eager"
+            />
           </div>
         </div>
       </Container>

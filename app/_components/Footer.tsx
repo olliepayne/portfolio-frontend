@@ -51,9 +51,10 @@ export default async function Footer() {
         <div className="flex flex-col justify-between items-center mt-8 gap-4 border-themeLightGray border-solid border-t-[1px] pt-8 lg:flex-row">
           <ul>
             <li>
-              <Outlink href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry">
-                olliepayne@me.com
-              </Outlink>
+              <Outlink
+                href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry"
+                text="olliepayne@me.com"
+              />
             </li>
             <li className="mt-2">
               <Outlink
@@ -62,9 +63,8 @@ export default async function Footer() {
                     ? (getStrapiMedia(resume.file.url) as string)
                     : "#"
                 }
-              >
-                Resume
-              </Outlink>
+                text="Resume"
+              />
             </li>
           </ul>
           <ul className="flex justify-between items-center">

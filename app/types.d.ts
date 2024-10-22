@@ -36,22 +36,35 @@ export interface Job {
 export interface Company {
   name: string
   logo: StrapiImage
-  jobs: Job[]
+  jobs?: Job[]
 }
 
 export interface Project {
   name: string
   slug: string
+  seo: SEO
   mainImage: StrapiImage
   summary: string
-  skills: Skill[]
+  skills?: Skill[]
   requestContent: string
   strategyContent: string
   resultsContent: string
 }
 
 export interface FeaturedProjectsSection {
-  main: Project
-  second: Project
-  third: Project
+  main?: Project
+  second?: Project
+  third?: Project
+}
+
+export interface BlogPost {
+  slug: string
+  title: string
+  content: string
+  publishedAt: string
+  updatedAt: string
+  mainImage: StrapiImage
+  summary: string
+  seo: SEO
+  skills?: Skill[]
 }

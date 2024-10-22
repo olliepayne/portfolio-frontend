@@ -4,7 +4,7 @@ import getStrapiData from "@/app/_helpers/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"
-import SkillTagsList from "@/app/_components/SkillTagsList"
+import SkillLinkList from "@/app/_components/SkillLinkList"
 import Markdown from "react-markdown"
 import markdownComponents from "@/app/_helpers/markdownComponents"
 import { Metadata } from "next"
@@ -56,7 +56,12 @@ export default async function ProjectSlugPage({ params }: Props) {
             {data[0].name && <Heading level="h1">{data[0].name}</Heading>}
             {data[0].summary && <p>{data[0].summary}</p>}
             {data[0].skills && (
-              <SkillTagsList skills={data[0].skills} className="mt-4" />
+              <SkillLinkList
+                scope="projects"
+                skills={data[0].skills}
+                textVariant="white"
+                className="mt-4"
+              />
             )}
           </div>
         </Container>

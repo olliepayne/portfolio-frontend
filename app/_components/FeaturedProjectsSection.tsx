@@ -4,19 +4,13 @@ import ProjectCard from "@/app/_components/ProjectCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { FeaturedProjectsSection as IFeaturedProjectsSection } from "@/app/types"
 
-interface Props {
-  variant: "dark" | "light"
-}
-
-export default async function FeaturedProjectsSection({ variant }: Props) {
+export default async function FeaturedProjectsSection() {
   const url = `/api/featured-projects-section?populate[main][populate]=*&populate[second][populate]=*&populate[third][populate]=*`
   const data: IFeaturedProjectsSection = await getStrapiData(url)
 
   return (
     <section
-      className={`py-32 relative ${
-        variant === "dark" ? "bg-charcoal text-white" : "transparent"
-      }`}
+      className="py-32 relative bg-charcoal text-white"
     >
       <a
         id="projects"
