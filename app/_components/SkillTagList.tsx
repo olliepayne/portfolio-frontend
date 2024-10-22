@@ -1,8 +1,8 @@
 "use client"
 
 import { Skill } from "@/app/types"
-import { useSearchParams } from "next/navigation"
-import { useState, useEffect } from "react"
+// import { useSearchParams } from "next/navigation"
+// import { useState, useEffect } from "react"
 
 interface Props {
   skills: Skill[]
@@ -24,31 +24,31 @@ interface SkillTagProps {
   name: string
 }
 function SkillTag({ name }: SkillTagProps) {
-  const searchParams = useSearchParams()
+  // const searchParams = useSearchParams()
 
-  const [isSelected, setIsSelected] = useState<boolean>()
-  function handleIsSelected() {
-    let newState = false
-    if (searchParams.getAll("skill").includes(name)) {
-      newState = true
-    }
+  // const [isSelected, setIsSelected] = useState<boolean>()
+  // function handleIsSelected() {
+  //   let newState = false
+  //   if (searchParams.getAll("skill").includes(name)) {
+  //     newState = true
+  //   }
 
-    setIsSelected(newState)
-  }
+  //   setIsSelected(newState)
+  // }
 
-  useEffect(handleIsSelected)
+  // useEffect(handleIsSelected)
 
-  function handleDisplayProperty() {
-    const skillQueries = searchParams.getAll("skill")
-    if (
-      (skillQueries.includes(name) && isSelected) ||
-      skillQueries.length === 0
-    ) {
-      return "inline-block"
-    } else {
-      return "hidden"
-    }
-  }
+  // function handleDisplayProperty() {
+  //   const skillQueries = searchParams.getAll("skill")
+  //   if (
+  //     (skillQueries.includes(name) && isSelected) ||
+  //     skillQueries.length === 0
+  //   ) {
+  //     return "inline-block"
+  //   } else {
+  //     return "hidden"
+  //   }
+  // }
 
   return (
     <span
