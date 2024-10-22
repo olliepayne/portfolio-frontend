@@ -56,9 +56,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
         <Container>
           <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
-              {blogPost?.title && (
-                <Heading level="h1">{blogPost.title}</Heading>
-              )}
+              {blogPost.title && <Heading level="h1">{blogPost.title}</Heading>}
               {blogPost && (
                 <p className="my-4">
                   <span>Published: {formatDate(blogPost.publishedAt)}</span>
@@ -70,7 +68,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
                   )}
                 </p>
               )}
-              {blogPost?.skills.length > 0 && (
+              {blogPost.skills && blogPost.skills.length > 0 && (
                 <SkillLinkList
                   scope="blog"
                   skills={blogPost.skills}

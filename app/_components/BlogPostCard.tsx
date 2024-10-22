@@ -23,7 +23,7 @@ export default function BlogPostCard({
         />
       </div>
       <div className="px-4 py-6">
-        <SkillTagList skills={skills} />
+        {skills && <SkillTagList skills={skills} />}
         <p className="font-bold text-heading4Desktop mt-4">{title}</p>
         <p className="my-4">{summary}</p>
         <span className="relative pb-0.5 inline-block group-hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">
