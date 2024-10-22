@@ -43,9 +43,12 @@ export default function SkillFilters({ skills, className }: Props) {
       }
     }
 
-    if (canHandleChange) {
-      updateFilters()
+    updateFilters()
+    setFilters({
+      skillNames: newSkillNames
+    })
 
+    if (canHandleChange) {
       let newLocation = ""
       if (newSkillNames.length > 0) {
         const skillNamesStr: string = newSkillNames
@@ -60,14 +63,10 @@ export default function SkillFilters({ skills, className }: Props) {
         scroll: false
       })
 
-      setFilters({
-        skillNames: newSkillNames
-      })
-
       setCanHandleChange(false)
       setTimeout(() => {
         setCanHandleChange(true)
-      }, 200)
+      }, 250)
     }
   }
 
@@ -99,7 +98,7 @@ export default function SkillFilters({ skills, className }: Props) {
             <label
               key={`skill-filter-${index}`}
               htmlFor={skill.name}
-              className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors hover:bg-primary hover:text-black ${
+              className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
                 filterIsActive(skill.name)
                   ? "bg-primary text-black"
                   : "bg-transparent text-black"
