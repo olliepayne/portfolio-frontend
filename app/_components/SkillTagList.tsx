@@ -10,7 +10,7 @@ interface Props {
 }
 export default function SkillTagList({ skills, className }: Props) {
   return (
-    <ul className={`flex gap-2 ${className && className}`}>
+    <ul className={`flex gap-2 flex-wrap ${className && className}`}>
       {skills.map((item, index) => (
         <li key={`skill-tag-${index}`}>
           <SkillTag name={item.name} />
@@ -52,7 +52,7 @@ function SkillTag({ name }: SkillTagProps) {
 
   return (
     <span
-      className={`${handleDisplayProperty()} text-xs py-0.5 px-2.5 rounded-full uppercase font-bold border-primary border-2 bg-primary text-black`}
+      className={`inline-block text-xs py-0.5 px-2.5 rounded-full uppercase font-bold border-primary border-2 bg-primary text-black`}
     >
       {name}
     </span>
