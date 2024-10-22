@@ -67,7 +67,7 @@ export default function SkillFilters({ skills, className }: Props) {
       setCanHandleChange(false)
       setTimeout(() => {
         setCanHandleChange(true)
-      }, 200)
+      }, 100)
     }
   }
 
