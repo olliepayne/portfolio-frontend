@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 export default async function ProjectsIndexPage({ searchParams }: Props) {
-  const skillsUrl = `/api/skills`
+  const skillsUrl = `/api/skills?sort[0]=name`
   const skills: Skill[] = await getStrapiData(skillsUrl)
 
   function setProjectsUrlFilters() {

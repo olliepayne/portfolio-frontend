@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
-  const skills: Skill[] = await getStrapiData("/api/skills")
+  const skills: Skill[] = await getStrapiData("/api/skills?sort[0]=name")
 
   let blogPostsUrlFilters = ""
   function setBlogPostsUrlFilters() {
