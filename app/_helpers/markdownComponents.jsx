@@ -51,15 +51,13 @@ const markdownComponents = {
     return <ol className="list-decimal pl-10 mt-6 first:mt-0">{children}</ol>
   },
   img(props) {
+    console.log(props.src)
     return (
-      <span className="relative block mx-auto w-fit mt-8 mb-8 first:mt-0">
-        <Image
-          src={props.src}
-          alt={props.alt}
-          className="object-cover drop-shadow-xl-darker"
-          fill
-        />
-      </span>
+      <img
+        src={props.src}
+        alt={props.alt}
+        className="object-cover drop-shadow-xl-darker block mt-8"
+      />
     )
   },
   a(props) {
