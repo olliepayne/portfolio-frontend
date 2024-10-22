@@ -3,7 +3,6 @@ import Outlink from "@/app/_components/Outlink"
 import InternalLink from "@/app/_components/InternalLink"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
-import Image from "next/image"
 
 const markdownComponents = {
   h2(props) {
