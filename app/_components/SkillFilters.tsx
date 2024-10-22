@@ -1,9 +1,13 @@
 "use client"
 
 import { Skill } from "@/app/types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
+
+interface Filters {
+  skillNames: string[]
+}
 
 interface Props {
   skills: Skill[]
@@ -15,9 +19,6 @@ export default function SkillFilters({ skills, className }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  interface Filters {
-    skillNames: string[]
-  }
   function getFiltersInitialState() {
     if (searchParams.getAll("skill").length > 0) {
       return {
@@ -76,11 +77,6 @@ export default function SkillFilters({ skills, className }: Props) {
     })
   }
 
-  function filterIsActive(skillName: string) {
-    if (searchParams.getAll("skill")?.includes(skillName)) return true
-    else return false
-  }
-
   return (
     <div className={`${className || ""}`}>
       <p className="font-bold text-heading4Desktop">Filter by Skills</p>
@@ -95,27 +91,51 @@ export default function SkillFilters({ skills, className }: Props) {
       <form className="flex gap-2 flex-wrap">
         {skills &&
           skills.map((skill, index) => (
-            <label
+            <SkillFilterCheckbox
               key={`skill-filter-${index}`}
-              htmlFor={skill.name}
-              className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
-                filterIsActive(skill.name)
-                  ? "bg-primary text-black"
-                  : "bg-transparent text-black"
-              }`}
-            >
-              <input
-                type="checkbox"
-                id={skill.name}
-                name={skill.name}
-                value={skill.name}
-                className="absolute top-0 left-0 w-0 h-0 opacity-0"
-                onChange={handleChange}
-              />
-              {skill.name}
-            </label>
+              name={skill.name}
+              handleChange={handleChange}
+              filters={filters}
+            />
           ))}
       </form>
     </div>
+  )
+}
+
+interface SkillFilterCheckboxProps {
+  name: string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  filters: Filters
+}
+function SkillFilterCheckbox({
+  name,
+  handleChange,
+  filters
+}: SkillFilterCheckboxProps) {
+  const [isActive, setIsActive] = useState(false)
+  function handleIsActive() {
+    if (filters.skillNames.includes(name)) setIsActive(true)
+    else setIsActive(false)
+  }
+  useEffect(handleIsActive, [filters, name])
+
+  return (
+    <label
+      htmlFor={name}
+      className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
+        isActive ? "bg-primary text-black" : "bg-transparent text-black"
+      }`}
+    >
+      <input
+        type="checkbox"
+        id={name}
+        name={name}
+        value={name}
+        className="absolute top-0 left-0 w-0 h-0 opacity-0"
+        onChange={handleChange}
+      />
+      {name}
+    </label>
   )
 }

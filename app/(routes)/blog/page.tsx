@@ -55,15 +55,15 @@ export default async function BlogIndexPage({ searchParams }: Props) {
               <SkillFilters skills={skills} className="mt-4" />
             </Suspense>
           )}
-          {blogPosts && (
+          <Suspense fallback={<p>Loading results...</p>}>
             <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {blogPosts.map((blogPost, index) => (
+              {blogPosts.map((blogPost, index: number) => (
                 <li key={`blog-post-${index}`} className="">
                   <BlogPostCard {...blogPost} />
                 </li>
               ))}
             </ul>
-          )}
+          </Suspense>
         </Container>
       </section>
     </main>
