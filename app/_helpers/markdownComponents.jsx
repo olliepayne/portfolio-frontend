@@ -55,7 +55,7 @@ const markdownComponents = {
       <img
         src={props.src}
         alt={props.alt}
-        className="object-cover drop-shadow-xl-darker block mt-8"
+        className="object-cover drop-shadow-xl block my-12 mx-auto"
       />
     )
   },

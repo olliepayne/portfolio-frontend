@@ -58,12 +58,13 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
             </Suspense>
           )}
           <ul className="grid gap-8 auto-rows-[500px] mt-16 md:grid-cols-2">
-            {projects &&
-              projects.map((item, index) => (
+            <Suspense fallback={<p>Loading results...</p>}>
+              {projects?.map((item, index) => (
                 <li key={`project-card-${index}`}>
                   <ProjectCard {...item} />
                 </li>
               ))}
+            </Suspense>
           </ul>
         </Container>
       </section>
