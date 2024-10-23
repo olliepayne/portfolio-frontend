@@ -8,7 +8,7 @@ const markdownComponents = {
   h2(props) {
     const { children } = props
     return (
-      <Heading level="h2" className="mt-6 first:mt-0">
+      <Heading level="h2" className="mt-10 first:mt-0">
         {children}
       </Heading>
     )
@@ -43,11 +43,17 @@ const markdownComponents = {
   },
   ul(props) {
     const { children } = props
-    return <ul className="list-disc pl-10 mt-6 first:mt-0">{children}</ul>
+    return (
+      <ul className="list-disc pl-10 mt-6 space-y-2 first:mt-0">{children}</ul>
+    )
   },
   ol(props) {
     const { children } = props
-    return <ol className="list-decimal pl-10 mt-6 first:mt-0">{children}</ol>
+    return (
+      <ol className="list-decimal pl-10 mt-6 space-y-2 first:mt-0">
+        {children}
+      </ol>
+    )
   },
   img(props) {
     console.log(props.src)
@@ -55,7 +61,7 @@ const markdownComponents = {
       <img
         src={props.src}
         alt={props.alt}
-        className="object-cover drop-shadow-xl-darker block mt-8"
+        className="object-cover drop-shadow-xl block my-12 mx-auto"
       />
     )
   },
@@ -71,7 +77,7 @@ const markdownComponents = {
   },
   code(props) {
     return (
-      <code className="py-1 px-1.5 text-white bg-charcoal text-sm rounded-sm">
+      <code className="inline-block px-1 bg-charcoal text-sm text-themeLightGray rounded-[4px]">
         {props.children}
       </code>
     )

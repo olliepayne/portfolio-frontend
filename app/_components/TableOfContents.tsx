@@ -40,11 +40,11 @@ export default function TableOfContents({ className }: Props) {
 
   return (
     <nav className={`px-2 ${className || ""}`}>
-      <span className="mr-4 font-bold text-heading5Desktop">Table of Contents</span>
+      <span className="font-bold text-heading5Desktop">Table of Contents</span>
       <ul className="border-t-2 border-solid border-themeLightGray pt-2 mt-2">
         {headingProperties.length > 0 &&
           headingProperties.map((item, index) => (
-            <li key={`heading-${index}`} className={`${index > 0 ? "mt-2" : ""}`}>
+            <li key={`heading-${index}`} className={`${index > 0 ? "mt-4" : ""}`}>
               <Link href={`#${item.id}`} className="text-themeGray font-bold transition-colors hover:text-themeLightGray">{item.text}</Link>
             </li>
           ))}

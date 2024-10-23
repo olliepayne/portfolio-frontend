@@ -3,7 +3,9 @@ import BlogPostCard from "@/app/_components/BlogPostCard"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { BlogPost } from "@/app/types"
 import Heading from "@/app/_components/Heading"
-import SkillFilters from "@/app/_components/SkillFilters"
+import SkillFilters, {
+  SkillFiltersPlaceholder
+} from "@/app/_components/SkillFilters"
 import { Skill } from "@/app/types"
 import { Metadata } from "next"
 import { Suspense } from "react"
@@ -51,19 +53,19 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           {skills && (
-            <Suspense>
-              <SkillFilters skills={skills} className="mt-4" />
+            <Suspense fallback={<SkillFiltersPlaceholder />}>
+              <SkillFilters skills={skills} />
             </Suspense>
           )}
-          {blogPosts && (
-            <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {blogPosts.map((blogPost, index) => (
+          <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <Suspense fallback={<p>Loading results...</p>}>
+              {blogPosts.map((blogPost, index: number) => (
                 <li key={`blog-post-${index}`} className="">
                   <BlogPostCard {...blogPost} />
                 </li>
               ))}
-            </ul>
-          )}
+            </Suspense>
+          </ul>
         </Container>
       </section>
     </main>

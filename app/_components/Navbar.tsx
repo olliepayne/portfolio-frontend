@@ -26,30 +26,25 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  function handleBodyScroll() {
-    if (!navIsOpen) document.body.style.overflow = "auto"
-    else if (isMobile && navIsOpen) document.body.style.overflow = "hidden"
-    else if (!isMobile) document.body.style.overflow = "auto"
-  }
-
   const [navIsOpen, setNavIsOpen] = useState(false)
   function toggleNav() {
     const newState = !navIsOpen
     setNavIsOpen(newState)
   }
   function closeNav() {
-    if (isMobile) setNavIsOpen(false)
+    if (window.innerWidth < 1024) {
+      setNavIsOpen(false)
+    }
   }
 
   const [canCheckWindowSize, setCanCheckWindowSize] = useState(true)
   function checkWindowSize() {
     if (canCheckWindowSize) {
       if (window.innerWidth >= 1024) {
-        setIsMobile(false)
+        document.body.style.overflow = "auto"
       } else if (window.innerWidth < 1024) {
-        setIsMobile(true)
+        if (!navIsOpen) document.body.style.overflow = "auto"
+        else if (navIsOpen) document.body.style.overflow = "hidden"
       }
 
       setCanCheckWindowSize(false)
@@ -60,14 +55,13 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    checkWindowSize()
     window.addEventListener("resize", checkWindowSize)
 
     return () => {
       window.removeEventListener("resize", checkWindowSize)
     }
   })
-
-  useEffect(handleBodyScroll, [isMobile, navIsOpen])
 
   return (
     <header className="bg-charcoal text-white sticky top-0 z-50">
