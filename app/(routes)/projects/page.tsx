@@ -3,7 +3,9 @@ import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Project, Skill } from "@/app/types"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
-import SkillFilters from "@/app/_components/SkillFilters"
+import SkillFilters, {
+  SkillFiltersPlaceholder
+} from "@/app/_components/SkillFilters"
 import { Metadata } from "next"
 import { Suspense } from "react"
 
@@ -53,7 +55,7 @@ export default async function ProjectsIndexPage({ searchParams }: Props) {
       <section className="py-16">
         <Container>
           {skills && (
-            <Suspense>
+            <Suspense fallback={<SkillFiltersPlaceholder />}>
               <SkillFilters skills={skills} />
             </Suspense>
           )}
