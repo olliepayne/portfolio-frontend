@@ -123,7 +123,7 @@ function SkillFilterCheckbox({
   return (
     <label
       htmlFor={name}
-      className={`relative border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
+      className={`relative border-primary inline-block border-2 py-1.5 px-3 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
         isActive ? "bg-primary text-black" : "bg-transparent text-black"
       }`}
     >

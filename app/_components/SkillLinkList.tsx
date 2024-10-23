@@ -38,7 +38,7 @@ function SkillLink({ name, href, textVariant }: SkillLinkProps) {
   return (
     <Link
       href={href}
-      className={`inline-block text-xs py-0.5 px-2.5 rounded-full uppercase font-bold border-primary border-2 transition-colors bg-transparent ${
+      className={`inline-block text-xs py-1.5 px-3 rounded-full uppercase font-bold border-primary border-2 transition-colors bg-transparent ${
         (textVariant === "black" && "text-black") ||
         (textVariant === "white" && "text-white")
       } hover:bg-primary hover:text-black`}
