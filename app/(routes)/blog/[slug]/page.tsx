@@ -99,7 +99,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
             <aside className="flex-shrink-0 hidden lg:block">
               <TableOfContents className="sticky top-20" />
             </aside>
-            <div className="ml-0 md:ml-8">
+            <div className="ml-0 md:ml-12">
               {blogPost?.content && (
                 <Markdown components={markdownComponents}>
                   {blogPost.content}
