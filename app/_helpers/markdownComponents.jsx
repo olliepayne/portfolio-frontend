@@ -71,7 +71,7 @@ const markdownComponents = {
   },
   code(props) {
     return (
-      <code className="py-1 px-1.5 text-white bg-charcoal text-sm rounded-sm">
+      <code className="py-0.5 px-1.5 text-white bg-charcoal text-sm rounded-sm">
         {props.children}
       </code>
     )
