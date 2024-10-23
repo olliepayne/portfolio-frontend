@@ -18,8 +18,14 @@ export default function TableOfContents({ className }: Props) {
   )
 
   function generateId(text: string) {
-    const regex = /[?.#()-]/g
-    return text.toLowerCase().replace(regex, "").split(" ").join("-")
+    const regex = /[,&?.#()-]/g
+    const id = text.toLowerCase().replace(regex, "").split(" ")
+    for (let i = 0; i < id.length; i++) {
+      if (id[i] === "") {
+        id.splice(i, 1)
+      }
+    }
+    return id.join("-")
   }
 
   useEffect(() => {
