@@ -77,7 +77,7 @@ const markdownComponents = {
   },
   code(props) {
     return (
-      <code className="inline-block px-1 bg-charcoal text-sm text-themeLightGray rounded-[4px]">
+      <code className="inline-block px-1.5 bg-gray-200 text-sm rounded-[4px]">
         {props.children}
       </code>
     )
