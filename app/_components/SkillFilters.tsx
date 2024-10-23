@@ -139,3 +139,19 @@ function SkillFilterCheckbox({
     </label>
   )
 }
+
+export function SkillFiltersPlaceholder() {
+  return (
+    <div>
+      <p className="font-bold text-heading4Desktop">Filter by Skills</p>
+      <span
+        className="text-heading5Desktop font-bold my-4 inline-block text-themeGray transition-colors hover:text-primary"
+      >
+        Reset
+      </span>
+      <span className="border-primary inline-block border-2 py-0.5 px-2.5 text-xs uppercase font-bold cursor-pointer rounded-full text-opacity-0">
+        Skill filter placeholder
+      </span>
+    </div>
+  )
+}
