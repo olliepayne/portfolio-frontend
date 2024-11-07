@@ -50,12 +50,6 @@ export default async function Footer() {
         </ul>
         <div className="flex flex-col justify-between items-center mt-8 gap-4 border-themeLightGray border-solid border-t-[1px] pt-8 lg:flex-row">
           <ul>
-            <li>
-              <Outlink
-                href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry"
-                text="olliepayne@me.com"
-              />
-            </li>
             <li className="mt-2">
               <Outlink
                 href={

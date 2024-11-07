@@ -36,12 +36,6 @@ export default async function ContactPage() {
           <div>
             <Heading level="h1">Contact Me</Heading>
             <ul className="mt-4">
-              <li>
-                <Outlink
-                  href="mailto:olliepayne@me.com?subject=Portfolio%20Site%20Inquiry"
-                  text="olliepayne@me.com"
-                />
-              </li>
               <li className="mt-2">
                 <Outlink
                   href={
