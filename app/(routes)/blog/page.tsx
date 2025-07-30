@@ -17,9 +17,9 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "Blog - Frontend & SEO Resources",
+  title: "Development & Digital Marketing Resources",
   description:
-    "Browse educational resources covering frontend, development, and SEO topics."
+    "Learn key tips and insights for development and digital marketing"
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
