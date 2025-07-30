@@ -44,10 +44,15 @@ export default async function ExperienceTimeline() {
     }
     checkEarlierStartDate()
 
-    const millisecondsDiff = endDate.getTime() - startDate.getTime()
-    const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
-    const years = Math.round(daysDiff / 365)
-    const months = Math.floor(Math.abs(daysDiff % 365) / 30)
+    const millisecondsDuration = endDate.getTime() - startDate.getTime()
+    const daysDuration = Math.round(
+      millisecondsDuration / (24 * 60 * 60 * 1000)
+    )
+    const years = Math.trunc(daysDuration / 365)
+    const months = Math.round(
+      Math.abs(1 - (Math.ceil(daysDuration / 365) - daysDuration / 365)) * 12
+    )
+    // console.log(months)
 
     return `${years > 0 ? `${years} yrs` : ""} ${
       months > 0 ? months + " mos" : ""
