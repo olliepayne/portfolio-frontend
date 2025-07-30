@@ -49,7 +49,7 @@ export default async function ExperienceTimeline() {
     const years = Math.round(daysDiff / 365)
     const months = Math.floor((daysDiff % 365) / 30)
 
-    return `${years > 0 ? `${years} yrs` : ""} ${months} mos`
+    return `${years > 0 ? `${years} yrs` : ""} ${months > 0 ? months + " mos" : ""}`
   }
 
   function isNewCompanySection(index: number) {
@@ -106,7 +106,7 @@ export default async function ExperienceTimeline() {
                 }`}
               >
                 <p className="font-bold">{title}</p>
-                <p>{employmentType}</p>
+                {/* <p>{employmentType}</p> */}
                 <p className="mt-2 text-themeGray">
                   {formatDate(startDate)} -{" "}
                   {endDate ? formatDate(endDate) : "Present"}
