@@ -44,15 +44,13 @@ export default async function ExperienceTimeline() {
     }
     checkEarlierStartDate()
 
-    const millisecondsDuration = endDate.getTime() - startDate.getTime()
-    const daysDuration = Math.round(
-      millisecondsDuration / (24 * 60 * 60 * 1000)
-    )
-    const years = Math.trunc(daysDuration / 365)
-    const months = Math.trunc((daysDuration / 365 - years) * 12)
+    const years = endDate.getFullYear() - startDate.getFullYear()
+    const months = endDate.getMonth() - startDate.getMonth()
+    const adjustedMonths = months < 0 ? 12 + months : months
+    const adjustedYears = months < 0 ? years - 1 : years
 
-    return `${years > 0 ? `${years} yrs` : ""} ${
-      months > 0 ? months + " mos" : ""
+    return `${adjustedYears > 0 ? `${adjustedYears} yrs` : ""} ${
+      adjustedMonths > 0 ? adjustedMonths + " mos" : ""
     }`
   }
 
@@ -71,8 +69,6 @@ export default async function ExperienceTimeline() {
     )
       return true
   }
-
-  // if (data) console.log(data[0].company.logo)
 
   return (
     <div>
