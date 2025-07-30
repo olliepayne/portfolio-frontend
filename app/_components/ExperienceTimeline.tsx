@@ -49,7 +49,9 @@ export default async function ExperienceTimeline() {
     const years = Math.round(daysDiff / 365)
     const months = Math.floor((daysDiff % 365) / 30)
 
-    return `${years > 0 ? `${years} yrs` : ""} ${months > 0 ? months + " mos" : ""}`
+    return `${years > 0 ? `${years} yrs` : ""} ${
+      months > 0 ? months + " mos" : ""
+    }`
   }
 
   function isNewCompanySection(index: number) {
@@ -70,7 +72,7 @@ export default async function ExperienceTimeline() {
 
   return (
     <div>
-      {data?.map(
+      {data.map(
         (
           {
             title,
