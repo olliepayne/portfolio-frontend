@@ -20,8 +20,8 @@ const links = [
     text: "Experience"
   },
   {
-    href: "/blog",
-    text: "Blog"
+    href: "/learn",
+    text: "Learn"
   }
 ]
 
