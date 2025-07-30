@@ -103,8 +103,8 @@ export default async function Home() {
               <p className="mt-4">
                 I began coding as a teen by working on 2D indie games. Once it
                 was time to take a first step towards a career, it was a no
-                brainer for me to pursue the tech industry. I got my first position as
-                a frontend development intern, and have been working in the
+                brainer for me to pursue the tech industry. I got my first position at an agency as
+                a Front-End Developer Intern, and have been working in the
                 agency world ever since.
               </p>
               <p className="mt-4">
