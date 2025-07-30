@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "funny-oasis-8038f3a347.media.strapiapp.com"
+        hostname: "lively-dawn-f83184edbe.strapiapp.com"
       },
       {
         protocol: "https",
