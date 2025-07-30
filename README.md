@@ -16,3 +16,6 @@ I also thought it would be a good idea to learn Tailwind as a bonus challenge to
 One of my biggest challenges I ran into was building my filtering system for projects and blog posts. This was primarily due to the need to incorporate the new `searchParams` prop and the `useSearchParams()` hook to read query strings on both client and server components, as well as the incorporate the updates to the `useRouter()` hook.
 
 In particular, when running `next build` to check for build errors, I noticed an error `useSearchParams() must be wrapped in a suspense boundary`. This was the first time I remember seeing an error like this, and I resolved it by wrapping components that incorporate `useSearchParams()` in `<Suspense>`, at the page level. `<Suspense>` lets you render a fallback UI if the children haven't finished loading, or if they have failed to load. Since in this case I am updating state via calculations which utilize the `useSearchParams()` hook, this was necessary.
+
+## Future
+- Improve safeguarding against incorrect endpoints or empty payloads
