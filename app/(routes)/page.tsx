@@ -109,7 +109,7 @@ export default async function Home() {
               </p>
               <p className="mt-4">
                 Besides my work, I am also an avid sport climber and love to
-                compete and push myself to the highest level.
+                compete and push myself.
               </p>
             </div>
           </div>
