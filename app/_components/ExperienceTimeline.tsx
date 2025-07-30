@@ -49,14 +49,10 @@ export default async function ExperienceTimeline() {
       millisecondsDuration / (24 * 60 * 60 * 1000)
     )
     const years = Math.trunc(daysDuration / 365)
-    const months = Math.round((daysDuration / 365 - years) * 12)
-    const adjustedYears = months === 12 ? years + 1 : years
-    const adjustedMonths = months === 12 ? 0 : months
+    const months = Math.trunc((daysDuration / 365 - years) * 12)
 
-    // console.log(months)
-
-    return `${adjustedYears > 0 ? `${adjustedYears} yrs` : ""} ${
-      adjustedMonths > 0 ? adjustedMonths + " mos" : ""
+    return `${years > 0 ? `${years} yrs` : ""} ${
+      months > 0 ? months + " mos" : ""
     }`
   }
 
