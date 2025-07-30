@@ -57,17 +57,12 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
           <div className="flex justify-between lg:items-center gap-16 lg:gap-4 flex-col lg:flex-row">
             <div className="">
               {blogPost.title && <Heading level="h1">{blogPost.title}</Heading>}
-              {blogPost && (
-                <p className="my-4">
-                  <span>Published: {formatDate(blogPost.publishedAt)}</span>
-                  {blogPost.updatedAt && (
-                    <span>
-                      {" "}
-                      | Last Updated: {formatDate(blogPost.updatedAt)}
-                    </span>
-                  )}
-                </p>
-              )}
+              <p className="my-4">
+                <span>Published: {formatDate(blogPost.publishedAt)}</span>
+                {blogPost.updatedAt && (
+                  <span> | Last Updated: {formatDate(blogPost.updatedAt)}</span>
+                )}
+              </p>
               {blogPost.skills && blogPost.skills.length > 0 && (
                 <SkillLinkList
                   scope="blog"
@@ -100,7 +95,7 @@ export default async function BlogSlugPage({ params: { slug } }: Props) {
               <TableOfContents className="sticky top-20" />
             </aside>
             <div className="ml-0 md:ml-12">
-              {blogPost?.content && (
+              {blogPost.content && (
                 <Markdown components={markdownComponents}>
                   {blogPost.content}
                 </Markdown>
