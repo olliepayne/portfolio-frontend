@@ -55,8 +55,8 @@ export default async function ExperienceTimeline() {
 
     // console.log(months)
 
-    return `${years > 0 ? `${years} yrs` : ""} ${
-      months > 0 ? months + " mos" : ""
+    return `${adjustedYears > 0 ? `${adjustedYears} yrs` : ""} ${
+      adjustedMonths > 0 ? adjustedMonths + " mos" : ""
     }`
   }
 
