@@ -12,11 +12,11 @@ import InternalLink from "@/app/_components/InternalLink"
 const stats = [
   {
     metricText: "Years of experience",
-    value: "3+"
+    value: "4+"
   },
   {
     metricText: "Clients worked with",
-    value: "25+"
+    value: "30+"
   }
 ]
 
