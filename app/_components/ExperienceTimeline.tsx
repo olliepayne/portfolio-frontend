@@ -70,7 +70,7 @@ export default async function ExperienceTimeline() {
       return true
   }
 
-  console.log(data[0].company.logo)
+  // if (data) console.log(data[0].company.logo)
 
   return (
     <div>

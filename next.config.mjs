@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "lively-dawn-f83184edbe.strapiapp.com"
+        hostname: "**.media.strapiapp.com"
       },
       {
         protocol: "https",
