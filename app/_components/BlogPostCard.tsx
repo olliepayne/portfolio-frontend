@@ -13,7 +13,7 @@ export default function BlogPostCard({
 }: BlogPost) {
   return (
     <div className="group cursor-pointer relative bg-gray-50 shadow-xl">
-      <Link href={`/blog/${slug}`} className="absolute w-full h-full z-10" />
+      <Link href={`/learn/${slug}`} className="absolute w-full h-full z-10" />
       <div className="relative w-full h-[200px]">
         <Image
           src={getStrapiMedia(mainImage.url) as string}
