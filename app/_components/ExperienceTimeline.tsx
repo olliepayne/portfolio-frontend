@@ -74,7 +74,7 @@ export default async function ExperienceTimeline() {
         (
           {
             title,
-            employmentType,
+            // employmentType,
             startDate,
             endDate,
             location,
