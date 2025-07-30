@@ -47,7 +47,7 @@ export default async function ExperienceTimeline() {
     const millisecondsDiff = endDate.getTime() - startDate.getTime()
     const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
     const years = Math.round(daysDiff / 365)
-    const months = Math.floor((daysDiff % 365) / 30)
+    const months = Math.floor(Math.abs(daysDiff % 365) / 30)
 
     return `${years > 0 ? `${years} yrs` : ""} ${
       months > 0 ? months + " mos" : ""
