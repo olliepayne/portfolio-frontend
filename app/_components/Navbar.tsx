@@ -18,11 +18,11 @@ const links = [
   {
     href: "/#experience",
     text: "Experience"
-  },
-  {
-    href: "/learn",
-    text: "Learn"
   }
+  // {
+  //   href: "/learn",
+  //   text: "Learn"
+  // }
 ]
 
 export default function Navbar() {
