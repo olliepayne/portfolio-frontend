@@ -38,7 +38,7 @@ export default async function Home() {
             <div className="basis-1/2 grow-0 mr-0 lg:mr-4">
               <Heading level="h1">👋 I&apos;m Ollie</Heading>
               <p className="mt-4">
-                I am a frontend developer, SEO analyst, and avid sport climber
+                I am a Front-End Developer, SEO Analyst, and avid sport climber
                 living in Phoenix, AZ.
               </p>
               <div className="my-16">
