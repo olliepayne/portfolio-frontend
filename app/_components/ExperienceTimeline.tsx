@@ -87,7 +87,8 @@ export default async function ExperienceTimeline() {
             remote,
             summary,
             skills,
-            company
+            company,
+            stillHere
           },
           index
         ) => (
@@ -115,7 +116,7 @@ export default async function ExperienceTimeline() {
                 {/* <p>{employmentType}</p> */}
                 <p className="mt-2 text-themeGray">
                   {formatDate(startDate)} -{" "}
-                  {endDate ? formatDate(endDate) : "Present"}
+                  {endDate && !stillHere ? formatDate(endDate) : "Present"}
                 </p>
                 <p className="text-themeGray">{remote ? "Remote" : location}</p>
                 {summary && (
