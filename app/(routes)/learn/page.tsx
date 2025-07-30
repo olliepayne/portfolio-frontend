@@ -18,8 +18,7 @@ interface Props {
 
 export const metadata: Metadata = {
   title: "Development & Digital Marketing Resources",
-  description:
-    "Learn key tips and insights for development and digital marketing."
+  description: "Tips and insights for development and digital marketing."
 }
 
 export default async function BlogIndexPage({ searchParams }: Props) {
@@ -48,7 +47,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
         <Container>
           <Heading level="h1">Learn</Heading>
           <p className="mt-4">
-            Key tips and insights for development and digital marketing
+            Tips and insights for development and digital marketing
           </p>
         </Container>
       </section>
@@ -61,15 +60,11 @@ export default async function BlogIndexPage({ searchParams }: Props) {
           )}
           <ul className="grid mt-16 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <Suspense fallback={<p>Loading results...</p>}>
-              {blogPosts?.length > 0 ? (
-                blogPosts.map((blogPost, index: number) => (
-                  <li key={`blog-post-${index}`} className="">
-                    <BlogPostCard {...blogPost} />
-                  </li>
-                ))
-              ) : (
-                <></>
-              )}
+              {blogPosts.map((blogPost, index: number) => (
+                <li key={`blog-post-${index}`} className="">
+                  <BlogPostCard {...blogPost} />
+                </li>
+              ))}
             </Suspense>
           </ul>
         </Container>
