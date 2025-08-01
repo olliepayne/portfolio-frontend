@@ -18,7 +18,7 @@ export default async function FeaturedProjectsSection() {
       />
       <Container>
         <Heading level="h2">Featured Projects</Heading>
-        <p>What I&apos;ve worked on, both personal and professional.</p>
+        <p>What I&apos;ve been up to, both professional and personal.</p>
         {data && (
           <ul className="grid mt-8 gap-8 auto-rows-[minmax(200px,auto)] lg:grid-cols-2">
             {data.main && (
