@@ -48,7 +48,8 @@ export interface Project {
   skills?: Skill[]
   requestContent: string
   strategyContent: string
-  resultsContent: string
+  takeawaysContent: string
+  type: "Personal" | "Professional"
 }
 
 export interface FeaturedProjectsSection {
