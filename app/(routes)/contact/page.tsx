@@ -54,7 +54,9 @@ export default async function ContactPage() {
                   target="_blank"
                   rel="noreferrer noopener nofollow"
                 >
-                  <span className="hidden">LinkedIn</span>
+                  <span className="hidden">
+                    LinkedIn
+                  </span>
                   <SocialIcon platform="LinkedIn" className="fill-charcoal" />
                 </a>
               </li>
@@ -64,7 +66,9 @@ export default async function ContactPage() {
                   target="_blank"
                   rel="noreferrer noopener nofollow"
                 >
-                  <span className="hidden">GitHub</span>
+                  <span className="hidden">
+                    GitHub
+                  </span>
                   <SocialIcon platform="GitHub" className="fill-charcoal" />
                 </a>
               </li>

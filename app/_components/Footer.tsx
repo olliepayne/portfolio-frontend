@@ -65,22 +65,22 @@ export default async function Footer() {
             <li className="mr-4">
               <a
                 href="https://www.linkedin.com/in/oliverpayne01/"
+                rel="noreferrer noopener nofollow"
                 target="_blank"
                 className="inline-block"
               >
-                <span rel="noreferrer noopener nofollow" className="hidden">
-                  LinkedIn
-                </span>
+                <span className="hidden">LinkedIn</span>
                 <SocialIcon platform="LinkedIn" className="fill-white" />
               </a>
             </li>
             <li>
               <a
                 href="https://github.com/olliepayne"
+                rel="noreferrer noopener nofollow"
                 target="_blank"
                 className="inline-block"
               >
-                <span rel="noreferrer noopener nofollow" className="hidden">
+                <span className="hidden">
                   GitHub
                 </span>
                 <SocialIcon platform="GitHub" className="fill-white" />
