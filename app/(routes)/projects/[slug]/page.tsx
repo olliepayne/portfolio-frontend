@@ -93,10 +93,10 @@ export default async function ProjectSlugPage({ params }: Props) {
       <section className="py-32 bg-charcoal text-white">
         <Container>
           <div className="border-l-4 border-primary border-solid pl-8 mt-4 lg:max-w-[640px]">
-            <Heading level="h2">Results & Lessons</Heading>
-            {data[0].resultsAndLessonsContent && (
+            <Heading level="h2">Takeaways</Heading>
+            {data[0].takeawaysContent && (
               <Markdown components={markdownComponents}>
-                {data[0].resultsAndLessonsContent}
+                {data[0].takeawaysContent}
               </Markdown>
             )}
           </div>
