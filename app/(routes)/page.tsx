@@ -16,7 +16,7 @@ const stats = [
   },
   {
     metricText: "Clients worked with",
-    value: "30+"
+    value: "40+"
   }
 ]
 
