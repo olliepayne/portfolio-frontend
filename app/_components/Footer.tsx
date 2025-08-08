@@ -1,5 +1,5 @@
 import Container from "@/app/_components/Container"
-import NavLink from "@/app/_components/NavLink"
+// import NavLink from "@/app/_components/NavLink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
