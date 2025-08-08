@@ -38,11 +38,11 @@ export default function Navbar() {
     const newState = !navIsOpen
     setNavIsOpen(newState)
   }
-  // function closeNav() {
-  //   if (window.innerWidth < 1024) {
-  //     setNavIsOpen(false)
-  //   }
-  // }
+  function closeNav() {
+    if (window.innerWidth < 1024) {
+      setNavIsOpen(false)
+    }
+  }
 
   const [canCheckWindowSize, setCanCheckWindowSize] = useState(true)
   function checkWindowSize() {
@@ -87,6 +87,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   className="relative pb-0.5 inline-block lg:border-none after:transition-all after:absolute after:bg-transparent after:w-full after:h-0.5 after:bottom-0 after:left-0 hover:after:bg-primary"
+                  onClick={closeNav}
                 >
                   {link.text}
                 </Link>
