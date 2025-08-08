@@ -71,7 +71,8 @@ export default async function Home() {
               />
               <Blob
                 variant="image"
-                className="drop-shadow-xl-darker absolute h-full w-full"
+                // className="drop-shadow-xl-darker absolute h-full w-full"
+                className="absolute h-full w-full"
               />
               <Image
                 src="/images/headshot.jpeg"
@@ -95,7 +96,8 @@ export default async function Home() {
                 src="/images/climbing-green.jpg"
                 alt="Ollie Payne competing in a climbing competition."
                 fill
-                className="object-cover object-[center_10%] drop-shadow-xl-darker"
+                // className="object-cover object-[center_10%] drop-shadow-xl-darker"
+                className="object-cover object-[center_10%]"
               />
             </div>
             <div className="basis-2/3 lg:ml-4">
