@@ -1,12 +1,14 @@
 "use client"
 
-import Link from "next/link"
-import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 import NavLink from "@/app/_components/NavLink"
 
 const links = [
+  {
+    href: "/",
+    text: "Home"
+  },
   {
     href: "/#about",
     text: "About"
@@ -18,6 +20,10 @@ const links = [
   {
     href: "/#experience",
     text: "Experience"
+  },
+  {
+    href: "/contact",
+    text: "Contact"
   }
   // {
   //   href: "/learn",
@@ -64,58 +70,49 @@ export default function Navbar() {
   })
 
   return (
-    <header className="bg-charcoal text-white sticky top-0 z-50">
-      <Container>
-        <nav className="flex flex-row justify-between items-center h-16">
-          <Link
-            href="/"
-            className="text-heading5Desktop font-bold relative z-10 lg:z-0 lg:static"
-            onClick={closeNav}
+    <header className="bg-charcoal text-white fixed w-full bottom-0 z-50 lg:sticky lg:top-0">
+      <Container variant="narrow">
+        <nav className="h-12 flex flex-col items-center justify-center">
+          <ul
+            className={`flex flex-col items-center justify-center bg-charcoal ${
+              navIsOpen ? "opacity-100 duration-200" : "opacity-0"
+            } h-full w-full border-b-2 border-solid border-primary  lg:border-none lg:opacity-100 lg:duration-0 lg:justify-between fixed left-0 bottom-12 lg:static lg:flex-row`}
           >
-            Ollie Payne
-          </Link>
-          <div
-            className={`bg-charcoal border-solid border-primary absolute transition-all left-0 top-16 overflow-hidden ${
-              navIsOpen
-                ? "max-h-screen border-t-2 pt-4 pb-8"
-                : "max-h-0 pt-0 pb-0"
-            } h-screen justify-between pl-4 w-full lg:max-h-fit lg:flex lg:overflow-auto lg:border-none lg:h-fit lg:p-0 lg:static lg:flex-row lg:bg-transparent lg:w-fit`}
-          >
-            <ul className="flex flex-col lg:items-center lg:flex-row">
-              {links.map((link, index) => (
-                <li key={`nav-link-${index}`} className="mb-4 lg:mb-0 lg:mr-8">
-                  <NavLink {...link} variant="top" onClick={closeNav} />
-                </li>
-              ))}
-              <li>
-                <LinkButton
-                  href="/contact"
-                  text="Contact Me"
-                  className="hover:text-black"
-                  onClick={closeNav}
-                />
+            {links.map((link, index) => (
+              <li key={`nav-link-${index}`} className="mb-8 lg:mb-0">
+                <NavLink {...link} variant="top" onClick={closeNav} />
               </li>
-            </ul>
-          </div>
-          <button className="w-8 h-6 relative lg:hidden" onClick={toggleNav}>
-            <span
-              className={`rounded-full inline-block absolute top-0 left-0 h-0.5 w-full ease-bounce transition-all bg-white origin-center ${
-                navIsOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`rounded-full inline-block absolute top-1/2 -translate-y-1/2 left-0 h-0.5 w-full transition-all bg-white origin-center ${
-                navIsOpen ? "scale-x-0" : "scale-x-100"
-              }`}
-            />
-            <span
-              className={`rounded-full inline-block absolute bottom-0 left-0 h-0.5 w-full transition-all ease-bounce bg-white origin-center ${
-                navIsOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""
-              }`}
-            />
-          </button>
+            ))}
+          </ul>
+          <MenuButton toggleNav={toggleNav} navIsOpen={navIsOpen} />
         </nav>
       </Container>
     </header>
+  )
+}
+
+interface MenuButton {
+  toggleNav: () => void,
+  navIsOpen: boolean
+}
+function MenuButton ({ toggleNav, navIsOpen }: MenuButton) {
+  return (
+    <button className="w-8 h-6 relative lg:hidden" onClick={toggleNav}>
+      <span
+        className={`rounded-full inline-block absolute top-0 left-0 h-0.5 w-full ease-bounce transition-all bg-white origin-center ${
+          navIsOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""
+        }`}
+      />
+      <span
+        className={`rounded-full inline-block absolute top-1/2 -translate-y-1/2 left-0 h-0.5 w-full transition-all bg-white origin-center ${
+          navIsOpen ? "scale-x-0" : "scale-x-100"
+        }`}
+      />
+      <span
+        className={`rounded-full inline-block absolute bottom-0 left-0 h-0.5 w-full transition-all ease-bounce bg-white origin-center ${
+          navIsOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""
+        }`}
+      />
+    </button>
   )
 }

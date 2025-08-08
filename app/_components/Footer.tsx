@@ -1,6 +1,5 @@
 import Container from "@/app/_components/Container"
-import NavLink from "@/app/_components/NavLink"
-import Link from "next/link"
+// import NavLink from "@/app/_components/NavLink"
 import SocialIcon from "@/app/_components/SocialIcon"
 import LinkButton from "@/app/_components/LinkButton"
 import Outlink from "@/app/_components/Outlink"
@@ -8,47 +7,52 @@ import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Resume } from "@/app/types"
 
-const linkMenus = [
-  {
-    primaryLink: {
-      href: "/#about",
-      text: "About"
-    },
-    secondaryLinks: []
-  },
-  {
-    primaryLink: {
-      href: "/#projects",
-      text: "Projects"
-    },
-    secondaryLinks: []
-  },
-  {
-    primaryLink: {
-      href: "/#experience",
-      text: "Experience"
-    },
-    secondaryLinks: []
-  }
-]
+// const linkMenus = [
+//   {
+//     primaryLink: {
+//       href: "/",
+//       text: "Home"
+//     },
+//     secondaryLinks: []
+//   },
+//   {
+//     primaryLink: {
+//       href: "/#about",
+//       text: "About"
+//     },
+//     secondaryLinks: []
+//   },
+//   {
+//     primaryLink: {
+//       href: "/#projects",
+//       text: "Projects"
+//     },
+//     secondaryLinks: []
+//   },
+//   {
+//     primaryLink: {
+//       href: "/#experience",
+//       text: "Experience"
+//     },
+//     secondaryLinks: []
+//   }
+// ]
 
 export default async function Footer() {
   const resume: Resume = await getStrapiData("/api/resume?populate=*")
 
   return (
-    <footer className="bg-charcoal py-16 text-white">
+    <footer className="bg-charcoal py-8 text-white">
       <Container variant="narrow">
-        <Link href="/" className="text-heading5Desktop font-bold">
-          Ollie Payne
-        </Link>
-        <ul className="flex flex-wrap mt-4 justify-between">
+        {/* <ul className="flex flex-wrap mt-4 justify-between">
           {linkMenus.map((linkMenu, index) => (
             <li key={`footer-link-menu-${index}`} className="gap-4">
               <NavLink {...linkMenu.primaryLink} variant="footer menu" />
             </li>
           ))}
-        </ul>
-        <div className="flex flex-col justify-between items-center mt-8 gap-4 border-themeLightGray border-solid border-t-[1px] pt-8 lg:flex-row">
+        </ul> */}
+        {/* <div className="flex flex-col justify-between items-center mt-8 gap-4 border-themeLightGray border-solid border-t-[1px] pt-8 lg:flex-row"> */}
+        <div className="flex flex-col justify-between items-center gap-4 lg:flex-row">
           <ul>
             <li className="mt-2">
               <Outlink
