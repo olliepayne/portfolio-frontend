@@ -1,7 +1,5 @@
 "use client"
 
-import Link from "next/link"
-import LinkButton from "@/app/_components/LinkButton"
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 import NavLink from "@/app/_components/NavLink"
