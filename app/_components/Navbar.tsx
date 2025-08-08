@@ -38,11 +38,11 @@ export default function Navbar() {
     const newState = !navIsOpen
     setNavIsOpen(newState)
   }
-  function closeNav() {
-    if (window.innerWidth < 1024) {
-      setNavIsOpen(false)
-    }
-  }
+  // function closeNav() {
+  //   if (window.innerWidth < 1024) {
+  //     setNavIsOpen(false)
+  //   }
+  // }
 
   const [canCheckWindowSize, setCanCheckWindowSize] = useState(true)
   function checkWindowSize() {
