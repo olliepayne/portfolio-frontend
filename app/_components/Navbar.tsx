@@ -74,7 +74,7 @@ export default function Navbar() {
       <Container variant="narrow">
         <nav className="h-12 flex flex-col items-center justify-center">
           <ul
-            className={`flex flex-col items-center justify-center bg-charcoal ${
+            className={`flex flex-col items-center justify-end bg-charcoal ${
               navIsOpen
                 ? "opacity-100 duration-200 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
