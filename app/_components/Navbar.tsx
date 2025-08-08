@@ -2,7 +2,8 @@
 
 import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
-import NavLink from "@/app/_components/NavLink"
+// import NavLink from "@/app/_components/NavLink"
+import Link from "next/link"
 
 const links = [
   {
@@ -76,13 +77,19 @@ export default function Navbar() {
           <ul
             className={`flex flex-col items-center justify-end bg-charcoal ${
               navIsOpen
-                ? "opacity-100 duration-200 pointer-events-auto"
+                ? "opacity-100 duration-300 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
             } h-full w-full border-b-2 border-solid border-primary lg:pointer-events-auto  lg:border-none lg:opacity-100 lg:duration-0 lg:justify-between fixed left-0 bottom-12 lg:static lg:flex-row`}
           >
             {links.map((link, index) => (
               <li key={`nav-link-${index}`} className="mb-8 lg:mb-0">
-                <NavLink {...link} variant="top" onClick={closeNav} />
+                {/* <NavLink {...link} variant="top" onClick={closeNav} /> */}
+                <Link
+                  href={link.href}
+                  className="relative pb-0.5 inline-block lg:border-none after:transition-all after:absolute after:bg-transparent after:w-full after:h-0.5 after:bottom-0 after:left-0 hover:after:bg-primary"
+                >
+                  {link.text}
+                </Link>
               </li>
             ))}
           </ul>
