@@ -75,8 +75,10 @@ export default function Navbar() {
         <nav className="h-12 flex flex-col items-center justify-center">
           <ul
             className={`flex flex-col items-center justify-center bg-charcoal ${
-              navIsOpen ? "opacity-100 duration-200" : "opacity-0"
-            } h-full w-full border-b-2 border-solid border-primary  lg:border-none lg:opacity-100 lg:duration-0 lg:justify-between fixed left-0 bottom-12 lg:static lg:flex-row`}
+              navIsOpen
+                ? "opacity-100 duration-200 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            } h-full w-full border-b-2 border-solid border-primary lg:pointer-events-auto  lg:border-none lg:opacity-100 lg:duration-0 lg:justify-between fixed left-0 bottom-12 lg:static lg:flex-row`}
           >
             {links.map((link, index) => (
               <li key={`nav-link-${index}`} className="mb-8 lg:mb-0">
