@@ -4,6 +4,7 @@ import Container from "@/app/_components/Container"
 import { useEffect, useState } from "react"
 // import NavLink from "@/app/_components/NavLink"
 import Link from "next/link"
+import LinkButton from "@/app/_components/LinkButton"
 
 const links = [
   {
@@ -22,10 +23,6 @@ const links = [
     href: "/#experience",
     text: "Experience"
   },
-  {
-    href: "/contact",
-    text: "Contact"
-  }
   // {
   //   href: "/learn",
   //   text: "Learn"
@@ -71,18 +68,18 @@ export default function Navbar() {
   })
 
   return (
-    <header className="bg-charcoal text-white fixed w-full bottom-0 z-50 lg:sticky lg:top-0">
-      <Container variant="narrow">
-        <nav className="h-12 flex flex-col items-center justify-center">
+    <header className="bg-charcoal text-white w-full fixed bottom-0 z-50 lg:sticky lg:top-0">
+      <Container>
+        <nav className="h-12 flex flex-col items-center justify-center lg:block">
           <ul
             className={`flex flex-col items-center justify-end bg-charcoal ${
               navIsOpen
                 ? "opacity-100 duration-300 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
-            } h-full w-full border-b-2 border-solid border-primary lg:pointer-events-auto  lg:border-none lg:opacity-100 lg:duration-0 lg:justify-between fixed left-0 bottom-12 lg:static lg:flex-row`}
+            } h-full w-full border-b-2 border-solid border-primary fixed left-0 bottom-12 lg:pointer-events-auto  lg:border-none lg:opacity-100 lg:duration-0 lg:static lg:flex-row lg:justify-start`}
           >
             {links.map((link, index) => (
-              <li key={`nav-link-${index}`} className="mb-8 lg:mb-0">
+              <li key={`nav-link-${index}`} className="mb-8 lg:mr-16 lg:mb-0">
                 {/* <NavLink {...link} variant="top" onClick={closeNav} /> */}
                 <Link
                   href={link.href}
@@ -93,6 +90,14 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="mb-8 lg:mr-0 lg:ml-auto lg:mb-0">
+              <LinkButton
+                href="/contact"
+                text="Contact"
+                className="hover:text-black"
+                onClick={toggleNav}
+              />
+            </li>
           </ul>
           <MenuButton toggleNav={toggleNav} navIsOpen={navIsOpen} />
         </nav>
@@ -102,10 +107,10 @@ export default function Navbar() {
 }
 
 interface MenuButton {
-  toggleNav: () => void,
+  toggleNav: () => void
   navIsOpen: boolean
 }
-function MenuButton ({ toggleNav, navIsOpen }: MenuButton) {
+function MenuButton({ toggleNav, navIsOpen }: MenuButton) {
   return (
     <button className="w-8 h-6 relative lg:hidden" onClick={toggleNav}>
       <span
