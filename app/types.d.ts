@@ -46,7 +46,7 @@ export interface Project {
   mainImage: StrapiImage
   summary: string
   skills?: Skill[]
-  requestContent: string
+  goalsContent: string
   strategyContent: string
   takeawaysContent: string
   type: "Personal" | "Professional"
