@@ -47,7 +47,7 @@ export interface Project {
   summary: string
   skills?: Skill[]
   goalsContent: string
-  strategyContent: string
+  planContent: string
   takeawaysContent: string
   type: "Personal" | "Professional"
 }
