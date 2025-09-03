@@ -7,7 +7,17 @@
   --themeCharcoal: #272727;
   --themeLightGray: #dfdfdf;
   --themeGray: #5c5c5c;
-  --font: "Open Sans", system-ui
+  --font: "Open Sans", system-ui;
+  --text-h1-desktop: 1.8rem;
+  --text-h2-desktop: 1.6rem;
+  --text-h3-desktop: 1.42rem;
+  --text-h4-desktop: 1.27rem;
+  --text-h1-mobile: 1.58rem;
+  --text-h2-mobile: 1.4rem;
+  --text-h3-mobile: 1.25rem;
+  --text-h4-mobile: 1.12rem;
+  --text-body-large: 1.125rem;
+  --text-body: 1rem;
 }
 
 * {
