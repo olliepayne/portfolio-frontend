@@ -14,7 +14,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId="GTM-ML4DTJNK" />
       ) : null}
       <body>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Footer />
       </body>

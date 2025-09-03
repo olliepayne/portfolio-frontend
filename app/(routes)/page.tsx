@@ -29,8 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   return (
-    <main>
-      <section className="py-8">
+    <>
+      <header className="py-8">
         <Container>
           <div className="flex justify-between items-center">
             <div className="mr-8">
@@ -38,8 +38,8 @@ export default async function Home() {
               <p className="mt-4">
                 I’m an English <mark>software developer</mark> &{" "}
                 <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
-                got into the tech agency/startup world at the age of 19 and
-                have spent the last {new Date().getFullYear()-2021}+ years there.
+                got into the tech agency/startup world at the age of 19 and have
+                spent the last {new Date().getFullYear() - 2021}+ years there.
               </p>
             </div>
             <Image
@@ -51,7 +51,21 @@ export default async function Home() {
             />
           </div>
         </Container>
+      </header>
+
+      <section className="mt-8">
+        <Container>
+          <div className="border-t-2 pt-8">
+            <Heading level="h2">Portfolio</Heading>
+            <div className="mt-4">
+              <div>
+                <span>Tags</span>
+              </div>
+              <div>{/* project grid */}</div>
+            </div>
+          </div>
+        </Container>
       </section>
-    </main>
+    </>
   )
 }
