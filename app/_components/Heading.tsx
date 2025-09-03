@@ -1,7 +1,7 @@
 import React from "react"
 
 interface Props {
-  level: "h1" | "h2" | "h3" | "h4" | "h5"
+  level: "h1" | "h2" | "h3" | "h4"
   children?: React.ReactNode
   className?: string
 }
@@ -10,53 +10,27 @@ export default function Heading({ level, children, className }: Props) {
   switch (level) {
     case "h1":
       return (
-        <h1
-          className={`font-bold text-heading1Mobile leading-[3.2rem] md:text-heading1Desktop md:leading-[3.66rem] ${
-            className || ""
-          }`}
-        >
+        <h1 className={`font-bold text-h1-mobile md:text-h1-desktop ${className || ""}`}>
           {children}
         </h1>
       )
     case "h2":
       return (
-        <h2
-          className={`font-bold text-heading2Mobile leading-[2.57rem] md:text-heading2Desktop md:leading-[2.93rem] ${
-            className || ""
-          }`}
-        >
+        <h2 className={`font-bold text-h2-mobile md:text-h2-desktop ${className || ""}`}>
           {children}
         </h2>
       )
     case "h3":
       return (
-        <h3
-          className={`font-bold text-heading3Mobile leading-[2.05rem] md:text-heading3Desktop md:leading-[2.34rem] ${
-            className || ""
-          }`}
-        >
+        <h3 className={`font-bold text-h3-mobile md:text-h3-desktop ${className || ""}`}>
           {children}
         </h3>
       )
     case "h4":
       return (
-        <h4
-          className={`font-bold text-heading4Mobile leading-[1.64rem] md:text-heading4Desktop md:leading-[1.87rem] ${
-            className || ""
-          }`}
-        >
+        <h4 className={`font-bold text-h4-mobile md:text-h4-desktop ${className || ""}`}>
           {children}
         </h4>
-      )
-    case "h5":
-      return (
-        <h5
-          className={`font-bold text-heading5Mobile leading-[1.31rem] md:text-heading5Desktop md:leding-[1.5rem] ${
-            className || ""
-          }`}
-        >
-          {children}
-        </h5>
       )
   }
 }
