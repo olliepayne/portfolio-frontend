@@ -1,4 +1,3 @@
-import Container from "@/app/_components/Container"
 import Image from "next/image"
 import Heading from "@/app/_components/Heading"
 import LinkButton from "@/app/_components/LinkButton"
@@ -6,8 +5,9 @@ import { Metadata } from "next"
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
 import InternalLink from "@/app/_components/InternalLink"
-import Icon from "@/app/_components/Icon"
 import SocialCard from "@/app/_components/SocialCard"
+import SkillFilters from "@/app/_components/SkillFilters"
+import { Skill } from "@/app/types"
 
 const stats = [
   {
@@ -30,14 +30,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
+  // fetch resume
+
+  const skills: Skill[] = await getStrapiData(`/api/skills?sort[0]=name`)
+
   return (
     <>
-      <header className="max-w-6xl my-16 mx-auto px-4">
+      <header className="max-w-6xl my-32 mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="mr-8">
-            <Heading level="h1">Hey, I'm Ollie 👋</Heading>
+            <Heading level="h1">Hey, I&apos;m Ollie 👋</Heading>
             <p className="mt-4 text-body-large">
-              I’m an English <mark>software developer</mark> &{" "}
+              I&apos;m an English <mark>software developer</mark> &{" "}
               <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
               got into the tech agency/startup world at the age of 19 and have
               spent the last {new Date().getFullYear() - 2021}+ years there.
@@ -64,18 +68,29 @@ export default async function Home() {
         </div>
       </header>
 
-      <section className="max-w-6xl mt-8 mb-16 mx-auto px-4">
-        <Heading level="h2">Portfolio</Heading>
-        <div className="mt-4">
-          <div>
-            <span>Tags</span>
+      <section className="max-w-6xl my-32 mx-auto px-4">
+        <div className="flex">
+          <Heading level="h2">Portfolio</Heading>
+          <div className="ml-64">
+            <div>
+              {/* <span>Filter by tags</span> */}
+              <SkillFilters skills={skills} />
+              {/* List of tags pulled from Strapi */}
+            </div>
+            <div>{/* project grid */}</div>
           </div>
-          <div>{/* project grid */}</div>
         </div>
       </section>
 
-      {/* <section className="max-w-6xl my-16 mx-auto px-4">
-        <Heading level="h2">Work history</Heading>
+      {/* <section className="max-w-6xl my-32 mx-auto px-4">
+        <div className="flex">
+          <Heading level="h2">Work history</Heading>
+          <table>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
       </section> */}
     </>
   )
