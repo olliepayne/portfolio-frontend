@@ -59,13 +59,13 @@ export default function WorkHistoryTable() {
             {shouldCreateCompanyCell(index) && (
               <th
                 rowSpan={getCompanyRoleCount(item.company)}
-                className="pb-8 text-gray text-left align-top"
+                className="pr-8 pb-8 text-gray text-left align-top font-medium "
               >
                 {item.company}
               </th>
             )}
-            <td className="pb-8">{item.role}</td>
-            <td className="pb-8">
+            <td className="pr-8 pb-8 text-gray">{item.role}</td>
+            <td className="pb-8 text-gray-400">
               {getRoleDurationStr(item.startDate, item.endDate)}
             </td>
           </tr>
