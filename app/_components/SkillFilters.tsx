@@ -79,11 +79,11 @@ export default function SkillFilters({ skills, className }: Props) {
 
   return (
     <div className={`${className || ""}`}>
-      <p className="font-bold text-heading4Desktop">Filter by Skills</p>
+      <p className="text-body-large">Filter by skills</p>
       <Link
         href={pathname}
         onClick={resetFilters}
-        className="text-heading5Desktop font-bold my-4 inline-block text-themeGray transition-colors hover:text-primary"
+        className="text-body-large my-2 inline-block text-gray transition-colors hover:text-primary"
         scroll={false}
       >
         Reset
@@ -123,7 +123,7 @@ function SkillFilterCheckbox({
   return (
     <label
       htmlFor={name}
-      className={`relative border-primary inline-block border-2 py-1.5 px-3 text-xs uppercase font-bold cursor-pointer rounded-full transition-colors lg:hover:bg-primary lg:hover:text-black ${
+      className={`relative border-primary inline-block border-2 py-1 px-2 text-xs uppercase font-medium cursor-pointer rounded-xl transition-colors lg:hover:bg-primary lg:hover:text-black ${
         isActive ? "bg-primary text-black" : "bg-transparent text-black"
       }`}
     >
