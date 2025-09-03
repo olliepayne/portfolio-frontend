@@ -1,8 +1,14 @@
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary: #ffd1d2;
+  --primaryIntense: #fca2a4;
+  --themeCharcoal: #272727;
+  --themeLightGray: #dfdfdf;
+  --themeGray: #5c5c5c;
+  --font: "Open Sans", system-ui
+}
 
 * {
   box-sizing: border-box;
