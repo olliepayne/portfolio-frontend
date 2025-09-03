@@ -2,12 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
-  --primary: #ffd1d2;
-  --primaryIntense: #fca2a4;
-  --themeCharcoal: #272727;
-  --themeLightGray: #dfdfdf;
-  --themeGray: #5c5c5c;
+  --color-primary: #ffd1d2;
+  --color-primary-intense: #fca2a4;
+  --color-charcoal: #272727;
+  --color-light-gray: #dfdfdf;
+  --color-gray: #5c5c5c;
   --font: "Open Sans", system-ui;
+
+  /* Major second base 16px */
   --text-h1-desktop: 1.8rem;
   --text-h2-desktop: 1.6rem;
   --text-h3-desktop: 1.42rem;
@@ -16,8 +18,9 @@
   --text-h2-mobile: 1.4rem;
   --text-h3-mobile: 1.25rem;
   --text-h4-mobile: 1.12rem;
-  --text-body-large: 1.125rem;
   --text-body: 1rem;
+
+  --text-body-large: 1.125rem;
 }
 
 * {
