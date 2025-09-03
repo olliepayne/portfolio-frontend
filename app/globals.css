@@ -7,3 +7,7 @@
 * {
   box-sizing: border-box;
 }
+
+mark {
+  background-color: rgb(255, 252, 226);
+}
