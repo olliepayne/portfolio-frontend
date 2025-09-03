@@ -8,6 +8,7 @@ import InternalLink from "@/app/_components/InternalLink"
 import SocialCard from "@/app/_components/SocialCard"
 import SkillFilters from "@/app/_components/SkillFilters"
 import { Skill } from "@/app/types"
+import WorkHistoryTable from "@/app/_components/WorkHistoryTable"
 
 const stats = [
   {
@@ -69,29 +70,25 @@ export default async function Home() {
       </header>
 
       <section className="max-w-6xl my-32 mx-auto px-4">
-        <div className="flex">
-          <Heading level="h2">Portfolio</Heading>
-          <div className="ml-64">
-            <div>
-              {/* <span>Filter by tags</span> */}
-              <SkillFilters skills={skills} />
-              {/* List of tags pulled from Strapi */}
-            </div>
-            <div>{/* project grid */}</div>
+        <Heading level="h2" className="">
+          Portfolio
+        </Heading>
+        <div className="mt-8">
+          <div>
+            {/* <span>Filter by tags</span> */}
+            <SkillFilters skills={skills} />
+            {/* List of tags pulled from Strapi */}
           </div>
+          <div>{/* project grid */}</div>
         </div>
       </section>
 
-      {/* <section className="max-w-6xl my-32 mx-auto px-4">
-        <div className="flex">
-          <Heading level="h2">Work history</Heading>
-          <table>
-            <tbody>
-
-            </tbody>
-          </table>
-        </div>
-      </section> */}
+      <section className="max-w-6xl my-32 mx-auto px-4">
+        <Heading level="h2" className="">
+          Work history
+        </Heading>
+        <WorkHistoryTable />
+      </section>
     </>
   )
 }
