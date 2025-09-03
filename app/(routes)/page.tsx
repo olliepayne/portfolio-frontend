@@ -32,11 +32,24 @@ export default async function Home() {
     <main>
       <section className="py-8">
         <Container>
-          <Heading level="h1">Hey, I'm Ollie 👋</Heading>
-          <p className="mt-4">
-            I’m a software developer & SEO/SEM professional living in Phoenix,
-            AZ.
-          </p>
+          <div className="flex justify-between items-center">
+            <div className="mr-8">
+              <Heading level="h1">Hey, I'm Ollie 👋</Heading>
+              <p className="mt-4">
+                I’m an English <mark>software developer</mark> &{" "}
+                <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
+                got into the tech agency/startup world at the age of 19 and
+                have spent the last {new Date().getFullYear()-2021}+ years there.
+              </p>
+            </div>
+            <Image
+              src="/images/headshot.jpeg"
+              alt="Ollie Payne headshot"
+              width={400}
+              height={300}
+              className="rounded-md"
+            />
+          </div>
         </Container>
       </section>
     </main>
