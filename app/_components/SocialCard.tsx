@@ -1,5 +1,5 @@
 import Icon from "@/app/_components/Icon"
-import { Resume, SEO } from "@/app/types"
+import { Resume } from "@/app/types"
 import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
 
 interface SocialCardProps {
