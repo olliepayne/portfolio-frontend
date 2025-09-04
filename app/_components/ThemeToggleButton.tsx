@@ -1,9 +1,18 @@
 "use client"
 import { useState, useEffect } from "react"
+import { cn } from "@/app/_utils/cn"
 
 type Theme = "dark" | "light"
 
-export default function ThemeToggleButton() {
+type ThemeToggleButtonProps = {
+  className?: string
+}
+
+export default function ThemeToggleButton({
+  className
+}: ThemeToggleButtonProps) {
+  const [theme, setTheme] = useState<Theme>()
+
   function handleTheme() {
     let newTheme: Theme
     if (localStorage.getItem("theme") === "dark") {
@@ -14,6 +23,7 @@ export default function ThemeToggleButton() {
       newTheme = "dark"
     }
     localStorage.setItem("theme", newTheme)
+    setTheme(newTheme)
   }
 
   useEffect(() => {
@@ -39,9 +49,14 @@ export default function ThemeToggleButton() {
   }, [])
 
   return (
-    <button className="" onClick={handleTheme}>
-      Theme
-      <span className=""></span>
+    <button
+      className={cn(
+        "inline-block rounded-full w-[52px] h-[26px] border-2 border-primary relative after:absolute text-transparent after:bottom-0.5 after:w-[18px] after:aspect-square after:bg-primary after:rounded-full after:transition-all",
+        className, theme === "dark" ? "after:right-0.5" : "after:left-0.5"
+      )}
+      onClick={handleTheme}
+    >
+      Change theme
     </button>
   )
 }
