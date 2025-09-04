@@ -11,7 +11,7 @@ const links = [
   }
 ]
 
-export default function TopNavigation() {
+export default function TopNavigationBar() {
   return (
     <nav className="max-w-6xl mx-auto px-4 py-4">
       <div className="flex justify-between">
