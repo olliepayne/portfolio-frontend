@@ -1,5 +1,5 @@
 import "@/app/app.css"
-import Navbar from "@/app/_components/Navbar"
+import TopNavigation from "@/app/_components/TopNavigation"
 import Footer from "@/app/_components/Footer"
 import { GoogleTagManager } from "@next/third-parties/google"
 
@@ -14,7 +14,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId="GTM-ML4DTJNK" />
       ) : null}
       <body>
-        {/* <Navbar /> */}
+        <TopNavigation />
         {children}
         <Footer />
       </body>
