@@ -37,7 +37,17 @@ export default async function Home() {
       <header className="max-w-6xl mx-auto px-4 my-16 md:my-32">
         <div className="flex justify-between items-center flex-col md:flex-row">
           <div className="mr-16 flex-2/3">
-            <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
+            <div className="flex items-center">
+              <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
+              <Image
+                src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
+                alt="Happy cat gif."
+                width={100}
+                height={100}
+                unoptimized
+                loading="eager"
+              />
+            </div>
             <p className="mt-4 text-body-large">
               I&apos;m an English <mark>software developer</mark> &{" "}
               <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
