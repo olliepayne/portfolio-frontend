@@ -49,6 +49,15 @@ export default function WorkHistoryTable() {
     return false
   }
 
+  function nextCompanyIsDifferent(index: number) {
+    if (index < data.length - 1 && data[index + 1].company !== data[index].company) {
+      return true
+    } else if (index === data.length - 1) {
+      return true
+    }
+    return false
+  }
+
   function getCompanyRoleCount(company: string) {
     let counter = 0
     for (let i = 0; i < data.length; i++) {
@@ -74,7 +83,7 @@ export default function WorkHistoryTable() {
               <th
                 scope="row"
                 rowSpan={getCompanyRoleCount(item.company)}
-                className="pr-8 py-4 text-left align-top font-medium border-t-[1px] border-light-gray"
+                className="pr-8 py-4 text-left align-top font-semibold border-b-[1px] border-light-gray"
               >
                 {item.company}
               </th>
@@ -82,8 +91,8 @@ export default function WorkHistoryTable() {
             <td
               className={cn(
                 "pr-8 py-4 text-left",
-                shouldCreateCompanyCell(index) &&
-                  "border-t-[1px] border-light-gray"
+                nextCompanyIsDifferent(index) &&
+                  "border-b-[1px] border-light-gray"
               )}
             >
               {item.role}
@@ -91,8 +100,8 @@ export default function WorkHistoryTable() {
             <td
               className={cn(
                 "py-4 text-left",
-                shouldCreateCompanyCell(index) &&
-                  "border-t-[1px] border-light-gray"
+                nextCompanyIsDifferent(index) &&
+                  "border-b-[1px] border-light-gray"
               )}
             >
               {getRoleDurationStr(item.startDate, item.endDate)}

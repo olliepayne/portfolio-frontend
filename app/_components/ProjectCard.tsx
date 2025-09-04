@@ -31,7 +31,7 @@ export default function ProjectCard({
         <div className="absolute rounded-sm left-0 top-0 w-full h-full hover:border-4 transition-all border-primary"></div>
       </div>
       <div className="mt-2">
-        <span className="font-medium text-off-black">{name}</span>
+        <span>{name}</span>
         {/* <span>Eightfold</span> */}
       </div>
     </div>
