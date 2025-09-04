@@ -35,7 +35,7 @@ export default async function Home() {
 
   return (
     <>
-      <header className="border-t-2 border-light-gray py-16">
+      <header className="border-b-2 border-light-gray py-16">
         <Container>
           <div className="flex justify-between items-center flex-col md:flex-row">
             <div className="mr-16 flex-2/3">
@@ -73,7 +73,7 @@ export default async function Home() {
         </Container>
       </header>
 
-      <section className="border-t-2 border-light-gray py-16">
+      <section className="border-b-2 border-light-gray py-16">
         <Container>
           <Heading level="h2" id="portfolio">
             Portfolio
@@ -84,7 +84,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="border-t-2 border-light-gray py-16">
+      <section className="py-16">
         <Container>
           <Heading level="h2" id="work-history">
             Work history
