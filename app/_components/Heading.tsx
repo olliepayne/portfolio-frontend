@@ -1,5 +1,5 @@
 import React from "react"
-import { cn } from "@/app/lib/utils"
+import { cn } from "@/app/_utils/cn"
 
 interface Props {
   level: "h1" | "h2" | "h3" | "h4"
@@ -38,19 +38,13 @@ export default function Heading({ level, children, className, id }: Props) {
       )
     case "h3":
       return (
-        <h3
-          id={id}
-          className={mergedStyles.h3}
-        >
+        <h3 id={id} className={mergedStyles.h3}>
           {children}
         </h3>
       )
     case "h4":
       return (
-        <h4
-          id={id}
-          className={mergedStyles.h4}
-        >
+        <h4 id={id} className={mergedStyles.h4}>
           {children}
         </h4>
       )

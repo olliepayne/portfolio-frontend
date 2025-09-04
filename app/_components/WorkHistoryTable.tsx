@@ -1,4 +1,4 @@
-import { cn } from "@/app/lib/utils"
+import { cn } from "@/app/_utils/cn"
 
 const data = [
   {
@@ -88,7 +88,13 @@ export default function WorkHistoryTable() {
             >
               {item.role}
             </td>
-            <td className={cn("py-4 text-left", shouldCreateCompanyCell(index) && "border-t-[1px] border-light-gray")}>
+            <td
+              className={cn(
+                "py-4 text-left",
+                shouldCreateCompanyCell(index) &&
+                  "border-t-[1px] border-light-gray"
+              )}
+            >
               {getRoleDurationStr(item.startDate, item.endDate)}
             </td>
           </tr>

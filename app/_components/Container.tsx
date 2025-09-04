@@ -1,5 +1,5 @@
 import React from "react"
-import { cn } from "@/app/lib/utils"
+import { cn } from "@/app/_utils/cn"
 
 interface ContainerProps {
   children?: React.ReactNode
@@ -26,11 +26,7 @@ export default function Container({
     case "narrow":
       return <div className={mergedStyles.narrow}>{children}</div>
     case "normal":
-      return (
-        <div className={mergedStyles.normal}>
-          {children}
-        </div>
-      )
+      return <div className={mergedStyles.normal}>{children}</div>
     default:
       return <div className={mergedStyles.normal}>{children}</div>
   }

@@ -1,4 +1,4 @@
-import getStrapiData from "@/app/_helpers/getStrapiData"
+import getStrapiData from "@/app/_utils/getStrapiData"
 import { Metadata } from "next"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"

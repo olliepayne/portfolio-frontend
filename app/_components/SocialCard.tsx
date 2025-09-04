@@ -1,6 +1,6 @@
 import Icon from "@/app/_components/Icon"
 import { Resume } from "@/app/types"
-import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_utils/getStrapiMedia"
 
 interface SocialCardProps {
   type: "LinkedIn" | "GitHub" | "Resume"

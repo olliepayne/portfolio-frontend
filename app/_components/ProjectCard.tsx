@@ -1,5 +1,5 @@
-import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
-import { cn } from "@/app/lib/utils"
+import { getStrapiMedia } from "@/app/_utils/getStrapiMedia"
+import { cn } from "@/app/_utils/cn"
 import Image from "next/image"
 import Link from "next/link"
 import { Project } from "@/app/types"

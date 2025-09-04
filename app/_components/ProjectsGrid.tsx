@@ -1,5 +1,5 @@
 import ProjectCard from "@/app/_components/ProjectCard"
-import getStrapiData from "@/app/_helpers/getStrapiData"
+import getStrapiData from "@/app/_utils/getStrapiData"
 import { FeaturedProjectsSection as IFeaturedProjectsSection } from "@/app/types"
 
 export default async function ProjectsGrid() {
