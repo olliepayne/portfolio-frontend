@@ -1,5 +1,6 @@
 import getStrapiData from "@/app/_helpers/getStrapiData"
 import { Metadata } from "next"
+import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"
 import SocialCard from "@/app/_components/SocialCard"
@@ -34,62 +35,62 @@ export default async function Home() {
 
   return (
     <>
-      <header className="max-w-6xl mx-auto px-4 my-16 md:my-32">
-        <div className="flex justify-between items-center flex-col md:flex-row">
-          <div className="mr-16 flex-2/3">
-            <div className="flex items-center">
-              <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
-              <Image
-                src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
-                alt="Happy cat gif."
-                width={100}
-                height={100}
-                unoptimized
-                loading="eager"
-              />
+      <header className="my-16 md:my-32">
+        <Container>
+          <div className="flex justify-between items-center flex-col md:flex-row">
+            <div className="mr-16 flex-2/3">
+              <div className="flex items-center">
+                <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
+                <Image
+                  src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
+                  alt="Happy cat gif."
+                  width={100}
+                  height={100}
+                  unoptimized
+                  loading="eager"
+                />
+              </div>
+              <p className="mt-4 text-body-large">
+                I&apos;m an English <mark>software developer</mark> &{" "}
+                <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
+                got into the tech agency/startup world at the age of 19 and have
+                spent the last {new Date().getFullYear() - 2021}+ years there.
+              </p>
             </div>
-            <p className="mt-4 text-body-large">
-              I&apos;m an English <mark>software developer</mark> &{" "}
-              <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
-              got into the tech agency/startup world at the age of 19 and have
-              spent the last {new Date().getFullYear() - 2021}+ years there.
-            </p>
-            <ul className="grid gap-4 grid-cols-3 mt-8">
-              <li>
-                <SocialCard type="LinkedIn" />
-              </li>
-              <li>
-                <SocialCard type="GitHub" />
-              </li>
-              <li>
-                <SocialCard type="Resume" />
-              </li>
-            </ul>
+            <Image
+              src="/images/headshot.jpeg"
+              alt="Ollie Payne headshot"
+              width={400}
+              height={400}
+              className="rounded-xl mt-16 md:min-h-[400px] object-cover md:mt-0"
+            />
           </div>
-          <Image
-            src="/images/headshot.jpeg"
-            alt="Ollie Payne headshot"
-            width={400}
-            height={400}
-            className="rounded-xl mt-16 min-h-[400px] object-cover md:mt-0"
-          />
-        </div>
+          <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mt-16">
+            <SocialCard type="LinkedIn" />
+            <SocialCard type="GitHub" />
+            <SocialCard type="Resume" />
+          </div>
+        </Container>
       </header>
 
-      <section className="max-w-6xl mx-auto px-4 my-16 md:my-32">
-        <Heading level="h2" id="portfolio">
-          Portfolio
-        </Heading>
-        <div className="mt-8">
-          <ProjectsGrid />
-        </div>
+      <section className="my-16 md:my-32">
+        <Container className="pt-8 border-t-2 border-light-gray">
+          <Heading level="h2" id="portfolio">
+            Portfolio
+          </Heading>
+          <div className="mt-8">
+            <ProjectsGrid />
+          </div>
+        </Container>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 my-16 md:my-32">
-        <Heading level="h2" id="work-history">
-          Work history
-        </Heading>
-        <WorkHistoryTable />
+      <section className="my-16 md:my-32">
+        <Container className="pt-8 border-t-2 border-light-gray">
+          <Heading level="h2" id="work-history">
+            Work history
+          </Heading>
+          <WorkHistoryTable />
+        </Container>
       </section>
     </>
   )
