@@ -1,3 +1,5 @@
+import { cn } from "@/app/lib/utils"
+
 const data = [
   {
     company: "MCD Partners / M+C Saatchi Group",
@@ -35,10 +37,10 @@ export default function WorkHistoryTable() {
     return false
   }
 
-  function getCompanyRoleCount(comparisonCompany: string) {
+  function getCompanyRoleCount(company: string) {
     let counter = 0
     for (let i = 0; i < data.length; i++) {
-      if (data[i].company === comparisonCompany) {
+      if (data[i].company === company) {
         counter++
       }
     }
@@ -55,17 +57,18 @@ export default function WorkHistoryTable() {
     <table className="mt-8 w-full">
       <tbody>
         {data.map((item, index) => (
-          <tr>
+          <tr key={`${item.role}-${index}`}>
             {shouldCreateCompanyCell(index) && (
               <th
+                scope="row"
                 rowSpan={getCompanyRoleCount(item.company)}
-                className="pr-8 pb-8 text-gray text-left align-top font-medium "
+                className="pr-8 py-4 text-left align-top font-medium"
               >
                 {item.company}
               </th>
             )}
-            <td className="pr-8 pb-8 text-gray">{item.role}</td>
-            <td className="pb-8 text-gray-400">
+            <td className="pr-8 py-4 text-left">{item.role}</td>
+            <td className="py-4 text-left">
               {getRoleDurationStr(item.startDate, item.endDate)}
             </td>
           </tr>

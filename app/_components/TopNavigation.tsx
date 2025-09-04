@@ -15,14 +15,13 @@ export default function TopNavigation() {
   return (
     <nav className="max-w-6xl mx-auto px-4 py-4">
       <div className="flex justify-between">
-        <Link href="/" className="transition-colors hover:text-primary-intense">Home</Link>
-        {/* <span>Ollie Payne</span> */}
+        <Link href="/" className="transition-colors hover:text-primary">Home</Link>
         <ul className="flex">
           {links.map((item, index) => (
             <li className="ml-8" key={`top-nav-link-${index}`}>
               <Link
                 href={item.href}
-                className="transition-colors hover:text-primary-intense"
+                className="transition-colors hover:text-primary"
               >
                 {item.text}
               </Link>
