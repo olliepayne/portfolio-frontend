@@ -1,13 +1,12 @@
-import { getStrapiMedia } from "@/app/_helpers/getStrapiMedia"
+import { getStrapiMedia } from "@/app/_utils/getStrapiMedia"
 import { Project } from "@/app/types"
-import getStrapiData from "@/app/_helpers/getStrapiData"
+import { Metadata } from "next"
+import getStrapiData from "@/app/_utils/getStrapiData"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"
-import SkillLinkList from "@/app/_components/SkillLinkList"
 import Markdown from "react-markdown"
-import markdownComponents from "@/app/_helpers/markdownComponents"
-import { Metadata } from "next"
+import markdownComponents from "@/app/_utils/markdownComponents"
 
 export async function generateStaticParams() {
   const projects: Project[] = await getStrapiData("/api/projects")
@@ -38,70 +37,33 @@ export default async function ProjectSlugPage({ params }: Props) {
   )
 
   return (
-    <main>
-      <section className="relative z-30 py-32 text-white">
+    <>
+      <header className="py-16">
         <Container>
-          {data[0].mainImage && (
-            <Image
-              src={getStrapiMedia(data[0].mainImage.url) as string}
-              alt={data[0].mainImage.alternativeText}
-              fill
-              objectFit="cover"
-              loading="eager"
-              className="-z-20"
-            />
-          )}
-          <div className="absolute -z-10 top-0 left-0 w-full h-full bg-charcoal opacity-80 transition-opacity group-hover:opacity-85" />
-          <div className="lg:max-w-[640px]">
-            {data[0].name && <Heading level="h1">{data[0].name}</Heading>}
-            {data[0].summary && <p>{data[0].summary}</p>}
-            {data[0].skills && (
-              <SkillLinkList
-                scope="projects"
-                skills={data[0].skills}
-                textVariant="white"
-                className="mt-4"
-              />
-            )}
+          <div className="relative">
+            {/* <Image src={getStrapiMedia(data[0].mainImage)} /> */}
+          </div>
+          <Heading level="h1">Name</Heading>
+          <div className="mt-16 flex justify-between">
+            <p className="basis-1/2">
+              Migrate a marketing site for a MedTech startup from vanilla HTML,
+              CSS, and JavaScript into the front-end React-framework Next.js.
+            </p>
+            <div className="ml-8">
+              <span className="font-semibold">2021, Kasadia</span>
+              <ul>
+                <li>Software Development</li>
+              </ul>
+            </div>
           </div>
         </Container>
-      </section>
-      <section className="text-white bg-charcoal py-32">
+      </header>
+
+      <article className="">
         <Container>
-          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4 lg:max-w-[640px]">
-            <Heading level="h2">Goals</Heading>
-            {data[0].goalsContent && (
-              <Markdown components={markdownComponents}>
-                {data[0].goalsContent}
-              </Markdown>
-            )}
-          </div>
+          <p>Markdown text</p>
         </Container>
-      </section>
-      <section className="py-32 relative">
-        <Container variant="narrow">
-          <div className="border-l-4 border-themeLightGray border-solid pl-8 mt-4">
-            <Heading level="h2">Plan</Heading>
-            {data[0].planContent && (
-              <Markdown components={markdownComponents}>
-                {data[0].planContent}
-              </Markdown>
-            )}
-          </div>
-        </Container>
-      </section>
-      <section className="py-32 bg-charcoal text-white">
-        <Container>
-          <div className="border-l-4 border-primary border-solid pl-8 mt-4 lg:max-w-[640px]">
-            <Heading level="h2">Takeaways</Heading>
-            {data[0].takeawaysContent && (
-              <Markdown components={markdownComponents}>
-                {data[0].takeawaysContent}
-              </Markdown>
-            )}
-          </div>
-        </Container>
-      </section>
-    </main>
+      </article>
+    </>
   )
 }
