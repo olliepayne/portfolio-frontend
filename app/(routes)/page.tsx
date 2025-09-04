@@ -1,14 +1,11 @@
-import Image from "next/image"
-import Heading from "@/app/_components/Heading"
-import LinkButton from "@/app/_components/LinkButton"
-import { Metadata } from "next"
 import getStrapiData from "@/app/_helpers/getStrapiData"
-import FeaturedProjectsSection from "@/app/_components/FeaturedProjectsSection"
-import InternalLink from "@/app/_components/InternalLink"
+import { Metadata } from "next"
+import Heading from "@/app/_components/Heading"
+import Image from "next/image"
 import SocialCard from "@/app/_components/SocialCard"
-import SkillFilters from "@/app/_components/SkillFilters"
-import { Skill } from "@/app/types"
+import ProjectsGrid from "@/app/_components/ProjectsGrid"
 import WorkHistoryTable from "@/app/_components/WorkHistoryTable"
+import { Skill } from "@/app/types"
 
 const stats = [
   {
@@ -37,10 +34,10 @@ export default async function Home() {
 
   return (
     <>
-      <header className="max-w-6xl my-32 mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div className="mr-8">
-            <Heading level="h1">Hey, I&apos;m Ollie 👋</Heading>
+      <header className="max-w-6xl mx-auto px-4 my-16 md:my-32">
+        <div className="flex justify-between items-center flex-col md:flex-row">
+          <div className="mr-16 flex-2/3">
+            <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
             <p className="mt-4 text-body-large">
               I&apos;m an English <mark>software developer</mark> &{" "}
               <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
@@ -63,28 +60,23 @@ export default async function Home() {
             src="/images/headshot.jpeg"
             alt="Ollie Payne headshot"
             width={400}
-            height={300}
-            className="rounded-xl"
+            height={400}
+            className="rounded-xl mt-16 min-h-[400px] object-cover md:mt-0"
           />
         </div>
       </header>
 
-      <section className="max-w-6xl my-32 mx-auto px-4">
-        <Heading level="h2" className="">
+      <section className="max-w-6xl mx-auto px-4 my-16 md:my-32">
+        <Heading level="h2" id="portfolio">
           Portfolio
         </Heading>
         <div className="mt-8">
-          <div>
-            {/* <span>Filter by tags</span> */}
-            <SkillFilters skills={skills} />
-            {/* List of tags pulled from Strapi */}
-          </div>
-          <div>{/* project grid */}</div>
+          <ProjectsGrid />
         </div>
       </section>
 
-      <section className="max-w-6xl my-32 mx-auto px-4">
-        <Heading level="h2" className="">
+      <section className="max-w-6xl mx-auto px-4 my-16 md:my-32">
+        <Heading level="h2" id="work-history">
           Work history
         </Heading>
         <WorkHistoryTable />
