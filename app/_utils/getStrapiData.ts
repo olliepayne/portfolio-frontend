@@ -1,4 +1,4 @@
-import getStrapiUrl from "@/app/_helpers/getStrapiUrl"
+import getStrapiUrl from "@/app/_utils/getStrapiUrl"
 
 export default async function getStrapiData(url: string, cache?: RequestCache) {
   try {
