@@ -12,28 +12,29 @@ export default function ProjectCard({
   name,
   slug,
   mainImage,
-  summary,
-  skills,
-  type,
   className
 }: ProjectCardProps) {
-  const baseStyles = "group cursor-pointer flex flex-col justify-between"
+  const baseStyles =
+    "relative group cursor-pointer flex flex-col justify-between"
   const mergedStyles = cn(baseStyles, className)
   return (
     <div className={mergedStyles}>
-      <div className="relative flex-1 rounded-sm">
+      <div className="relative flex-1 rounded-sm shadow-md">
         <Image
           src={getStrapiMedia(mainImage.url) as string}
           alt={mainImage.alternativeText}
           fill
           className="object-cover rounded-sm"
         />
-        <div className="absolute rounded-sm left-0 top-0 w-full h-full hover:border-4 transition-all border-primary"></div>
+        <div className="absolute rounded-sm left-0 top-0 w-full h-full group-hover:border-4 transition-all border-primary"></div>
       </div>
-      <div className="mt-2">
-        <span>{name}</span>
-        {/* <span>Eightfold</span> */}
-      </div>
+      <p className="mt-2 w-fit relative after:-z-10 after:absolute after:left-0 after:bottom-0.5 after:w-full after:h-[2px] after:opacity-0 after:bg-off-black group-hover:after:opacity-100 after:transition-all">{name}</p>
+      <a
+        href={`/projects/${slug}`}
+        className="absolute top-0 left-0 w-full h-full inline-block opacity-0"
+      >
+        View project
+      </a>
     </div>
   )
 }
