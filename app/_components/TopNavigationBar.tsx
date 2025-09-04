@@ -14,7 +14,7 @@ const links = [
 
 export default function TopNavigationBar() {
   return (
-    <nav className="py-4">
+    <nav className="py-4 border-b-2 border-light-gray">
       <Container>
         <div className="flex justify-between">
           <Link href="/" className="transition-colors hover:text-primary">
