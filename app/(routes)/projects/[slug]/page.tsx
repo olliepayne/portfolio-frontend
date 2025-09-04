@@ -32,9 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectSlugPage({ params }: Props) {
-  const data: Project[] = await getStrapiData(
-    `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
-  )
+  const [{ name, summary, mainImage, content, company, duration }]: Project[] =
+    await getStrapiData(
+      `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
+    )
 
   return (
     <>
@@ -43,25 +44,34 @@ export default async function ProjectSlugPage({ params }: Props) {
           <div className="relative">
             {/* <Image src={getStrapiMedia(data[0].mainImage)} /> */}
           </div>
-          <Heading level="h1">Name</Heading>
-          <div className="mt-16 flex justify-between">
-            <p className="basis-1/2">
-              Migrate a marketing site for a MedTech startup from vanilla HTML,
-              CSS, and JavaScript into the front-end React-framework Next.js.
-            </p>
-            <div className="ml-8">
-              <span className="font-semibold">2021, Kasadia</span>
+          <Heading level="h1">{name}</Heading>
+          <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
+            <p className="mt-8 basis-2/3 text-body-large md:mt-0">{summary}</p>
+            <div className="md:ml-8">
+              <span className="font-semibold">
+                {company ? company.name : "Personal"}, {duration}
+              </span>
               <ul>
                 <li>Software Development</li>
+                <li>Next.js</li>
+                <li>Strapi</li>
               </ul>
             </div>
+          </div>
+          <div className="mt-16 relative h-[500px]">
+            <Image
+              src={getStrapiMedia(mainImage.url) as string}
+              alt=""
+              fill
+              className="object-cover rounded-sm"
+            />
           </div>
         </Container>
       </header>
 
       <article className="">
         <Container>
-          <p>Markdown text</p>
+          <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>
       </article>
     </>
