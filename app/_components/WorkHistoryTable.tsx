@@ -20,6 +20,18 @@ const data = [
     endDate: "07-01-2024"
   },
   {
+    company: "Eightfold",
+    role: "Junior Software Developer",
+    startDate: "10-01-2021",
+    endDate: "04-01-2022"
+  },
+  {
+    company: "Eightfold",
+    role: "Software Developer Intern",
+    startDate: "07-01-2021",
+    endDate: "10-01-2021"
+  },
+  {
     company: "Kasadia",
     role: "Software Developer Intern",
     startDate: "02-01-2021",
@@ -62,13 +74,21 @@ export default function WorkHistoryTable() {
               <th
                 scope="row"
                 rowSpan={getCompanyRoleCount(item.company)}
-                className="pr-8 py-4 text-left align-top font-medium"
+                className="pr-8 py-4 text-left align-top font-medium border-t-[1px] border-light-gray"
               >
                 {item.company}
               </th>
             )}
-            <td className="pr-8 py-4 text-left">{item.role}</td>
-            <td className="py-4 text-left">
+            <td
+              className={cn(
+                "pr-8 py-4 text-left",
+                shouldCreateCompanyCell(index) &&
+                  "border-t-[1px] border-light-gray"
+              )}
+            >
+              {item.role}
+            </td>
+            <td className={cn("py-4 text-left", shouldCreateCompanyCell(index) && "border-t-[1px] border-light-gray")}>
               {getRoleDurationStr(item.startDate, item.endDate)}
             </td>
           </tr>
