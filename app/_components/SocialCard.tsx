@@ -11,7 +11,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
   switch (type) {
     case "LinkedIn":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative hover:border-primary transition-all">
+        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href="https://www.linkedin.com/in/oliverpayne01/"
             target="_blank"
@@ -20,7 +20,10 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
             View Ollie Payne on LinkedIn
           </a>
           <div className="flex items-center">
-            <Icon name="LinkedIn" className="fill-charcoal" />
+            <Icon
+              name="LinkedIn"
+              className="dark:fill-off-white fill-off-black"
+            />
             <div className="ml-3">
               <p>LinkedIn</p>
               <span>oliverpayne01</span>
@@ -30,7 +33,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
       )
     case "GitHub":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative hover:border-primary transition-all">
+        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href="https://github.com/olliepayne"
             target="_blank"
@@ -39,7 +42,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
             View Ollie Payne's GitHub profile
           </a>
           <div className="flex items-center">
-            <Icon name="GitHub" className="fill-charcoal" />
+            <Icon name="GitHub" className="dark:fill-off-white fill-charcoal" />
             <div className="ml-3">
               <p>GitHub</p>
               <span>olliepayne</span>
@@ -49,7 +52,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
       )
     case "Resume":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative hover:border-primary transition-all">
+        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href={
               resume?.file?.url
@@ -62,7 +65,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
             View Ollie Payne's resume
           </a>
           <div className="flex items-center">
-            <Icon name="Resume" className="fill-charcoal" />
+            <Icon name="Resume" className="dark:fill-off-white fill-charcoal" />
             <div className="ml-3">
               <p>Resume</p>
               <span>View</span>
