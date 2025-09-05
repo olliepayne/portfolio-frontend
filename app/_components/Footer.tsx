@@ -1,5 +1,5 @@
 import Container from "@/app/_components/Container"
-import ThemeToggleButton from "@/app/_components/ThemeToggleButton"
+import ThemeSwitch from "@/app/_components/ThemeSwitch"
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
           <span className="dark:text-off-white text-body-sm text-gray">
             Copyright &copy; {new Date().getFullYear()}, Oliver Payne
           </span>
-          <ThemeToggleButton />
+          <ThemeSwitch />
         </div>
       </Container>
     </footer>
