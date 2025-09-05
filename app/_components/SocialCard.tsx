@@ -11,7 +11,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
   switch (type) {
     case "LinkedIn":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
+        <div className="dark:border-off-black border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href="https://www.linkedin.com/in/oliverpayne01/"
             target="_blank"
@@ -33,7 +33,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
       )
     case "GitHub":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
+        <div className="dark:border-off-black border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href="https://github.com/olliepayne"
             target="_blank"
@@ -52,7 +52,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
       )
     case "Resume":
       return (
-        <div className="border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
+        <div className="dark:border-off-black border-light-gray border-2 rounded-lg p-3 relative dark:hover:border-primary-intense hover:border-primary transition-all">
           <a
             href={
               resume?.file?.url
