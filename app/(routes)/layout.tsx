@@ -2,6 +2,7 @@ import "@/app/app.css"
 import TopNavigationBar from "@/app/_components/TopNavigationBar"
 import Footer from "@/app/_components/Footer"
 import { GoogleTagManager } from "@next/third-parties/google"
+import Body from "@/app/_components/Body"
 
 export default function RootLayout({
   children
@@ -13,11 +14,11 @@ export default function RootLayout({
       {process.env.NODE_ENV === "production" ? (
         <GoogleTagManager gtmId="GTM-ML4DTJNK" />
       ) : null}
-      <body>
+      <Body>
         <TopNavigationBar />
         {children}
         <Footer />
-      </body>
+      </Body>
     </html>
   )
 }
