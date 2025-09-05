@@ -8,7 +8,7 @@ export default function InternalLink({ text, ...props }: Props) {
   return (
     <Link
       {...props}
-      className="relative inline-block pb-0.5 hover:text-primary transition-all after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
+      className="inline-block relative dark:hover:after:bg-off-white hover:after:bg-off-black after:transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-[2px] after:bg-gray-400"
     >
       {text}
     </Link>

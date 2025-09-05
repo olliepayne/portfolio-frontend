@@ -16,7 +16,7 @@ export interface SEO {
   metaDescription: string
 }
 
-export interface Skill {
+export interface Tag {
   name: string
 }
 
@@ -45,17 +45,10 @@ export interface Project {
   seo: SEO
   mainImage: StrapiImage
   summary: string
-  skills?: Skill[]
-  goalsContent: string
-  planContent: string
-  takeawaysContent: string
-  type: "Personal" | "Professional"
-}
-
-export interface FeaturedProjectsSection {
-  main?: Project
-  second?: Project
-  third?: Project
+  content: string
+  company?: Company
+  duration: string
+  tags?: Tag[]
 }
 
 export interface BlogPost {
