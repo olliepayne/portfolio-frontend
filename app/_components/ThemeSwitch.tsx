@@ -14,12 +14,21 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
   useEffect(() => {
     setMounted(true)
 
-    if (theme === undefined) {
-      if (window.matchMedia("(prefers-color-scheme: dark)")) {
+    function parseSystemTheme() {
+      if (
+        theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
         setTheme("dark")
-      } else {
+      } else if (
+        theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: light)").matches
+      ) {
         setTheme("light")
       }
+    }
+    if (theme === undefined) {
+      parseSystemTheme()
     }
   }, [])
 

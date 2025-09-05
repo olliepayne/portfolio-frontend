@@ -10,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {process.env.NODE_ENV === "production" ? (
         <GoogleTagManager gtmId="GTM-ML4DTJNK" />
       ) : null}
