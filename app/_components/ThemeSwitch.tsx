@@ -13,6 +13,12 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
 
   useEffect(() => {
     setMounted(true)
+    
+    if (window.matchMedia("(prefers-color-scheme: dark)")) {
+      setTheme("dark")
+    } else {
+      setTheme("light")
+    }
   }, [])
 
   if (!mounted) {
