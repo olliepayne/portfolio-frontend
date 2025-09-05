@@ -36,7 +36,6 @@
 
 body {
   color: var(--color-off-black);
-  transition: all 0.2s;
 }
 
 mark {
@@ -51,5 +50,8 @@ body.dark-mode mark {
 .dark-mode {
   color: var(--color-off-white);
   background-color: #111111;
-  transition: all 0.2s;
+}
+
+.theme-transition {
+  transition: all 0.4s;
 }
