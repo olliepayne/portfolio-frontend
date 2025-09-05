@@ -6,7 +6,7 @@ import { cn } from "@/app/_utils/cn"
 type BodyProps = {
   children?: React.ReactNode | React.ReactNode[]
 }
-export default function ThemeWrapper({ children }: BodyProps) {
+export default function Body({ children }: BodyProps) {
   const [theme] = useState(getTheme())
 
   return (
