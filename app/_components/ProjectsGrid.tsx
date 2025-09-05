@@ -8,11 +8,11 @@ export default async function ProjectsGrid() {
   const data: Project[] = await getStrapiData(url)
 
   return (
-    <div className="grid gap-8 grid-cols-1 auto-rows-[250px] md:grid-cols-2">
+    <div className="grid gap-8 grid-cols-1 md:grid-rows-[400px] auto-rows-[300px] md:grid-cols-2">
       {data.map((item, index) => (
         <ProjectCard
           {...item}
-          className={cn(index === 0 && "md:col-span-2 md:row-span-2")}
+          className={cn(index === 0 && "md:col-span-2")}
         />
       ))}
     </div>
