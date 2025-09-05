@@ -39,7 +39,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
             target="_blank"
             className="absolute top-0 left-0 w-full h-full opacity-0"
           >
-            View Ollie Payne's GitHub profile
+            View Ollie Payne&apos;s GitHub profile
           </a>
           <div className="flex items-center">
             <Icon name="GitHub" className="dark:fill-off-white fill-charcoal" />
@@ -62,7 +62,7 @@ export default function SocialCard({ type, resume }: SocialCardProps) {
             target="_blank"
             className="absolute top-0 left-0 w-full h-full opacity-0"
           >
-            View Ollie Payne's resume
+            View Ollie Payne&apos;s resume
           </a>
           <div className="flex items-center">
             <Icon name="Resume" className="dark:fill-off-white fill-charcoal" />
