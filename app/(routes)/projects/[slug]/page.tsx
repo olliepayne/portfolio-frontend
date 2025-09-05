@@ -32,18 +32,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectSlugPage({ params }: Props) {
-  const [{ name, summary, mainImage, content, company, duration }]: Project[] =
-    await getStrapiData(
-      `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
-    )
+  const [
+    { name, summary, mainImage, content, company, duration, tags }
+  ]: Project[] = await getStrapiData(
+    `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
+  )
 
   return (
     <>
       <header className="py-16">
         <Container>
-          <div className="relative">
-            {/* <Image src={getStrapiMedia(data[0].mainImage)} /> */}
-          </div>
           <Heading level="h1">{name}</Heading>
           <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
             <p className="mt-8 basis-2/3 text-body-large md:mt-0">{summary}</p>
@@ -52,9 +50,9 @@ export default async function ProjectSlugPage({ params }: Props) {
                 {company ? company.name : "Personal"}, {duration}
               </span>
               <ul>
-                <li>Software Development</li>
-                <li>Next.js</li>
-                <li>Strapi</li>
+                {tags?.map((item) => (
+                  <li key={item.name}>{item.name}</li>
+                ))}
               </ul>
             </div>
           </div>
