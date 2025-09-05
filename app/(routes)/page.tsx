@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  // [fetch resume]
+  const resume = await getStrapiData("/api/resume?populate=file")
 
   return (
     <>
@@ -29,7 +29,7 @@ export default async function Home() {
                 <Heading level="h1">Oliver {"(Ollie)"} Payne</Heading>
                 <Image
                   src="https://media.tenor.com/ZPHHiCRxrlsAAAAi/happy-happy-happy-cat.gif"
-                  alt="Happy cat gif."
+                  alt="Happy cat gif"
                   width={100}
                   height={100}
                   unoptimized
@@ -46,6 +46,7 @@ export default async function Home() {
             <Image
               src="/images/headshot.jpeg"
               alt="Ollie Payne headshot"
+              priority
               width={300}
               height={300}
               className="rounded-xl mt-16 min-h-[300px] object-cover shadow-md md:mt-0"
@@ -54,7 +55,7 @@ export default async function Home() {
           <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mt-16">
             <SocialCard type="LinkedIn" />
             <SocialCard type="GitHub" />
-            <SocialCard type="Resume" />
+            <SocialCard type="Resume" resume={resume} />
           </div>
         </Container>
       </header>
