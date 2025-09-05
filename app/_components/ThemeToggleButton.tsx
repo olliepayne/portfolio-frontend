@@ -11,6 +11,8 @@ export default function ThemeToggleButton({
   className
 }: ThemeToggleButtonProps) {
   const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -18,8 +20,6 @@ export default function ThemeToggleButton({
   if (!mounted) {
     return null
   }
-
-  const { theme, setTheme } = useTheme()
 
   return (
     <button
