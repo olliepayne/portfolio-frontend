@@ -15,19 +15,13 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
     setMounted(true)
 
     function parseSystemTheme() {
-      if (
-        theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         setTheme("dark")
-      } else if (
-        theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: light)").matches
-      ) {
+      } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
         setTheme("light")
       }
     }
-    if (theme === undefined) {
+    if (theme === "system") {
       parseSystemTheme()
     }
   }, [])
