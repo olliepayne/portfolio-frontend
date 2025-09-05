@@ -1,6 +1,5 @@
 import Container from "@/app/_components/Container"
 import Link from "next/link"
-import ThemeToggleButton from "@/app/_components/ThemeToggleButton"
 
 const links = [
   {
@@ -18,7 +17,7 @@ export default function TopNavigationBar() {
     <nav className="py-4 border-b-2 dark:border-off-black border-light-gray">
       <Container>
         <div className="flex justify-between">
-          <Link href="/" className="transition-colors hover:text-primary">
+          <Link href="/" className="transition-colors dark:hover:text-primary-intense hover:text-primary">
             Home
           </Link>
           <div className="flex items-center">
@@ -31,7 +30,6 @@ export default function TopNavigationBar() {
                 {item.text}
               </Link>
             ))}
-            <ThemeToggleButton className="ml-8" />
           </div>
         </div>
       </Container>
