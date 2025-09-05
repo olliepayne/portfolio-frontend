@@ -21,7 +21,7 @@ export default function TopNavigationBar() {
           <Link href="/" className="transition-colors hover:text-primary">
             Home
           </Link>
-          <div className="flex">
+          <div className="flex items-center">
             {links.map((item, index) => (
               <Link
                 href={item.href}
@@ -31,7 +31,7 @@ export default function TopNavigationBar() {
                 {item.text}
               </Link>
             ))}
-            <ThemeToggleButton />
+            <ThemeToggleButton className="ml-8" />
           </div>
         </div>
       </Container>
