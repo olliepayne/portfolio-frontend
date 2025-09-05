@@ -6,7 +6,6 @@ import Image from "next/image"
 import SocialCard from "@/app/_components/SocialCard"
 import ProjectsGrid from "@/app/_components/ProjectsGrid"
 import WorkHistoryTable from "@/app/_components/WorkHistoryTable"
-import { Skill } from "@/app/types"
 
 const stats = [
   {
@@ -29,13 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  // fetch resume
-
-  const skills: Skill[] = await getStrapiData(`/api/skills?sort[0]=name`)
+  // [fetch resume]
 
   return (
     <>
-      <header className="border-b-2 border-light-gray py-16">
+      <header className="border-b-2 dark:border-off-black border-light-gray py-16">
         <Container>
           <div className="flex justify-between items-center flex-col md:flex-row">
             <div className="mr-16 flex-2/3">
@@ -60,9 +57,9 @@ export default async function Home() {
             <Image
               src="/images/headshot.jpeg"
               alt="Ollie Payne headshot"
-              width={400}
-              height={400}
-              className="rounded-xl mt-16 md:min-h-[400px] object-cover md:mt-0"
+              width={300}
+              height={300}
+              className="rounded-xl mt-16 min-h-[300px] object-cover shadow-md md:mt-0"
             />
           </div>
           <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mt-16">
@@ -73,7 +70,7 @@ export default async function Home() {
         </Container>
       </header>
 
-      <section className="border-b-2 border-light-gray py-16">
+      <section className="border-b-2 dark:border-off-black border-light-gray py-16">
         <Container>
           <Heading level="h2" id="portfolio">
             Portfolio
