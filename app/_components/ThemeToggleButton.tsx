@@ -1,9 +1,8 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { cn } from "@/app/_utils/cn"
 import { setTheme, getTheme } from "@/app/_utils/themeHandlers"
-
-type Theme = "dark" | "light"
+import Icon from "@/app/_components/Icon"
 
 type ThemeToggleButtonProps = {
   className?: string
@@ -12,9 +11,10 @@ type ThemeToggleButtonProps = {
 export default function ThemeToggleButton({
   className
 }: ThemeToggleButtonProps) {
-  const [isDark, setIsDark] = useState<boolean>(
-    getTheme() === "dark" ? true : false
-  )
+  const [isDark, setIsDark] = useState<boolean>()
+  useEffect(() => {
+    setIsDark(getTheme() === "dark" ? true : false)
+  }, [])
 
   function handleClick() {
     setTheme()
@@ -33,12 +33,32 @@ export default function ThemeToggleButton({
   return (
     <button
       className={cn(
-        "group inline-block rounded-full w-[52px] h-[26px] dark:bg-off-black bg-light-gray relative after:absolute text-transparent after:bottom-1 after:w-[18px] after:aspect-square dark:after:bg-gray after:bg-gray-50 after:rounded-full after:transition-all",
-        className,
-        isDark ? "after:left-7" : "after:left-1.5"
+        "group inline-block rounded-full w-[54px] h-[28px] dark:bg-off-black bg-light-gray relative text-transparent",
+        className
       )}
       onClick={handleClick}
     >
+      <span
+        className={cn(
+          "bottom-1/2 translate-y-1/2 w-[22px] aspect-square dark:bg-gray absolute bg-gray-50 rounded-full transition-all",
+          isDark ? "left-7" : "left-1"
+        )}
+      >
+        <Icon
+          name="Light mode"
+          className={cn(
+            "absolute left-0 top-0 fill-gray-400 transition-all w-[98%] h-[98%]",
+            isDark ? "opacity-0" : "opacity-100"
+          )}
+        />
+        <Icon
+          name="Dark mode"
+          className={cn(
+            "absolute right-1/2 bottom-1/2 translate-y-1/2 translate-x-1/2 fill-off-black transition-all w-[90%] h-[90%]",
+            isDark ? "opacity-100" : "opacity-0"
+          )}
+        />
+      </span>
       Enable {isDark ? "light" : "dark"} mode
     </button>
   )
