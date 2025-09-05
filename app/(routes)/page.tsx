@@ -7,17 +7,6 @@ import SocialCard from "@/app/_components/SocialCard"
 import ProjectsGrid from "@/app/_components/ProjectsGrid"
 import WorkHistoryTable from "@/app/_components/WorkHistoryTable"
 
-const stats = [
-  {
-    metricText: "Years of experience",
-    value: "4+"
-  },
-  {
-    metricText: "Clients worked with",
-    value: "40+"
-  }
-]
-
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/homepage?populate=seo")
 
