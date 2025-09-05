@@ -40,11 +40,13 @@ body {
 
 mark {
   background-color: #f9e5ec;
+  transition: all 0.4s;
 }
 
 body.dark-mode mark {
   background-color: #482c35;
   color: var(--color-off-white);
+  transition: all 0.4s;
 }
 
 .dark-mode {
