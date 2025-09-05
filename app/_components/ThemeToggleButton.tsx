@@ -16,7 +16,7 @@ export default function ThemeToggleButton({
 
   useEffect(() => {
     setMounted(true)
-    setThemeState(theme as string)
+    setThemeState(localStorage.getItem("theme") as string)
   }, [])
 
   if (!mounted) {
