@@ -67,7 +67,7 @@ export default async function ProjectSlugPage({ params }: Props) {
         </Container>
       </header>
 
-      <article className="mt-16 mb-32">
+      <article className="mt-16">
         <Container>
           <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>

@@ -39,7 +39,6 @@ body {
 
 mark {
   background-color: #f9e5ec;
-  transition: all 0.3s;
 }
 
 html.dark body mark {
