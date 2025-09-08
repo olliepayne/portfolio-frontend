@@ -55,10 +55,10 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     function addThemeClasses() {
       const root = document.documentElement
 
-      document.body.classList.add("theme-transition")
-      setTimeout(() => {
-        document.body.classList.remove("theme-transition")
-      }, 200)
+      // document.body.classList.add("theme-transition")
+      // setTimeout(() => {
+      //   document.body.classList.remove("theme-transition")
+      // }, 200)
 
       if (theme === "dark") {
         root.classList.add("dark")
