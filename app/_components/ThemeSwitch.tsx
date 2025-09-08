@@ -1,20 +1,13 @@
 "use client"
-import { useState, useContext } from "react"
-// import { useTheme } from "@/app/lib/custom-next-themes"
+import { useTheme } from "@/app/_lib/theme-handlers"
 import { cn } from "@/app/_utils/cn"
-import { useTheme } from "@/app/lib/custom-next-themes"
 
 type ThemeSwitchProps = {
   className?: string
 }
 
 export default function ThemeSwitch({ className }: ThemeSwitchProps) {
-  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
-
-  // if (!mounted) {
-  //   return null
-  // }
 
   function handleSwitch() {
     const otherTheme = theme === "dark" ? "light" : "dark"
