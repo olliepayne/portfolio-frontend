@@ -1,6 +1,5 @@
 "use client"
-import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
+import { useTheme } from "@/app/_lib/theme-handlers"
 import { cn } from "@/app/_utils/cn"
 
 type ThemeSwitchProps = {
@@ -8,29 +7,9 @@ type ThemeSwitchProps = {
 }
 
 export default function ThemeSwitch({ className }: ThemeSwitchProps) {
-  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    setMounted(true)
-
-    function parseSystemTheme() {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setTheme("dark")
-      } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-        setTheme("light")
-      }
-    }
-    if (theme === "system") {
-      parseSystemTheme()
-    }
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  function handleClick() {
+  function handleSwitch() {
     const otherTheme = theme === "dark" ? "light" : "dark"
     setTheme(otherTheme)
   }
@@ -41,7 +20,7 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
         className,
         "group dark:hover:text-off-white hover:text-off-black hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700 transition-all inline-block rounded-full w-[54px] h-[28px] bg-gray-100 relative text-transparent cursor-pointer"
       )}
-      onClick={handleClick}
+      onClick={handleSwitch}
     >
       {/* Slider inside */}
       <span
@@ -52,7 +31,7 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
       ></span>
 
       {/* Text */}
-      <span className="absolute w-fit -left-full -translate-x-1/2 bottom-1/2 translate-y-1/2 text-body-sm">
+      <span className="pointer-events-none absolute w-fit -left-full -translate-x-1/2 bottom-1/2 translate-y-1/2 text-body-sm">
         Enable {theme === "dark" ? "light" : "dark"} mode
       </span>
     </button>

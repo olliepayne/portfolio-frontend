@@ -2,7 +2,7 @@ import "@/app/app.css"
 import { GoogleTagManager } from "@next/third-parties/google"
 import TopNavigationBar from "@/app/_components/TopNavigationBar"
 import Footer from "@/app/_components/Footer"
-import { ThemeProvider } from "next-themes"
+import ThemeProvider from "@/app/_lib/theme-handlers"
 
 export default function RootLayout({
   children
@@ -10,12 +10,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       {process.env.NODE_ENV === "production" ? (
         <GoogleTagManager gtmId="GTM-ML4DTJNK" />
       ) : null}
       <body>
-        <ThemeProvider attribute="class">
+        <ThemeProvider>
           <TopNavigationBar />
           {children}
           <Footer />
