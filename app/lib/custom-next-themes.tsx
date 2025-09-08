@@ -1,38 +1,81 @@
 "use client"
-import { useState, useEffect, createContext, Dispatch, SetStateAction } from "react"
+import {
+  useState,
+  useEffect,
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext
+} from "react"
 
-const systemTheme = () => {
+const getSystemTheme = () => {
+  let systemTheme = ""
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark"
+    systemTheme = "dark"
   } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-    return "light"
+    systemTheme = "light"
   }
+  return systemTheme
+}
+
+interface ThemeContext {
+  theme: string
+  setTheme: Dispatch<SetStateAction<string>>
+}
+export const ThemeContext = createContext<ThemeContext | undefined>(undefined)
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext)
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider")
+  }
+  return context
 }
 
 type ThemeProviderProps = {
-  childen?: React.ReactNode | React.ReactNode[]
+  children?: React.ReactNode | React.ReactNode[]
 }
 
-const ThemeContext = createContext<[string, Dispatch<SetStateAction<string>>]>([
-  "",
-  () => {}
-])
-
-export default function ThemeProvider({ childen }: ThemeProviderProps) {
+export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState("")
 
-  function loadTheme() {
-    const savedTheme = localStorage.getItem("theme") || undefined
-    if (savedTheme !== undefined) {
-      
+  useEffect(() => {
+    const savedTheme: string | undefined =
+      localStorage.getItem("theme") || undefined
+    if (savedTheme === undefined) {
+      setTheme(getSystemTheme())
     } else {
-      
+      setTheme(savedTheme)
     }
-  } 
+  }, [])
+
+  useEffect(() => {
+    function addThemeClasses() {
+      const root = document.documentElement
+
+      document.body.classList.add("theme-transition")
+      setTimeout(() => {
+        document.body.classList.remove("theme-transition")
+      }, 200)
+
+      if (theme === "dark") {
+        root.classList.add("dark")
+      } else {
+        root.classList.remove("dark")
+      }
+    }
+
+    function saveThemeToLocal() {
+      localStorage.setItem("theme", theme)
+    }
+
+    saveThemeToLocal()
+    addThemeClasses()
+  }, [theme])
 
   return (
-    <ThemeContext.Provider value={[theme, setTheme]}>
-      {childen}
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
     </ThemeContext.Provider>
   )
 }
