@@ -37,15 +37,19 @@ type ThemeProviderProps = {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
+  const [isMounted, setIsMounted] = useState(false)
   const [theme, setTheme] = useState("")
 
   useEffect(() => {
-    const savedTheme: string | undefined =
-      localStorage.getItem("theme") || undefined
-    if (savedTheme === undefined) {
-      setTheme(getSystemTheme())
-    } else {
-      setTheme(savedTheme)
+    if (!isMounted) {
+      const savedTheme = localStorage.getItem("theme") || undefined
+      if (savedTheme === undefined) {
+        setTheme(getSystemTheme())
+      } else {
+        setTheme(savedTheme)
+      }
+
+      setIsMounted(true)
     }
   }, [])
 
@@ -69,8 +73,10 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       localStorage.setItem("theme", theme)
     }
 
-    saveThemeToLocal()
-    addThemeClasses()
+    if (isMounted) {
+      saveThemeToLocal()
+      addThemeClasses()
+    }
   }, [theme])
 
   return (
