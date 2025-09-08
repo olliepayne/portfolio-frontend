@@ -40,7 +40,7 @@ export default async function ProjectSlugPage({ params }: Props) {
 
   return (
     <>
-      <header className="py-16">
+      <header className="mt-32">
         <Container>
           <Heading level="h1">{name}</Heading>
           <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
@@ -67,7 +67,7 @@ export default async function ProjectSlugPage({ params }: Props) {
         </Container>
       </header>
 
-      <article className="">
+      <article className="mt-16 mb-32">
         <Container>
           <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>

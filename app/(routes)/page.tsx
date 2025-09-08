@@ -21,8 +21,8 @@ export default async function Home() {
 
   return (
     <>
-      <header className="border-b-2 dark:border-off-black border-light-gray py-16">
-        <Container>
+      <header>
+        <Container className="border-b-2 dark:border-off-black border-light-gray py-32">
           <div className="flex justify-between items-center flex-col md:flex-row">
             <div className="mr-16 flex-2/3">
               <div className="flex items-center">
@@ -60,8 +60,8 @@ export default async function Home() {
         </Container>
       </header>
 
-      <section className="border-b-2 dark:border-off-black border-light-gray py-16">
-        <Container>
+      <section>
+        <Container className="border-b-2 dark:border-off-black border-light-gray py-32">
           <Heading level="h2" id="portfolio">
             Portfolio
           </Heading>
@@ -71,7 +71,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="py-16">
+      <section className="py-32">
         <Container>
           <Heading level="h2" id="work-history">
             Work history
