@@ -37,23 +37,21 @@ type ThemeProviderProps = {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isMounted, setIsMounted] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
   const [theme, setTheme] = useState("")
 
   useEffect(() => {
-    if (!isMounted) {
+    setHasMounted(true)
+
+    function loadTheme() {
       const savedTheme = localStorage.getItem("theme") || undefined
       if (savedTheme === undefined) {
         setTheme(getSystemTheme())
       } else {
         setTheme(savedTheme)
       }
-
-      setIsMounted(true)
     }
-  }, [])
 
-  useEffect(() => {
     function addThemeClasses() {
       const root = document.documentElement
 
@@ -73,11 +71,20 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       localStorage.setItem("theme", theme)
     }
 
-    if (isMounted) {
+    if (theme === "") {
+      loadTheme()
+    }
+
+    addThemeClasses()
+
+    if (theme !== "") {
       saveThemeToLocal()
-      addThemeClasses()
     }
   }, [theme])
+
+  if (!hasMounted) {
+    return null
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
