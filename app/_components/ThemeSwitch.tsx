@@ -31,7 +31,7 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
       ></span>
 
       {/* Text */}
-      <span className="absolute w-fit -left-full -translate-x-1/2 bottom-1/2 translate-y-1/2 text-body-sm">
+      <span className="pointer-events-none absolute w-fit -left-full -translate-x-1/2 bottom-1/2 translate-y-1/2 text-body-sm">
         Enable {theme === "dark" ? "light" : "dark"} mode
       </span>
     </button>
