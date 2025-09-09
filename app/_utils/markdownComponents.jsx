@@ -56,7 +56,6 @@ const markdownComponents = {
     )
   },
   img(props) {
-    console.log(props.src)
     return (
       <img
         src={props.src}

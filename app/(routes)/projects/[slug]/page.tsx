@@ -56,7 +56,7 @@ export default async function ProjectSlugPage({ params }: Props) {
               </ul>
             </div>
           </div>
-          <div className="mt-16 relative h-[500px]">
+          <div className="mt-16 relative w-full aspect-video">
             <Image
               src={getStrapiMedia(mainImage.url) as string}
               alt=""

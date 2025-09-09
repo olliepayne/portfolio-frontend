@@ -37,8 +37,7 @@ export default async function Home() {
                 />
               </div>
               <p className="mt-4 text-body-large">
-                I&apos;m an English <mark>software developer</mark> &{" "}
-                <mark>SEO/SEM professional</mark> living in Phoenix, Arizona. I
+                I&apos;m an English <mark>front-end developer</mark> living in Phoenix, Arizona. I
                 got into the tech agency/startup world at the age of 19 and have
                 spent the last {new Date().getFullYear() - 2021}+ years there.
               </p>

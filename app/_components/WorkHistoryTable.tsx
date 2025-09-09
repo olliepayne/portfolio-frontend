@@ -2,7 +2,7 @@ import { cn } from "@/app/_utils/cn"
 
 const data = [
   {
-    company: "MCD Partners / M+C Saatchi Group",
+    company: "MCD Partners",
     role: "SEO & Paid Media Analyst",
     startDate: "06-30-2025",
     endDate: null
