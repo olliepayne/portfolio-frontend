@@ -56,7 +56,7 @@ export default async function ProjectSlugPage({ params }: Props) {
               </ul>
             </div>
           </div>
-          <div className="mt-16 relative w-full aspect-video">
+          <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
             <Image
               src={getStrapiMedia(mainImage.url) as string}
               alt=""
@@ -68,7 +68,7 @@ export default async function ProjectSlugPage({ params }: Props) {
       </header>
 
       <article className="mt-16">
-        <Container>
+        <Container variant="narrow">
           <Markdown components={markdownComponents}>{content}</Markdown>
         </Container>
       </article>
