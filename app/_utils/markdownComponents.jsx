@@ -80,7 +80,7 @@ const markdownComponents = {
   },
   code(props) {
     return (
-      <code className="px-2 py-1.5 text-sm rounded-sm border-[1px] border-off-white bg:#FAFAFA dark:bg:#1D1F21 dark:border-off-black">
+      <code className="px-2 py-1.5 text-sm rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
         {props.children}
       </code>
     )
