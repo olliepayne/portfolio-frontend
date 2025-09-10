@@ -21,19 +21,19 @@ const data = [
   },
   {
     company: "Eightfold",
-    role: "Junior Software Developer",
+    role: "Junior Front-End Developer",
     startDate: "10-01-2021",
     endDate: "04-01-2022"
   },
   {
     company: "Eightfold",
-    role: "Software Developer Intern",
+    role: "Front-End Developer Intern",
     startDate: "07-01-2021",
     endDate: "10-01-2021"
   },
   {
     company: "Kasadia",
-    role: "Software Developer Intern",
+    role: "Front-End Developer Intern",
     startDate: "02-01-2021",
     endDate: "07-01-2021"
   }
