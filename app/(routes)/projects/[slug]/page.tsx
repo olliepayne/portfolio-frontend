@@ -60,8 +60,9 @@ export default async function ProjectSlugPage({ params }: Props) {
           <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
             <Image
               src={getStrapiMedia(mainImage.url) as string}
-              alt=""
+              alt={mainImage.alternativeText}
               fill
+              priority
               className="object-cover rounded-sm"
             />
           </div>
