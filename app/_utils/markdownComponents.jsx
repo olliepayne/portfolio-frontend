@@ -1,12 +1,7 @@
 import Heading from "@/app/_components/Heading"
 import Outlink from "@/app/_components/Outlink"
 import InternalLink from "@/app/_components/InternalLink"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import {
-  atomDark,
-  oneLight
-} from "react-syntax-highlighter/dist/esm/styles/prism"
-import ThemeWrappedSyntaxHighlighter from "../_components/ThemeWrappedSyntaxHighlighter"
+import ThemeWrappedSyntaxHighlighter from "@/app/_components/ThemeWrappedSyntaxHighlighter"
 
 const markdownComponents = {
   h2(props) {
@@ -90,11 +85,7 @@ const markdownComponents = {
     )
   },
   table(props) {
-    return (
-      <table>
-        {props.children}
-      </table>
-    )
+    return <table>{props.children}</table>
   }
 }
 export default markdownComponents
