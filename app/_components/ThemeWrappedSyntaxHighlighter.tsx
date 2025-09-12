@@ -17,7 +17,7 @@ export default function ThemeWrappedSyntaxHighlighter({
   language,
   code
 }: ThemeWrapperProps) {
-  const { theme, setTheme } = useTheme()
+  const { theme } = useTheme()
 
   return (
     <div className="mt-8 shadow-sm rounded-sm text-body-sm">
