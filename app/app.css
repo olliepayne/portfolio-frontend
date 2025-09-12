@@ -10,6 +10,8 @@
   --color-gray: #5c5c5c;
   --color-off-black: #303030;
   --color-off-white: #ededed;
+  --color-body-dark: #111111;
+  --color-body-dark-contrast: #1c1c1c;
 
   --font: "Open Sans", system-ui;
 
@@ -48,9 +50,27 @@ html.dark body mark {
 
 html.dark body {
   color: var(--color-off-white);
-  background-color: #111111;
+  background-color: var(--color-body-dark);
 }
 
 .theme-transition {
   transition: all 0.3s;
+}
+
+.markdown-table thead th {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.markdown-table tr {
+  border-bottom: 1px var(--color-light-gray) solid;
+}
+
+html.dark .markdown-table tr {
+  border-bottom-color: var(--color-off-black);
+}
+
+.markdown-table td {
+  padding: 1rem;
 }
