@@ -24,14 +24,6 @@ interface ThemeContext {
 }
 export const ThemeContext = createContext<ThemeContext | undefined>(undefined)
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext)
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider")
-  }
-  return context
-}
-
 type ThemeProviderProps = {
   children?: React.ReactNode | React.ReactNode[]
 }
@@ -91,4 +83,12 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       {children}
     </ThemeContext.Provider>
   )
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext)
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider")
+  }
+  return context
 }
