@@ -53,7 +53,7 @@ const markdownComponents = {
       <img
         src={props.src}
         alt={props.alt}
-        className="object-cover drop-shadow-md aspect-video w-full rounded-sm block mx-auto"
+        className="object-cover w-full aspect-auto rounded-sm drop-shadow-sm"
       />
     )
   },
