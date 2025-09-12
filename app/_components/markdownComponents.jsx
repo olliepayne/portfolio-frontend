@@ -15,7 +15,7 @@ const markdownComponents = {
   h3(props) {
     const { children } = props
     return (
-      <Heading level="h3" className="mt-10 mb-5 first:mt-0">
+      <Heading level="h3" className="mt-10 mb-6 first:mt-0">
         {children}
       </Heading>
     )
@@ -23,19 +23,19 @@ const markdownComponents = {
   h4(props) {
     const { children } = props
     return (
-      <Heading level="h4" className="mt-10 mb-5 first:mt-0">
+      <Heading level="h4" className="mt-10 mb-6 first:mt-0">
         {children}
       </Heading>
     )
   },
   p(props) {
     const { children } = props
-    return <p className="my-5 leading-8 first:mt-0">{children}</p>
+    return <p className="my-6 leading-8 first:mt-0">{children}</p>
   },
   ul(props) {
     const { children } = props
     return (
-      <ul className="list-disc pl-10 my-4 space-y-2 leading-8 first:mt-0">
+      <ul className="list-disc pl-10 my-6 space-y-2 leading-8 first:mt-0">
         {children}
       </ul>
     )
@@ -43,7 +43,7 @@ const markdownComponents = {
   ol(props) {
     const { children } = props
     return (
-      <ol className="list-decimal pl-10 my-4 space-y-2 leading-8 first:mt-0">
+      <ol className="list-decimal pl-10 my-6 space-y-2 leading-8 first:mt-0">
         {children}
       </ol>
     )
@@ -85,7 +85,7 @@ const markdownComponents = {
     )
   },
   table(props) {
-    return <table>{props.children}</table>
+    return <table className="markdown-table w-full">{props.children}</table>
   }
 }
 export default markdownComponents
