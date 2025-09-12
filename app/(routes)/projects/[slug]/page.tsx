@@ -6,7 +6,8 @@ import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import Image from "next/image"
 import Markdown from "react-markdown"
-import markdownComponents from "@/app/_utils/markdownComponents"
+import markdownComponents from "@/app/_components/markdownComponents"
+import remarkGfm from "remark-gfm"
 
 export async function generateStaticParams() {
   const projects: Project[] = await getStrapiData("/api/projects")
@@ -69,7 +70,7 @@ export default async function ProjectSlugPage({ params }: Props) {
 
       <article className="mt-16">
         <Container variant="narrow">
-          <Markdown components={markdownComponents}>{content}</Markdown>
+          <Markdown components={markdownComponents} remarkPlugins={[remarkGfm]}>{content}</Markdown>
         </Container>
       </article>
     </>
