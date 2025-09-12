@@ -16,7 +16,7 @@
   --font: "Open Sans", system-ui;
 
   /* Major second base 14/16px */
-  --text-h1-mobile: 1.58rem;
+  /* --text-h1-mobile: 1.58rem;
   --text-h2-mobile: 1.4rem;
   --text-h3-mobile: 1.25rem;
   --text-h4-mobile: 1.12rem;
@@ -24,6 +24,17 @@
   --text-h2-desktop: 1.6rem;
   --text-h3-desktop: 1.42rem;
   --text-h4-desktop: 1.27rem;
+  --text-body: 1rem;
+  --text-body-large: 1.125rem;
+  --text-body-sm: 0.875rem; */
+  --text-h1-mobile: 2.18rem;
+  --text-h2-mobile: 1.81rem;
+  --text-h3-mobile: 1.51rem;
+  --text-h4-mobile: 1.26rem;
+  --text-h1-desktop: 2.49rem;
+  --text-h2-desktop: 2.07rem;
+  --text-h3-desktop: 1.73rem;
+  --text-h4-desktop: 1.44rem;
   --text-body: 1rem;
   --text-body-large: 1.125rem;
   --text-body-sm: 0.875rem;
