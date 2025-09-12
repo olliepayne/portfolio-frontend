@@ -2,7 +2,7 @@ import "@/app/app.css"
 import { GoogleTagManager } from "@next/third-parties/google"
 import TopNavigationBar from "@/app/_components/TopNavigationBar"
 import Footer from "@/app/_components/Footer"
-import ThemeProvider from "@/app/_lib/theme-handlers"
+import ThemeProvider from "@/app/_lib/themes-handler"
 
 export default function RootLayout({
   children

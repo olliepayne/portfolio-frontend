@@ -6,7 +6,7 @@ import {
   oneLight
 } from "react-syntax-highlighter/dist/esm/styles/prism"
 
-import { useTheme } from "@/app/_lib/theme-handlers"
+import { useTheme } from "@/app/_lib/themes-handler"
 
 type ThemeWrapperProps = {
   language: string

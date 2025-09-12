@@ -1,5 +1,5 @@
 "use client"
-import { useTheme } from "@/app/_lib/theme-handlers"
+import { useTheme } from "@/app/_lib/themes-handler"
 import { cn } from "@/app/_utils/cn"
 
 type ThemeSwitchProps = {
