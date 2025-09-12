@@ -12,7 +12,7 @@ const markdownComponents = {
   h2(props) {
     const { children } = props
     return (
-      <Heading level="h2" className="mt-20 first:mt-0">
+      <Heading level="h2" className="mt-14 mb-8 first:mt-0">
         {children}
       </Heading>
     )
@@ -20,7 +20,7 @@ const markdownComponents = {
   h3(props) {
     const { children } = props
     return (
-      <Heading level="h3" className="mt-8 first:mt-0">
+      <Heading level="h3" className="mt-10 mb-5 first:mt-0">
         {children}
       </Heading>
     )
@@ -28,33 +28,27 @@ const markdownComponents = {
   h4(props) {
     const { children } = props
     return (
-      <Heading level="h4" className="mt-8 first:mt-0">
-        {children}
-      </Heading>
-    )
-  },
-  h5(props) {
-    const { children } = props
-    return (
-      <Heading level="h5" className="mt-8 first:mt-0">
+      <Heading level="h4" className="mt-10 mb-5 first:mt-0">
         {children}
       </Heading>
     )
   },
   p(props) {
     const { children } = props
-    return <p className="mt-8 first:mt-0">{children}</p>
+    return <p className="my-5 leading-8 first:mt-0">{children}</p>
   },
   ul(props) {
     const { children } = props
     return (
-      <ul className="list-disc pl-10 mt-8 space-y-2 first:mt-0">{children}</ul>
+      <ul className="list-disc pl-10 my-4 space-y-2 leading-8 first:mt-0">
+        {children}
+      </ul>
     )
   },
   ol(props) {
     const { children } = props
     return (
-      <ol className="list-decimal pl-10 mt-8 space-y-2 first:mt-0">
+      <ol className="list-decimal pl-10 my-4 space-y-2 leading-8 first:mt-0">
         {children}
       </ol>
     )
@@ -64,7 +58,7 @@ const markdownComponents = {
       <img
         src={props.src}
         alt={props.alt}
-        className="object-cover drop-shadow-xl block my-10 mx-auto"
+        className="object-cover drop-shadow-md aspect-video w-full rounded-sm block mx-auto"
       />
     )
   },
@@ -80,7 +74,7 @@ const markdownComponents = {
   },
   code(props) {
     return (
-      <code className="px-2 py-1.5 text-sm rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
+      <code className="px-2 py-1 text-sm rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
         {props.children}
       </code>
     )
@@ -89,7 +83,17 @@ const markdownComponents = {
     const language = props.children.props.className.split("-")[1]
 
     return (
-      <ThemeWrappedSyntaxHighlighter language={language} code={String(props.children.props.children)} />
+      <ThemeWrappedSyntaxHighlighter
+        language={language}
+        code={String(props.children.props.children)}
+      />
+    )
+  },
+  table(props) {
+    return (
+      <table>
+        {props.children}
+      </table>
     )
   }
 }
