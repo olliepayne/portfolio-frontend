@@ -55,6 +55,7 @@ export interface PostCategory {
 }
 
 export interface Post {
+  documentId: string
   slug: string
   title: string
   content: string
