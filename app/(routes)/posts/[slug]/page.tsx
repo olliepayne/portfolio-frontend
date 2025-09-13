@@ -46,19 +46,20 @@ function postIsUpdated(publishedDateStr: string, updatedDateStr: string) {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const posts: Post[] = await getStrapiData(
+  const [
+    {
+      noindex,
+      title,
+      mainImage,
+      summary,
+      content,
+      publishedAt,
+      updatedAt,
+      postCategory
+    }
+  ]: Post[] = await getStrapiData(
     `/api/posts?filters[slug][$eq]=${params.slug}&populate=*`
   )
-  const {
-    noindex,
-    title,
-    mainImage,
-    summary,
-    content,
-    publishedAt,
-    updatedAt,
-    postCategory
-  } = posts[0]
 
   return (
     <main>

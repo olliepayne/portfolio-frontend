@@ -1,5 +1,5 @@
 import { getStrapiMedia } from "@/app/_utils/getStrapiMedia"
-import { Project } from "@/app/types"
+import { Project, SEO } from "@/app/types"
 import { Metadata } from "next"
 import getStrapiData from "@/app/_utils/getStrapiData"
 import Container from "@/app/_components/Container"
@@ -15,28 +15,32 @@ export async function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }))
 }
 
-interface Props {
+interface ProjectPageProps {
   params: {
     slug: string
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const data = await getStrapiData(
+export async function generateMetadata({
+  params
+}: ProjectPageProps): Promise<Metadata> {
+  const seo: SEO = await getStrapiData(
     `/api/projects?filters[slug]$eq]=${params.slug}&populate=seo`
   )
 
   return {
-    title: data[0].seo ? data[0].seo.titleTag : "Title Tag",
-    description: data[0].seo ? data[0].seo.metaDescription : "Meta description"
+    title: seo.titleTag,
+    description: seo.metaDescription
   }
 }
 
-export default async function ProjectSlugPage({ params }: Props) {
+export default async function ProjectPage({
+  params: { slug }
+}: ProjectPageProps) {
   const [
     { name, summary, mainImage, content, company, duration, skillTags }
   ]: Project[] = await getStrapiData(
-    `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
+    `/api/projects?filters[slug][$eq]=${slug}&populate=*`
   )
 
   return (
@@ -50,9 +54,12 @@ export default async function ProjectSlugPage({ params }: Props) {
                 {summary}
               </p>
               <div className="md:ml-8">
-                <span className="font-semibold">
-                  {company ? company.name : "Personal"}, {duration}
-                </span>
+                <p>
+                  <span className="font-semibold">
+                    {company ? company.name : "Personal"}
+                  </span>
+                  , <span>{duration}</span>
+                </p>
                 <ul>
                   {skillTags?.map((item) => (
                     <li key={item.name}>{item.name}</li>
@@ -72,7 +79,7 @@ export default async function ProjectSlugPage({ params }: Props) {
           </Container>
         </header>
 
-        <section>
+        <section className="mt-16">
           <Container variant="narrow">
             <Markdown
               components={markdownComponents}
