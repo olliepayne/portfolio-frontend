@@ -34,46 +34,55 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectSlugPage({ params }: Props) {
   const [
-    { name, summary, mainImage, content, company, duration, tags }
+    { name, summary, mainImage, content, company, duration, skillTags }
   ]: Project[] = await getStrapiData(
     `/api/projects?filters[slug][$eq]=${params.slug}&populate=*`
   )
 
   return (
-    <>
-      <header className="mt-32">
-        <Container>
-          <Heading level="h1">{name}</Heading>
-          <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
-            <p className="mt-8 basis-2/3 text-body-large md:mt-0">{summary}</p>
-            <div className="md:ml-8">
-              <span className="font-semibold">
-                {company ? company.name : "Personal"}, {duration}
-              </span>
-              <ul>
-                {tags?.map((item) => (
-                  <li key={item.name}>{item.name}</li>
-                ))}
-              </ul>
+    <main>
+      <article>
+        <header className="mt-32">
+          <Container>
+            <Heading level="h1">{name}</Heading>
+            <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
+              <p className="mt-8 basis-2/3 text-body-large md:mt-0">
+                {summary}
+              </p>
+              <div className="md:ml-8">
+                <span className="font-semibold">
+                  {company ? company.name : "Personal"}, {duration}
+                </span>
+                <ul>
+                  {skillTags?.map((item) => (
+                    <li key={item.name}>{item.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
-            <Image
-              src={getStrapiMedia(mainImage.url) as string}
-              alt={mainImage.alternativeText}
-              fill
-              priority
-              className="object-cover rounded-sm"
-            />
-          </div>
-        </Container>
-      </header>
+            <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
+              <Image
+                src={getStrapiMedia(mainImage.url) as string}
+                alt={mainImage.alternativeText}
+                fill
+                priority
+                className="object-cover rounded-sm"
+              />
+            </div>
+          </Container>
+        </header>
 
-      <article className="mt-16">
-        <Container variant="narrow">
-          <Markdown components={markdownComponents} remarkPlugins={[remarkGfm]}>{content}</Markdown>
-        </Container>
+        <section>
+          <Container variant="narrow">
+            <Markdown
+              components={markdownComponents}
+              remarkPlugins={[remarkGfm]}
+            >
+              {content}
+            </Markdown>
+          </Container>
+        </section>
       </article>
-    </>
+    </main>
   )
 }
