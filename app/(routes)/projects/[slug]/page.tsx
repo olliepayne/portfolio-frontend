@@ -55,7 +55,7 @@ export default async function ProjectPage({
               </p>
               <div className="md:ml-8">
                 <p>
-                  <span className="font-semibold">
+                  <span className="font-medium">
                     {company ? company.name : "Personal"}
                   </span>
                   , <span>{duration}</span>
