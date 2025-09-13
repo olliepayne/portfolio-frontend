@@ -83,14 +83,14 @@ export default function WorkHistoryTable() {
               <th
                 scope="row"
                 rowSpan={getCompanyRoleCount(item.company)}
-                className="pr-8 py-4 text-left align-top font-semibold border-b-[1px] dark:border-off-black border-light-gray"
+                className="p-4 text-left align-top font-semibold border-b-[1px] dark:border-off-black border-light-gray"
               >
                 {item.company}
               </th>
             )}
             <td
               className={cn(
-                "pr-8 py-4 text-left",
+                "p-4 text-left",
                 nextCompanyIsDifferent(index) &&
                   "border-b-[1px] dark:border-off-black border-light-gray"
               )}
@@ -99,7 +99,7 @@ export default function WorkHistoryTable() {
             </td>
             <td
               className={cn(
-                "py-4 text-left",
+                "p-4 text-left",
                 nextCompanyIsDifferent(index) &&
                   "border-b-[1px] dark:border-off-black border-light-gray"
               )}
