@@ -1,6 +1,7 @@
 import { Post, SEO } from "@/app/types"
 import getStrapiData from "@/app/_utils/getStrapiData"
 import { Metadata } from "next"
+import Head from "next/head"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
 import { getShortMonthDayYear } from "@/app/_utils/dateFormatter"
@@ -35,38 +36,50 @@ export async function generateMetadata({
   }
 }
 
+function postIsUpdated(publishedDateStr: string, updatedDateStr: string) {
+  if (
+    new Date(publishedDateStr).getDate() === new Date(updatedDateStr).getDate()
+  ) {
+    return false
+  }
+  return true
+}
+
 export default async function PostPage({ params }: PostPageProps) {
   const posts: Post[] = await getStrapiData(
     `/api/posts?filters[slug][$eq]=${params.slug}&populate=*`
   )
   const {
+    noindex,
     title,
     mainImage,
     summary,
     content,
-    updatedAt,
     publishedAt,
+    updatedAt,
     postCategory
   } = posts[0]
 
   return (
     <main>
+      {noindex && (
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+      )}
       <article>
         <header className="mt-32">
           <Container>
             <Heading level="h1">{title}</Heading>
-            <div className="mt-8 flex justify-between flex-col md:flex-row">
-              <p className="basis-2/3 text-body-large">{summary}</p>
-              <div className="mt-8 md:mt-0 md:ml-8">
-                <span className="mr-4">
-                  Updated {getShortMonthDayYear(updatedAt)}
-                </span>
+            <div>
+              <div className="my-4">
                 {postCategory && (
                   <span className="px-2 py-1 text-sm uppercase rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
                     {postCategory.name}
                   </span>
                 )}
               </div>
+              <p className="text-body-large">{summary}</p>
             </div>
             <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
               <Image
@@ -80,8 +93,19 @@ export default async function PostPage({ params }: PostPageProps) {
           </Container>
         </header>
 
-        <section>
+        <section className="mt-16">
           <Container variant="narrow">
+            <p className="mb-8">
+              {postIsUpdated(publishedAt, updatedAt) ? (
+                <time dateTime={updatedAt}>
+                  Updated: {getShortMonthDayYear(updatedAt)}
+                </time>
+              ) : (
+                <time dateTime={publishedAt}>
+                  Published: {getShortMonthDayYear(publishedAt)}
+                </time>
+              )}
+            </p>
             <Markdown
               components={markdownComponents}
               remarkPlugins={[remarkGfm]}
