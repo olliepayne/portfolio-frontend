@@ -64,6 +64,7 @@ export interface Post {
   mainImage: StrapiImage
   summary: string
   seo: SEO
+  noindex: boolean
   postCategory?: PostCategory
   skillTags?: SkillTag[]
 }
