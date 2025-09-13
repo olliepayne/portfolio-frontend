@@ -16,7 +16,7 @@ export interface SEO {
   metaDescription: string
 }
 
-export interface Tag {
+export interface SkillTag {
   name: string
 }
 
@@ -29,7 +29,6 @@ export interface Job {
   location: string
   remote: boolean
   summary?: string
-  skills: Skill[]
   company: Company
 }
 
@@ -48,10 +47,14 @@ export interface Project {
   content: string
   company?: Company
   duration: string
-  tags?: Tag[]
+  skillTags?: SkillTag[]
 }
 
-export interface BlogPost {
+export interface PostCategory {
+  name: string
+}
+
+export interface Post {
   slug: string
   title: string
   content: string
@@ -60,5 +63,6 @@ export interface BlogPost {
   mainImage: StrapiImage
   summary: string
   seo: SEO
-  skills?: Skill[]
+  postCategory?: PostCategory
+  skillTags?: SkillTag[]
 }
