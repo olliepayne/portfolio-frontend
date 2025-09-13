@@ -45,7 +45,7 @@ function postIsUpdated(publishedDateStr: string, updatedDateStr: string) {
   return true
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params: { slug } }: PostPageProps) {
   const [
     {
       noindex,
@@ -58,7 +58,7 @@ export default async function PostPage({ params }: PostPageProps) {
       postCategory
     }
   ]: Post[] = await getStrapiData(
-    `/api/posts?filters[slug][$eq]=${params.slug}&populate=*`
+    `/api/posts?filters[slug][$eq]=${slug}&populate=*`
   )
 
   return (
