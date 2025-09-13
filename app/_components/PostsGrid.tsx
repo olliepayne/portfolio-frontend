@@ -18,7 +18,7 @@ export default function PostsGrid({ posts }: PostsTableProps) {
   return (
     <div className="mt-8 grid gap-8 grid-cols-1 auto-rows-auto md:grid-cols-2">
       {posts.map((post, index) => (
-        <div className={`post-${index}`}>
+        <div key={`post-${index}`}>
           <InternalLink href={post.slug} text={post.title} />
           <p className="my-4">{post.summary}</p>
           <div>
