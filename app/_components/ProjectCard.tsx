@@ -23,9 +23,9 @@ export default function ProjectCard({
           src={getStrapiMedia(mainImage.url) as string}
           alt={mainImage.alternativeText}
           fill
-          className="object-cover rounded-sm group-hover:scale-x-105 group-hover:scale-y-105 transition-all duration-300"
+          className="object-cover rounded-sm group-hover:scale-x-105 group-hover:scale-y-105 transition-all"
         />
-        <div className="absolute rounded-sm left-0 top-0 w-full h-full group-hover:border-4 transition-all dark:border-primary-intense border-primary"></div>
+        <div className="absolute rounded-sm left-0 top-0 w-full h-full group-hover:border-primary border-4 border-transparent transition-all"></div>
       </div>
       <div className="mt-2">
         <p className="mt-2 w-fit inline-block relative dark:group-hover:after:bg-off-white group-hover:after:bg-off-black after:transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-[2px] after:bg-gray-400">
