@@ -85,7 +85,7 @@ export default async function Home() {
 
       <section className="mt-32">
         <Container className="border-t-2 dark:border-off-black border-light-gray pt-16">
-          <Heading level="h2" id="work-history">
+          <Heading level="h2" id="writing">
             Writing
           </Heading>
           {posts && <PostsGrid posts={posts} />}
