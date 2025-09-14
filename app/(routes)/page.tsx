@@ -56,8 +56,8 @@ export default async function Home() {
             />
           </div>
           <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mt-16">
-            <SocialCard type="LinkedIn" />
             <SocialCard type="GitHub" />
+            <SocialCard type="LinkedIn" />
             <SocialCard type="Resume" resume={resume} />
           </div>
         </Container>
@@ -86,7 +86,7 @@ export default async function Home() {
       <section className="mt-32">
         <Container className="border-t-2 dark:border-off-black border-light-gray pt-16">
           <Heading level="h2" id="work-history">
-            Activity
+            Writing
           </Heading>
           {posts && <PostsGrid posts={posts} />}
         </Container>
