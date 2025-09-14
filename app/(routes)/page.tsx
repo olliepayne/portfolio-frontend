@@ -6,18 +6,21 @@ import Image from "next/image"
 import SocialCard from "@/app/_components/SocialCard"
 import ProjectsGrid from "@/app/_components/ProjectsGrid"
 import WorkHistoryTable from "@/app/_components/WorkHistoryTable"
+import PostsGrid from "@/app/_components/PostsGrid"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getStrapiData("/api/homepage?populate=seo")
+  const { seo } = data
 
   return {
-    title: data ? data.seo.titleTag : "Title tag",
-    description: data ? data.seo.metaDescription : ""
+    title: seo.titleTag,
+    description: seo.metaDescription
   }
 }
 
 export default async function Home() {
   const resume = await getStrapiData("/api/resume?populate=file")
+  const posts = await getStrapiData("/api/posts?populate=*")
 
   return (
     <>
@@ -37,9 +40,10 @@ export default async function Home() {
                 />
               </div>
               <p className="mt-4 text-body-large">
-                I&apos;m an English <mark>front-end developer</mark> living in Phoenix, Arizona. I
-                got into the tech agency/startup world at the age of 19 and have
-                spent the last {new Date().getFullYear() - 2021}+ years there.
+                I&apos;m an English <mark>front-end developer</mark> living in
+                Phoenix, Arizona. I got into the tech agency/startup world at
+                the age of 19 and have spent the last{" "}
+                {new Date().getFullYear() - 2021}+ years there.
               </p>
             </div>
             <Image
@@ -76,6 +80,15 @@ export default async function Home() {
             Work history
           </Heading>
           <WorkHistoryTable />
+        </Container>
+      </section>
+
+      <section className="mt-32">
+        <Container className="border-t-2 dark:border-off-black border-light-gray pt-16">
+          <Heading level="h2" id="work-history">
+            Activity
+          </Heading>
+          {posts && <PostsGrid posts={posts} />}
         </Container>
       </section>
     </>
