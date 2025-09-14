@@ -1,5 +1,6 @@
 import { Post } from "@/app/types"
 import InternalLink from "@/app/_components/InternalLink"
+import SkillTag from "@/app/_components/SkillTag"
 import { getShortMonthYear } from "@/app/_utils/dateFormatter"
 
 type PostsTableProps = {
@@ -12,13 +13,16 @@ export default function PostsGrid({ posts }: PostsTableProps) {
       {posts.map((post, index) => (
         <div key={`post-${index}`}>
           <InternalLink href={`/posts/${post.slug}`} text={post.title} />
-          {post.postCategory && (
-            <div className="my-4">
-              <span className="px-2 py-1 text-sm uppercase rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
-                {post.postCategory.name}
-              </span>
-            </div>
-          )}
+          <div className="my-4">
+            {post.postCategory && <span className="font-medium">{post.postCategory.name}</span>}
+            <ul className="mt-2 flex flex-wrap gap-4">
+              {post.skillTags?.map((skillTag) => (
+                <li key={skillTag.name}>
+                  <SkillTag name={skillTag.name} />
+                </li>
+              ))}
+            </ul>
+          </div>
           <p className="my-4">{post.summary}</p>
           <div>
             <span className="mr-4">{getShortMonthYear(post.updatedAt)}</span>
