@@ -29,7 +29,7 @@ export default function BreadcrumbNav({ className }: BreadcrumbNavProps) {
       <InternalLink href="/" text="Home" />
       {pathArray &&
         pathArray.map((item, index) => (
-          <InternalLink href={getHref(index)} text={item} className="first-letter:uppercase" />
+          <InternalLink key={index} href={getHref(index)} text={item} className="first-letter:uppercase" />
         ))}
     </nav>
   )
