@@ -9,7 +9,11 @@ const links = [
   {
     href: "/#work-history",
     text: "Work history"
-  }
+  },
+  {
+    href: "/#writing",
+    text: "Writing"
+  },
 ]
 
 export default function TopNavigationBar() {
