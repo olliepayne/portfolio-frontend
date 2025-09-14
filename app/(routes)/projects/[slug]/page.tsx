@@ -8,6 +8,7 @@ import Image from "next/image"
 import Markdown from "react-markdown"
 import markdownComponents from "@/app/_components/markdownComponents"
 import remarkGfm from "remark-gfm"
+import SkillTag from "@/app/_components/SkillTag"
 
 export async function generateStaticParams() {
   const projects: Project[] = await getStrapiData("/api/projects")
@@ -49,20 +50,20 @@ export default async function ProjectPage({
         <header className="mt-32">
           <Container>
             <Heading level="h1">{name}</Heading>
-            <div className="mt-8 flex justify-between flex-col-reverse md:flex-row">
-              <p className="mt-8 basis-2/3 text-body-large md:mt-0">
-                {summary}
-              </p>
-              <div className="md:ml-8">
+            <div className="mt-8 flex gap-8 justify-between flex-col-reverse md:flex-row">
+              <p className="basis-2/3 text-body-large">{summary}</p>
+              <div>
                 <p>
                   <span className="font-medium">
                     {company ? company.name : "Personal"}
                   </span>
                   , <span>{duration}</span>
                 </p>
-                <ul>
-                  {skillTags?.map((item) => (
-                    <li key={item.name}>{item.name}</li>
+                <ul className="mt-2 flex flex-wrap gap-4">
+                  {skillTags?.map((skillTag) => (
+                    <li key={skillTag.name}>
+                      <SkillTag name={skillTag.name} />
+                    </li>
                   ))}
                 </ul>
               </div>
