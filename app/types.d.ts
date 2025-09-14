@@ -55,6 +55,7 @@ export interface PostCategory {
 }
 
 export interface Post {
+  documentId: string
   slug: string
   title: string
   content: string
@@ -63,6 +64,7 @@ export interface Post {
   mainImage: StrapiImage
   summary: string
   seo: SEO
+  noindex: boolean
   postCategory?: PostCategory
   skillTags?: SkillTag[]
 }

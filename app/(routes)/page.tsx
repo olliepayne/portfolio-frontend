@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const resume = await getStrapiData("/api/resume?populate=file")
-
   const posts = await getStrapiData("/api/posts?populate=*")
 
   return (
@@ -87,9 +86,9 @@ export default async function Home() {
       <section className="mt-32">
         <Container className="border-t-2 dark:border-off-black border-light-gray pt-16">
           <Heading level="h2" id="work-history">
-            Posts
+            Activity
           </Heading>
-          <PostsGrid posts={posts} />
+          {posts && <PostsGrid posts={posts} />}
         </Container>
       </section>
     </>
