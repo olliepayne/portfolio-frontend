@@ -4,9 +4,10 @@ import { Metadata } from "next"
 import Head from "next/head"
 import Container from "@/app/_components/Container"
 import Heading from "@/app/_components/Heading"
-import { getShortMonthDayYear } from "@/app/_utils/dateFormatter"
+import SkillTag from "@/app/_components/SkillTag"
 import Image from "next/image"
 import { getStrapiMedia } from "@/app/_utils/getStrapiMedia"
+import { getShortMonthDayYear } from "@/app/_utils/dateFormatter"
 import Markdown from "react-markdown"
 import markdownComponents from "@/app/_components/markdownComponents"
 import remarkGfm from "remark-gfm"
@@ -55,7 +56,8 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
       content,
       publishedAt,
       updatedAt,
-      postCategory
+      postCategory,
+      skillTags
     }
   ]: Post[] = await getStrapiData(
     `/api/posts?filters[slug][$eq]=${slug}&populate=*`
@@ -69,27 +71,34 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
         </Head>
       )}
       <article>
-        <header className="mt-32">
+        <header>
           <Container>
-            <Heading level="h1">{title}</Heading>
-            <div>
-              <div className="my-4">
+            <Heading level="h1" className="mt-32">
+              {title}
+            </Heading>
+            <div className="mt-8 flex justify-between gap-8">
+              <div className="basis-1/2">
                 {postCategory && (
-                  <span className="px-2 py-1 text-sm uppercase rounded-sm border-[1px] border-off-white bg-[#FAFAFA] dark:bg-[#1D1F21] dark:border-off-black">
-                    {postCategory.name}
-                  </span>
+                  <span className="font-medium">{postCategory.name}</span>
                 )}
+                <ul className="mt-2 flex gap-4 flex-wrap">
+                  {skillTags?.map((skillTag) => (
+                    <li key={skillTag.name}>
+                      <SkillTag name={skillTag.name} />
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-body-large">{summary}</p>
               </div>
-              <p className="text-body-large">{summary}</p>
-            </div>
-            <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
-              <Image
-                src={getStrapiMedia(mainImage.url) as string}
-                alt={mainImage.alternativeText}
-                fill
-                priority
-                className="object-cover rounded-sm"
-              />
+              <div className="relative basis-1/2 h-[350px] aspect-auto rounded-sm shadow-md">
+                <Image
+                  src={getStrapiMedia(mainImage.url) as string}
+                  alt={mainImage.alternativeText}
+                  fill
+                  priority
+                  className="object-cover rounded-sm"
+                />
+              </div>
             </div>
           </Container>
         </header>
