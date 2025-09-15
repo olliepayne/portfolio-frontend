@@ -23,7 +23,7 @@ const links = [
   }
 ]
 
-export default function TopNavigationBar() {
+export default function NavigationMenu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   function toggleMenu() {

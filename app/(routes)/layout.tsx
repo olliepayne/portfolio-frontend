@@ -1,6 +1,6 @@
 import "@/app/app.css"
 import { GoogleTagManager } from "@next/third-parties/google"
-import TopNavigationBar from "@/app/_components/TopNavigationBar"
+import NavigationMenu from "@/app/_components/NavigationMenu"
 import Footer from "@/app/_components/Footer"
 import ThemeProvider from "@/app/_lib/themes-handler"
 
@@ -16,7 +16,7 @@ export default function RootLayout({
       ) : null}
       <body>
         <ThemeProvider>
-          <TopNavigationBar />
+          <NavigationMenu />
           {children}
           <Footer />
         </ThemeProvider>
