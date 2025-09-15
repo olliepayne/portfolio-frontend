@@ -68,13 +68,13 @@ export default async function ProjectPage({
                 </ul>
               </div>
             </div>
-            <div className="mt-16 relative w-full aspect-video rounded-sm shadow-md">
+            <div className="mt-16 relative w-full aspect-video rounded-md overflow-clip shadow-md">
               <Image
                 src={getStrapiMedia(mainImage.url) as string}
                 alt={mainImage.alternativeText}
                 fill
                 priority
-                className="object-cover rounded-sm"
+                className="object-cover"
               />
             </div>
           </Container>
