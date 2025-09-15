@@ -43,7 +43,7 @@ export default function NavigationMenu() {
 
       <div
         className={cn(
-          "px-16 bg-white dark:bg-body-dark rounded-l-3xl w-full h-full left-full fixed top-0 transition-all duration-300 md:w-1/2",
+          "px-16 bg-white dark:bg-body-dark md:rounded-l-3xl w-full h-full left-full fixed top-0 transition-all duration-300 md:w-1/2",
           menuIsOpen && "left-0 md:left-1/2"
         )}
       >
