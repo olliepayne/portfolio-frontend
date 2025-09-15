@@ -17,20 +17,27 @@ export default function ProjectCard({
   className
 }: ProjectCardProps) {
   return (
-    <div className={cn("relative group cursor-pointer flex flex-col", className)}>
-      <div className="relative flex-1 rounded-sm shadow-sm overflow-clip">
-        <Image
-          src={getStrapiMedia(mainImage.url) as string}
-          alt={mainImage.alternativeText}
-          fill
-          className="object-cover rounded-sm group-hover:scale-x-105 group-hover:scale-y-105 transition-all"
-        />
-        <div className="absolute rounded-sm left-0 top-0 w-full h-full group-hover:border-primary border-4 border-transparent transition-all"></div>
-      </div>
-      <div className="mt-2">
+    <div className={cn("flex flex-col", className)}>
+      <div className="relative flex flex-1 flex-col group cursor-pointer">
+        <div className="flex-1 relative rounded-md shadow-sm overflow-clip">
+          <Image
+            src={getStrapiMedia(mainImage.url) as string}
+            alt={mainImage.alternativeText}
+            fill
+            className="object-cover rounded-sm group-hover:scale-x-105 group-hover:scale-y-105 transition-all"
+          />
+          <div className="absolute rounded-sm left-0 top-0 w-full h-full group-hover:border-primary border-4 border-transparent transition-all"></div>
+        </div>
         <p className="mt-2 w-fit inline-block relative dark:group-hover:after:bg-off-white group-hover:after:bg-off-black after:transition-all after:absolute after:bottom-0.5 after:left-0 after:w-full after:h-[2px] after:bg-gray-400">
           {name}
         </p>
+        <InternalLink
+          href={`/projects/${slug}`}
+          className="absolute top-0 left-0 w-full h-full inline-block opacity-0"
+          text={`View the ${name} projectInternalLink`}
+        />
+      </div>
+      <div className="mt-2">
         <ul className="mt-4 flex flex-wrap gap-4">
           {skillTags?.map((skillTag) => (
             <li key={skillTag.name}>
@@ -39,11 +46,6 @@ export default function ProjectCard({
           ))}
         </ul>
       </div>
-      <InternalLink
-        href={`/projects/${slug}`}
-        className="absolute top-0 left-0 w-full h-full inline-block opacity-0"
-        text={`View the ${name} projectInternalLink`}
-      />
     </div>
   )
 }
