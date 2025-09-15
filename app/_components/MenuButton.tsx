@@ -1,31 +1,34 @@
-"use client"
-import { useState } from "react"
 import { cn } from "@/app/_utils/cn"
 
-export default function MenuButton() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
+type MenuButtonProps = {
+  toggleFunction: () => void
+  isOpen: boolean
+}
 
-  function toggleMenu() {
-    setMenuIsOpen(!menuIsOpen)
-  }
-
+export default function MenuButton({
+  toggleFunction,
+  isOpen
+}: MenuButtonProps) {
   return (
     <button
-      className="relative cursor-pointer w-[30px] h-[30px]"
-      onClick={toggleMenu}
+      className="group cursor-pointer flex items-center "
+      onClick={toggleFunction}
     >
-      <span
-        className={cn(
-          "absolute top-2/5 left-0 origin-center inline-block dark:bg-off-white bg-off-black h-[2px] w-full menu-btn-bounce",
-          menuIsOpen && "top-1/2 -translate-y-1/2 rotate-45"
-        )}
-      />
-      <span
-        className={cn(
-          "absolute top-3/5 left-0 origin-center inline-block dark:bg-off-white bg-off-black h-[2px] w-3/4 transition-all menu-btn-bounce",
-          menuIsOpen && "top-1/2 -translate-y-1/2 w-full -rotate-45"
-        )}
-      />
+      <span className="hidden md:inline-block group-hover:opacity-100 opacity-0 transition-all">{isOpen ? "Close" : "Menu"}</span>
+      <span className="relative w-[40px] h-[40px] md:ml-4 border-2 dark:border-off-white border-off-black rounded-md">
+        <span
+          className={cn(
+            "absolute left-1/2 top-2/5 -translate-x-1/2 -translate-y-1/2 origin-center inline-block dark:bg-off-white bg-off-black h-[2px] w-[28px] transition-all menu-btn-bounce",
+            isOpen && "rotate-45 top-1/2 w-full"
+          )}
+        />
+        <span
+          className={cn(
+            "absolute left-1 top-3/5 -translate-y-1/2 origin-center inline-block dark:bg-off-white bg-off-black h-[2px] w-[60%] transition-all menu-btn-bounce",
+            isOpen && "left-1/2 top-1/2 -translate-x-1/2 w-full -rotate-45"
+          )}
+        />
+      </span>
     </button>
   )
 }
