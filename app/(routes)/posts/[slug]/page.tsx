@@ -90,13 +90,13 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
                 </ul>
                 <p className="mt-4 text-body-large">{summary}</p>
               </div>
-              <div className="relative basis-1/2 h-[350px] aspect-auto rounded-sm shadow-md">
+              <div className="relative basis-1/2 h-[350px] aspect-auto rounded-md overflow-clip shadow-md">
                 <Image
                   src={getStrapiMedia(mainImage.url) as string}
                   alt={mainImage.alternativeText}
                   fill
                   priority
-                  className="object-cover rounded-sm"
+                  className="object-cover"
                 />
               </div>
             </div>
