@@ -47,7 +47,7 @@ export default async function ProjectPage({
   return (
     <main>
       <article>
-        <header className="mt-32">
+        <header className="mt-20 md:mt-32">
           <Container>
             <Heading level="h1">{name}</Heading>
             <div className="mt-8 flex gap-8 justify-between flex-col-reverse md:flex-row">

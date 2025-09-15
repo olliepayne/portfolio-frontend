@@ -73,7 +73,7 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
       <article>
         <header>
           <Container>
-            <Heading level="h1" className="mt-32">
+            <Heading level="h1" className="mt-20 md:mt-32">
               {title}
             </Heading>
             <div className="mt-8 flex flex-col-reverse md:flex-row justify-between gap-8">

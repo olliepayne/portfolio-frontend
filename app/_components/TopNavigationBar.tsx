@@ -65,7 +65,7 @@ export default function TopNavigationBar() {
         </ul>
       </div>
 
-      <span className="fixed right-8 top-3">
+      <span className="fixed right-8 top-8">
         <MenuButton toggleFunction={toggleMenu} isOpen={menuIsOpen} />
       </span>
     </nav>
