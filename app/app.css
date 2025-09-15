@@ -2,9 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 @theme {
-  /* --color-primary: #ffd1e0; */
   --color-primary: #f78db0;
-  --color-primary-intense: #f78db0;
   --color-charcoal: #272727;
   --color-light-gray: #dfdfdf;
   --color-gray: #5c5c5c;
