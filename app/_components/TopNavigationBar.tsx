@@ -1,10 +1,14 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { cn } from "@/app/_utils/cn"
-import Container from "@/app/_components/Container"
 import Link from "next/link"
+import MenuButton from "@/app/_components/MenuButton"
 
 const links = [
+  {
+    href: "/",
+    text: "Home"
+  },
   {
     href: "/#portfolio",
     text: "Portfolio"
@@ -20,61 +24,50 @@ const links = [
 ]
 
 export default function TopNavigationBar() {
-  const [isTopOfPage, setIsTopOfPage] = useState(true)
-  const [scrollYTimestamp, setScrollYTimestamp] = useState(new Date().getTime())
-  const scrollYCheckDelay = 100
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
-  function checkScrollY() {
-    if (window.scrollY > 0) {
-      setIsTopOfPage(false)
-    } else {
-      setIsTopOfPage(true)
-    }
-
-    if (new Date().getTime() >= scrollYTimestamp) {
-      setScrollYTimestamp(new Date().getTime())
-    }
-    setTimeout(checkScrollY, scrollYCheckDelay)
+  function toggleMenu() {
+    setMenuIsOpen(!menuIsOpen)
   }
 
-  useEffect(() => {
-    window.addEventListener("scroll", checkScrollY)
-
-    return () => {
-      window.removeEventListener("scroll", checkScrollY)
-    }
-  }, [])
-
   return (
-    <nav
-      className={cn(
-        "relative py-4 border-b-2 transition-all dark:border-off-black border-light-gray",
-        !isTopOfPage && "dark:border-b-transparent border-b-transparent"
-      )}
-    >
-      <Container variant="full">
-        <div className="flex justify-between">
-          <Link
-            href="/"
-            className="transition-colors dark:hover:text-primary-intense hover:text-primary"
-            aria-label="Go to homepage"
-          >
-            Ollie Payne
-          </Link>
-          <div className="flex items-center">
-            {links.map((item, index) => (
+    <nav className="relative z-10 overflow-clip">
+      {/* Blur */}
+      <div
+        className={cn(
+          "pointer-events-none fixed bg-transparent w-full left-0 top-0 h-full transition-all duration-300",
+          menuIsOpen &&
+            "pointer-events-auto backdrop-blur-sm bg-[rgba(0,0,0,0.2)]"
+        )}
+      />
+
+      <div
+        className={cn(
+          "px-16 bg-white dark:bg-body-dark rounded-l-3xl w-full h-full left-full fixed top-0 transition-all duration-300 md:w-1/2",
+          menuIsOpen && "left-0 md:left-1/2"
+        )}
+      >
+        <ul className="mt-32">
+          {links.map((link, index) => (
+            <li key={index} className="my-4">
               <Link
-                href={item.href}
-                key={`top-nav-link-${index}`}
-                className="ml-8 transition-colors dark:hover:text-primary-intense hover:text-primary"
-                aria-label={`Go to ${item} page`}
+                href={link.href}
+                className={cn(
+                  "text-h2-desktop transition-colors hover:text-primary"
+                )}
+                aria-label={`Go to ${link.text} page`}
+                onClick={() => setMenuIsOpen(false)}
               >
-                {item.text}
+                {link.text}
               </Link>
-            ))}
-          </div>
-        </div>
-      </Container>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <span className="fixed right-8 top-3">
+        <MenuButton toggleFunction={toggleMenu} isOpen={menuIsOpen} />
+      </span>
     </nav>
   )
 }
