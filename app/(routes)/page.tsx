@@ -52,7 +52,7 @@ export default async function Home() {
               priority
               width={300}
               height={300}
-              className="rounded-xl mt-16 min-h-[300px] object-cover shadow-md md:mt-0"
+              className="rounded-md mt-16 min-h-[300px] object-cover shadow-md md:mt-0"
             />
           </div>
           <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mt-16">
