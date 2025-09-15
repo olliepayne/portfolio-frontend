@@ -76,7 +76,7 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
             <Heading level="h1" className="mt-32">
               {title}
             </Heading>
-            <div className="mt-8 flex justify-between gap-8">
+            <div className="mt-8 flex flex-col-reverse md:flex-row justify-between gap-8">
               <div className="basis-1/2">
                 {postCategory && (
                   <span className="font-medium">{postCategory.name}</span>
