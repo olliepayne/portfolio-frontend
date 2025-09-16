@@ -11,11 +11,15 @@ export default function MenuButton({
 }: MenuButtonProps) {
   return (
     <button
-      className="group cursor-pointer flex items-center "
+      className="group cursor-pointer relative flex items-center"
       onClick={toggleFunction}
     >
-      <span className="hidden md:inline-block group-hover:opacity-100 opacity-0 transition-all">{isOpen ? "Close" : "Menu"}</span>
-      <span className="relative w-[40px] h-[40px] md:ml-4 border-2 dark:border-off-white border-off-black rounded-md">
+      {/* Text */}
+      <span className="absolute top-1/2 -translate-y-1/2 -left-12 pointer-events-none hidden md:inline-block group-hover:opacity-100 opacity-0 transition-all">
+        {isOpen ? "Close" : "Menu"}
+      </span>
+
+      <span className="relative w-[40px] h-[40px] border-2 dark:border-off-white border-off-black rounded-md">
         <span
           className={cn(
             "absolute left-1/2 top-2/5 -translate-x-1/2 -translate-y-1/2 origin-center inline-block dark:bg-off-white bg-off-black h-[2px] w-[28px] transition-all menu-btn-bounce",
