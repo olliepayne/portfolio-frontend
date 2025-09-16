@@ -83,3 +83,7 @@ html.dark .markdown-table tr {
 .markdown-table td {
   padding: 1rem;
 }
+
+.menu-btn-bounce {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
