@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react"
+
+import { useEffect, useState } from "react"
 import { cn } from "@/app/_utils/cn"
 import Link from "next/link"
 import MenuButton from "@/app/_components/MenuButton"
@@ -24,11 +25,25 @@ const links = [
 ]
 
 export default function NavigationMenu() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   function toggleMenu() {
-    setMenuIsOpen(!menuIsOpen)
+    setIsOpen(!isOpen)
   }
+
+  useEffect(() => {
+    function handler(event: KeyboardEvent) {
+      if (event.key === "Escape" && isOpen) {
+        toggleMenu()
+      }
+    }
+
+    window.addEventListener("keydown", handler)
+
+    return () => {
+      window.removeEventListener("keydown", handler)
+    }
+  }, [isOpen])
 
   return (
     <nav className="relative z-10 overflow-clip">
@@ -36,15 +51,17 @@ export default function NavigationMenu() {
       <div
         className={cn(
           "pointer-events-none fixed bg-transparent w-full left-0 top-0 h-full transition-all duration-300",
-          menuIsOpen &&
-            "pointer-events-auto backdrop-blur-sm bg-[rgba(0,0,0,0.2)]"
+          isOpen && "pointer-events-auto backdrop-blur-sm bg-[rgba(0,0,0,0.2)]"
         )}
+        onClick={() => {
+          if (isOpen) setIsOpen(false)
+        }}
       />
 
       <div
         className={cn(
           "px-16 bg-white dark:bg-body-dark md:rounded-l-3xl w-full h-full left-full fixed top-0 transition-all duration-300 md:w-1/2",
-          menuIsOpen && "left-0 md:left-1/2"
+          isOpen && "left-0 md:left-1/2"
         )}
       >
         <ul className="mt-32">
@@ -56,7 +73,7 @@ export default function NavigationMenu() {
                   "text-h2-desktop transition-colors hover:text-primary"
                 )}
                 aria-label={`Go to ${link.text} page`}
-                onClick={() => setMenuIsOpen(false)}
+                onClick={() => setIsOpen(false)}
               >
                 {link.text}
               </Link>
@@ -66,7 +83,7 @@ export default function NavigationMenu() {
       </div>
 
       <span className="fixed right-8 top-8">
-        <MenuButton toggleFunction={toggleMenu} isOpen={menuIsOpen} />
+        <MenuButton toggleFunction={toggleMenu} isOpen={isOpen} />
       </span>
     </nav>
   )
