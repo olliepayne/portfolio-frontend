@@ -68,7 +68,7 @@ export default async function ProjectPage({
                 </ul>
               </div>
             </div>
-            <div className="mt-16 relative w-full aspect-video rounded-md overflow-clip shadow-md">
+            <div className="mt-16 relative w-full h-[350px] md:h-[500px] aspect-auto rounded-md overflow-clip shadow-md">
               <Image
                 src={getStrapiMedia(mainImage.url) as string}
                 alt={mainImage.alternativeText}
